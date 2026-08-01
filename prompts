@@ -1,0 +1,683 @@
+This is exactly the type of project where Antigravity shines if you treat it like a design director instead of a code generator.
+
+Looking at your skills folder:
+
+* ✅ design-taste-frontend
+* ✅ frontend-design
+* ✅ high-end-visual-design
+* ✅ improve-codebase-architecture
+
+I'd actually invoke **all four simultaneously** for every major page.
+
+---
+
+# MASTER ANTIGRAVITY PROMPT
+
+Use this FIRST before every section.
+
+```text
+You are the Creative Director, Design Lead, Motion Designer and Senior Frontend Engineer from Apple, Stripe, Linear, Vercel, Framer, Google Creative Lab and Nothing combined.
+
+You are NOT building a startup landing page.
+
+You are building the official Entrepreneurship Cell website of Chandigarh University Uttar Pradesh.
+
+The website must feel like a Fortune 500 product launch.
+
+This is not a template.
+This is not SaaS.
+This is not AI generated.
+This must feel handcrafted.
+
+Design Philosophy
+
+• Apple-level spacing
+• Linear-level typography
+• Stripe-level layouts
+• Framer-level animations
+• Nothing.tech aesthetics
+• Vercel level engineering
+• Google Material motion
+• Minimal but emotional
+• Academic yet futuristic
+• Premium without flashy gradients
+• Elegant
+• Timeless
+
+The website should feel alive.
+
+Everything reacts.
+
+Animations should never exist only for decoration.
+
+Every animation communicates hierarchy, focus or emotion.
+
+Avoid:
+
+❌ glassmorphism everywhere
+❌ neon gradients
+❌ floating random blobs
+❌ AI generated hero sections
+❌ generic illustrations
+❌ stock icons
+❌ startup clichés
+❌ fake statistics
+❌ unnecessary particles
+
+Instead use
+
+• depth
+• subtle lighting
+• cinematic transitions
+• smooth easing
+• premium typography
+• whitespace
+• intelligent motion
+• editorial layouts
+
+Every section should feel like its own product launch.
+
+Scrolling should feel like reading a documentary.
+
+Build using production-quality architecture.
+
+Animations must use Framer Motion.
+
+Keep performance excellent.
+
+Accessibility first.
+
+Responsive by design.
+
+The website should be worthy of winning Awwwards.
+```
+
+---
+
+# GLOBAL WEBSITE PROMPT
+
+```text
+Design the entire website like Apple launches an Entrepreneurship Cell.
+
+Think documentary.
+
+Think future founders.
+
+Think innovation.
+
+Think ambition.
+
+The emotional progression while scrolling should be
+
+Curiosity
+
+↓
+
+Inspiration
+
+↓
+
+Belonging
+
+↓
+
+Ambition
+
+↓
+
+Action
+
+Every section should naturally flow into the next.
+
+Transitions should feel cinematic.
+
+No abrupt changes.
+
+Use layered motion.
+
+Every hover interaction should feel satisfying.
+
+Microinteractions should exist everywhere.
+
+The website should never feel static.
+
+Everything should subtly breathe.
+
+No page should look like a bootstrap template.
+```
+
+---
+
+# HERO SECTION
+
+```text
+Design one of the greatest hero sections ever created for a university Entrepreneurship Cell.
+
+Goals
+
+Immediately communicate
+
+Innovation
+
+Leadership
+
+Future founders
+
+Community
+
+Opportunity
+
+Requirements
+
+Large cinematic headline
+
+"We Build Founders."
+
+or
+
+"Where Ideas Become Startups."
+
+Animated typography.
+
+Subtle background motion.
+
+Very elegant moving light.
+
+Interactive mouse response.
+
+Minimal particles only if meaningful.
+
+Premium CTA buttons.
+
+Join E-Cell
+
+Explore Journey
+
+Scroll indicator.
+
+The hero should feel as premium as Apple's product pages.
+
+No giant illustrations.
+
+No fake startup graphics.
+
+Use depth and motion instead.
+
+Scrolling should reveal the next section seamlessly.
+
+The hero alone should feel award worthy.
+```
+
+---
+
+# VISION SECTION
+
+```text
+Create a storytelling section explaining why E-Cell exists.
+
+Instead of cards...
+
+Use immersive editorial layouts.
+
+Alternate text and imagery.
+
+Reveal content while scrolling.
+
+Create emotional storytelling.
+
+The feeling should be
+
+Every successful founder started somewhere.
+
+Today, that place is here.
+
+Use elegant typography.
+
+Large whitespace.
+
+Subtle parallax.
+
+Premium image masking.
+
+Magazine inspired layouts.
+```
+
+---
+
+# WHAT YOU GET
+
+```text
+Instead of boring feature cards...
+
+Create interactive experiences.
+
+Each opportunity should have its own identity.
+
+Startup Incubation
+
+Founder Talks
+
+Networking
+
+Mentorship
+
+Ideathons
+
+Pitch Competitions
+
+Internships
+
+Hovering should activate motion.
+
+Cards should expand.
+
+Images reveal.
+
+Typography transforms.
+
+Icons animate.
+
+Scrolling should trigger staggered reveals.
+
+Everything should feel premium.
+
+Think Apple Services page meets Stripe.
+```
+
+---
+
+# ROADMAP
+
+```text
+Build one of the most beautiful timelines ever made.
+
+Avoid vertical boring timelines.
+
+Instead create
+
+Horizontal cinematic roadmap
+
+Launch
+
+↓
+
+Workshops
+
+↓
+
+Ideathons
+
+↓
+
+Incubation
+
+↓
+
+Demo Day
+
+Each milestone becomes active while scrolling.
+
+Current milestone glows.
+
+Future milestones gradually appear.
+
+Use motion paths.
+
+Animated connectors.
+
+Progress indicator.
+
+Interactive hover.
+
+Should feel like watching the future unfold.
+```
+
+---
+
+# EVENTS
+
+```text
+Design events like Netflix showcases new releases.
+
+Upcoming event becomes the hero.
+
+Past events become elegant timeline cards.
+
+Hover reveals
+
+Highlights
+
+Gallery
+
+Speakers
+
+Venue
+
+Countdown timer for next event.
+
+Animated transitions.
+
+Cards should feel tactile.
+
+Premium hover shadows.
+
+Motion should communicate excitement.
+```
+
+---
+
+# TEAM
+
+```text
+Forget traditional team grids.
+
+Design a premium leadership experience.
+
+Large editorial portraits.
+
+Hover reveals
+
+LinkedIn
+
+Role
+
+Expertise
+
+Bio
+
+Each member appears individually.
+
+Smooth transitions.
+
+Elegant monochrome photography with subtle color accents.
+
+Scrolling feels like meeting each leader personally.
+
+No circular avatars.
+```
+
+---
+
+# JOIN COMMUNITY
+
+```text
+This section should emotionally convince students.
+
+Use immersive storytelling.
+
+Display benefits dynamically.
+
+Networking
+
+Startups
+
+Mentorship
+
+Recognition
+
+Community
+
+Industry
+
+Instead of listing benefits...
+
+Animate each one.
+
+One benefit replaces another.
+
+Large typography.
+
+Strong CTA.
+
+Premium motion.
+
+The user should genuinely want to join.
+```
+
+---
+
+# GALLERY
+
+```text
+Create an immersive photo experience.
+
+Avoid grids.
+
+Use asymmetrical layouts.
+
+Animated image reveals.
+
+Hover zoom.
+
+Parallax.
+
+Dynamic masonry.
+
+Smooth transitions.
+
+Each photo should feel like a memory.
+
+The gallery should tell a story.
+
+Meetings.
+
+Hackathons.
+
+Late night planning.
+
+Launch day.
+
+Founder talks.
+
+Campus moments.
+```
+
+---
+
+# FAQ
+
+```text
+Design FAQs like Apple Support.
+
+Large spacing.
+
+Smooth accordion.
+
+Animated icon rotation.
+
+Questions fade beautifully.
+
+Minimal design.
+
+Readable.
+
+Elegant.
+
+No ugly borders.
+
+No heavy cards.
+```
+
+---
+
+# CONTACT
+
+```text
+Create a premium ending.
+
+Beautiful typography.
+
+Elegant form.
+
+Animated placeholders.
+
+Interactive social icons.
+
+Map with subtle motion.
+
+Footer should feel like the conclusion of a documentary.
+
+Include
+
+Instagram
+
+LinkedIn
+
+Email
+
+X
+
+Location
+
+Smooth thank-you animation after submission.
+```
+
+---
+
+# MICROINTERACTIONS
+
+```text
+Every component must have handcrafted interactions.
+
+Buttons compress naturally.
+
+Cards lift realistically.
+
+Images reveal gradually.
+
+Text fades elegantly.
+
+Hover animations must be under 300ms.
+
+Scrolling must feel buttery.
+
+Motion should never distract.
+
+Every animation should improve understanding.
+```
+
+---
+
+# DESIGN SYSTEM
+
+```text
+Typography
+
+Editorial.
+
+Bold headlines.
+
+Clean body.
+
+Premium spacing.
+
+Color Palette
+
+Deep charcoal
+
+Warm whites
+
+Muted blues
+
+Elegant neutrals
+
+Very limited accent colors.
+
+Corners
+
+12–18px
+
+Spacing
+
+Generous.
+
+Whitespace is luxury.
+
+Icons
+
+Lucide.
+
+Photography
+
+Authentic campus moments.
+
+No stock photos.
+
+Motion
+
+Spring physics.
+
+Natural easing.
+
+Performance
+
+60fps.
+
+Responsive
+
+Pixel perfect from mobile to 5K displays.
+
+Accessibility
+
+WCAG AA.
+
+SEO ready.
+
+Production ready.
+```
+
+# Architecture Prompt
+
+Since you're using the `improve-codebase-architecture` skill, I'd also give Antigravity this engineering directive:
+
+```text
+Architect this like an enterprise frontend.
+
+Use Next.js App Router.
+
+Server Components where possible.
+
+Client Components only for interactions.
+
+Reusable design system.
+
+Motion primitives.
+
+Centralized animation variants.
+
+Component-driven architecture.
+
+Strict TypeScript.
+
+Tailwind CSS.
+
+Framer Motion.
+
+Lenis smooth scrolling.
+
+GSAP only where absolutely necessary.
+
+Optimized images.
+
+SEO-first.
+
+Accessible.
+
+Maintainable.
+
+Future-proof.
+
+Every section should be independently reusable.
+
+The final codebase should be clean enough for a senior engineer at Vercel or Stripe to comfortably maintain.
+```
+
+---
+
+## One final suggestion
+
+For an **E-Cell**, don't position it as just another university club. Position it as a **movement**. The visual narrative should feel like:
+
+> **Students → Builders → Founders → Startups → Impact**
+
+That story arc is much more memorable than a typical "About Us → Team → Contact" flow, and it aligns naturally with the mission of an entrepreneurship cell while giving the site a premium, documentary-style experience.
