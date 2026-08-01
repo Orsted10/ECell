@@ -1,0 +1,278 @@
+MASTER ENHANCEMENT PROMPT (DO NOT REMOVE OR REBUILD ANYTHING)
+
+You are NOT redesigning this website.
+
+You are NOT rebuilding this website.
+
+You are NOT changing the structure, content, sections, navigation, or functionality.
+
+The website is already built.
+
+Your job is to take the existing website and elevate every single aspect of it to the level of a world-class product while preserving everything that already exists.
+
+NON-NEGOTIABLE RULES
+DO NOT remove any existing feature.
+DO NOT remove any section.
+DO NOT simplify anything.
+DO NOT replace components with generic ones.
+DO NOT change branding or identity.
+DO NOT rewrite content unless it improves typography or readability.
+Everything currently present must remain.
+
+Your job is ONLY to enhance, refine, optimize, polish, modernize, and perfect what already exists.
+
+UI / UX ENHANCEMENT
+
+Without changing the layout hierarchy:
+
+Improve every component.
+
+Improve every spacing.
+
+Improve every alignment.
+
+Improve every animation.
+
+Improve every hover state.
+
+Improve every transition.
+
+Improve every interaction.
+
+Improve every visual hierarchy.
+
+Improve every card.
+
+Improve every section.
+
+Improve every button.
+
+Improve every icon treatment.
+
+Improve every border radius.
+
+Improve every shadow.
+
+Improve every glass effect.
+
+Improve every typography decision.
+
+Improve every gradient.
+
+Improve every background.
+
+Improve every loading experience.
+
+Improve every scroll experience.
+
+Improve every responsive behavior.
+
+Improve everything.
+
+Every pixel should feel intentionally designed.
+
+VISUAL QUALITY
+
+Increase the perceived quality by at least 10x without changing the existing design language.
+
+Refine
+
+spacing consistency
+optical alignment
+typography hierarchy
+section balance
+visual rhythm
+layering
+depth
+shadows
+highlights
+borders
+dividers
+icon sizing
+illustration placement
+padding
+margins
+whitespace
+responsive scaling
+
+Nothing should look generated.
+
+Everything should look handcrafted.
+
+COLORS
+
+Do NOT switch to trendy AI gradients.
+
+Do NOT use oversaturated colors.
+
+Do NOT use random purple/pink neon palettes.
+
+Keep the existing brand colors.
+
+Refine them professionally.
+
+Improve contrast.
+
+Improve accessibility.
+
+Improve depth.
+
+Improve harmony.
+
+Improve tonal balance.
+
+Improve dark/light separation.
+
+Improve accent usage.
+
+Create a more premium feel using subtle color refinement instead of dramatic palette changes.
+
+MICRO INTERACTIONS
+
+Every interactive element should feel alive.
+
+Enhance
+
+hover transitions
+focus states
+active states
+pressed states
+button feedback
+ripple effects (where appropriate)
+icon animations
+underline animations
+card elevation
+subtle parallax
+magnetic cursor interactions (lightweight)
+smooth reveals
+staggered animations
+number counters
+section entrances
+image transitions
+
+Animations should never feel distracting.
+
+Everything should feel intentional.
+
+MOTION DESIGN
+
+Current animations should become smoother and more premium.
+
+Improve
+
+easing curves
+animation timing
+scroll synchronization
+section reveal timing
+stagger delays
+opacity transitions
+transform values
+motion hierarchy
+
+Animations should feel closer to Apple, Linear, Framer, Stripe, and Vercel.
+
+No flashy effects.
+
+No unnecessary movement.
+
+Prioritize elegance.
+
+PERFORMANCE (EXTREMELY IMPORTANT)
+
+The website currently feels laggy.
+
+Without changing functionality:
+
+Optimize everything.
+
+Reduce unnecessary re-renders.
+Memoize expensive components.
+Lazy-load below-the-fold sections.
+Lazy-load images.
+Use modern image formats.
+Optimize fonts.
+Reduce layout shifts.
+Reduce JavaScript execution.
+Optimize animations to use GPU-friendly transforms.
+Replace expensive properties with transform/opacity where possible.
+Debounce heavy scroll events.
+Throttle mouse events.
+Optimize Framer Motion usage.
+Prevent animation conflicts.
+Reduce unnecessary DOM updates.
+Remove duplicate computations.
+Optimize bundle size.
+Split large chunks.
+Tree-shake unused dependencies.
+Prefetch intelligently.
+Optimize hydration.
+Improve Core Web Vitals (LCP, CLS, INP, TBT).
+Ensure consistent 60 FPS (or higher on high-refresh displays).
+
+The website should feel significantly faster without changing its appearance or features.
+
+RESPONSIVENESS
+
+Perfect every breakpoint.
+
+Desktop.
+
+Laptop.
+
+Tablet.
+
+Mobile.
+
+Ultra-wide.
+
+Large monitors.
+
+No awkward spacing.
+
+No broken layouts.
+
+No oversized components.
+
+No inconsistent padding.
+
+DETAILS
+
+Polish tiny details throughout the site:
+
+smoother border rendering
+refined shadows
+consistent radii
+improved icon alignment
+cleaner dividers
+better spacing between headings and content
+refined image cropping
+smoother gradients
+subtle texture where appropriate
+better empty states
+smoother loading skeletons
+refined scrollbars
+polished forms
+better focus rings
+improved accessibility
+
+These small refinements should collectively make the site feel dramatically more premium.
+
+CODE QUALITY
+
+While making improvements:
+
+Do not break existing functionality.
+Do not introduce regressions.
+Keep components modular.
+Remove duplicated logic where safe.
+Improve maintainability.
+Optimize state management.
+Improve readability.
+Keep the architecture clean.
+FINAL GOAL
+
+When someone visits the website, they should not think "this is a nice college website."
+
+They should think:
+
+"This feels like a premium product crafted by a top-tier design and engineering team."

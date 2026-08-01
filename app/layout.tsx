@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Inter_Tight } from "next/font/google";
+import { Outfit, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
@@ -18,6 +18,13 @@ const interTight = Inter_Tight({
   display: "swap",
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "E-Cell CUUP — We Build Founders",
   description:
@@ -30,6 +37,10 @@ export const metadata: Metadata = {
   },
 };
 
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { Preloader } from "@/components/ui/Preloader";
+import { GridBackground } from "@/components/ui/GridBackground";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,9 +49,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${interTight.variable}`}
+      className={`${outfit.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
-      <body className="noise">
+      <body className="noise" style={{ cursor: "none" }} suppressHydrationWarning>
+        <Preloader />
+        <GridBackground />
+        <CustomCursor />
         <SmoothScroll>
           <Navbar />
           {children}

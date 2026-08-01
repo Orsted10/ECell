@@ -116,7 +116,7 @@ export default function FAQ() {
     <section
       id="faq"
       className="section-pad"
-      style={{ borderTop: "1px solid var(--border-soft)" }}
+      style={{ background: "transparent" }}
     >
       <div className="container-wide">
         <motion.div

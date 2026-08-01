@@ -1,17 +1,18 @@
 "use client";
 import { motion } from "motion/react";
-import { LinkedinLogo } from "@phosphor-icons/react";
+import { LinkedinLogo, ArrowUpRight } from "@phosphor-icons/react";
 import { staggerContainer, fadeUp, scaleIn } from "@/components/motion/variants";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const TEAM = [
   {
     name: "Arjun Sharma",
-    role: "President",
+    role: "President & Founder",
     expertise: "Product Strategy, Fundraising",
     bio: "B.Tech CSE student and two-time hackathon winner. Previously interned at a Series-B SaaS startup in Bengaluru.",
     linkedin: "#",
     initial: "A",
-    color: "#4F8EF7",
+    color: "#FF5500",
   },
   {
     name: "Priya Nair",
@@ -20,7 +21,7 @@ const TEAM = [
     bio: "Social entrepreneur passionate about connecting student talent with real-world problems. Runs a nonprofit mentoring program.",
     linkedin: "#",
     initial: "P",
-    color: "#34D399",
+    color: "#0066FF",
   },
   {
     name: "Rohan Gupta",
@@ -29,7 +30,7 @@ const TEAM = [
     bio: "Commerce graduate turned startup enthusiast. Helped three peers raise pre-seed funding in the last two years.",
     linkedin: "#",
     initial: "R",
-    color: "#818CF8",
+    color: "#FFB300",
   },
   {
     name: "Shreya Verma",
@@ -38,7 +39,7 @@ const TEAM = [
     bio: "Designer, thinker, and builder who believes aesthetics are not decoration but communication.",
     linkedin: "#",
     initial: "S",
-    color: "#FCD34D",
+    color: "#00C6FF",
   },
 ];
 
@@ -47,7 +48,7 @@ export default function Team() {
     <section
       id="team"
       className="section-pad"
-      style={{ borderTop: "1px solid var(--border-soft)", background: "var(--surface)" }}
+      style={{ background: "transparent" }}
     >
       <div className="container-wide">
         {/* Header */}
@@ -56,16 +57,21 @@ export default function Team() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
-          style={{ marginBottom: "4rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}
+          style={{ marginBottom: "4rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1.5rem" }}
         >
-          <motion.h2 variants={fadeUp} className="display-2" style={{ maxWidth: "18ch" }}>
-            The people who make it happen.
-          </motion.h2>
+          <div>
+            <motion.p variants={fadeUp} className="label" style={{ color: "#FF5500", marginBottom: "0.75rem" }}>
+              LEADERSHIP // FOUNDING TEAM
+            </motion.p>
+            <motion.h2 variants={fadeUp} className="display-2" style={{ maxWidth: "18ch" }}>
+              The people who make it happen.
+            </motion.h2>
+          </div>
           <motion.p
             variants={fadeUp}
-            style={{ fontSize: "0.9rem", color: "var(--text-2)", maxWidth: "32ch", textAlign: "right" }}
+            style={{ fontSize: "1rem", color: "var(--text-2)", maxWidth: "36ch", lineHeight: 1.6 }}
           >
-            A small team of dedicated students building a culture of entrepreneurship from the ground up.
+            A dedicated team of student builders constructing CUUP&rsquo;s premier entrepreneurship ecosystem from the ground up.
           </motion.p>
         </motion.div>
 
@@ -78,105 +84,150 @@ export default function Team() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "1px",
-            background: "var(--border)",
+            gap: "1.5rem",
           }}
           className="grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
         >
-          {TEAM.map((member, i) => (
+          {TEAM.map((member) => (
             <motion.div
               key={member.name}
               variants={scaleIn}
-              style={{
-                background: "var(--surface-2)",
-                padding: "2.5rem 2rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-                position: "relative",
-                overflow: "hidden",
-                cursor: "default",
-                transition: "background 0.3s",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "var(--bg)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "var(--surface-2)";
-              }}
+              className="group"
             >
-              {/* Avatar — large editorial monogram */}
+              {/* Outer Hardware Shell for Double-Bezel architecture */}
               <div
                 style={{
-                  width: "72px",
-                  height: "72px",
-                  borderRadius: "14px",
-                  background: `${member.color}18`,
-                  border: `1px solid ${member.color}30`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "0.5rem",
+                  background: "rgba(255, 255, 255, 0.03)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  borderRadius: "2rem",
+                  padding: "0.45rem",
+                  height: "100%",
+                  transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s",
+                  boxShadow: "0 12px 36px rgba(0,0,0,0.45)",
                 }}
+                className="group-hover:-translate-y-2 group-hover:border-[rgba(255,85,0,0.45)]"
               >
-                <span
+                {/* Inner Core Card */}
+                <SpotlightCard
                   style={{
-                    fontFamily: "var(--font-outfit)",
-                    fontSize: "1.75rem",
-                    fontWeight: 700,
-                    color: member.color,
+                    background: "rgba(11, 14, 20, 0.94)",
+                    borderRadius: "calc(2rem - 0.45rem)",
+                    backdropFilter: "blur(20px)",
+                    padding: "2rem 1.6rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                    position: "relative",
+                    overflow: "hidden",
+                    cursor: "default",
+                    height: "100%",
+                    boxShadow: "inset 0 1px 1px rgba(255,255,255,0.12)",
                   }}
                 >
-                  {member.initial}
-                </span>
+                  {/* Corner Glow */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "-30px",
+                      right: "-30px",
+                      width: "150px",
+                      height: "150px",
+                      borderRadius: "50%",
+                      background: `radial-gradient(circle, ${member.color}1E 0%, transparent 70%)`,
+                      pointerEvents: "none",
+                    }}
+                  />
+
+                  {/* Avatar — editorial monogram badge */}
+                  <div
+                    style={{
+                      width: "68px",
+                      height: "68px",
+                      borderRadius: "1.25rem",
+                      background: `linear-gradient(135deg, ${member.color}25 0%, ${member.color}08 100%)`,
+                      border: `1.5px solid ${member.color}40`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "0.25rem",
+                      boxShadow: `0 0 20px ${member.color}25`,
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--font-outfit)",
+                        fontSize: "2rem",
+                        fontWeight: 800,
+                        color: member.color,
+                      }}
+                    >
+                      {member.initial}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3
+                      style={{
+                        fontFamily: "var(--font-outfit)",
+                        fontSize: "1.3rem",
+                        fontWeight: 800,
+                        color: "#FFFFFF",
+                        letterSpacing: "-0.015em",
+                        marginBottom: "0.25rem",
+                      }}
+                    >
+                      {member.name}
+                    </h3>
+                    <p style={{ fontSize: "0.82rem", color: member.color, fontWeight: 800, fontFamily: "var(--font-mono)" }}>
+                      {member.role}
+                    </p>
+                  </div>
+
+                  <p style={{ fontSize: "0.78rem", color: "#9AA4B2", fontFamily: "var(--font-mono)", fontWeight: 700 }}>
+                    {member.expertise}
+                  </p>
+
+                  <p style={{ fontSize: "0.88rem", color: "#9AA4B2", lineHeight: 1.6, flex: 1 }}>
+                    {member.bio}
+                  </p>
+
+                  <a
+                    href={member.linkedin}
+                    aria-label={`${member.name} on LinkedIn`}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "0.6rem 1rem",
+                      borderRadius: "999px",
+                      background: "rgba(255, 255, 255, 0.04)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      fontSize: "0.78rem",
+                      color: "#9AA4B2",
+                      textDecoration: "none",
+                      transition: "all 0.25s",
+                      marginTop: "auto",
+                      fontFamily: "var(--font-mono)",
+                      fontWeight: 700,
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.background = `${member.color}25`;
+                      (e.currentTarget as HTMLElement).style.borderColor = member.color;
+                      (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.background = "rgba(255, 255, 255, 0.04)";
+                      (e.currentTarget as HTMLElement).style.borderColor = "rgba(255, 255, 255, 0.1)";
+                      (e.currentTarget as HTMLElement).style.color = "#9AA4B2";
+                    }}
+                  >
+                    <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                      <LinkedinLogo size={16} /> CONNECT
+                    </span>
+                    <ArrowUpRight size={14} weight="bold" />
+                  </a>
+                </SpotlightCard>
               </div>
-
-              <div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-outfit)",
-                    fontSize: "1.15rem",
-                    fontWeight: 600,
-                    color: "var(--text-1)",
-                    letterSpacing: "-0.015em",
-                    marginBottom: "0.3rem",
-                  }}
-                >
-                  {member.name}
-                </h3>
-                <p style={{ fontSize: "0.8rem", color: member.color, fontWeight: 500 }}>
-                  {member.role}
-                </p>
-              </div>
-
-              <p style={{ fontSize: "0.8rem", color: "var(--text-3)", lineHeight: 1.6 }}>
-                {member.expertise}
-              </p>
-
-              <p style={{ fontSize: "0.85rem", color: "var(--text-2)", lineHeight: 1.65, flex: 1 }}>
-                {member.bio}
-              </p>
-
-              <a
-                href={member.linkedin}
-                aria-label={`${member.name} on LinkedIn`}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  fontSize: "0.8rem",
-                  color: "var(--text-3)",
-                  textDecoration: "none",
-                  transition: "color 0.2s",
-                  marginTop: "auto",
-                  paddingTop: "0.75rem",
-                  borderTop: "1px solid var(--border)",
-                }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-1)")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text-3)")}
-              >
-                <LinkedinLogo size={14} /> LinkedIn
-              </a>
             </motion.div>
           ))}
         </motion.div>

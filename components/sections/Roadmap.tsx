@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,35 +11,35 @@ const MILESTONES = [
   {
     phase: "01",
     title: "Launch",
-    date: "Aug 2025",
+    date: "Aug 2026",
     description: "E-Cell officially launches at Chandigarh University UP. Founding members recruited, charter established.",
-    status: "done",
+    status: "current",
   },
   {
     phase: "02",
     title: "Workshops",
-    date: "Sep–Oct 2025",
+    date: "Sep–Oct 2026",
     description: "Weekly hands-on workshops covering ideation frameworks, business model canvas, and design thinking.",
-    status: "done",
+    status: "upcoming",
   },
   {
     phase: "03",
     title: "Ideathon",
-    date: "Nov 2025",
+    date: "Nov 2026",
     description: "48-hour campus-wide ideathon. 200+ participants. 40 teams. 5 winners receive incubation spots.",
-    status: "current",
+    status: "upcoming",
   },
   {
     phase: "04",
     title: "Incubation",
-    date: "Jan–Apr 2026",
+    date: "Jan–Apr 2027",
     description: "Top teams enter a 4-month incubation program with mentors, resources, and office space on campus.",
     status: "upcoming",
   },
   {
     phase: "05",
     title: "Demo Day",
-    date: "May 2026",
+    date: "May 2027",
     description: "Cohort-1 founders pitch to 20+ investors. The beginning of something much larger.",
     status: "upcoming",
   },
@@ -53,7 +54,8 @@ export default function Roadmap() {
     if (shouldReduce || !wrapRef.current || !trackRef.current) return;
 
     const ctx = gsap.context(() => {
-      const distance = trackRef.current!.scrollWidth - window.innerWidth;
+      // Extra 350px offset guarantees Phase 05 scrolls comfortably past the right screen boundary
+      const distance = trackRef.current!.scrollWidth - window.innerWidth + 350;
 
       gsap.to(trackRef.current, {
         x: -distance,
@@ -79,8 +81,7 @@ export default function Roadmap() {
       style={{
         position: "relative",
         overflow: "hidden",
-        borderTop: "1px solid var(--border-soft)",
-        background: "var(--surface)",
+        background: "transparent",
       }}
     >
       {/* Fixed header label */}
@@ -96,12 +97,13 @@ export default function Roadmap() {
           style={{
             fontFamily: "var(--font-outfit)",
             fontSize: "clamp(1rem, 1.5vw, 1.1rem)",
-            fontWeight: 600,
-            color: "var(--text-2)",
-            letterSpacing: "-0.01em",
+            fontWeight: 700,
+            color: "#FF5500",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
           }}
         >
-          Our Journey
+          OUR JOURNEY // 2026–2027
         </h2>
       </div>
 
@@ -116,7 +118,7 @@ export default function Roadmap() {
         }}
       >
         {/* Left spacer */}
-        <div style={{ minWidth: "10vw" }} />
+        <div style={{ minWidth: "10vw", flexShrink: 0 }} />
 
         {MILESTONES.map((m, i) => (
           <div
@@ -132,11 +134,11 @@ export default function Roadmap() {
               <div
                 style={{
                   width: "8vw",
-                  height: "1px",
+                  height: "2px",
                   background:
-                    m.status === "done"
-                      ? "var(--accent)"
-                      : "var(--border)",
+                    m.status === "done" || m.status === "current"
+                      ? "linear-gradient(90deg, #FF5500, rgba(255,85,0,0.3))"
+                      : "rgba(255,255,255,0.1)",
                   transition: "background 0.3s",
                   flexShrink: 0,
                 }}
@@ -144,39 +146,40 @@ export default function Roadmap() {
             )}
 
             {/* Card */}
-            <div
+            <SpotlightCard
               style={{
                 minWidth: "340px",
                 maxWidth: "380px",
                 padding: "2.5rem",
-                borderRadius: "14px",
-                border: `1px solid ${m.status === "current" ? "var(--accent)" : "var(--border)"}`,
+                borderRadius: "1.75rem",
+                border: `1px solid ${m.status === "current" ? "#FF5500" : "rgba(255,255,255,0.08)"}`,
                 background:
                   m.status === "current"
-                    ? "var(--accent-dim)"
-                    : m.status === "done"
-                    ? "var(--surface-2)"
-                    : "var(--surface)",
+                    ? "rgba(255, 77, 0, 0.14)"
+                    : "rgba(11, 14, 20, 0.8)",
+                backdropFilter: "blur(24px)",
                 position: "relative",
                 flexShrink: 0,
                 boxShadow:
                   m.status === "current"
-                    ? "0 0 40px var(--accent-glow)"
-                    : "none",
+                    ? "0 0 40px rgba(255, 77, 0, 0.35)"
+                    : "0 10px 30px rgba(0,0,0,0.5)",
+
               }}
             >
               {/* Phase number */}
               <p
                 style={{
-                  fontSize: "0.65rem",
+                  fontSize: "0.7rem",
                   fontWeight: 700,
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
-                  color: m.status === "done" ? "var(--accent)" : m.status === "current" ? "var(--accent)" : "var(--text-3)",
+                  color: m.status === "done" ? "#FF5500" : m.status === "current" ? "#FF661A" : "var(--text-3)",
                   marginBottom: "1.25rem",
+                  fontFamily: "var(--font-mono)",
                 }}
               >
-                Phase {m.phase} {m.status === "current" && "· Now"}
+                Phase {m.phase} {m.status === "current" && "· NOW"}
               </p>
 
               <h3
@@ -194,11 +197,12 @@ export default function Roadmap() {
 
               <p
                 style={{
-                  fontSize: "0.8rem",
-                  color: "var(--text-3)",
+                  fontSize: "0.85rem",
+                  color: m.status === "current" ? "#FF5500" : "var(--text-3)",
                   marginBottom: "1.25rem",
-                  fontWeight: 500,
+                  fontWeight: 600,
                   letterSpacing: "0.04em",
+                  fontFamily: "var(--font-mono)",
                 }}
               >
                 {m.date}
@@ -225,8 +229,8 @@ export default function Roadmap() {
                     letterSpacing: "0.15em",
                     textTransform: "uppercase",
                     color: "var(--text-3)",
-                    background: "var(--surface-2)",
-                    border: "1px solid var(--border)",
+                    background: "rgba(17, 22, 34, 0.8)",
+                    border: "1px solid rgba(255,255,255,0.1)",
                     borderRadius: "999px",
                     padding: "0.3rem 0.7rem",
                   }}
@@ -234,12 +238,12 @@ export default function Roadmap() {
                   Upcoming
                 </div>
               )}
-            </div>
+            </SpotlightCard>
           </div>
         ))}
 
-        {/* Right spacer */}
-        <div style={{ minWidth: "10vw" }} />
+        {/* Generous 35vw Right spacer container guarantees Phase 05 never clips */}
+        <div style={{ minWidth: "35vw", flexShrink: 0 }} />
       </div>
     </section>
   );

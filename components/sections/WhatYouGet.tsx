@@ -8,6 +8,8 @@ import { staggerContainer, fadeUp } from "@/components/motion/variants";
 
 gsap.registerPlugin(ScrollTrigger);
 
+import { RevealText } from "@/components/ui/RevealText";
+
 const OFFERINGS = [
   {
     icon: RocketLaunch,
@@ -115,9 +117,10 @@ export default function WhatYouGet() {
           <motion.p variants={fadeUp} className="label" style={{ color: "var(--accent)" }}>
             Opportunities
           </motion.p>
-          <motion.h2 variants={fadeUp} className="display-2" style={{ maxWidth: "20ch" }}>
-            Everything you need to become a founder.
-          </motion.h2>
+          <RevealText 
+            text="Everything you need<br/>to become a founder." 
+            className="display-2" 
+          />
         </motion.div>
       </div>
 
@@ -137,8 +140,11 @@ export default function WhatYouGet() {
                 minHeight: "100dvh",
                 display: "flex",
                 alignItems: "center",
-                background: "var(--bg)",
-                borderTop: "1px solid var(--border)",
+                background: "linear-gradient(180deg, rgba(6,7,10,0.92) 0%, rgba(11,14,20,0.85) 100%)",
+                backdropFilter: "blur(24px)",
+                borderTop: "1px solid rgba(255, 77, 0, 0.15)",
+                boxShadow: "0 -20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,85,0,0.2)",
+                willChange: "transform, opacity",
               }}
             >
               <div className="container-wide" style={{ paddingBlock: "4rem" }}>
@@ -152,17 +158,24 @@ export default function WhatYouGet() {
                 >
                   {/* Left — text */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                    <span
-                      style={{
-                        fontSize: "0.65rem",
-                        fontWeight: 600,
-                        letterSpacing: "0.2em",
-                        textTransform: "uppercase",
-                        color: "var(--text-3)",
-                      }}
-                    >
-                      {String(i + 1).padStart(2, "0")} of {String(OFFERINGS.length).padStart(2, "0")}
-                    </span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                      {/* Fiery Squircle Icon Badge as seen in Image 3 reference */}
+                      <div className="icon-badge-orange">
+                        <Icon size={26} weight="bold" />
+                      </div>
+                      <span
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.2em",
+                          textTransform: "uppercase",
+                          color: "#FF5500",
+                          fontFamily: "var(--font-mono)",
+                        }}
+                      >
+                        PILLAR // {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
                     <h3
                       style={{
                         fontFamily: "var(--font-outfit)",
@@ -177,9 +190,9 @@ export default function WhatYouGet() {
                     </h3>
                     <p
                       style={{
-                        fontSize: "1.15rem",
-                        color: item.accent,
-                        fontWeight: 500,
+                        fontSize: "1.2rem",
+                        color: "#FF661A",
+                        fontWeight: 600,
                       }}
                     >
                       {item.tagline}
@@ -189,19 +202,32 @@ export default function WhatYouGet() {
                     </p>
                   </div>
 
-                  {/* Right — icon card */}
+                  {/* Right — large tech icon container */}
                   <div
                     style={{
-                      borderRadius: "14px",
-                      background: item.color,
-                      border: `1px solid ${item.accent}22`,
+                      borderRadius: "18px",
+                      background: "rgba(11, 14, 20, 0.8)",
+                      border: "1px solid rgba(255, 77, 0, 0.25)",
+                      boxShadow: "0 0 40px rgba(255, 77, 0, 0.15), inset 0 0 20px rgba(255, 77, 0, 0.05)",
                       aspectRatio: "4/3",
                       display: "flex",
+                      flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      gap: "1rem",
+                      position: "relative",
+                      overflow: "hidden",
                     }}
                   >
-                    <Icon size={80} color={item.accent} weight="thin" />
+                    <div style={{ position: "absolute", top: "12px", right: "12px", fontSize: "0.65rem", fontFamily: "var(--font-mono)", color: "rgba(255,85,0,0.5)" }}>
+                      SYS.PLR.{i + 1}
+                    </div>
+                    <div className="icon-badge-orange" style={{ width: "80px", height: "80px", borderRadius: "22px", boxShadow: "0 10px 30px rgba(255,77,0,0.4)" }}>
+                      <Icon size={44} weight="fill" />
+                    </div>
+                    <span style={{ fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.08em", color: "#FFFFFF", textTransform: "uppercase" }}>
+                      {item.title}
+                    </span>
                   </div>
                 </div>
               </div>

@@ -18,10 +18,7 @@ export default function Contact() {
     <section
       id="contact"
       className="section-pad"
-      style={{
-        borderTop: "1px solid var(--border-soft)",
-        background: "var(--surface)",
-      }}
+      style={{ background: "transparent" }}
     >
       <div className="container-wide">
         <motion.div
@@ -226,23 +223,26 @@ export default function Contact() {
                     type="submit"
                     id="contact-submit"
                     style={{
-                      padding: "0.85rem 1.75rem",
+                      padding: "0.9rem 2.25rem",
                       borderRadius: "999px",
-                      background: "var(--accent)",
+                      background: "linear-gradient(135deg, #FF5500 0%, #D93600 100%)",
                       color: "#fff",
-                      fontWeight: 600,
+                      fontWeight: 700,
                       fontSize: "0.95rem",
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
                       border: "none",
                       cursor: "pointer",
-                      transition: "opacity 0.2s, transform 0.15s",
+                      boxShadow: "0 4px 20px rgba(255, 77, 0, 0.4)",
+                      transition: "box-shadow 0.2s, transform 0.15s",
                       alignSelf: "flex-start",
                     }}
                     onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.opacity = "0.88";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 28px rgba(255, 77, 0, 0.6)";
                       (e.currentTarget as HTMLElement).style.transform = "scale(1.02)";
                     }}
                     onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.opacity = "1";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(255, 77, 0, 0.4)";
                       (e.currentTarget as HTMLElement).style.transform = "scale(1)";
                     }}
                   >

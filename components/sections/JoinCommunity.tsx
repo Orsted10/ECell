@@ -49,7 +49,7 @@ export default function JoinCommunity() {
             <br />
             of future
             <br />
-            <span style={{ display: "inline-block", minWidth: "6ch", color: "var(--accent)", position: "relative", height: "1.1em" }}>
+            <span style={{ display: "inline-block", minWidth: "6ch", position: "relative", height: "1.1em" }}>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={BENEFITS[index]}
@@ -57,6 +57,7 @@ export default function JoinCommunity() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -18, filter: "blur(4px)" }}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-gradient-orange"
                   style={{ display: "inline-block", position: "absolute", left: 0 }}
                 >
                   {BENEFITS[index]}.
@@ -92,12 +93,12 @@ export default function JoinCommunity() {
               key={b}
               style={{
                 fontSize: "0.8rem",
-                fontWeight: 500,
+                fontWeight: 600,
                 color: "var(--text-2)",
-                border: "1px solid var(--border)",
+                border: "1px solid rgba(255, 85, 0, 0.25)",
                 borderRadius: "999px",
-                padding: "0.4rem 1rem",
-                background: "var(--surface)",
+                padding: "0.4rem 1.1rem",
+                background: "rgba(255, 85, 0, 0.05)",
               }}
             >
               {b}
@@ -135,27 +136,30 @@ export default function JoinCommunity() {
             style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: "0.6rem",
-              padding: "1rem 2.25rem",
+              gap: "0.75rem",
+              padding: "1rem 2.5rem",
               borderRadius: "999px",
-              background: "var(--accent)",
+              background: "linear-gradient(135deg, #FF5500 0%, #D93600 100%)",
               color: "#fff",
-              fontWeight: 600,
-              fontSize: "1rem",
+              fontWeight: 700,
+              fontSize: "1.05rem",
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
               textDecoration: "none",
-              transition: "opacity 0.2s, transform 0.15s",
+              boxShadow: "0 6px 28px rgba(255, 77, 0, 0.45)",
+              transition: "box-shadow 0.2s, transform 0.15s",
               whiteSpace: "nowrap",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.opacity = "0.88";
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 36px rgba(255, 77, 0, 0.65)";
               (e.currentTarget as HTMLElement).style.transform = "scale(1.03)";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.opacity = "1";
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 28px rgba(255, 77, 0, 0.45)";
               (e.currentTarget as HTMLElement).style.transform = "scale(1)";
             }}
           >
-            Join E-Cell <ArrowRight size={17} weight="bold" />
+            JOIN THE FOUNDRY <ArrowRight size={18} weight="bold" />
           </a>
         </motion.div>
       </div>
