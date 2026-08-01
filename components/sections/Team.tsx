@@ -6,39 +6,57 @@ import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const TEAM = [
   {
-    name: "Arjun Sharma",
-    role: "President & Founder",
-    expertise: "Product Strategy, Fundraising",
-    bio: "B.Tech CSE student and two-time hackathon winner. Previously interned at a Series-B SaaS startup in Bengaluru.",
+    name: "Shivam Kumar Tiwari",
+    role: "President",
+    expertise: "Executive Leadership, Ecosystem Strategy",
+    bio: "Leading Chandigarh University E-Cell's vision to empower student innovators and build venture-backed startups across campus.",
     linkedin: "#",
-    initial: "A",
+    initial: "S",
     color: "#FF5500",
   },
   {
-    name: "Priya Nair",
-    role: "Vice President — Operations",
-    expertise: "Community Building, Events",
-    bio: "Social entrepreneur passionate about connecting student talent with real-world problems. Runs a nonprofit mentoring program.",
+    name: "Alka Singh",
+    role: "Vice-President",
+    expertise: "Operations, Community Growth",
+    bio: "Driving strategic operations, ecosystem partnerships, and student engagement initiatives across all departments.",
     linkedin: "#",
-    initial: "P",
+    initial: "A",
     color: "#0066FF",
   },
   {
-    name: "Rohan Gupta",
-    role: "Head of Incubation",
-    expertise: "Business Development, Finance",
-    bio: "Commerce graduate turned startup enthusiast. Helped three peers raise pre-seed funding in the last two years.",
+    name: "Mohd Humza",
+    role: "General Secretary",
+    expertise: "Administration, Governance",
+    bio: "Overseeing organizational governance, cohort execution, and inter-departmental communication.",
+    linkedin: "#",
+    initial: "M",
+    color: "#00C896",
+  },
+  {
+    name: "Radhika Yadav",
+    role: "Marketing & PR Head",
+    expertise: "Brand Strategy, Media & Outreach",
+    bio: "Spearheading media relations, brand identity, and ecosystem outreach to amplify CUUP E-Cell's campus footprint.",
     linkedin: "#",
     initial: "R",
     color: "#FFB300",
   },
   {
-    name: "Shreya Verma",
-    role: "Head of Design",
-    expertise: "UX Research, Brand Design",
-    bio: "Designer, thinker, and builder who believes aesthetics are not decoration but communication.",
+    name: "Aditya Raj",
+    role: "Events & Operations Lead",
+    expertise: "Hackathons, Event Management",
+    bio: "Orchestrating 48-hour ideathons, founder workshops, and demo days to connect student builders with top VCs.",
     linkedin: "#",
-    initial: "S",
+    initial: "A",
+    color: "#9D4EDD",
+  },
+  {
+    name: "Priyanchal Soni",
+    role: "Technical Lead",
+    expertise: "Full-Stack Architecture, Maker Labs",
+    bio: "Architecting digital infrastructure, student maker portal, and technical incubation tools for campus founders.",
+    linkedin: "#",
+    initial: "P",
     color: "#00C6FF",
   },
 ];
@@ -61,7 +79,7 @@ export default function Team() {
         >
           <div>
             <motion.p variants={fadeUp} className="label" style={{ color: "#FF5500", marginBottom: "0.75rem" }}>
-              LEADERSHIP // FOUNDING TEAM
+              LEADERSHIP // STUDENT EXECUTIVE COMMITTEE
             </motion.p>
             <motion.h2 variants={fadeUp} className="display-2" style={{ maxWidth: "18ch" }}>
               The people who make it happen.
@@ -71,22 +89,17 @@ export default function Team() {
             variants={fadeUp}
             style={{ fontSize: "1rem", color: "var(--text-2)", maxWidth: "36ch", lineHeight: 1.6 }}
           >
-            A dedicated team of student builders constructing CUUP&rsquo;s premier entrepreneurship ecosystem from the ground up.
+            A dedicated team of student leaders constructing CUUP&rsquo;s premier entrepreneurship ecosystem from the ground up.
           </motion.p>
         </motion.div>
 
-        {/* Team grid */}
+        {/* Team grid — 3 columns for 6 members */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "1.5rem",
-          }}
-          className="grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {TEAM.map((member) => (
             <motion.div
