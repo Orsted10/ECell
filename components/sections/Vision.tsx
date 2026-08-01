@@ -79,10 +79,10 @@ export default function Vision() {
         {/* Top Spacer to separate from ticker above */}
         <div style={{ height: "8rem" }} />
 
-        {/* ─── SECTION HEADER (100% Symmetrical Optical Centering) ─────── */}
-        <div className="relative mx-auto max-w-4xl w-full flex flex-col items-center justify-center text-center">
+        {/* ─── SECTION HEADER (100% Fully Centered & Screen-Spanning) ─────── */}
+        <div className="relative mx-auto max-w-6xl w-full flex flex-col items-center justify-center text-center px-4">
           {/* Radial Spotlight Glow Behind Text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#FF5500]/[0.15] blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-[#FF5500]/[0.15] blur-[130px] rounded-full pointer-events-none" />
 
           {/* Eyebrow */}
           <div className="mb-8 inline-flex justify-center relative z-10 mx-auto">
@@ -94,20 +94,18 @@ export default function Vision() {
             </span>
           </div>
 
-          {/* Headline — 100% Symmetrical 2-Line Split (4 words / 4 words) */}
-          <h2 className="relative z-10 font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.15] mb-8 text-center drop-shadow-lg max-w-3xl mx-auto">
+          {/* Headline — Spans Wide & Centered across the Screen */}
+          <h2 className="relative z-10 font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-8 text-center drop-shadow-lg w-full max-w-5xl mx-auto">
             We build the{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF3300]">
               founders
-            </span>
-            <br className="hidden sm:inline" />
+            </span>{" "}
             who build the world.
           </h2>
 
-          {/* Paragraph — Symmetrical 2-Line Split */}
-          <p className="relative z-10 mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-neutral-200 font-medium leading-relaxed font-sans text-center drop-shadow-sm">
+          {/* Paragraph — Spans Wide & Centered */}
+          <p className="relative z-10 mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-neutral-200 font-medium leading-relaxed font-sans text-center drop-shadow-sm">
             E-Cell exists because the world needs more problem-solvers and risk-takers.
-            <br className="hidden md:inline" />
             We give student entrepreneurs the pathway, mentors, and maker labs to launch before graduation.
           </p>
         </div>
