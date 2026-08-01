@@ -7,304 +7,317 @@ import {
   useTransform,
   useReducedMotion,
 } from "motion/react";
-import {
-  Lightbulb,
-  Cpu,
-  Rocket,
-  ArrowRight,
-  ArrowUpRight,
-  CheckCircle,
-  Sparkle,
-} from "@phosphor-icons/react";
-import { staggerContainer, fadeUp } from "@/components/motion/variants";
-import { RevealText } from "@/components/ui/RevealText";
+import { ArrowRight, ArrowUpRight, Sparkle, Rocket } from "@phosphor-icons/react";
+import { staggerContainer, fadeUp, scaleIn } from "@/components/motion/variants";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
-const PILLARS = [
+const STATS = [
+  { value: "200+", label: "Active Student Builders", sub: "Collaborating across campus" },
+  { value: "40+", label: "Startups Launched", sub: "From ideation to MVP" },
+  { value: "12+", label: "Industry Mentors", sub: "Guiding every cohort" },
+];
+
+const STAGES = [
   {
     number: "01",
     label: "Ideate",
-    icon: Lightbulb,
-    text: "Transform raw curiosity into structured, venture-ready concepts with 1-on-1 guidance from experienced founders.",
-    tag: "PHASE 01 // DISCOVERY",
-    color: "#FF5500",
-    badgeBg: "rgba(255, 85, 0, 0.12)",
-    badgeBorder: "rgba(255, 85, 0, 0.30)",
-    highlights: ["Problem Discovery", "1-on-1 Mentorship", "Idea Validation"],
+    tagline: "Workshops & Mentorship",
+    desc: "Transform raw curiosity into validated venture concepts with 1-on-1 guidance from experienced founders.",
+    tag: "DISCOVERY",
+    status: "active",
   },
   {
     number: "02",
     label: "Build",
-    icon: Cpu,
-    text: "Access maker labs, dev grants, and peer engineering networks to turn your blueprint into a production MVP.",
-    tag: "PHASE 02 // PROTOTYPE",
-    color: "#0066FF",
-    badgeBg: "rgba(0, 102, 255, 0.12)",
-    badgeBorder: "rgba(0, 102, 255, 0.30)",
-    highlights: ["Maker Labs Access", "Prototyping Grants", "Tech Architecture"],
+    tagline: "48h Ideathon & Prototyping",
+    desc: "Access maker labs, dev grants, and peer engineering networks to turn your blueprint into a production MVP.",
+    tag: "PROTOTYPE",
+    status: "featured",
   },
   {
     number: "03",
     label: "Launch",
-    icon: Rocket,
-    text: "Pitch at Demo Day, secure early angel backing, and onboard your first 1,000 real-world users.",
-    tag: "PHASE 03 // SCALE",
-    color: "#00E676",
-    badgeBg: "rgba(0, 230, 118, 0.12)",
-    badgeBorder: "rgba(0, 230, 118, 0.30)",
-    highlights: ["Demo Day Pitch", "Angel Investor Network", "First 1K Users"],
+    tagline: "Incubation & Demo Day",
+    desc: "Pitch live at Demo Day before angels and VCs. Secure early backing and onboard your first 1,000 users.",
+    tag: "SCALE",
+    status: "upcoming",
   },
 ];
 
-const STATS = [
-  { value: "200+", label: "Active Members", sub: "Student Builders" },
-  { value: "40+", label: "Startups Built", sub: "Venture Portfolio" },
-  { value: "12", label: "Industry Mentors", sub: "Expert Advisors" },
-];
-
 export default function Vision() {
-  const bannerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduce = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
-    target: bannerRef,
+    target: containerRef,
     offset: ["start end", "end start"],
   });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.06, 1, 1.06]);
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
     <section
       id="vision"
-      className="py-16 md:py-24 relative overflow-hidden bg-transparent"
+      className="relative overflow-hidden bg-[#06070A] py-28 md:py-40"
+      ref={containerRef}
     >
-      <div className="container-wide">
-        {/* ── Section Header ────────────────────────────── */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={staggerContainer}
-          className="mb-12 md:mb-16"
-        >
-          {/* Category Tag */}
-          <motion.div variants={fadeUp} className="flex items-center gap-2.5 mb-4">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#FF5500] animate-pulse" />
-            <span className="text-xs font-mono font-bold tracking-[0.2em] text-[#FF5500] uppercase">
-              // OUR VISION & FOUNDER PIPELINE
-            </span>
-          </motion.div>
+      {/* Background Orbs & Atmosphere */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <div
+          className="absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(255,85,0,0.06) 0%, transparent 70%)" }}
+        />
+        <div
+          className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(0,102,255,0.04) 0%, transparent 70%)" }}
+        />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div>
 
-          {/* Headline & Copy Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end">
-            <motion.div variants={fadeUp} className="lg:col-span-8">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-outfit leading-[1.08]">
-                Every successful founder <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-[#FF5500]">
-                  started somewhere.
-                </span>
-              </h2>
-            </motion.div>
+      <div className="container-wide relative z-10">
 
-            <motion.div variants={fadeUp} className="lg:col-span-4 flex flex-col justify-end">
-              <p className="text-sm sm:text-base text-[#9AA4B2] leading-relaxed font-sans mb-4">
-                E-Cell exists because the world needs more problem-solvers, risk-takers,
-                and student builders willing to bet on an idea before anyone else does.
-              </p>
-              <a
-                href="#whatsincluded"
-                className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#FF5500] hover:text-[#ff7733] transition-colors uppercase group"
-              >
-                <span>What you get</span>
-                <ArrowUpRight size={14} weight="bold" className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-            </motion.div>
-          </div>
-        </motion.div>
+        {/* Top Spacer to separate from ticker above */}
+        <div style={{ height: "8rem" }} />
 
-        {/* ── Banner: Parallax Campus Hero Card ─────────── */}
-        <motion.div
-          ref={bannerRef}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-2xl md:rounded-3xl overflow-hidden mb-12 md:mb-16 border border-[#FF5500]/25 shadow-[0_24px_64px_rgba(0,0,0,0.72),0_0_40px_rgba(255,85,0,0.08)]"
-        >
-          {/* Background image container */}
-          <motion.div
-            className="absolute -inset-[12%]"
-            style={{
-              y: shouldReduce ? 0 : imgY,
-              scale: shouldReduce ? 1 : imgScale,
-            }}
-          >
-            <Image
-              src="/vision-img.png"
-              alt="Chandigarh University campus aerial view"
-              fill
-              quality={90}
-              style={{ objectFit: "cover" }}
-            />
-          </motion.div>
+        {/* ─── SECTION HEADER (Centered & Grand Screen Fit) ─────── */}
+        <div className="relative mx-auto max-w-5xl text-center">
+          {/* Radial Spotlight Glow Behind Text */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#FF5500]/[0.15] blur-[120px] rounded-full pointer-events-none" />
 
-          {/* Dual Overlay Gradients */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#06070A]/95 via-[#06070A]/75 to-[#06070A]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#06070A]/90 via-transparent to-[#06070A]/40" />
-
-          {/* Content Layer */}
-          <div className="relative p-6 sm:p-8 md:p-12 min-h-[300px] md:min-h-[360px] flex flex-col justify-between gap-8">
-            {/* Top row: Manifesto & Badge */}
-            <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-              <p className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-outfit max-w-xl leading-snug tracking-tight">
-                The future is built by those who don&rsquo;t wait for permission.
-              </p>
-              <span className="shrink-0 text-[11px] font-mono font-bold tracking-widest text-[#FF5500] uppercase bg-[#FF5500]/10 border border-[#FF5500]/30 rounded-full px-4 py-2 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF5500] animate-ping" />
-                EST. 2026 // CUUP FOUNDRY
+          {/* Eyebrow */}
+          <div className="mb-8 inline-block relative z-10">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#FF5500]/40 bg-[#FF5500]/[0.12] px-5 py-2 backdrop-blur-md shadow-[0_0_25px_rgba(255,85,0,0.25)]">
+              <Sparkle size={14} weight="fill" className="text-[#FF5500] animate-pulse" />
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#FF5500]">
+                Our Vision
               </span>
-            </div>
-
-            {/* Bottom Row: Key Statistics */}
-            <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-              {STATS.map((stat) => (
-                <div key={stat.label} className="relative">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white font-outfit leading-none mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs font-mono font-bold tracking-wider text-neutral-200 uppercase mb-0.5">
-                    {stat.label}
-                  </div>
-                  <div className="text-[11px] font-sans text-neutral-400">
-                    {stat.sub}
-                  </div>
-                </div>
-              ))}
-            </div>
+            </span>
           </div>
-        </motion.div>
 
-        {/* ── Founder Journey: Pipeline Connector Header ── */}
-        <div className="mb-6 hidden lg:flex items-center justify-between px-4 text-xs font-mono text-neutral-400">
-          <div className="flex items-center gap-2">
-            <Sparkle size={14} className="text-[#FF5500]" />
-            <span className="font-bold text-neutral-200 uppercase tracking-widest">3-STAGE FOUNDER PIPELINE</span>
-          </div>
-          <div className="h-px flex-1 mx-8 bg-gradient-to-r from-[#FF5500]/40 via-[#0066FF]/40 to-[#00E676]/40" />
-          <span className="tracking-widest uppercase text-neutral-500">DISCOVERY ➔ PROTOTYPE ➔ SCALE</span>
+          {/* Headline — Grand Display Scale */}
+          <h2 className="relative z-10 font-outfit text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-extrabold text-white tracking-tight leading-[1.05] mb-8 drop-shadow-lg">
+            We build the{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF3300]">
+              founders
+            </span>{" "}
+            who build the world.
+          </h2>
+
+          {/* Paragraph — Brighter & High Contrast */}
+          <p className="relative z-10 mx-auto max-w-3xl text-lg sm:text-xl md:text-2xl text-neutral-200 font-medium leading-relaxed font-sans drop-shadow-sm">
+            E-Cell exists because the world needs more problem-solvers and risk-takers.
+            We give student entrepreneurs the pathway, mentors, and maker labs to launch before graduation.
+          </p>
         </div>
 
-        {/* ── Pillars: Balanced 3-Column Bento Grid ────── */}
+        {/* Explicit Spacer between Subheadline and Campus Image */}
+        <div style={{ height: "6rem" }} />
+
+        {/* ─── CINEMATIC HERO IMAGE BANNER (Wide Aspect Ratio) ───────── */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8"
+          variants={scaleIn}
         >
-          {PILLARS.map((pillar) => {
-            const Icon = pillar.icon;
+          <div className="relative rounded-[2rem] border border-white/[0.08] bg-white/[0.02] p-2 shadow-[0_30px_90px_rgba(0,0,0,0.6)]">
+            <div className="relative aspect-[16/9] md:aspect-[2.4/1] w-full overflow-hidden rounded-[calc(2rem-0.5rem)]">
+              <motion.div
+                className="absolute -inset-[10%]"
+                style={{ y: shouldReduce ? 0 : imgY }}
+              >
+                <Image
+                  src="/vision-img.png"
+                  alt="Chandigarh University campus aerial view"
+                  fill
+                  quality={100}
+                  style={{ objectFit: "cover" }}
+                  priority
+                />
+                {/* Cinematic Vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#06070A] via-transparent to-black/30" />
+              </motion.div>
+
+              {/* Floating Badge */}
+              <div className="absolute bottom-6 right-6 flex items-center gap-2 rounded-full border border-white/15 bg-black/60 px-4 py-2 backdrop-blur-xl">
+                <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-pulse" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-white">
+                  Est. 2026
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Explicit Spacer above Stats */}
+        <div style={{ height: "8rem" }} />
+
+        {/* ─── STATS STRIP (Open, Wide-Column Layout with Generous Line-Spacing) ─────── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 py-20 md:py-28 border-y border-white/[0.08]"
+        >
+          {[
+            { value: "200+", label: "Active Student Builders", sub: "Collaborating across campus", icon: Sparkle, color: "#FF5500" },
+            { value: "40+", label: "Startups Launched", sub: "From ideation to MVP", icon: Rocket, color: "#0066FF" },
+            { value: "12+", label: "Industry Mentors", sub: "Guiding every cohort", icon: ArrowUpRight, color: "#00C896" },
+          ].map((stat) => {
+            const Icon = stat.icon;
             return (
               <motion.div
-                key={pillar.number}
+                key={stat.label}
                 variants={fadeUp}
-                className="group h-full"
+                className="flex flex-col items-center text-center gap-5 px-4"
               >
-                <SpotlightCard
-                  style={{
-                    background: "rgba(14, 20, 30, 0.92)",
-                    borderRadius: "1.25rem",
-                    border: "1px solid rgba(255, 255, 255, 0.09)",
-                    backdropFilter: "blur(20px)",
-                  }}
-                  className="h-full p-6 md:p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:border-white/20 shadow-xl"
-                >
-                  {/* Background Watermark Number */}
-                  <span
-                    className="absolute -top-4 -right-2 text-7xl font-extrabold font-mono pointer-events-none select-none transition-opacity duration-300 group-hover:opacity-20 opacity-5"
-                    style={{ color: pillar.color }}
-                  >
-                    {pillar.number}
-                  </span>
+                {/* Glowing Dot Icon Indicator */}
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full shadow-[0_0_8px]" style={{ backgroundColor: stat.color, boxShadow: `0 0 10px ${stat.color}` }} />
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-400">METRIC</span>
+                </div>
 
-                  {/* Ambient Radial Hover Glow */}
-                  <div
-                    className="absolute -bottom-16 -left-16 w-56 h-56 rounded-full pointer-events-none transition-opacity duration-500 opacity-20 group-hover:opacity-40"
-                    style={{
-                      background: `radial-gradient(circle, ${pillar.color}25 0%, transparent 70%)`,
-                    }}
-                  />
+                {/* Display Number */}
+                <div className="font-outfit text-6xl sm:text-7xl font-extrabold text-white tracking-tight leading-none">
+                  {stat.value}
+                </div>
 
-                  {/* Card Content Top */}
-                  <div>
-                    {/* Icon Box + Tag Badge */}
-                    <div className="flex items-center justify-between gap-4 mb-6">
-                      <div
-                        className="w-13 h-13 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
-                        style={{
-                          background: pillar.badgeBg,
-                          border: `1.5px solid ${pillar.badgeBorder}`,
-                          color: pillar.color,
-                          boxShadow: `0 0 20px ${pillar.color}20`,
-                        }}
-                      >
-                        <Icon size={24} weight="bold" />
-                      </div>
-                      <span
-                        className="text-[11px] font-mono font-bold tracking-wider px-3 py-1 rounded-full uppercase shrink-0"
-                        style={{
-                          background: pillar.badgeBg,
-                          border: `1px solid ${pillar.badgeBorder}`,
-                          color: pillar.color,
-                        }}
-                      >
-                        {pillar.tag}
-                      </span>
-                    </div>
+                {/* Label */}
+                <div className="font-mono text-xs font-bold uppercase tracking-[0.2em]" style={{ color: stat.color }}>
+                  {stat.label}
+                </div>
 
-                    {/* Title */}
-                    <h3 className="text-2xl font-bold font-outfit text-white tracking-tight mb-3 group-hover:text-white transition-colors">
-                      {pillar.label}
-                    </h3>
-
-                    {/* Main Description */}
-                    <p className="text-sm text-[#9AA4B2] leading-relaxed font-sans mb-6">
-                      {pillar.text}
-                    </p>
-
-                    {/* Feature Highlights Checklist */}
-                    <div className="space-y-2.5 mb-6 pt-4 border-t border-white/5">
-                      {pillar.highlights.map((item) => (
-                        <div key={item} className="flex items-center gap-2.5 text-xs text-neutral-300 font-medium">
-                          <CheckCircle size={15} weight="fill" style={{ color: pillar.color }} className="shrink-0" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Card Bottom CTA Link */}
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between mt-auto">
-                    <span className="text-[11px] font-mono font-bold tracking-widest text-neutral-400 group-hover:text-white transition-colors uppercase">
-                      PHASE {pillar.number} HIGHLIGHTS
-                    </span>
-                    <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 group-hover:translate-x-1"
-                      style={{
-                        background: pillar.badgeBg,
-                        border: `1px solid ${pillar.badgeBorder}`,
-                        color: pillar.color,
-                      }}
-                    >
-                      <ArrowRight size={14} weight="bold" />
-                    </div>
-                  </div>
-                </SpotlightCard>
+                {/* Sub-label */}
+                <div className="text-xs text-neutral-400 font-sans leading-relaxed">
+                  {stat.sub}
+                </div>
               </motion.div>
             );
           })}
         </motion.div>
+
+        {/* Explicit Spacer between Stats and Pipeline Header */}
+        <div style={{ height: "8rem" }} />
+
+        {/* ─── THE FOUNDER PIPELINE (Enlarged Prominent Step Flow Bar) ─── */}
+        <div>
+          {/* Visual Step Connector Line — Bigger & Prominent */}
+          <div className="flex items-center justify-center gap-4 md:gap-6 mb-10">
+            <div className="h-px w-24 md:w-40 bg-gradient-to-r from-transparent to-[#FF5500]/60" />
+            <div className="flex items-center gap-6 sm:gap-8 px-6 py-2.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-lg">
+              <div className="flex items-center gap-2.5 font-mono text-xs sm:text-sm font-bold text-[#FF5500]">
+                <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-ping" />
+                <span>01 IDEATE</span>
+              </div>
+              <span className="text-neutral-500 text-sm">→</span>
+              <div className="flex items-center gap-2.5 font-mono text-xs sm:text-sm font-bold text-[#0066FF]">
+                <span className="h-2 w-2 rounded-full bg-[#0066FF]" />
+                <span>02 BUILD</span>
+              </div>
+              <span className="text-neutral-500 text-sm">→</span>
+              <div className="flex items-center gap-2.5 font-mono text-xs sm:text-sm font-bold text-[#00C896]">
+                <span className="h-2 w-2 rounded-full bg-[#00C896]" />
+                <span>03 LAUNCH</span>
+              </div>
+            </div>
+            <div className="h-px w-24 md:w-40 bg-gradient-to-l from-transparent to-[#00C896]/60" />
+          </div>
+
+          <div className="text-center">
+            <h3 className="font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight">
+              From Idea to Venture Backed
+            </h3>
+          </div>
+
+          {/* Explicit Spacer between Header and Cards */}
+          <div style={{ height: "5rem" }} />
+
+          {/* Cards Grid — Clean, Airy, Elegant like Roadmap */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            {STAGES.map((stage) => (
+              <SpotlightCard
+                key={stage.number}
+                style={{
+                  borderRadius: "1.75rem",
+                  border: stage.status === "featured" ? "1px solid #FF5500" : "1px solid rgba(255,255,255,0.08)",
+                  background: stage.status === "featured" ? "rgba(255, 77, 0, 0.14)" : "rgba(11, 14, 20, 0.8)",
+                  backdropFilter: "blur(24px)",
+                  boxShadow: stage.status === "featured" ? "0 0 40px rgba(255, 77, 0, 0.35)" : "0 10px 30px rgba(0,0,0,0.5)",
+                }}
+              >
+                <div style={{ padding: "2.5rem", position: "relative", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                  <div>
+                    {/* Phase Number Header */}
+                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#FF5500", marginBottom: "1.25rem" }}>
+                      STAGE {stage.number} {stage.status === "featured" && "· CORE TRACK"}
+                    </p>
+
+                    {/* Title */}
+                    <h3 style={{ fontFamily: "var(--font-outfit)", fontSize: "1.75rem", fontWeight: 700, letterSpacing: "-0.025em", color: "var(--text-1)", marginBottom: "0.5rem" }}>
+                      {stage.label}
+                    </h3>
+
+                    {/* Tagline / Subtitle */}
+                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", color: "#FF5500", marginBottom: "1.25rem" }}>
+                      {stage.tagline}
+                    </p>
+
+                    {/* Description */}
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-2)", lineHeight: 1.7 }}>
+                      {stage.desc}
+                    </p>
+                  </div>
+
+                  {/* Status Badge in Top Right Corner */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "1.25rem",
+                      right: "1.25rem",
+                      fontSize: "0.6rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      color: "var(--text-3)",
+                      background: "rgba(17, 22, 34, 0.8)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      borderRadius: "999px",
+                      padding: "0.3rem 0.7rem",
+                    }}
+                  >
+                    {stage.tag}
+                  </div>
+                </div>
+              </SpotlightCard>
+            ))}
+          </div>
+        </div>
+
+        {/* ─── CALL TO ACTION BUTTONS (Centered at bottom) ───────────────────── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="flex flex-wrap items-center justify-center gap-5 pt-6"
+        >
+          <a
+            href="#join"
+            className="group inline-flex items-center gap-3 rounded-full bg-[#FF5500] px-9 py-4 font-bold text-sm uppercase tracking-widest text-white shadow-[0_8px_30px_rgba(255,85,0,0.4)] transition-all duration-300 hover:bg-[#FF661A] hover:shadow-[0_12px_40px_rgba(255,85,0,0.6)] active:scale-[0.98]"
+          >
+            <span>Join the Foundry</span>
+            <ArrowRight size={16} weight="bold" className="transition-transform group-hover:translate-x-1" />
+          </a>
+          <a
+            href="#roadmap"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.03] px-9 py-4 font-bold text-sm uppercase tracking-widest text-white/80 transition-all duration-300 hover:border-white/40 hover:bg-white/[0.08] hover:text-white active:scale-[0.98]"
+          >
+            <span>Explore Roadmap</span>
+            <ArrowUpRight size={16} weight="bold" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </motion.div>
+
       </div>
     </section>
   );
