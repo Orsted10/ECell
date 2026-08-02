@@ -189,14 +189,17 @@ export default function WhatYouGet() {
       cards.forEach((card, i) => {
         if (i === cards.length - 1) return;
         gsap.to(card, {
-          scale: 0.92,
-          opacity: 0.35,
-          ease: "power1.out",
+          scale: 0.88,
+          opacity: 0.2,
+          filter: "blur(6px)",
+          y: -15,
+          ease: "none",
           scrollTrigger: {
             trigger: cards[i + 1],
-            start: "top bottom",
-            end: "top top",
+            start: "top 85%",
+            end: "top 20%",
             scrub: 0.5,
+            invalidateOnRefresh: true,
           },
         });
       });
@@ -282,17 +285,18 @@ export default function WhatYouGet() {
               className="offering-card"
               style={{
                 position: "sticky",
-                top: 0,
+                top: `${80 + i * 12}px`,
                 zIndex: i + 1,
-                minHeight: "90vh",
+                minHeight: "85vh",
                 display: "flex",
                 alignItems: "center",
                 background: "linear-gradient(180deg, rgba(8, 10, 15, 0.98) 0%, rgba(12, 16, 24, 0.96) 100%)",
                 backdropFilter: "blur(30px)",
                 borderTop: `2px solid ${item.accent}60`,
-                boxShadow: `0 -30px 70px rgba(0,0,0,0.9), inset 0 1px 0 ${item.accent}40`,
-                willChange: "transform, opacity",
+                boxShadow: `0 -30px 70px rgba(0,0,0,0.95), inset 0 1px 0 ${item.accent}40`,
+                willChange: "transform, opacity, filter",
                 paddingBlock: "3rem",
+                marginBottom: "4rem",
               }}
             >
               {/* Radial Accent Glow behind card */}
