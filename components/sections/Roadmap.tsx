@@ -11,7 +11,8 @@ import {
   Cpu, 
   TrendUp, 
   Sparkle,
-  ArrowRight
+  ArrowRight,
+  Sparkle as SparkleIcon
 } from "@phosphor-icons/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,11 +24,16 @@ const MILESTONES = [
     subtitle: "CHARTER & INCEPTION",
     date: "AUG 2026",
     description: "E-Cell officially launches at Chandigarh University UP. Founding members recruited, charter established, and builder community ignited.",
+    highlights: [
+      "Charter & Founding Team Recruited",
+      "Chandigarh University UP Chapter",
+      "Builder Ecosystem & Network Ignited"
+    ],
     status: "current",
     accent: "#FF5500",
     icon: RocketLaunch,
     tag: "LIVE NOW",
-    metric: "100+ Founding Builders",
+    metric: "100+ FOUNDING BUILDERS",
   },
   {
     phase: "02",
@@ -35,11 +41,16 @@ const MILESTONES = [
     subtitle: "SKILL ACCELERATION",
     date: "SEP–OCT 2026",
     description: "Weekly hands-on masterclasses covering ideation frameworks, business model canvas, rapid prototyping, and design thinking.",
+    highlights: [
+      "Ideation & Product Frameworks",
+      "Business Model Canvas Sprints",
+      "Rapid Prototyping Masterclasses"
+    ],
     status: "upcoming",
     accent: "#00F0FF",
     icon: Lightbulb,
     tag: "UPCOMING",
-    metric: "8 Masterclass Sprints",
+    metric: "8 MASTERCLASS SPRINTS",
   },
   {
     phase: "03",
@@ -47,11 +58,16 @@ const MILESTONES = [
     subtitle: "BUILD & PITCH",
     date: "NOV 2026",
     description: "48-hour campus-wide hackathon and ideathon. 200+ participants, 40 builder teams. Top 5 winners receive incubation spots.",
+    highlights: [
+      "200+ Campus Participants",
+      "40 Active Builder Teams",
+      "5 Incubation Spot Grants"
+    ],
     status: "upcoming",
     accent: "#FFB800",
     icon: Trophy,
     tag: "UPCOMING",
-    metric: "200+ Participants",
+    metric: "200+ PARTICIPANTS",
   },
   {
     phase: "04",
@@ -59,11 +75,16 @@ const MILESTONES = [
     subtitle: "0 TO 1 PRODUCT BUILD",
     date: "JAN–APR 2027",
     description: "Top teams enter a 4-month intensive incubation program with 1-on-1 industry mentors, legal/tech resources, and dedicated office space.",
+    highlights: [
+      "4-Month Intensive Program",
+      "1-on-1 Industry Mentorship",
+      "Dedicated Campus Office Space"
+    ],
     status: "upcoming",
     accent: "#10B981",
     icon: Cpu,
     tag: "UPCOMING",
-    metric: "4 Months Mentorship",
+    metric: "4 MONTHS MENTORSHIP",
   },
   {
     phase: "05",
@@ -71,11 +92,16 @@ const MILESTONES = [
     subtitle: "INVESTOR PITCH",
     date: "MAY 2027",
     description: "Cohort-1 founders pitch directly to 20+ top-tier angel investors and VCs. The launchpad for venture-backed breakout startups.",
+    highlights: [
+      "Pitch to 20+ Angel VCs",
+      "Cohort-1 Venture Showcase",
+      "Pre-Seed & Seed Funding"
+    ],
     status: "upcoming",
     accent: "#A855F7",
     icon: TrendUp,
     tag: "UPCOMING",
-    metric: "20+ Investor VCs",
+    metric: "20+ INVESTOR VCS",
   },
 ];
 
@@ -112,20 +138,20 @@ export default function Roadmap() {
     <section
       id="roadmap"
       ref={wrapRef}
-      className="relative overflow-hidden bg-[#05070B] pt-32 sm:pt-44"
+      className="relative overflow-hidden bg-[#05070B] pt-32 sm:pt-44 pb-16"
       style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
     >
-      {/* Background Ambient Spotlights & Tech Mesh */}
+      {/* Background Ambient Spotlights */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/3 w-[650px] h-[650px] opacity-25 blur-[160px] bg-gradient-to-r from-[#FF5500] to-[#00F0FF]" />
-        <div className="absolute bottom-1/4 right-1/3 w-[650px] h-[650px] opacity-20 blur-[160px] bg-gradient-to-r from-[#10B981] to-[#A855F7]" />
+        <div className="absolute top-1/4 left-1/3 w-[650px] h-[650px] opacity-20 blur-[160px] bg-gradient-to-r from-[#FF5500] to-[#00F0FF]" />
+        <div className="absolute bottom-1/4 right-1/3 w-[650px] h-[650px] opacity-15 blur-[160px] bg-gradient-to-r from-[#10B981] to-[#A855F7]" />
         <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
       </div>
 
       {/* Pinned 100vh Layout Container */}
-      <div className="relative z-10 w-full h-[100vh] overflow-hidden flex flex-col justify-between py-8 px-6 sm:px-16">
-        {/* TOP STATIONARY SECTION HEADER (Generous Top Margin — 100% Zero Boundary Collision) */}
-        <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-6 pt-4 pb-6 border-b border-white/15">
+      <div className="relative z-10 w-full h-[100vh] overflow-hidden flex flex-col justify-between py-6 px-6 sm:px-16">
+        {/* TOP STATIONARY SECTION HEADER (Generous Top Margin — 100% Zero Collision) */}
+        <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-white/15">
           <div className="flex flex-col gap-3">
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#FF5500]/60 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_25px_rgba(255,85,0,0.35)] w-fit">
               <Sparkle size={16} weight="fill" className="text-[#FF5500] animate-pulse" />
@@ -134,7 +160,7 @@ export default function Roadmap() {
               </span>
             </div>
 
-            <h2 className="font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none drop-shadow-2xl">
+            <h2 className="font-outfit text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none drop-shadow-2xl">
               Building the future,{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF8800] to-[#00F0FF]">
                 milestone by milestone.
@@ -149,18 +175,17 @@ export default function Roadmap() {
           </div>
         </div>
 
-        {/* MIDDLE HORIZONTAL SCROLLING TRACK — Spacious Cards & Zero Text Cutoff */}
-        <div className="w-full flex-1 flex items-center overflow-hidden my-auto relative pt-4">
+        {/* MIDDLE HORIZONTAL SCROLLING TRACK — Premium Cards matching Stage 04 Framework Design System */}
+        <div className="w-full flex-1 flex items-center overflow-hidden my-auto relative pt-6">
           <div
             ref={trackRef}
-            className="flex items-center gap-12 sm:gap-20 px-8 sm:px-16 relative"
+            className="flex items-center gap-12 sm:gap-16 px-8 sm:px-16 relative"
           >
             {MILESTONES.map((m, i) => {
-              const Icon = m.icon;
               const isCurrent = m.status === "current";
 
               return (
-                <div key={m.phase} className="flex items-center gap-12 sm:gap-20 flex-shrink-0 relative group">
+                <div key={m.phase} className="flex items-center gap-12 sm:gap-16 flex-shrink-0 relative group">
                   {/* Connecting Laser Line between cards */}
                   {i > 0 && (
                     <div className="w-20 sm:w-28 h-2 relative flex-shrink-0 overflow-hidden rounded-full bg-white/10">
@@ -174,92 +199,85 @@ export default function Roadmap() {
                     </div>
                   )}
 
-                  {/* Milestone Card — Extra Width & Padding to Prevent Any Cutoff */}
+                  {/* Milestone Card — Premium Stage 04 Framework Design System (Explicit Inline Padding = 100% Zero Cutoff) */}
                   <SpotlightCard
-                    className="w-[440px] sm:w-[520px] rounded-[2.5rem] p-10 sm:p-12 border-2 transition-all duration-500 relative flex flex-col justify-between overflow-hidden cursor-pointer"
                     style={{
+                      width: "480px",
+                      padding: "2.5rem",
+                      borderRadius: "2.25rem",
+                      border: `1.5px solid ${isCurrent ? m.accent : "rgba(255, 255, 255, 0.18)"}`,
                       background: isCurrent
-                        ? `linear-gradient(180deg, rgba(255, 85, 0, 0.20) 0%, rgba(10, 13, 20, 0.98) 100%)`
-                        : `linear-gradient(180deg, rgba(15, 20, 34, 0.98) 0%, rgba(8, 11, 18, 0.99) 100%)`,
-                      borderColor: isCurrent ? m.accent : "rgba(255, 255, 255, 0.2)",
-                      backdropFilter: "blur(35px)",
+                        ? `linear-gradient(180deg, rgba(255, 85, 0, 0.16) 0%, rgba(10, 14, 24, 0.98) 100%)`
+                        : `linear-gradient(180deg, rgba(14, 19, 32, 0.98) 0%, rgba(8, 11, 18, 0.99) 100%)`,
+                      backdropFilter: "blur(40px)",
                       boxShadow: isCurrent
-                        ? `0 30px 80px rgba(255, 85, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35)`
+                        ? `0 30px 80px rgba(255, 85, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35)`
                         : `0 25px 70px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.15)`,
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      gap: "1.5rem",
+                      boxSizing: "border-box",
+                      position: "relative",
+                      overflow: "hidden",
                     }}
                   >
-                    {/* Glowing Top Ambient Spotlight */}
-                    <div
-                      className="absolute -top-28 left-1/2 -translate-x-1/2 w-3/4 h-40 blur-[70px] pointer-events-none opacity-45 group-hover:opacity-80 transition-opacity duration-500"
-                      style={{ background: m.accent }}
-                    />
-
-                    {/* Corner Watermark Phase Number */}
-                    <div className="absolute top-4 right-8 font-mono text-9xl font-black opacity-[0.05] text-white select-none pointer-events-none">
-                      {m.phase}
-                    </div>
-
-                    <div>
-                      {/* Top Meta Row — Generous Top Margin (No Border Touch!) */}
-                      <div className="flex items-center justify-between gap-4 mb-6 relative z-10 pt-2">
-                        <span
-                          className="px-4 py-2 rounded-full font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-white shadow-xl flex items-center gap-2"
-                          style={{
-                            background: isCurrent ? m.accent : "rgba(255, 255, 255, 0.12)",
-                            border: `1.5px solid ${m.accent}80`,
-                          }}
-                        >
-                          {isCurrent && <span className="h-2.5 w-2.5 rounded-full bg-white animate-ping" />}
-                          PHASE {m.phase} // {m.tag}
-                        </span>
-
-                        <div
-                          className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0"
-                          style={{
-                            background: `${m.accent}25`,
-                            border: `1.5px solid ${m.accent}70`,
-                            boxShadow: `0 0 25px ${m.accent}50`,
-                          }}
-                        >
-                          <Icon size={30} weight="fill" style={{ color: m.accent }} />
-                        </div>
-                      </div>
-
-                      {/* Milestone Title */}
-                      <h3 className="font-outfit text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight mb-3 drop-shadow-md">
-                        {m.title}
-                      </h3>
-
-                      {/* Subtitle & Date */}
-                      <div className="flex items-center gap-3 mb-6 flex-wrap">
-                        <span className="font-mono text-xs sm:text-sm font-bold text-slate-300 uppercase tracking-widest">
-                          {m.subtitle}
-                        </span>
-                        <span className="text-slate-500">•</span>
-                        <span
-                          className="font-mono text-xs sm:text-sm font-black px-3 py-1 rounded-md bg-white/[0.08] border border-white/20"
-                          style={{ color: m.accent }}
-                        >
-                          {m.date}
-                        </span>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-bold mb-8">
-                        {m.description}
-                      </p>
-                    </div>
-
-                    {/* Footer Target Outcome Bar — Stacked Flex Column so Text NEVER Cuts Off */}
-                    <div className="pt-5 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative z-10">
-                      <span className="font-mono text-xs font-bold text-slate-300 uppercase tracking-wider">
-                        Target Outcome:
-                      </span>
+                    {/* Top Eyebrow Row */}
+                    <div className="flex items-center justify-between gap-3 w-full">
                       <span
-                        className="font-mono text-xs sm:text-sm font-black px-4 py-2 rounded-xl bg-white/[0.08] border border-white/20 text-white w-fit"
+                        className="font-mono text-xs font-black uppercase tracking-[0.18em]"
                         style={{ color: m.accent }}
                       >
-                        {m.metric}
+                        STAGE {m.phase} • {m.subtitle}
+                      </span>
+
+                      <span
+                        className="px-3.5 py-1.5 rounded-full font-mono text-[0.7rem] font-black uppercase tracking-wider text-white shadow-lg flex items-center gap-1.5 flex-shrink-0"
+                        style={{
+                          background: isCurrent ? m.accent : "rgba(255, 255, 255, 0.12)",
+                          border: `1.5px solid ${m.accent}80`,
+                        }}
+                      >
+                        {isCurrent && <span className="h-2 w-2 rounded-full bg-white animate-ping" />}
+                        {m.tag}
+                      </span>
+                    </div>
+
+                    {/* Main Deliverable Title */}
+                    <h3 className="font-outfit text-3xl sm:text-4xl font-black text-white tracking-tight leading-none drop-shadow-md">
+                      {m.title}
+                    </h3>
+
+                    {/* Description Paragraph */}
+                    <p className="text-slate-300 text-sm leading-relaxed font-bold">
+                      {m.description}
+                    </p>
+
+                    {/* Highlights List — Matching Image 1 Pill Rows */}
+                    <div className="flex flex-col gap-2.5 w-full">
+                      {m.highlights.map((highlight, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 hover:bg-white/[0.08] transition-colors"
+                        >
+                          <SparkleIcon size={16} weight="fill" style={{ color: m.accent }} className="flex-shrink-0" />
+                          <span className="font-outfit text-xs font-bold text-white tracking-wide truncate">
+                            {highlight}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Bottom Footer Bar — Divided Line matching Image 1 */}
+                    <div className="pt-4 border-t border-white/15 flex items-center justify-between gap-4 w-full">
+                      <span
+                        className="font-mono text-[0.7rem] font-black uppercase tracking-wider flex items-center gap-1.5 truncate"
+                        style={{ color: m.accent }}
+                      >
+                        🛡️ {m.subtitle} TRACK
+                      </span>
+                      <span className="font-mono text-[0.7rem] font-black uppercase tracking-wider text-white hover:text-[#FF5500] transition-colors flex-shrink-0">
+                        {m.metric} →
                       </span>
                     </div>
                   </SpotlightCard>
