@@ -308,10 +308,10 @@ export default function WhatYouGet() {
             Seven battle-tested launchpads designed to transform student builders into venture-backed founders.
           </p>
 
-          {/* Metric Badges — Large, Highly Interactive Hero Glass Cards with Generous Spacing */}
+          {/* Metric Badges — Large, Highly Interactive Hero Glass Cards with Generous Right Padding */}
           <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 pt-6">
-            <div className="group flex items-center gap-4 sm:gap-5 px-8 sm:px-12 py-5 sm:py-6 rounded-3xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-[#FF5500]/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,85,0,0.35)] transition-all duration-300 cursor-pointer">
-              <div className="w-10 h-10 rounded-2xl bg-[#FF5500]/20 border border-[#FF5500]/50 flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
+            <div className="group flex items-center gap-4 sm:gap-6 pl-6 pr-14 sm:pl-8 sm:pr-18 md:pr-20 py-5 sm:py-6 rounded-full bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-[#FF5500]/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,85,0,0.35)] transition-all duration-300 cursor-pointer">
+              <div className="w-11 h-11 rounded-full bg-[#FF5500]/20 border border-[#FF5500]/50 flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
                 <span className="h-3.5 w-3.5 rounded-full bg-[#FF5500] shadow-[0_0_12px_#FF5500] animate-ping" />
               </div>
               <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
@@ -319,18 +319,18 @@ export default function WhatYouGet() {
               </span>
             </div>
 
-            <div className="group flex items-center gap-4 sm:gap-5 px-8 sm:px-12 py-5 sm:py-6 rounded-3xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-[#FF5500]/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,85,0,0.35)] transition-all duration-300 cursor-pointer">
-              <div className="w-10 h-10 rounded-2xl bg-[#FF5500]/20 border border-[#FF5500]/50 flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
-                <Flame size={22} weight="fill" className="text-[#FF5500] drop-shadow-[0_0_10px_#FF5500]" />
+            <div className="group flex items-center gap-4 sm:gap-6 pl-6 pr-14 sm:pl-8 sm:pr-18 md:pr-20 py-5 sm:py-6 rounded-full bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-[#FF5500]/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,85,0,0.35)] transition-all duration-300 cursor-pointer">
+              <div className="w-11 h-11 rounded-full bg-[#FF5500]/20 border border-[#FF5500]/50 flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Flame size={24} weight="fill" className="text-[#FF5500] drop-shadow-[0_0_10px_#FF5500]" />
               </div>
               <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
                 100% BUILDER-FOCUSED
               </span>
             </div>
 
-            <div className="group flex items-center gap-4 sm:gap-5 px-8 sm:px-12 py-5 sm:py-6 rounded-3xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-emerald-400/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)] transition-all duration-300 cursor-pointer">
-              <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center shadow-[0_0_15px_rgba(52,211,153,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
-                <ShieldCheck size={22} weight="fill" className="text-emerald-400 drop-shadow-[0_0_10px_#34D399]" />
+            <div className="group flex items-center gap-4 sm:gap-6 pl-6 pr-14 sm:pl-8 sm:pr-18 md:pr-20 py-5 sm:py-6 rounded-full bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-emerald-400/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)] transition-all duration-300 cursor-pointer">
+              <div className="w-11 h-11 rounded-full bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center shadow-[0_0_15px_rgba(52,211,153,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
+                <ShieldCheck size={24} weight="fill" className="text-emerald-400 drop-shadow-[0_0_10px_#34D399]" />
               </div>
               <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
                 ZERO-EQUITY SUPPORT
