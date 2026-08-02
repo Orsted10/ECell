@@ -1,559 +1,267 @@
-This is exactly the type of project where Antigravity shines if you treat it like a design director instead of a code generator.
+Since you've connected Antigravity directly to the **Framer project**, you should **not** ask it to redesign the UI. Otherwise, it'll fight the template and you'll lose the premium look you paid for.
 
-Looking at your skills folder:
-
-* ✅ design-taste-frontend
-* ✅ frontend-design
-* ✅ high-end-visual-design
-* ✅ improve-codebase-architecture
-
-I'd actually invoke **all four simultaneously** for every major page.
+Instead, make the template the **source of truth** and tell Antigravity to adapt it.
 
 ---
 
-# MASTER ANTIGRAVITY PROMPT
-
-Use this FIRST before every section.
+# MASTER ANTIGRAVITY PROMPT (Framer Template Mode)
 
 ```text
-You are the Creative Director, Design Lead, Motion Designer and Senior Frontend Engineer from Apple, Stripe, Linear, Vercel, Framer, Google Creative Lab and Nothing combined.
+You are working INSIDE an existing premium Framer template.
 
-You are NOT building a startup landing page.
+The Framer template is the DESIGN SOURCE OF TRUTH.
 
-You are building the official Entrepreneurship Cell website of Chandigarh University Uttar Pradesh.
+Your job is NOT to redesign the website.
 
-The website must feel like a Fortune 500 product launch.
+Your job is to transform the template into the official Entrepreneurship Cell website for Chandigarh University Uttar Pradesh while preserving the original design language.
 
-This is not a template.
-This is not SaaS.
-This is not AI generated.
-This must feel handcrafted.
+ABSOLUTE RULES
 
-Design Philosophy
+Never redesign the template.
 
-• Apple-level spacing
-• Linear-level typography
-• Stripe-level layouts
-• Framer-level animations
-• Nothing.tech aesthetics
-• Vercel level engineering
-• Google Material motion
-• Minimal but emotional
-• Academic yet futuristic
-• Premium without flashy gradients
-• Elegant
-• Timeless
+Never replace the visual identity.
 
-The website should feel alive.
+Never create a different design language.
 
-Everything reacts.
+Never introduce a second design system.
 
-Animations should never exist only for decoration.
+Never make the website look AI generated.
 
-Every animation communicates hierarchy, focus or emotion.
+Never make the website look like a startup landing page.
 
-Avoid:
+Never create generic hero sections.
 
-❌ glassmorphism everywhere
-❌ neon gradients
-❌ floating random blobs
-❌ AI generated hero sections
-❌ generic illustrations
-❌ stock icons
-❌ startup clichés
-❌ fake statistics
-❌ unnecessary particles
+Never create random cards or layouts.
 
-Instead use
+Instead...
 
-• depth
-• subtle lighting
-• cinematic transitions
-• smooth easing
-• premium typography
-• whitespace
-• intelligent motion
-• editorial layouts
+Study every section of the template.
 
-Every section should feel like its own product launch.
+Understand why each layout exists.
 
-Scrolling should feel like reading a documentary.
+Reuse every layout.
 
-Build using production-quality architecture.
+Reuse every spacing system.
 
-Animations must use Framer Motion.
+Reuse every typography scale.
 
-Keep performance excellent.
+Reuse every animation.
 
-Accessibility first.
+Reuse every interaction.
 
-Responsive by design.
+Reuse every transition.
 
-The website should be worthy of winning Awwwards.
+Reuse every component.
+
+Reuse every visual hierarchy.
+
+Reuse every responsive behavior.
+
+Reuse every motion curve.
+
+Reuse every lighting effect.
+
+Reuse every image treatment.
+
+Reuse every hover animation.
+
+Reuse every scroll animation.
+
+Reuse every design token.
+
+Reuse every border radius.
+
+Reuse every shadow.
+
+Reuse every padding and margin system.
+
+The goal is that someone familiar with the original template immediately recognizes it, while simultaneously believing it was originally designed specifically for Chandigarh University's Entrepreneurship Cell.
+
+Only modify:
+
+• Content
+• Copywriting
+• Images
+• Icons
+• Branding
+• Colors only where branding requires
+• Navigation labels
+• CTA text
+• Data
+
+If a new section is required:
+
+DO NOT invent a new style.
+
+Instead clone the closest existing section in the template and adapt it.
+
+Every newly created component must feel like it shipped with the original template.
+
+The final result must look like the original template creator designed the E-Cell website themselves.
 ```
 
 ---
 
-# GLOBAL WEBSITE PROMPT
+# WEBSITE TRANSFORMATION
 
 ```text
-Design the entire website like Apple launches an Entrepreneurship Cell.
+Transform this premium Framer template into the official Entrepreneurship Cell website.
 
-Think documentary.
+The template already contains an excellent design system.
 
-Think future founders.
+Respect it.
 
-Think innovation.
+Preserve its premium feel.
 
-Think ambition.
+Map the template sections into an E-Cell narrative.
 
-The emotional progression while scrolling should be
+The story should become
 
-Curiosity
+Dream
 
 ↓
 
-Inspiration
+Learn
 
 ↓
 
-Belonging
+Build
 
 ↓
-
-Ambition
-
-↓
-
-Action
-
-Every section should naturally flow into the next.
-
-Transitions should feel cinematic.
-
-No abrupt changes.
-
-Use layered motion.
-
-Every hover interaction should feel satisfying.
-
-Microinteractions should exist everywhere.
-
-The website should never feel static.
-
-Everything should subtly breathe.
-
-No page should look like a bootstrap template.
-```
-
----
-
-# HERO SECTION
-
-```text
-Design one of the greatest hero sections ever created for a university Entrepreneurship Cell.
-
-Goals
-
-Immediately communicate
-
-Innovation
-
-Leadership
-
-Future founders
-
-Community
-
-Opportunity
-
-Requirements
-
-Large cinematic headline
-
-"We Build Founders."
-
-or
-
-"Where Ideas Become Startups."
-
-Animated typography.
-
-Subtle background motion.
-
-Very elegant moving light.
-
-Interactive mouse response.
-
-Minimal particles only if meaningful.
-
-Premium CTA buttons.
-
-Join E-Cell
-
-Explore Journey
-
-Scroll indicator.
-
-The hero should feel as premium as Apple's product pages.
-
-No giant illustrations.
-
-No fake startup graphics.
-
-Use depth and motion instead.
-
-Scrolling should reveal the next section seamlessly.
-
-The hero alone should feel award worthy.
-```
-
----
-
-# VISION SECTION
-
-```text
-Create a storytelling section explaining why E-Cell exists.
-
-Instead of cards...
-
-Use immersive editorial layouts.
-
-Alternate text and imagery.
-
-Reveal content while scrolling.
-
-Create emotional storytelling.
-
-The feeling should be
-
-Every successful founder started somewhere.
-
-Today, that place is here.
-
-Use elegant typography.
-
-Large whitespace.
-
-Subtle parallax.
-
-Premium image masking.
-
-Magazine inspired layouts.
-```
-
----
-
-# WHAT YOU GET
-
-```text
-Instead of boring feature cards...
-
-Create interactive experiences.
-
-Each opportunity should have its own identity.
-
-Startup Incubation
-
-Founder Talks
-
-Networking
-
-Mentorship
-
-Ideathons
-
-Pitch Competitions
-
-Internships
-
-Hovering should activate motion.
-
-Cards should expand.
-
-Images reveal.
-
-Typography transforms.
-
-Icons animate.
-
-Scrolling should trigger staggered reveals.
-
-Everything should feel premium.
-
-Think Apple Services page meets Stripe.
-```
-
----
-
-# ROADMAP
-
-```text
-Build one of the most beautiful timelines ever made.
-
-Avoid vertical boring timelines.
-
-Instead create
-
-Horizontal cinematic roadmap
 
 Launch
 
 ↓
 
-Workshops
+Grow
 
 ↓
 
-Ideathons
+Join
 
+without changing the template's visual language.
+
+If an existing section can communicate the same idea, reuse it instead of replacing it.
+```
+
+---
+
+# HERO
+
+```text
+Do NOT redesign the hero.
+
+Keep the exact layout.
+
+Keep the typography style.
+
+Keep the animation system.
+
+Keep the motion language.
+
+Keep the spacing.
+
+Only replace the content.
+
+Transform it into an Entrepreneurship Cell hero.
+
+Possible headline
+
+Where Ideas Become Startups.
+
+or
+
+We Build Founders.
+
+Replace imagery with authentic entrepreneurship, startup, innovation and campus visuals that match the template's aesthetic.
+
+Keep every interaction exactly as originally designed.
+```
+
+---
+
+# CONTENT REPLACEMENT RULE
+
+```text
+For every section in the template:
+
+First determine what purpose it serves.
+
+Then replace only the content while preserving the structure.
+
+Example
+
+Testimonials
 ↓
 
-Incubation
+Founder Success Stories
 
+Features
 ↓
 
-Demo Day
+What E-Cell Offers
 
-Each milestone becomes active while scrolling.
+Services
+↓
 
-Current milestone glows.
+Programs
 
-Future milestones gradually appear.
+Portfolio
+↓
 
-Use motion paths.
+Startup Showcase
 
-Animated connectors.
+Clients
+↓
 
-Progress indicator.
+Industry Partners
 
-Interactive hover.
+Case Studies
+↓
 
-Should feel like watching the future unfold.
+Student Startup Journeys
+
+Pricing
+↓
+
+Membership Benefits
+
+Blog
+↓
+
+Insights & Events
+
+The layout should remain recognizable.
 ```
 
 ---
 
-# EVENTS
+# NEW SECTIONS
 
 ```text
-Design events like Netflix showcases new releases.
+If the E-Cell requires content that the template doesn't include:
 
-Upcoming event becomes the hero.
+Never invent a new visual style.
 
-Past events become elegant timeline cards.
+Instead:
 
-Hover reveals
+Duplicate the most similar existing section.
 
-Highlights
+Modify it.
 
-Gallery
+Keep identical spacing.
 
-Speakers
+Keep identical typography.
 
-Venue
+Keep identical animations.
 
-Countdown timer for next event.
+Keep identical responsiveness.
 
-Animated transitions.
+Keep identical motion.
 
-Cards should feel tactile.
+Keep identical interaction patterns.
 
-Premium hover shadows.
-
-Motion should communicate excitement.
-```
-
----
-
-# TEAM
-
-```text
-Forget traditional team grids.
-
-Design a premium leadership experience.
-
-Large editorial portraits.
-
-Hover reveals
-
-LinkedIn
-
-Role
-
-Expertise
-
-Bio
-
-Each member appears individually.
-
-Smooth transitions.
-
-Elegant monochrome photography with subtle color accents.
-
-Scrolling feels like meeting each leader personally.
-
-No circular avatars.
-```
-
----
-
-# JOIN COMMUNITY
-
-```text
-This section should emotionally convince students.
-
-Use immersive storytelling.
-
-Display benefits dynamically.
-
-Networking
-
-Startups
-
-Mentorship
-
-Recognition
-
-Community
-
-Industry
-
-Instead of listing benefits...
-
-Animate each one.
-
-One benefit replaces another.
-
-Large typography.
-
-Strong CTA.
-
-Premium motion.
-
-The user should genuinely want to join.
-```
-
----
-
-# GALLERY
-
-```text
-Create an immersive photo experience.
-
-Avoid grids.
-
-Use asymmetrical layouts.
-
-Animated image reveals.
-
-Hover zoom.
-
-Parallax.
-
-Dynamic masonry.
-
-Smooth transitions.
-
-Each photo should feel like a memory.
-
-The gallery should tell a story.
-
-Meetings.
-
-Hackathons.
-
-Late night planning.
-
-Launch day.
-
-Founder talks.
-
-Campus moments.
-```
-
----
-
-# FAQ
-
-```text
-Design FAQs like Apple Support.
-
-Large spacing.
-
-Smooth accordion.
-
-Animated icon rotation.
-
-Questions fade beautifully.
-
-Minimal design.
-
-Readable.
-
-Elegant.
-
-No ugly borders.
-
-No heavy cards.
-```
-
----
-
-# CONTACT
-
-```text
-Create a premium ending.
-
-Beautiful typography.
-
-Elegant form.
-
-Animated placeholders.
-
-Interactive social icons.
-
-Map with subtle motion.
-
-Footer should feel like the conclusion of a documentary.
-
-Include
-
-Instagram
-
-LinkedIn
-
-Email
-
-X
-
-Location
-
-Smooth thank-you animation after submission.
-```
-
----
-
-# MICROINTERACTIONS
-
-```text
-Every component must have handcrafted interactions.
-
-Buttons compress naturally.
-
-Cards lift realistically.
-
-Images reveal gradually.
-
-Text fades elegantly.
-
-Hover animations must be under 300ms.
-
-Scrolling must feel buttery.
-
-Motion should never distract.
-
-Every animation should improve understanding.
+The new section must look native to the template.
 ```
 
 ---
@@ -561,123 +269,133 @@ Every animation should improve understanding.
 # DESIGN SYSTEM
 
 ```text
+The existing Framer template is the design system.
+
+Do not create another one.
+
+Respect
+
 Typography
-
-Editorial.
-
-Bold headlines.
-
-Clean body.
-
-Premium spacing.
-
-Color Palette
-
-Deep charcoal
-
-Warm whites
-
-Muted blues
-
-Elegant neutrals
-
-Very limited accent colors.
-
-Corners
-
-12–18px
 
 Spacing
 
-Generous.
+Grid
 
-Whitespace is luxury.
+Columns
 
-Icons
+Cards
 
-Lucide.
+Buttons
 
-Photography
+Radius
 
-Authentic campus moments.
+Shadows
 
-No stock photos.
+Animations
 
-Motion
+Motion timing
 
-Spring physics.
+Hover states
 
-Natural easing.
+Page transitions
 
-Performance
+Image masks
 
-60fps.
+Lighting
 
-Responsive
+Gradients
 
-Pixel perfect from mobile to 5K displays.
+Depth
 
-Accessibility
+Everything must remain internally consistent.
 
-WCAG AA.
-
-SEO ready.
-
-Production ready.
-```
-
-# Architecture Prompt
-
-Since you're using the `improve-codebase-architecture` skill, I'd also give Antigravity this engineering directive:
-
-```text
-Architect this like an enterprise frontend.
-
-Use Next.js App Router.
-
-Server Components where possible.
-
-Client Components only for interactions.
-
-Reusable design system.
-
-Motion primitives.
-
-Centralized animation variants.
-
-Component-driven architecture.
-
-Strict TypeScript.
-
-Tailwind CSS.
-
-Framer Motion.
-
-Lenis smooth scrolling.
-
-GSAP only where absolutely necessary.
-
-Optimized images.
-
-SEO-first.
-
-Accessible.
-
-Maintainable.
-
-Future-proof.
-
-Every section should be independently reusable.
-
-The final codebase should be clean enough for a senior engineer at Vercel or Stripe to comfortably maintain.
+Never mix styles.
 ```
 
 ---
 
-## One final suggestion
+# MOTION
 
-For an **E-Cell**, don't position it as just another university club. Position it as a **movement**. The visual narrative should feel like:
+```text
+Reuse every motion pattern already present.
 
-> **Students → Builders → Founders → Startups → Impact**
+Do not replace animations.
 
-That story arc is much more memorable than a typical "About Us → Team → Contact" flow, and it aligns naturally with the mission of an entrepreneurship cell while giving the site a premium, documentary-style experience.
+Only redirect them to the new content.
+
+If a card slides in originally,
+
+the E-Cell version should slide in identically.
+
+If images reveal through masks,
+
+preserve the same reveal.
+
+If the template has premium transitions,
+
+keep them exactly.
+
+Motion consistency is more important than adding new animations.
+```
+
+---
+
+# COMPONENT REUSE
+
+```text
+Before creating anything new,
+
+search the existing template.
+
+If a similar component already exists,
+
+reuse it.
+
+Modify it.
+
+Extend it.
+
+Never rebuild it.
+
+The objective is maximum component reuse.
+```
+
+---
+
+# FINAL QUALITY CHECK
+
+```text
+Before every change ask yourself:
+
+Does this still feel like the original template?
+
+If not,
+
+don't do it.
+
+The user bought this template because of its design.
+
+Your responsibility is to preserve that design while transforming its content into a world-class Entrepreneurship Cell experience.
+
+The final website should look as if the original Framer template was always intended to be an E-Cell website.
+```
+
+---
+
+## One extra instruction I'd add (this is the secret sauce)
+
+Append this at the end:
+
+```text
+Before making ANY UI modification:
+
+1. Analyze the existing template completely.
+2. Identify its design principles.
+3. Document them internally.
+4. Follow those principles for every future change.
+5. Do not make a single visual decision that conflicts with the original template.
+
+Your success is measured by how little the design language changes while how completely the content transforms.
+```
+
+This prompt shifts Antigravity from **"designer"** to **"creative adapter."** It will leverage the Framer template's layouts, components, animations, and visual language almost entirely, producing a site that feels custom while retaining the premium craftsmanship of the original template.
