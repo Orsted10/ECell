@@ -22,6 +22,7 @@ import {
 } from "@phosphor-icons/react";
 import { staggerContainer, fadeUp } from "@/components/motion/variants";
 import { RevealText } from "@/components/ui/RevealText";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -264,239 +265,134 @@ export default function WhatYouGet() {
                     </div>
                   </div>
 
-                  {/* Right Column: Clean Visual Card matching Image 2 purity (7 cols) */}
+                  {/* Right Column: Clean Visual Card matching Image 2 Roadmap purity (7 cols) */}
                   <div className="lg:col-span-7 flex flex-col justify-center">
-                    <div
-                      className="relative rounded-[2.2rem] p-8 sm:p-10 md:p-12 transition-all duration-500 group flex flex-col justify-between gap-8"
+                    <SpotlightCard
                       style={{
-                        background: "rgba(10, 14, 22, 0.95)",
-                        border: `1.5px solid ${item.accent}45`,
-                        boxShadow: `0 25px 60px rgba(0,0,0,0.8), inset 0 1px 0 ${item.accent}20`,
+                        padding: "3rem",
+                        borderRadius: "2rem",
+                        border: `1.5px solid ${item.accent}50`,
+                        background: `${item.accent}0D`,
+                        backdropFilter: "blur(30px)",
+                        position: "relative",
+                        boxShadow: `0 20px 50px rgba(0,0,0,0.6), 0 0 35px ${item.glowColor}`,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "2rem",
+                        minHeight: "360px",
+                        justifyContent: "space-between",
                       }}
                     >
-                      {/* Top Bar Pill & Eyebrow — Safely inset 40px past border curve */}
-                      <div className="flex items-center justify-between border-b border-white/15 pb-5 mb-2 font-mono text-xs sm:text-sm">
-                        <div className="flex items-center gap-2.5">
-                          <span className="h-2.5 w-2.5 rounded-full animate-ping" style={{ backgroundColor: item.accent }} />
-                          <span className="font-extrabold text-white tracking-wider">PILLAR {item.pillarNo}</span>
-                        </div>
+                      {/* Top Eyebrow & Status Pill */}
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }} className="justify-between">
                         <span
-                          className="px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest"
                           style={{
+                            fontSize: "0.75rem",
+                            fontWeight: 800,
+                            letterSpacing: "0.2em",
+                            textTransform: "uppercase",
                             color: item.accent,
-                            background: `${item.accent}18`,
-                            border: `1px solid ${item.accent}40`,
+                            fontFamily: "var(--font-mono)",
+                          }}
+                        >
+                          STAGE {item.pillarNo}
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "0.7rem",
+                            fontWeight: 700,
+                            letterSpacing: "0.15em",
+                            textTransform: "uppercase",
+                            color: "var(--text-2)",
+                            background: "rgba(255, 255, 255, 0.06)",
+                            border: "1px solid rgba(255, 255, 255, 0.12)",
+                            padding: "0.35rem 0.85rem",
+                            borderRadius: "999px",
+                            fontFamily: "var(--font-mono)",
+                          }}
+                        >
+                          MODULE :: ACTIVE
+                        </span>
+                      </div>
+
+                      {/* Main Title & Tagline inside Card */}
+                      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                        <h4
+                          style={{
+                            fontFamily: "var(--font-outfit)",
+                            fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
+                            fontWeight: 800,
+                            color: "#FFFFFF",
+                            letterSpacing: "-0.02em",
+                            lineHeight: 1.1,
                           }}
                         >
                           {item.title}
-                        </span>
+                        </h4>
+                        <p
+                          style={{
+                            fontSize: "0.95rem",
+                            fontWeight: 800,
+                            color: item.accent,
+                            letterSpacing: "0.12em",
+                            textTransform: "uppercase",
+                            fontFamily: "var(--font-mono)",
+                          }}
+                        >
+                          {item.tagline}
+                        </p>
                       </div>
 
-                      {/* DYNAMIC VISUAL WIDGETS BASED ON PILLAR TYPE — Inset & Spacious */}
-                      {item.widgetType === "incubation" && (
-                        <div className="flex flex-col gap-6 my-2">
-                          <div className="flex items-center justify-between bg-white/[0.04] p-5 rounded-2xl border border-white/10">
-                            <div>
-                              <p className="text-xs text-neutral-400 font-mono font-semibold">INCUBATION BATCH</p>
-                              <p className="text-xl font-extrabold text-white">Cohort 2026 // Seed Track</p>
-                            </div>
-                            <span className="px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-[#FF5500]/20 text-[#FF5500] border border-[#FF5500]/40 flex items-center gap-1.5">
-                              <Flame size={15} weight="fill" /> 85% Funded
-                            </span>
-                          </div>
+                      {/* Clean Body Text matching Roadmap purity */}
+                      <p
+                        style={{
+                          fontSize: "1.05rem",
+                          color: "#E2E8F0",
+                          lineHeight: 1.7,
+                          fontWeight: 500,
+                        }}
+                      >
+                        {item.body}
+                      </p>
 
-                          {/* Progress Meter */}
-                          <div className="flex flex-col gap-2.5">
-                            <div className="flex justify-between text-xs font-mono font-bold text-neutral-200">
-                              <span>STAGE: MVP → SEED ROUND</span>
-                              <span>MILESTONE 03 / 04</span>
-                            </div>
-                            <div className="w-full h-3.5 bg-white/10 rounded-full overflow-hidden p-0.5 border border-white/5">
-                              <div className="h-full bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF3300] rounded-full w-[85%] shadow-[0_0_15px_#FF5500]" />
-                            </div>
-                          </div>
-
-                          {/* 3 Metric Cards */}
-                          <div className="grid grid-cols-3 gap-3.5 pt-2">
-                            <div className="bg-white/[0.04] p-4 rounded-2xl border border-white/10 text-center">
-                              <p className="text-[11px] font-mono text-neutral-400 font-semibold mb-1">DESK SPACE</p>
-                              <p className="text-base font-extrabold text-white">24/7 Access</p>
-                            </div>
-                            <div className="bg-white/[0.04] p-4 rounded-2xl border border-white/10 text-center">
-                              <p className="text-[11px] font-mono text-neutral-400 font-semibold mb-1">LEGAL</p>
-                              <p className="text-base font-extrabold text-white">100% Free</p>
-                            </div>
-                            <div className="bg-white/[0.04] p-4 rounded-2xl border border-white/10 text-center">
-                              <p className="text-[11px] font-mono text-neutral-400 font-semibold mb-1">SEED GRANT</p>
-                              <p className="text-base font-extrabold text-[#FF5500]">Up to ₹10L</p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {item.widgetType === "talks" && (
-                        <div className="flex flex-col gap-6 my-2">
-                          <div className="relative rounded-2xl overflow-hidden bg-black/60 p-6 border border-indigo-500/35">
-                            <div className="flex items-center justify-between mb-4">
-                              <span className="flex items-center gap-2 text-xs font-mono font-bold text-indigo-400">
-                                <span className="h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse" /> LIVE FIRESIDE CHAT
-                              </span>
-                              <span className="text-xs font-mono font-bold text-neutral-300">450+ VIEWERS ONLINE</span>
-                            </div>
-                            <p className="text-lg sm:text-xl font-extrabold text-white italic mb-4 leading-snug">
-                              &ldquo;Build products people actually cry for if you take them away.&rdquo;
-                            </p>
-                            <div className="flex items-center justify-between pt-3 border-t border-white/10">
-                              <div>
-                                <p className="text-sm font-extrabold text-indigo-300">Unicorn Founder & Angel Investor</p>
-                                <p className="text-xs text-neutral-400 font-medium">Former YC Founder · ₹100Cr+ Exit</p>
-                              </div>
-                              <div className="flex gap-1.5 items-end">
-                                <span className="w-2 h-7 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                                <span className="w-2 h-9 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                                <span className="w-2 h-5 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {item.widgetType === "networking" && (
-                        <div className="flex flex-col gap-5 my-2">
-                          <div className="flex items-center justify-between bg-emerald-500/10 p-4 rounded-2xl border border-emerald-500/30 text-xs font-mono">
-                            <span className="text-emerald-400 font-bold">MATCHMAKING ENGINE ACTIVE</span>
-                            <span className="text-white font-extrabold">SYNERGY SCORE: 98%</span>
-                          </div>
-
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white/[0.04] p-5 rounded-2xl border border-white/10">
-                              <p className="text-xs font-mono text-emerald-400 font-bold mb-1">FOUNDER 01</p>
-                              <p className="text-base font-extrabold text-white">Full-Stack AI Lead</p>
-                              <p className="text-xs text-neutral-300 font-medium mt-1">React, Python, LLMs</p>
-                            </div>
-                            <div className="bg-white/[0.04] p-5 rounded-2xl border border-white/10">
-                              <p className="text-xs font-mono text-emerald-400 font-bold mb-1">FOUNDER 02</p>
-                              <p className="text-base font-extrabold text-white">Growth & Operations</p>
-                              <p className="text-xs text-neutral-300 font-medium mt-1">GTM, Sales, B2B SaaS</p>
-                            </div>
-                          </div>
-
-                          <div className="flex items-center justify-between text-xs text-neutral-200 bg-black/40 p-3.5 rounded-xl border border-white/5 font-semibold">
-                            <span>Status: Co-Founder Agreement Signed</span>
-                            <CheckCircle size={18} weight="fill" className="text-emerald-400" />
-                          </div>
-                        </div>
-                      )}
-
-                      {item.widgetType === "mentorship" && (
-                        <div className="flex flex-col gap-5 my-2">
-                          <div className="bg-amber-500/10 p-5 rounded-2xl border border-amber-500/30 flex items-center justify-between">
-                            <div>
-                              <p className="text-xs font-mono text-amber-400 font-bold">MENTOR SESSION</p>
-                              <p className="text-lg font-extrabold text-white">1-on-1 Pitch & Strategy Clinic</p>
-                            </div>
-                            <div className="flex items-center gap-1 text-amber-400 text-sm font-extrabold bg-amber-500/20 px-3 py-1 rounded-full border border-amber-500/40">
-                              <Star size={16} weight="fill" /> 4.98 / 5.0
-                            </div>
-                          </div>
-
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between bg-white/[0.04] p-4 rounded-2xl text-xs sm:text-sm font-semibold text-neutral-100 border border-white/5">
-                              <span>VP of Product @ Series-B Unicorn</span>
-                              <span className="text-amber-300 font-mono font-extrabold">Booked 4:00 PM</span>
-                            </div>
-                            <div className="flex items-center justify-between bg-white/[0.04] p-4 rounded-2xl text-xs sm:text-sm font-semibold text-neutral-100 border border-white/5">
-                              <span>Partner @ Early Stage VC Fund</span>
-                              <span className="text-amber-300 font-mono font-extrabold">Booked 6:30 PM</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {item.widgetType === "ideathons" && (
-                        <div className="flex flex-col gap-6 my-2">
-                          <div className="bg-red-500/10 p-5 rounded-2xl border border-red-500/35 flex items-center justify-between">
-                            <div>
-                              <p className="text-xs font-mono text-red-400 font-bold">48H SPRINT TIMER</p>
-                              <p className="text-2xl font-mono font-extrabold text-white tracking-widest">14H : 32M : 09S</p>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-xs font-mono text-neutral-400 font-semibold">PRIZE POOL</p>
-                              <p className="text-xl font-extrabold text-red-400">₹2,50,000 CASH</p>
-                            </div>
-                          </div>
-
-                          <div className="bg-white/[0.04] p-4 rounded-2xl border border-white/10 flex items-center justify-between text-xs sm:text-sm">
-                            <span className="text-neutral-200 font-bold">Latest MVP Submission: Team 04</span>
-                            <span className="px-3 py-1 rounded-full bg-red-500/20 text-red-300 font-mono font-bold border border-red-500/40">VERIFIED</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {item.widgetType === "pitch" && (
-                        <div className="flex flex-col gap-6 my-2">
-                          <div className="bg-purple-500/10 p-5 rounded-2xl border border-purple-500/35 flex items-center justify-between">
-                            <div>
-                              <p className="text-xs font-mono text-purple-300 font-bold">DEMO DAY JURY DESK</p>
-                              <p className="text-lg font-extrabold text-white">5 Active VC Investors Seated</p>
-                            </div>
-                            <Trophy size={32} weight="fill" className="text-purple-400 animate-pulse" />
-                          </div>
-
-                          <div className="grid grid-cols-3 gap-3 text-center text-xs font-mono">
-                            <div className="bg-white/[0.04] p-4 rounded-2xl border border-white/10">
-                              <p className="text-neutral-400 font-semibold">TRACTION</p>
-                              <p className="text-lg font-extrabold text-purple-300 mt-1">9.8 / 10</p>
-                            </div>
-                            <div className="bg-white/[0.04] p-4 rounded-2xl border border-white/10">
-                              <p className="text-neutral-400 font-semibold">MARKET</p>
-                              <p className="text-lg font-extrabold text-purple-300 mt-1">9.5 / 10</p>
-                            </div>
-                            <div className="bg-white/[0.04] p-4 rounded-2xl border border-white/10">
-                              <p className="text-neutral-400 font-semibold">PITCH</p>
-                              <p className="text-lg font-extrabold text-purple-300 mt-1">9.9 / 10</p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {item.widgetType === "internships" && (
-                        <div className="flex flex-col gap-5 my-2">
-                          <div className="bg-teal-500/10 p-5 rounded-2xl border border-teal-500/35 flex items-center justify-between">
-                            <div>
-                              <p className="text-xs font-mono text-teal-300 font-bold">VETTED STARTUP ROLES</p>
-                              <p className="text-lg font-extrabold text-white">Direct Founder Placements</p>
-                            </div>
-                            <span className="px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-teal-500/20 text-teal-300 border border-teal-500/40">
-                              ₹25k - ₹60k/mo
-                            </span>
-                          </div>
-
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between bg-white/[0.04] p-4 rounded-2xl text-xs sm:text-sm font-semibold border border-white/5">
-                              <span className="text-white font-extrabold">Founding Full-Stack Engineer</span>
-                              <span className="text-teal-300 font-mono font-bold">Series-A FinTech</span>
-                            </div>
-                            <div className="flex items-center justify-between bg-white/[0.04] p-4 rounded-2xl text-xs sm:text-sm font-semibold border border-white/5">
-                              <span className="text-white font-extrabold">Product Growth Fellow</span>
-                              <span className="text-teal-300 font-mono font-bold">AI Robotics Lab</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Interactive Bottom Bar — Safely inset past bottom border curve */}
-                      <div className="mt-4 pt-4 border-t border-white/15 flex items-center justify-between">
-                        <span className="text-xs font-mono text-neutral-300 font-bold flex items-center gap-2">
-                          <ShieldCheck size={18} style={{ color: item.accent }} /> INCLUDED WITH E-CELL MEMBERSHIP
+                      {/* Bottom Footer Accent Pill */}
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          paddingTop: "1.25rem",
+                          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "0.78rem",
+                            fontWeight: 700,
+                            color: item.accent,
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.5rem",
+                            fontFamily: "var(--font-mono)",
+                          }}
+                        >
+                          <ShieldCheck size={18} weight="fill" /> E-CELL INCUBATION TRACK
                         </span>
-                        <div className="flex items-center gap-1.5 text-xs sm:text-sm font-extrabold transition-transform group-hover:translate-x-1" style={{ color: item.accent }}>
-                          <span>Explore Module</span>
-                          <ArrowRight size={16} weight="bold" />
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.4rem",
+                            fontSize: "0.82rem",
+                            fontWeight: 800,
+                            color: "#FFFFFF",
+                          }}
+                        >
+                          <span>LEARN MORE</span>
+                          <ArrowRight size={16} weight="bold" style={{ color: item.accent }} />
                         </div>
                       </div>
-
-                    </div>
+                    </SpotlightCard>
                   </div>
 
                 </div>
