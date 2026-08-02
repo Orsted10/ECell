@@ -32,140 +32,147 @@ const OFFERINGS = [
     pillarNo: "01",
     title: "Startup Incubation",
     tagline: "Turn your napkin idea into a venture-backed startup.",
-    body: "Access dedicated 24/7 maker desk space, zero-cost legal incorporation, mentorship from Series-A founders, and direct seed funding opportunities.",
-    highlights: ["24/7 Dedicated Desk Space", "Zero-Cost Legal & Equity Counsel", "Up to ₹10L Seed Grant Access"],
+    body: "Access dedicated maker desk space, guidance on legal incorporation, mentorship from experienced founders, and pitch prep for seed funding.",
+    highlights: ["Dedicated Workspace Access", "Legal & Charter Setup Guidance", "Incubation Cohort Milestone Tracking"],
     accent: "#FF5500",
     glowColor: "rgba(255, 85, 0, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(255, 85, 0, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "The Acceleration Package",
-    cardSubtitle: "COHORT 2026 // INCUBATION TRACK",
-    cardBody: "Selected teams receive dedicated workspace, ₹10M capital pool access, zero-equity incorporation, and weekly milestone tracking.",
+    cardTitle: "How Incubation Works",
+    cardSubtitle: "COHORT PROGRAM ROADMAP",
+    cardBody: "A structured 4-stage pipeline guiding student teams from raw concept to launch-ready startup.",
     cardDeliverables: [
-      "Zero-Equity Company Registration & CA Counsel",
-      "24/7 Maker Desk with Fiber & Private Pods",
-      "Up to ₹10,000,000 Direct Micro-Grant Pool",
-      "Standardized Cap-Table & Vesting Blueprints",
+      "Ideation & Problem Validation — Refining your concept",
+      "Prototype & MVP Build — Accessing maker space & tech tools",
+      "Legal & Charter Setup — Guidance on incorporation basics",
+      "Pitch & Grant Readiness — Deck & financial model prep",
     ],
+    cardFooterLabel: "CAMPUS INCUBATION PROGRAM",
   },
   {
     icon: Microphone,
     pillarNo: "02",
     title: "Founder Talks",
     tagline: "Unfiltered playbooks directly from iconic builders.",
-    body: "Monthly intimate fireside chats and masterclasses with active founders, Series-B CEOs, and top operators sharing real mistakes and growth tactics.",
-    highlights: ["Monthly Live Masterclasses", "Unfiltered Q&A Sessions", "Exclusive Closed-Door Dinners"],
+    body: "Monthly intimate fireside chats and masterclasses with active founders, CEOs, and operators sharing real lessons and growth strategies.",
+    highlights: ["Monthly Speaker Sessions", "Interactive Q&A Audits", "Networking Opportunities"],
     accent: "#818CF8",
     glowColor: "rgba(129, 140, 248, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(129, 140, 248, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "Unscripted Founder Sessions",
-    cardSubtitle: "CLOSED-DOOR MASTERCLASS VAULT",
-    cardBody: "Off-the-record failure breakdowns, GTM playbooks, and 1-on-1 AMA slots with unicorn founders and YC alumni.",
+    cardTitle: "Learning From Real Builders",
+    cardSubtitle: "CAMPUS MASTERCLASS SERIES",
+    cardBody: "Key topics and practical takeaways covered during our monthly founder speaker sessions.",
     cardDeliverables: [
-      "Uncensored Post-Mortem Case Studies",
-      "Intimate 10-Person Founder Dinners",
-      "Private Masterclass Video & Slide Vault",
-      "1-on-1 AMA Slots with Visiting Speakers",
+      "Zero-to-One Product Launch — Building the initial MVP",
+      "Early Traction & Growth — Finding your first users",
+      "Fundraising Fundamentals — Pitching & term sheet basics",
+      "Interactive Q&A — Asking direct questions to speakers",
     ],
+    cardFooterLabel: "STUDENT FOUNDER SESSIONS",
   },
   {
     icon: UsersThree,
     pillarNo: "03",
     title: "Co-Founder Match",
     tagline: "Your network is your ultimate unfair advantage.",
-    body: "AI-driven peer matching, private founder mixers, and maker hack-nights to find your technical co-founder, growth lead, or design partner.",
-    highlights: ["AI Co-Founder Matchmaking", "Private Founder Retreats", "Cross-Campus Talent Directory"],
+    body: "Peer networking mixers, team-building sessions, and campus meetups to find your technical co-founder, growth lead, or design partner.",
+    highlights: ["Builder Mixer Events", "Cross-Department Networking", "Team Formation Support"],
     accent: "#34D399",
     glowColor: "rgba(52, 211, 153, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(52, 211, 153, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "Matchmaking Engine",
-    cardSubtitle: "TALENT MATRIX // CROSS-CAMPUS",
-    cardBody: "Pairing AI developers, UI/UX designers, and business operators through skill-gapped algorithms and 24-hour sprint trials.",
+    cardTitle: "Building Your Team",
+    cardSubtitle: "COMMUNITY MATCHMAKING",
+    cardBody: "Connecting technical, design, and business-minded students across departments.",
     cardDeliverables: [
-      "Skill-Gapped Match Algorithm (98% Synergy)",
-      "24-Hour Sprint Team Trial Hack-Nights",
-      "Pre-Drafted 4-Year Vesting & Cliff Agreements",
-      "300+ Vetted Builder Talent Directory",
+      "Builder Mixers — Networking with motivated peers",
+      "Skill Showcase — Presenting project ideas & needs",
+      "Hackathon Team Pairing — Forming balanced teams",
+      "Founder Roles Basics — Understanding equity & responsibilities",
     ],
+    cardFooterLabel: "CAMPUS NETWORK TRACK",
   },
   {
     icon: Student,
     pillarNo: "04",
     title: "1-on-1 Mentorship",
     tagline: "Guided step-by-step by those who built before you.",
-    body: "Direct 1-on-1 office hours with alumni founders, venture capitalists, and domain experts in AI, Fintech, SaaS, and Consumer Tech.",
-    highlights: ["Weekly Dedicated Office Hours", "Pitch Deck Structural Audit", "Direct Investor Warm Intros"],
+    body: "Direct 1-on-1 office hours with alumni founders, mentors, and domain experts across technology, product, and business strategy.",
+    highlights: ["Dedicated Office Hours", "Pitch Deck Teardowns", "Strategic Roadmap Advice"],
     accent: "#FCD34D",
     glowColor: "rgba(252, 211, 77, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(252, 211, 77, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "Executive Advisory Desk",
-    cardSubtitle: "OPERATIONAL ROADMAP AUDITS",
-    cardBody: "Weekly 45-minute 1-on-1 sessions with Series-A product leaders and VC partners to refine your pitch, metrics, and GTM strategy.",
+    cardTitle: "Personalized Advisory",
+    cardSubtitle: "MENTORSHIP CLINICS",
+    cardBody: "Direct feedback sessions tailored to your current stage and immediate challenges.",
     cardDeliverables: [
-      "Weekly 45-Min Dedicated Advisory Sprint",
-      "Slide-by-Slide Pitch Deck Teardowns",
-      "Warm Intros to Active Angel Syndicates",
-      "Legal, Compliance & Financial Tax Guidance",
+      "Pitch Deck Review — Structural & visual feedback",
+      "Business Model Audit — Evaluating value proposition",
+      "Tech Stack Consultation — Guidance on development tools",
+      "GTM Strategy Review — Defining target audience & launch plan",
     ],
+    cardFooterLabel: "EXPERT ADVISORY TRACK",
   },
   {
     icon: Lightning,
     pillarNo: "05",
     title: "48H Ideathons",
     tagline: "48 intense hours to prototype, pitch, and win.",
-    body: "Adrenaline-fueled hackathons where student teams hack overnight, build working MVPs, compete for ₹2.5L cash prizes, and get spotted by VCs.",
-    highlights: ["₹2,50,000 Cash Prize Pool", "Free AWS & OpenAI Credits", "Fast-Track VC Incubation"],
+    body: "Fast-paced hackathons where student teams work together, build working prototypes, compete for prizes, and get recognized.",
+    highlights: ["48-Hour Prototyping Sprint", "Mentor Guidance On-Site", "Prizes & Recognition"],
     accent: "#FCA5A5",
     glowColor: "rgba(252, 165, 165, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(252, 165, 165, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "Rapid Sprint Competition",
-    cardSubtitle: "48H BUILD & LAUNCH ENGINE",
-    cardBody: "Overnight hackathons with instant non-dilutive cash grants, cloud infrastructure perks, and immediate incubation bypass for winners.",
+    cardTitle: "The Ideathon Journey",
+    cardSubtitle: "ANNUAL HACKATHON SPRINT",
+    cardBody: "From problem statement to working prototype and pitch presentation in two days.",
     cardDeliverables: [
-      "₹2,50,000 Cash Pool (Instant Disbursal)",
-      "$5,000+ AWS, OpenAI & Supabase Credits",
-      "Direct Screening Bypass into Cohort 01",
-      "Red Bull, Catering & 24H Hardware Lab Access",
+      "Problem Statement Reveal — Challenge track selection",
+      "Rapid Prototyping — 48 hours of collaborative building",
+      "Mentor Check-Ins — Mid-sprint feedback & guidance",
+      "Jury Presentation — Pitching working MVPs to judges",
     ],
+    cardFooterLabel: "ANNUAL CAMPUS IDEATHON",
   },
   {
     icon: Trophy,
     pillarNo: "06",
     title: "Pitch Competitions",
     tagline: "Present your vision. Persuade real VCs. Win capital.",
-    body: "High-stakes Demo Days and pitch battles in front of angel syndicates and venture funds looking to write pre-seed checks for student startups.",
-    highlights: ["Live VC Jury Desk", "Term Sheet Opportunities", "National Media Exposure"],
+    body: "Campus Demo Days and pitch showcases presenting top student startups to judges, industry professionals, and audience members.",
+    highlights: ["Stage Presentation Experience", "Expert Jury Feedback", "Campus Exposure"],
     accent: "#C4B5FD",
     glowColor: "rgba(196, 181, 253, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(196, 181, 253, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "National VC Demo Day",
-    cardSubtitle: "INVESTOR ARENA // PRE-SEED",
-    cardBody: "Mainstage 5-minute pitch in front of 20+ active VC partner juries writing on-the-spot term sheets and angel checks.",
+    cardTitle: "Campus Pitch Showcase",
+    cardSubtitle: "DEMO DAY ARENA",
+    cardBody: "High-visibility opportunity to present your startup vision and gain valuable pitch experience.",
     cardDeliverables: [
-      "5-Min Mainstage Pitch to Active VC Partners",
-      "On-Spot Pre-Seed Term Sheet & Check Deals",
-      "Featured Coverage across Tech Media & News",
-      "Valuation & Financial Model Benchmarking",
+      "Application & Deck Screening — Initial entry review",
+      "Pitch Coaching — Refining presentation & slide flow",
+      "Live Stage Pitch — Presenting to judges & audience",
+      "Awards & Feedback — Constructive jury evaluation",
     ],
+    cardFooterLabel: "ANNUAL PITCH SHOWCASE",
   },
   {
     icon: Briefcase,
     pillarNo: "07",
     title: "Startup Internships",
     tagline: "High-impact roles at high-growth scaleups.",
-    body: "Curated 1-click internship placements at vetted Series-A to Series-C startups, giving you hands-on building experience classrooms can never match.",
-    highlights: ["Paid Stipends (₹25k-₹60k/mo)", "Direct Founder Reporting", "Fast-Track Full-Time Offers"],
+    body: "Connecting interested students with internship roles at innovative startups, gaining hands-on building experience beyond textbooks.",
+    highlights: ["Curated Role Postings", "Hands-On Project Work", "Skill-Building Experience"],
     accent: "#5EEAD4",
     glowColor: "rgba(94, 234, 212, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(94, 234, 212, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "High-Growth Placements",
-    cardSubtitle: "VETTED FOUNDER ROLES",
-    cardBody: "Direct 1-click placement into Series-A to C startups with guaranteed monthly stipends and full product feature ownership.",
+    cardTitle: "Startup Career Opportunities",
+    cardSubtitle: "TALENT PLACEMENT SUPPORT",
+    cardBody: "Helping students discover and apply for impactful roles at early-stage companies.",
     cardDeliverables: [
-      "Guaranteed Stipends (₹25,000 - ₹60,000/mo)",
-      "Direct Reporting to C-Suite & Founders",
-      "Pre-Placement Full-Time Job Offers (PPO)",
-      "Official University Internship Academic Credits",
+      "Vetted Opportunity Board — Curated internship listings",
+      "Resume & Portfolio Prep — Highlighting project work",
+      "Direct Application Routing — Connecting with founders",
+      "Real-World Experience — Building alongside core teams",
     ],
+    cardFooterLabel: "STUDENT CAREER TRACK",
   },
 ];
 
@@ -321,7 +328,7 @@ export default function WhatYouGet() {
                     </div>
                   </div>
 
-                  {/* Right Column: Clean Visual Card showcasing OUTCOMES & DELIVERABLES (7 cols) */}
+                  {/* Right Column: Clean Visual Card showcasing REAL PROGRAM FRAMEWORKS (7 cols) */}
                   <div className="lg:col-span-7 flex flex-col justify-center">
                     <SpotlightCard
                       style={{
@@ -351,7 +358,7 @@ export default function WhatYouGet() {
                             fontFamily: "var(--font-mono)",
                           }}
                         >
-                          STAGE {item.pillarNo} · OUTCOMES
+                          STAGE {item.pillarNo} · FRAMEWORK
                         </span>
                         <span
                           style={{
@@ -397,7 +404,7 @@ export default function WhatYouGet() {
                         </p>
                       </div>
 
-                      {/* 4 Concrete Deliverable Items on Right Card */}
+                      {/* 4 Authentic Program Steps on Right Card */}
                       <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                         {item.cardDeliverables.map((deliv) => (
                           <div
@@ -441,7 +448,7 @@ export default function WhatYouGet() {
                             fontFamily: "var(--font-mono)",
                           }}
                         >
-                          <ShieldCheck size={18} weight="fill" /> E-CELL DELIVERABLE GUARANTEE
+                          <ShieldCheck size={18} weight="fill" /> {item.cardFooterLabel}
                         </span>
                         <div
                           style={{
@@ -453,7 +460,7 @@ export default function WhatYouGet() {
                             color: "#FFFFFF",
                           }}
                         >
-                          <span>APPLY TO TRACK</span>
+                          <span>LEARN MORE</span>
                           <ArrowRight size={16} weight="bold" style={{ color: item.accent }} />
                         </div>
                       </div>
