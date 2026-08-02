@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -179,6 +179,7 @@ const OFFERINGS = [
 export default function WhatYouGet() {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduce = useReducedMotion();
+  const [activeCard, setActiveCard] = useState<number>(0);
 
   useEffect(() => {
     if (shouldReduce || !containerRef.current) return;
@@ -191,14 +192,21 @@ export default function WhatYouGet() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${cards.length * 450}vh`, // Massive scroll range so mouse wheel moves in tiny, ultra-controlled steps
+          end: () => `+=${cards.length * 450}vh`,
           pin: true,
-          scrub: 0.8, // Tight, responsive scrub
+          scrub: 0.8,
           snap: {
             snapTo: 1 / (cards.length - 1),
             duration: { min: 0.2, max: 0.5 },
-            delay: 0.05, // Instant snap on scroll pause
+            delay: 0.05,
             ease: "power2.out",
+          },
+          onUpdate: (self) => {
+            const index = Math.min(
+              cards.length - 1,
+              Math.floor(self.progress * cards.length)
+            );
+            setActiveCard(index);
           },
           anticipatePin: 1,
           invalidateOnRefresh: true,
@@ -209,7 +217,7 @@ export default function WhatYouGet() {
         if (i === 0) return; // First card is base state
 
         // Card i starts off-screen below (100% y)
-        gsap.set(card, { yPercent: 100, opacity: 1, scale: 1 });
+        gsap.set(card, { yPercent: 100, opacity: 1, scale: 1, rotateX: 0 });
 
         // Step 1: Crisp, quick 0.8s transition sliding Card i UP over previous card
         tl.to(
@@ -222,13 +230,14 @@ export default function WhatYouGet() {
           `slide-${i}`
         );
 
-        // Step 2: Simultaneously scale down & dim previous card
+        // Step 2: 3D perspective depth — scale down, tilt, & dim previous card underneath
         tl.to(
           cards[i - 1],
           {
-            scale: 0.93,
-            opacity: 0.35,
-            filter: "blur(5px)",
+            scale: 0.92,
+            opacity: 0.25,
+            rotateX: 4,
+            filter: "blur(6px)",
             ease: "power2.out",
             duration: 0.8,
           },
@@ -313,241 +322,288 @@ export default function WhatYouGet() {
         </motion.div>
       </div>
 
-      {/* Pinned Drawer Stacked Container */}
-      <div ref={containerRef} className="relative z-10 w-full h-[90vh] overflow-hidden flex items-center justify-center">
-        {OFFERINGS.map((item, i) => {
-          const Icon = item.icon;
-          return (
-            <div
-              key={item.title}
-              className="offering-card absolute inset-0 w-full h-full flex items-center justify-center px-4 sm:px-8"
-              style={{
-                zIndex: i + 1,
-                willChange: "transform, opacity, filter",
-              }}
-            >
-              {/* Card Outer Shell */}
+      {/* Pinned Drawer Stacked Container with Floating HUD Bar */}
+      <div ref={containerRef} className="relative z-10 w-full h-[95vh] min-h-[750px] overflow-hidden flex flex-col items-center justify-between pb-8">
+        
+        {/* Floating Active Pillar Progress HUD */}
+        <div className="relative z-30 pt-4 px-4 w-full max-w-5xl">
+          <div className="flex items-center justify-between gap-2 p-2 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 px-2">
+              {OFFERINGS.map((pillar, idx) => {
+                const isActive = activeCard === idx;
+                return (
+                  <button
+                    key={pillar.pillarNo}
+                    onClick={() => {
+                      if (!containerRef.current) return;
+                      const totalScroll = containerRef.current.offsetHeight * 4.5 * OFFERINGS.length;
+                      const targetY = (idx / (OFFERINGS.length - 1)) * totalScroll;
+                      window.scrollTo({ top: targetY, behavior: "smooth" });
+                    }}
+                    className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold transition-all duration-300 whitespace-nowrap ${
+                      isActive
+                        ? "bg-white/10 text-white border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.15)] scale-105"
+                        : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]"
+                    }`}
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full transition-all duration-300"
+                      style={{
+                        background: isActive ? pillar.accent : "rgba(255,255,255,0.2)",
+                        boxShadow: isActive ? `0 0 10px ${pillar.accent}` : "none",
+                      }}
+                    />
+                    <span>{pillar.pillarNo}</span>
+                    <span className="hidden md:inline font-sans text-[11px] font-semibold opacity-90">{pillar.title.split(" ")[0]}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Active Track Counter */}
+            <div className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs font-mono font-extrabold text-slate-200">
+              <span className="text-[#FF5500]">0{activeCard + 1}</span>
+              <span className="text-slate-500">/</span>
+              <span>07 TRACKS</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Stacked Drawer Cards */}
+        <div className="relative w-full flex-1 flex items-center justify-center px-4 sm:px-8">
+          {OFFERINGS.map((item, i) => {
+            const Icon = item.icon;
+            return (
               <div
-                className="container-wide relative rounded-[2.5rem] p-8 sm:p-10 md:p-12 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+                key={item.title}
+                className="offering-card absolute inset-0 w-full h-full flex items-center justify-center px-4 sm:px-8"
                 style={{
-                  background: "linear-gradient(180deg, rgba(10, 13, 20, 0.98) 0%, rgba(14, 18, 28, 0.97) 100%)",
-                  backdropFilter: "blur(35px)",
-                  border: `2px solid ${item.accent}60`,
-                  boxShadow: `0 30px 90px rgba(0,0,0,0.95), inset 0 1px 0 ${item.accent}50`,
+                  zIndex: i + 1,
+                  willChange: "transform, opacity, filter",
                 }}
               >
-              {/* Radial Accent Glow behind card */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: `radial-gradient(circle at 75% 50%, ${item.accent}18 0%, transparent 65%)`,
-                }}
-              />
+                {/* Card Outer Shell */}
+                <div
+                  className="container-wide relative rounded-[2.5rem] p-8 sm:p-10 md:p-12 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+                  style={{
+                    background: "linear-gradient(180deg, rgba(10, 13, 20, 0.98) 0%, rgba(14, 18, 28, 0.97) 100%)",
+                    backdropFilter: "blur(35px)",
+                    border: `2px solid ${item.accent}60`,
+                    boxShadow: `0 30px 90px rgba(0,0,0,0.95), inset 0 1px 0 ${item.accent}50`,
+                  }}
+                >
+                  {/* Top Laser Beam Border */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px] z-20 pointer-events-none"
+                    style={{
+                      background: `linear-gradient(90deg, transparent 0%, ${item.accent} 50%, transparent 100%)`,
+                    }}
+                  />
 
-              <div className="container-wide relative z-10" style={{ paddingBlock: "2rem" }}>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-                  
-                  {/* Left Column: Rich Information & Bullet Highlights (5 cols) */}
-                  <div className="lg:col-span-5 flex flex-col justify-center gap-7 py-4">
-                    {/* Badge Pill */}
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
-                        style={{
-                          background: `linear-gradient(135deg, ${item.accent}35 0%, ${item.accent}12 100%)`,
-                          border: `1.5px solid ${item.accent}70`,
-                          boxShadow: `0 0 25px ${item.glowColor}`,
-                        }}
-                      >
-                        <Icon size={28} weight="bold" style={{ color: item.accent }} />
-                      </div>
-                      <span
-                        className="font-mono text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] px-4 py-2 rounded-full"
-                        style={{
-                          color: item.accent,
-                          background: `${item.accent}18`,
-                          border: `1px solid ${item.accent}50`,
-                        }}
-                      >
-                        PILLAR // {item.pillarNo}
-                      </span>
-                    </div>
+                  {/* Radial Accent Glow behind card */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: `radial-gradient(circle at 75% 50%, ${item.accent}18 0%, transparent 65%)`,
+                    }}
+                  />
 
-                    {/* Title */}
-                    <h3
-                      className="font-outfit text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-none drop-shadow-md"
-                    >
-                      {item.title}
-                    </h3>
-
-                    {/* Tagline */}
-                    <p
-                      className="text-xl sm:text-2xl font-bold leading-snug"
-                      style={{ color: item.accent }}
-                    >
-                      {item.tagline}
-                    </p>
-
-                    {/* Body Paragraph — Bright & Legible Slate-100 */}
-                    <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed drop-shadow-sm">
-                      {item.body}
-                    </p>
-
-                    {/* Feature Highlights Checklist */}
-                    <div className="flex flex-col gap-3.5 pt-2">
-                      {item.highlights.map((feat) => (
-                        <div key={feat} className="flex items-center gap-3">
-                          <CheckCircle size={20} weight="fill" style={{ color: item.accent }} className="flex-shrink-0" />
-                          <span className="text-sm sm:text-base font-semibold text-neutral-100">{feat}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Right Column: Clean Visual Card showcasing REAL PROGRAM FRAMEWORKS (7 cols) */}
-                  <div className="lg:col-span-7 flex flex-col justify-center">
-                    <SpotlightCard
-                      style={{
-                        padding: "2.75rem",
-                        borderRadius: "2rem",
-                        border: `1.5px solid ${item.accent}50`,
-                        background: `${item.accent}0D`,
-                        backdropFilter: "blur(30px)",
-                        position: "relative",
-                        boxShadow: `0 20px 50px rgba(0,0,0,0.6), 0 0 35px ${item.glowColor}`,
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "1.75rem",
-                        minHeight: "380px",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      {/* Top Eyebrow & Status Pill */}
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
-                        <span
-                          style={{
-                            fontSize: "0.75rem",
-                            fontWeight: 800,
-                            letterSpacing: "0.2em",
-                            textTransform: "uppercase",
-                            color: item.accent,
-                            fontFamily: "var(--font-mono)",
-                          }}
-                        >
-                          STAGE {item.pillarNo} · FRAMEWORK
-                        </span>
-                        <span
-                          style={{
-                            fontSize: "0.7rem",
-                            fontWeight: 700,
-                            letterSpacing: "0.15em",
-                            textTransform: "uppercase",
-                            color: "var(--text-2)",
-                            background: "rgba(255, 255, 255, 0.06)",
-                            border: "1px solid rgba(255, 255, 255, 0.12)",
-                            padding: "0.35rem 0.85rem",
-                            borderRadius: "999px",
-                            fontFamily: "var(--font-mono)",
-                          }}
-                        >
-                          {item.cardSubtitle}
-                        </span>
-                      </div>
-
-                      {/* Deliverable Header */}
-                      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                        <h4
-                          style={{
-                            fontFamily: "var(--font-outfit)",
-                            fontSize: "clamp(1.75rem, 3vw, 2.35rem)",
-                            fontWeight: 800,
-                            color: "#FFFFFF",
-                            letterSpacing: "-0.02em",
-                            lineHeight: 1.1,
-                          }}
-                        >
-                          {item.cardTitle}
-                        </h4>
-                        <p
-                          style={{
-                            fontSize: "0.95rem",
-                            color: "#CBD5E1",
-                            lineHeight: 1.6,
-                            fontWeight: 500,
-                          }}
-                        >
-                          {item.cardBody}
-                        </p>
-                      </div>
-
-                      {/* 4 Authentic Program Steps on Right Card */}
-                      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                        {item.cardDeliverables.map((deliv) => (
+                  <div className="container-wide relative z-10" style={{ paddingBlock: "1.5rem" }}>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+                      
+                      {/* Left Column: Rich Information & Bullet Highlights (5 cols) */}
+                      <div className="lg:col-span-5 flex flex-col justify-center gap-6 py-2">
+                        {/* Badge Pill */}
+                        <div className="flex items-center gap-3">
                           <div
-                            key={deliv}
+                            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
+                            style={{
+                              background: `linear-gradient(135deg, ${item.accent}35 0%, ${item.accent}12 100%)`,
+                              border: `1.5px solid ${item.accent}70`,
+                              boxShadow: `0 0 30px ${item.glowColor}`,
+                            }}
+                          >
+                            <Icon size={28} weight="bold" style={{ color: item.accent }} />
+                          </div>
+                          <span
+                            className="font-mono text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] px-4 py-2 rounded-full shadow-inner"
+                            style={{
+                              color: item.accent,
+                              background: `${item.accent}18`,
+                              border: `1px solid ${item.accent}50`,
+                            }}
+                          >
+                            PILLAR // {item.pillarNo}
+                          </span>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="font-outfit text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-none drop-shadow-md">
+                          {item.title}
+                        </h3>
+
+                        {/* Tagline */}
+                        <p className="text-xl sm:text-2xl font-bold leading-snug" style={{ color: item.accent }}>
+                          {item.tagline}
+                        </p>
+
+                        {/* Body Paragraph — Bright & Legible Slate-100 */}
+                        <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed drop-shadow-sm">
+                          {item.body}
+                        </p>
+
+                        {/* Feature Highlights Checklist */}
+                        <div className="flex flex-col gap-3 pt-1">
+                          {item.highlights.map((feat) => (
+                            <div key={feat} className="flex items-center gap-3 group">
+                              <CheckCircle size={20} weight="fill" style={{ color: item.accent }} className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                              <span className="text-sm sm:text-base font-semibold text-neutral-100 group-hover:text-white transition-colors duration-200">{feat}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Right Column: Clean Visual Card showcasing REAL PROGRAM FRAMEWORKS (7 cols) */}
+                      <div className="lg:col-span-7 flex flex-col justify-center">
+                        <SpotlightCard
+                          style={{
+                            padding: "2.5rem",
+                            borderRadius: "2rem",
+                            border: `1.5px solid ${item.accent}50`,
+                            background: `${item.accent}0D`,
+                            backdropFilter: "blur(30px)",
+                            position: "relative",
+                            boxShadow: `0 20px 50px rgba(0,0,0,0.6), 0 0 35px ${item.glowColor}`,
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "1.5rem",
+                            minHeight: "380px",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          {/* Top Eyebrow & Status Pill */}
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+                            <span
+                              style={{
+                                fontSize: "0.75rem",
+                                fontWeight: 800,
+                                letterSpacing: "0.2em",
+                                textTransform: "uppercase",
+                                color: item.accent,
+                                fontFamily: "var(--font-mono)",
+                              }}
+                            >
+                              STAGE {item.pillarNo} · FRAMEWORK
+                            </span>
+                            <span
+                              style={{
+                                fontSize: "0.7rem",
+                                fontWeight: 700,
+                                letterSpacing: "0.15em",
+                                textTransform: "uppercase",
+                                color: "#F8FAFC",
+                                background: "rgba(255, 255, 255, 0.08)",
+                                border: "1px solid rgba(255, 255, 255, 0.16)",
+                                padding: "0.35rem 0.85rem",
+                                borderRadius: "999px",
+                                fontFamily: "var(--font-mono)",
+                              }}
+                            >
+                              {item.cardSubtitle}
+                            </span>
+                          </div>
+
+                          {/* Deliverable Header */}
+                          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                            <h4
+                              style={{
+                                fontFamily: "var(--font-outfit)",
+                                fontSize: "clamp(1.75rem, 3vw, 2.35rem)",
+                                fontWeight: 800,
+                                color: "#FFFFFF",
+                                letterSpacing: "-0.02em",
+                                lineHeight: 1.1,
+                              }}
+                            >
+                              {item.cardTitle}
+                            </h4>
+                            <p
+                              style={{
+                                fontSize: "0.95rem",
+                                color: "#CBD5E1",
+                                lineHeight: 1.6,
+                                fontWeight: 500,
+                              }}
+                            >
+                              {item.cardBody}
+                            </p>
+                          </div>
+
+                          {/* 4 Authentic Program Steps on Right Card */}
+                          <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+                            {item.cardDeliverables.map((deliv) => (
+                              <div
+                                key={deliv}
+                                className="group flex items-center gap-3 p-3 sm:px-4 rounded-xl transition-all duration-300 hover:translate-x-1.5"
+                                style={{
+                                  background: "rgba(255, 255, 255, 0.04)",
+                                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                                }}
+                              >
+                                <Sparkle size={18} weight="fill" style={{ color: item.accent, flexShrink: 0 }} className="transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
+                                <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "#F8FAFC" }}>
+                                  {deliv}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Bottom Footer Accent Pill */}
+                          <div
                             style={{
                               display: "flex",
                               alignItems: "center",
-                              gap: "0.75rem",
-                              background: "rgba(255, 255, 255, 0.04)",
-                              border: "1px solid rgba(255, 255, 255, 0.08)",
-                              padding: "0.75rem 1rem",
-                              borderRadius: "0.85rem",
+                              justifyContent: "space-between",
+                              paddingTop: "1rem",
+                              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
                             }}
                           >
-                            <Sparkle size={18} weight="fill" style={{ color: item.accent, flexShrink: 0 }} />
-                            <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "#F8FAFC" }}>
-                              {deliv}
+                            <span
+                              style={{
+                                fontSize: "0.78rem",
+                                fontWeight: 700,
+                                color: item.accent,
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.5rem",
+                                fontFamily: "var(--font-mono)",
+                              }}
+                            >
+                              <ShieldCheck size={18} weight="fill" /> {item.cardFooterLabel}
                             </span>
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.4rem",
+                                fontSize: "0.82rem",
+                                fontWeight: 800,
+                                color: "#FFFFFF",
+                              }}
+                            >
+                              <span>LEARN MORE</span>
+                              <ArrowRight size={16} weight="bold" style={{ color: item.accent }} />
+                            </div>
                           </div>
-                        ))}
+                        </SpotlightCard>
                       </div>
-
-                      {/* Bottom Footer Accent Pill */}
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          paddingTop: "1rem",
-                          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontSize: "0.78rem",
-                            fontWeight: 700,
-                            color: item.accent,
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "0.5rem",
-                            fontFamily: "var(--font-mono)",
-                          }}
-                        >
-                          <ShieldCheck size={18} weight="fill" /> {item.cardFooterLabel}
-                        </span>
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "0.4rem",
-                            fontSize: "0.82rem",
-                            fontWeight: 800,
-                            color: "#FFFFFF",
-                          }}
-                        >
-                          <span>LEARN MORE</span>
-                          <ArrowRight size={16} weight="bold" style={{ color: item.accent }} />
-                        </div>
-                      </div>
-                    </SpotlightCard>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );
