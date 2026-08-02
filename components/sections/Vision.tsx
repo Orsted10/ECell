@@ -79,17 +79,18 @@ export default function Vision() {
         {/* Top Spacer to separate from ticker above */}
         <div style={{ height: "8rem" }} />
 
-        {/* ─── SECTION HEADER (Matching Hero.tsx Architecture 1:1) ─────── */}
+        {/* ─── SECTION HEADER (High-End Balanced Typography & Dual Glow) ─────── */}
         <div style={{ maxWidth: "1150px", marginInline: "auto", width: "100%", position: "relative" }}>
-          {/* Radial Spotlight Glow Behind Text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[380px] bg-[#FF5500]/[0.15] blur-[140px] rounded-full pointer-events-none" />
+          {/* Dual Radial Spotlight Glow Behind Text (Orange + Blue Ambient Glow) */}
+          <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#FF5500]/[0.20] blur-[150px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 right-1/3 translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#0066FF]/[0.15] blur-[150px] rounded-full pointer-events-none" />
 
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "1.75rem",
+              gap: "2rem",
               width: "100%",
               textAlign: "center",
               position: "relative",
@@ -103,16 +104,16 @@ export default function Vision() {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "0.5rem",
-                fontSize: "clamp(0.68rem, 2.5vw, 0.85rem)",
+                fontSize: "clamp(0.72rem, 2.5vw, 0.88rem)",
                 fontWeight: 700,
-                letterSpacing: "clamp(0.06em, 1vw, 0.15em)",
+                letterSpacing: "clamp(0.08em, 1vw, 0.18em)",
                 textTransform: "uppercase",
                 color: "#FF5500",
-                border: "1px solid rgba(255, 85, 0, 0.35)",
+                border: "1px solid rgba(255, 85, 0, 0.4)",
                 borderRadius: "999px",
-                padding: "0.45rem 1rem",
+                padding: "0.5rem 1.2rem",
                 background: "rgba(255, 85, 0, 0.12)",
-                boxShadow: "0 0 24px rgba(255, 85, 0, 0.2)",
+                boxShadow: "0 0 28px rgba(255, 85, 0, 0.25)",
                 fontFamily: "var(--font-mono)",
                 maxWidth: "100%",
                 textAlign: "center",
@@ -122,42 +123,48 @@ export default function Vision() {
               <span>OUR VISION</span>
             </div>
 
-            {/* Continuous Grand Display Headline — Matching Hero 1:1 */}
+            {/* Continuous Grand Display Headline — Symmetrical 2-Line Dual Gradient */}
             <h2
               className="display-1"
               style={{
-                fontSize: "clamp(2.2rem, 6.5vw, 6.5rem)",
+                fontSize: "clamp(2.4rem, 6.8vw, 6.8rem)",
                 fontWeight: 800,
                 letterSpacing: "-0.035em",
-                lineHeight: 1.08,
-                maxWidth: "100%",
+                lineHeight: 1.1,
+                maxWidth: "1100px",
                 marginInline: "auto",
                 textAlign: "center",
                 color: "#FFFFFF",
                 wordBreak: "break-word",
+                textShadow: "0 10px 40px rgba(0,0,0,0.5)",
               }}
             >
-              <span>We build the</span>{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF3300]">
+              <span>We build the </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF2E00]">
                 founders
-              </span>{" "}
-              <span>who build</span>
+              </span>
               <br />
-              <span>the world.</span>
+              <span>who build the </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C6FF] via-[#0066FF] to-[#0044FF]">
+                world.
+              </span>
             </h2>
 
-            {/* Subheadline Paragraph — Matching Hero 1:1 */}
+            {/* Subheadline Paragraph — Crisp Bright High-Contrast Text */}
             <p
               style={{
-                fontSize: "clamp(0.95rem, 2vw, 1.25rem)",
-                color: "var(--text-2)",
-                maxWidth: "680px",
+                fontSize: "clamp(1.05rem, 2.2vw, 1.35rem)",
+                color: "#F1F5F9",
+                fontWeight: 500,
+                maxWidth: "760px",
                 marginInline: "auto",
-                lineHeight: 1.65,
+                lineHeight: 1.7,
                 textAlign: "center",
+                textShadow: "0 2px 10px rgba(0,0,0,0.6)",
               }}
             >
               E-Cell exists because the world needs more problem-solvers and risk-takers.
+              <br className="hidden md:inline" />
               We give student entrepreneurs the pathway, mentors, and maker labs to launch before graduation.
             </p>
           </div>
