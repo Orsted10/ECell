@@ -263,8 +263,69 @@ export default function WhatYouGet() {
     <section
       id="offerings"
       className="relative overflow-hidden bg-[#06070A]"
-      style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
+      style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)", paddingTop: "7rem" }}
     >
+      {/* Background Ambient Spotlights for Section Header */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none z-0">
+        <div
+          className="absolute inset-0 opacity-40 blur-[120px]"
+          style={{
+            background: "radial-gradient(circle at 35% 30%, rgba(255, 85, 0, 0.35) 0%, transparent 60%), radial-gradient(circle at 65% 30%, rgba(0, 102, 255, 0.3) 0%, transparent 60%)",
+          }}
+        />
+        {/* Subtle Tech Mesh Grid overlay */}
+        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
+      </div>
+
+      {/* Standalone Section Header — Restored with Generous Spacing & Bright Subheadline */}
+      <div className="container-wide relative z-10 text-center pb-12">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerContainer}
+          className="flex flex-col gap-6 items-center"
+        >
+          {/* Glowing Badge Pill */}
+          <motion.div
+            variants={fadeUp}
+            className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-[#FF5500]/60 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_30px_rgba(255,85,0,0.35)]"
+          >
+            <Sparkle size={18} weight="fill" className="text-[#FF5500] animate-pulse" />
+            <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-[0.25em] text-[#FF5500]">
+              CORE ECOSYSTEM PILLARS
+            </span>
+          </motion.div>
+          
+          {/* Display Headline */}
+          <RevealText 
+            text="Everything you need<br/>to launch a startup." 
+            className="font-outfit text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.05] text-center drop-shadow-2xl" 
+          />
+
+          {/* Subheadline — Bright Slate-100 */}
+          <p className="text-slate-100 text-lg sm:text-xl md:text-2xl max-w-3xl text-center font-bold leading-relaxed drop-shadow-sm">
+            Seven battle-tested launchpads designed to transform student builders into venture-backed founders.
+          </p>
+
+          {/* Glowing Metric Badges */}
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.05] border border-white/15 text-xs sm:text-sm font-mono font-extrabold text-white backdrop-blur-md shadow-lg">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#FF5500] animate-ping" />
+              <span>7 LAUNCHPAD TRACKS</span>
+            </div>
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.05] border border-white/15 text-xs sm:text-sm font-mono font-extrabold text-white backdrop-blur-md shadow-lg">
+              <Flame size={16} weight="fill" className="text-[#FF5500]" />
+              <span>100% BUILDER-FOCUSED</span>
+            </div>
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.05] border border-white/15 text-xs sm:text-sm font-mono font-extrabold text-white backdrop-blur-md shadow-lg">
+              <ShieldCheck size={16} weight="fill" className="text-emerald-400" />
+              <span>ZERO-EQUITY SUPPORT</span>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
       {/* Pinned Viewport Container (100vh) */}
       <div
         ref={containerRef}
@@ -273,70 +334,62 @@ export default function WhatYouGet() {
         {/* Dynamic Ambient Background Glow (Transitions color based on active pillar) */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] opacity-40 blur-[130px] transition-all duration-700"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] opacity-45 blur-[140px] transition-all duration-700"
             style={{
-              background: `radial-gradient(circle, ${OFFERINGS[activeCard].accent}35 0%, transparent 70%)`,
+              background: `radial-gradient(circle, ${OFFERINGS[activeCard].accent}40 0%, transparent 70%)`,
             }}
           />
           {/* Subtle Tech Mesh Grid overlay */}
           <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
         </div>
 
-        {/* TOP HEADER & HUD BAR — Populates the top 25% of the pinned screen */}
-        <div className="relative z-30 w-full max-w-6xl flex flex-col items-center gap-3 text-center pt-2">
-          {/* Header Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FF5500]/50 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_20px_rgba(255,85,0,0.2)]">
-            <Sparkle size={14} weight="fill" className="text-[#FF5500] animate-pulse" />
-            <span className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[#FF5500]">
-              CORE ECOSYSTEM PILLARS
-            </span>
-          </div>
-
-          {/* Section Headline */}
-          <h2 className="font-outfit text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-none drop-shadow-xl">
-            Everything you need to launch a startup.
-          </h2>
-
-          {/* Interactive Floating Glass HUD Tabs Bar */}
-          <div className="w-full max-w-4xl mt-1">
-            <div className="flex items-center justify-between gap-2 p-1.5 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-              <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 px-1 w-full justify-between">
-                {OFFERINGS.map((pillar, idx) => {
-                  const isActive = activeCard === idx;
-                  return (
-                    <button
-                      key={pillar.pillarNo}
-                      onClick={() => {
-                        if (!containerRef.current) return;
-                        const totalScroll = containerRef.current.offsetHeight * 3.5 * OFFERINGS.length;
-                        const targetY = (idx / (OFFERINGS.length - 1)) * totalScroll;
-                        window.scrollTo({ top: targetY, behavior: "smooth" });
+        {/* TOP HUD TAB NAVIGATION — Bolder, Brighter, High-Presence Slide Numbers */}
+        <div className="relative z-30 w-full max-w-6xl pt-2">
+          <div className="flex items-center justify-center p-2 rounded-2xl bg-black/75 border border-white/15 backdrop-blur-2xl shadow-[0_15px_40px_rgba(0,0,0,0.9)]">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-2 w-full justify-between">
+              {OFFERINGS.map((pillar, idx) => {
+                const isActive = activeCard === idx;
+                return (
+                  <button
+                    key={pillar.pillarNo}
+                    onClick={() => {
+                      if (!containerRef.current) return;
+                      const totalScroll = containerRef.current.offsetHeight * 3.5 * OFFERINGS.length;
+                      const targetY = (idx / (OFFERINGS.length - 1)) * totalScroll;
+                      window.scrollTo({ top: targetY, behavior: "smooth" });
+                    }}
+                    className={`flex items-center gap-2.5 px-4 py-2 rounded-xl font-mono text-sm sm:text-base font-black transition-all duration-300 whitespace-nowrap ${
+                      isActive
+                        ? "bg-white/15 text-white border-2 border-white/30 shadow-[0_0_25px_rgba(255,255,255,0.25)] scale-105"
+                        : "text-slate-300 hover:text-white hover:bg-white/[0.05]"
+                    }`}
+                    style={{
+                      borderColor: isActive ? pillar.accent : "transparent",
+                      boxShadow: isActive ? `0 0 20px ${pillar.accent}80` : "none",
+                    }}
+                  >
+                    <span
+                      className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+                      style={{
+                        background: isActive ? pillar.accent : "rgba(255,255,255,0.4)",
+                        boxShadow: isActive ? `0 0 12px ${pillar.accent}` : "none",
                       }}
-                      className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all duration-300 whitespace-nowrap ${
-                        isActive
-                          ? "bg-white/10 text-white border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.15)] scale-105"
-                          : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]"
-                      }`}
-                    >
-                      <span
-                        className="w-2 h-2 rounded-full transition-all duration-300"
-                        style={{
-                          background: isActive ? pillar.accent : "rgba(255,255,255,0.2)",
-                          boxShadow: isActive ? `0 0 10px ${pillar.accent}` : "none",
-                        }}
-                      />
-                      <span>{pillar.pillarNo}</span>
-                      <span className="hidden lg:inline font-sans text-[11px] font-semibold opacity-90">{pillar.title.split(" ")[0]}</span>
-                    </button>
-                  );
-                })}
-              </div>
+                    />
+                    <span className="font-mono font-black text-sm sm:text-base tracking-wider" style={{ color: isActive ? "#FFFFFF" : "#CBD5E1" }}>
+                      {pillar.pillarNo}
+                    </span>
+                    <span className="hidden md:inline font-sans text-xs font-bold tracking-wide opacity-90">
+                      {pillar.title.split(" ")[0]}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
 
-        {/* MIDDLE DRAWER CARDS AREA — Fills the hero 65% center viewport */}
-        <div className="relative z-20 w-full max-w-6xl flex-1 flex items-center justify-center my-3">
+        {/* MIDDLE DRAWER CARDS AREA — Fills the hero center viewport */}
+        <div className="relative z-20 w-full max-w-6xl flex-1 flex items-center justify-center my-4">
           {OFFERINGS.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -350,17 +403,17 @@ export default function WhatYouGet() {
               >
                 {/* Card Outer Shell */}
                 <div
-                  className="w-full relative rounded-[2rem] p-6 sm:p-8 md:p-10 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+                  className="w-full relative rounded-[2.2rem] p-6 sm:p-8 md:p-10 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
                   style={{
                     background: "linear-gradient(180deg, rgba(10, 13, 20, 0.98) 0%, rgba(14, 18, 28, 0.97) 100%)",
                     backdropFilter: "blur(35px)",
-                    border: `2px solid ${item.accent}60`,
-                    boxShadow: `0 30px 90px rgba(0,0,0,0.95), inset 0 1px 0 ${item.accent}50`,
+                    border: `2px solid ${item.accent}70`,
+                    boxShadow: `0 30px 90px rgba(0,0,0,0.95), inset 0 1px 0 ${item.accent}60`,
                   }}
                 >
                   {/* Top Laser Beam Border */}
                   <div
-                    className="absolute top-0 left-0 right-0 h-[2px] z-20 pointer-events-none"
+                    className="absolute top-0 left-0 right-0 h-[3px] z-20 pointer-events-none"
                     style={{
                       background: `linear-gradient(90deg, transparent 0%, ${item.accent} 50%, transparent 100%)`,
                     }}
@@ -370,33 +423,34 @@ export default function WhatYouGet() {
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      background: `radial-gradient(circle at 75% 50%, ${item.accent}18 0%, transparent 65%)`,
+                      background: `radial-gradient(circle at 75% 50%, ${item.accent}20 0%, transparent 65%)`,
                     }}
                   />
 
-                  <div className="container-wide relative z-10" style={{ paddingBlock: "1.5rem" }}>
+                  <div className="container-wide relative z-10" style={{ paddingBlock: "1rem" }}>
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
                       
                       {/* Left Column: Rich Information & Bullet Highlights (5 cols) */}
                       <div className="lg:col-span-5 flex flex-col justify-center gap-6 py-2">
-                        {/* Badge Pill */}
+                        {/* High-Presence Pillar Badge */}
                         <div className="flex items-center gap-3">
                           <div
-                            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
+                            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl flex-shrink-0"
                             style={{
-                              background: `linear-gradient(135deg, ${item.accent}35 0%, ${item.accent}12 100%)`,
-                              border: `1.5px solid ${item.accent}70`,
+                              background: `linear-gradient(135deg, ${item.accent}40 0%, ${item.accent}15 100%)`,
+                              border: `2px solid ${item.accent}`,
                               boxShadow: `0 0 30px ${item.glowColor}`,
                             }}
                           >
-                            <Icon size={28} weight="bold" style={{ color: item.accent }} />
+                            <Icon size={30} weight="bold" style={{ color: item.accent }} />
                           </div>
                           <span
-                            className="font-mono text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] px-4 py-2 rounded-full shadow-inner"
+                            className="font-mono text-sm sm:text-base font-black uppercase tracking-[0.25em] px-4 py-2 rounded-full shadow-lg"
                             style={{
-                              color: item.accent,
-                              background: `${item.accent}18`,
-                              border: `1px solid ${item.accent}50`,
+                              color: "#FFFFFF",
+                              background: `${item.accent}30`,
+                              border: `1.5px solid ${item.accent}`,
+                              boxShadow: `0 0 20px ${item.glowColor}`,
                             }}
                           >
                             PILLAR // {item.pillarNo}
@@ -414,7 +468,7 @@ export default function WhatYouGet() {
                         </p>
 
                         {/* Body Paragraph — Bright & Legible Slate-100 */}
-                        <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed drop-shadow-sm">
+                        <p className="text-base sm:text-lg text-slate-100 font-semibold leading-relaxed drop-shadow-sm">
                           {item.body}
                         </p>
 
@@ -422,8 +476,8 @@ export default function WhatYouGet() {
                         <div className="flex flex-col gap-3 pt-1">
                           {item.highlights.map((feat) => (
                             <div key={feat} className="flex items-center gap-3 group">
-                              <CheckCircle size={20} weight="fill" style={{ color: item.accent }} className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110" />
-                              <span className="text-sm sm:text-base font-semibold text-neutral-100 group-hover:text-white transition-colors duration-200">{feat}</span>
+                              <CheckCircle size={22} weight="fill" style={{ color: item.accent }} className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                              <span className="text-sm sm:text-base font-bold text-white group-hover:text-white transition-colors duration-200">{feat}</span>
                             </div>
                           ))}
                         </div>
@@ -435,8 +489,8 @@ export default function WhatYouGet() {
                           style={{
                             padding: "2.5rem",
                             borderRadius: "2rem",
-                            border: `1.5px solid ${item.accent}50`,
-                            background: `${item.accent}0D`,
+                            border: `1.5px solid ${item.accent}60`,
+                            background: `${item.accent}12`,
                             backdropFilter: "blur(30px)",
                             position: "relative",
                             boxShadow: `0 20px 50px rgba(0,0,0,0.6), 0 0 35px ${item.glowColor}`,
@@ -451,8 +505,8 @@ export default function WhatYouGet() {
                           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
                             <span
                               style={{
-                                fontSize: "0.75rem",
-                                fontWeight: 800,
+                                fontSize: "0.8rem",
+                                fontWeight: 900,
                                 letterSpacing: "0.2em",
                                 textTransform: "uppercase",
                                 color: item.accent,
@@ -463,14 +517,14 @@ export default function WhatYouGet() {
                             </span>
                             <span
                               style={{
-                                fontSize: "0.7rem",
-                                fontWeight: 700,
+                                fontSize: "0.75rem",
+                                fontWeight: 800,
                                 letterSpacing: "0.15em",
                                 textTransform: "uppercase",
-                                color: "#F8FAFC",
-                                background: "rgba(255, 255, 255, 0.08)",
-                                border: "1px solid rgba(255, 255, 255, 0.16)",
-                                padding: "0.35rem 0.85rem",
+                                color: "#FFFFFF",
+                                background: "rgba(255, 255, 255, 0.12)",
+                                border: "1.5px solid rgba(255, 255, 255, 0.25)",
+                                padding: "0.4rem 0.95rem",
                                 borderRadius: "999px",
                                 fontFamily: "var(--font-mono)",
                               }}
@@ -496,9 +550,9 @@ export default function WhatYouGet() {
                             <p
                               style={{
                                 fontSize: "0.95rem",
-                                color: "#CBD5E1",
+                                color: "#F1F5F9",
                                 lineHeight: 1.6,
-                                fontWeight: 500,
+                                fontWeight: 600,
                               }}
                             >
                               {item.cardBody}
@@ -512,12 +566,12 @@ export default function WhatYouGet() {
                                 key={deliv}
                                 className="group flex items-center gap-3 p-3 sm:px-4 rounded-xl transition-all duration-300 hover:translate-x-1.5"
                                 style={{
-                                  background: "rgba(255, 255, 255, 0.04)",
-                                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                                  background: "rgba(255, 255, 255, 0.06)",
+                                  border: "1px solid rgba(255, 255, 255, 0.12)",
                                 }}
                               >
                                 <Sparkle size={18} weight="fill" style={{ color: item.accent, flexShrink: 0 }} className="transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
-                                <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "#F8FAFC" }}>
+                                <span style={{ fontSize: "0.92rem", fontWeight: 700, color: "#FFFFFF" }}>
                                   {deliv}
                                 </span>
                               </div>
@@ -531,13 +585,13 @@ export default function WhatYouGet() {
                               alignItems: "center",
                               justifyContent: "space-between",
                               paddingTop: "1rem",
-                              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                              borderTop: "1px solid rgba(255, 255, 255, 0.12)",
                             }}
                           >
                             <span
                               style={{
-                                fontSize: "0.78rem",
-                                fontWeight: 700,
+                                fontSize: "0.8rem",
+                                fontWeight: 800,
                                 color: item.accent,
                                 display: "flex",
                                 alignItems: "center",
@@ -552,7 +606,7 @@ export default function WhatYouGet() {
                                 display: "flex",
                                 alignItems: "center",
                                 gap: "0.4rem",
-                                fontSize: "0.82rem",
+                                fontSize: "0.85rem",
                                 fontWeight: 800,
                                 color: "#FFFFFF",
                               }}
@@ -571,26 +625,26 @@ export default function WhatYouGet() {
           })}
         </div>
 
-        {/* BOTTOM ACTION & NAVIGATION BAR — Populates the lower 10% of the pinned screen */}
+        {/* BOTTOM ACTION & NAVIGATION BAR — Clean, High-Presence, No Duplicate CTA */}
         <div className="relative z-30 w-full max-w-6xl flex items-center justify-between gap-4 pt-2">
-          {/* Active Track Progress Bar */}
-          <div className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-xl shadow-lg">
-            <span className="font-mono text-xs font-bold text-slate-300">
-              PILLAR <span style={{ color: OFFERINGS[activeCard].accent }}>0{activeCard + 1}</span> OF 07
+          {/* Active Track Progress Indicator */}
+          <div className="flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-black/75 border border-white/15 backdrop-blur-xl shadow-xl">
+            <span className="font-mono text-sm font-black text-white">
+              PILLAR <span className="font-mono text-base font-black" style={{ color: OFFERINGS[activeCard].accent }}>0{activeCard + 1}</span> / 07
             </span>
-            <div className="w-24 h-1.5 rounded-full bg-white/10 overflow-hidden">
+            <div className="w-28 h-2 rounded-full bg-white/15 overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-500"
                 style={{
                   width: `${((activeCard + 1) / OFFERINGS.length) * 100}%`,
                   background: OFFERINGS[activeCard].accent,
-                  boxShadow: `0 0 10px ${OFFERINGS[activeCard].accent}`,
+                  boxShadow: `0 0 12px ${OFFERINGS[activeCard].accent}`,
                 }}
               />
             </div>
           </div>
 
-          {/* Quick Nav Controls & Call-to-Action */}
+          {/* Quick Nav Controls (Clean PREV / NEXT Buttons only) */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => {
@@ -602,10 +656,10 @@ export default function WhatYouGet() {
                 }
               }}
               disabled={activeCard === 0}
-              className={`p-2.5 rounded-xl border font-mono text-xs font-bold transition-all duration-200 ${
+              className={`px-5 py-2.5 rounded-xl border font-mono text-xs font-black tracking-wider transition-all duration-200 ${
                 activeCard > 0
-                  ? "bg-white/10 text-white border-white/20 hover:bg-white/20 active:scale-95"
-                  : "bg-white/[0.02] text-slate-600 border-white/5 cursor-not-allowed"
+                  ? "bg-white/15 text-white border-white/30 hover:bg-white/25 active:scale-95 shadow-md"
+                  : "bg-white/[0.03] text-slate-600 border-white/5 cursor-not-allowed"
               }`}
             >
               ‹ PREV
@@ -621,22 +675,14 @@ export default function WhatYouGet() {
                 }
               }}
               disabled={activeCard === OFFERINGS.length - 1}
-              className={`p-2.5 rounded-xl border font-mono text-xs font-bold transition-all duration-200 ${
+              className={`px-5 py-2.5 rounded-xl border font-mono text-xs font-black tracking-wider transition-all duration-200 ${
                 activeCard < OFFERINGS.length - 1
-                  ? "bg-white/10 text-white border-white/20 hover:bg-white/20 active:scale-95"
-                  : "bg-white/[0.02] text-slate-600 border-white/5 cursor-not-allowed"
+                  ? "bg-white/15 text-white border-white/30 hover:bg-white/25 active:scale-95 shadow-md"
+                  : "bg-white/[0.03] text-slate-600 border-white/5 cursor-not-allowed"
               }`}
             >
               NEXT ›
             </button>
-
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FF5500] hover:bg-[#FF6611] text-white font-outfit text-xs font-extrabold tracking-wider uppercase shadow-[0_0_20px_rgba(255,85,0,0.4)] transition-all duration-200 hover:scale-105 active:scale-95"
-            >
-              <Lightning size={15} weight="fill" />
-              <span>FIND YOUR TRACK</span>
-            </a>
           </div>
         </div>
       </div>
