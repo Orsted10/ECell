@@ -186,22 +186,48 @@ export default function WhatYouGet() {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".offering-card");
 
+      // Pin the section wrapper and create a timeline scrubbed across scroll
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: () => `+=${cards.length * 90}vh`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
       cards.forEach((card, i) => {
-        if (i === cards.length - 1) return;
-        gsap.to(card, {
-          scale: 0.88,
-          opacity: 0.2,
-          filter: "blur(6px)",
-          y: -15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: cards[i + 1],
-            start: "top 85%",
-            end: "top 20%",
-            scrub: 0.5,
-            invalidateOnRefresh: true,
+        if (i === 0) return; // First card is base state
+
+        // Card i starts off-screen below (100% y)
+        gsap.set(card, { yPercent: 100, opacity: 1, scale: 1 });
+
+        // Card i slides UP like a drawer over previous card
+        tl.to(
+          card,
+          {
+            yPercent: 0,
+            ease: "power1.inOut",
+            duration: 1,
           },
-        });
+          `slide-${i}`
+        );
+
+        // Previous card scales down and dims underneath
+        tl.to(
+          cards[i - 1],
+          {
+            scale: 0.93,
+            opacity: 0.35,
+            filter: "blur(5px)",
+            ease: "power1.inOut",
+            duration: 1,
+          },
+          `slide-${i}`
+        );
       });
     }, containerRef);
 
@@ -211,8 +237,8 @@ export default function WhatYouGet() {
   return (
     <section
       id="offerings"
-      className="relative overflow-hidden"
-      style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)", background: "#06070A" }}
+      className="relative overflow-hidden bg-[#06070A]"
+      style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
     >
       {/* Background Ambient Spotlights for Section Header */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none z-0">
@@ -227,7 +253,7 @@ export default function WhatYouGet() {
       </div>
 
       {/* Section Header */}
-      <div className="container-wide relative z-10" style={{ paddingTop: "clamp(5rem, 10vw, 8rem)", paddingBottom: "4rem" }}>
+      <div className="container-wide relative z-10" style={{ paddingTop: "clamp(4rem, 8vw, 6rem)", paddingBottom: "2rem" }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -258,7 +284,7 @@ export default function WhatYouGet() {
           </p>
 
           {/* Glowing Metric Badges */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 pt-3">
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono font-bold text-slate-200 backdrop-blur-md">
               <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-ping" />
               <span>7 LAUNCHPAD TRACKS</span>
@@ -275,30 +301,29 @@ export default function WhatYouGet() {
         </motion.div>
       </div>
 
-      {/* Sticky Stacked Cards */}
-      <div ref={containerRef} className="relative z-10">
+      {/* Pinned Drawer Stacked Container */}
+      <div ref={containerRef} className="relative z-10 w-full h-[90vh] overflow-hidden flex items-center justify-center">
         {OFFERINGS.map((item, i) => {
           const Icon = item.icon;
           return (
             <div
               key={item.title}
-              className="offering-card"
+              className="offering-card absolute inset-0 w-full h-full flex items-center justify-center px-4 sm:px-8"
               style={{
-                position: "sticky",
-                top: `${80 + i * 12}px`,
                 zIndex: i + 1,
-                minHeight: "85vh",
-                display: "flex",
-                alignItems: "center",
-                background: "linear-gradient(180deg, rgba(8, 10, 15, 0.98) 0%, rgba(12, 16, 24, 0.96) 100%)",
-                backdropFilter: "blur(30px)",
-                borderTop: `2px solid ${item.accent}60`,
-                boxShadow: `0 -30px 70px rgba(0,0,0,0.95), inset 0 1px 0 ${item.accent}40`,
                 willChange: "transform, opacity, filter",
-                paddingBlock: "3rem",
-                marginBottom: "4rem",
               }}
             >
+              {/* Card Outer Shell */}
+              <div
+                className="container-wide relative rounded-[2.5rem] p-8 sm:p-10 md:p-12 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+                style={{
+                  background: "linear-gradient(180deg, rgba(10, 13, 20, 0.98) 0%, rgba(14, 18, 28, 0.97) 100%)",
+                  backdropFilter: "blur(35px)",
+                  border: `2px solid ${item.accent}60`,
+                  boxShadow: `0 30px 90px rgba(0,0,0,0.95), inset 0 1px 0 ${item.accent}50`,
+                }}
+              >
               {/* Radial Accent Glow behind card */}
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -507,6 +532,7 @@ export default function WhatYouGet() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           );
         })}
