@@ -113,25 +113,29 @@ const MILESTONES = [
 
 export default function Roadmap() {
   const wrapRef = useRef<HTMLElement>(null);
+  const trackWrapRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const shouldReduce = useReducedMotion();
 
   useEffect(() => {
-    if (shouldReduce || !wrapRef.current || !trackRef.current) return;
+    if (shouldReduce || !trackWrapRef.current || !trackRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Distance calculation with generous 900px buffer ensures Phase 05 scrolls 100% into the viewport center
-      const distance = trackRef.current!.scrollWidth - window.innerWidth + 900;
+      // Accurately calculate horizontal scroll distance for 100% full reach to Phase 05
+      const getScrollDistance = () => {
+        if (!trackRef.current) return 0;
+        return trackRef.current.scrollWidth - window.innerWidth + 500;
+      };
 
       gsap.to(trackRef.current, {
-        x: -distance,
+        x: () => -getScrollDistance(),
         ease: "none",
         scrollTrigger: {
-          trigger: wrapRef.current,
+          trigger: trackWrapRef.current,
           start: "top top",
-          end: () => `+=${distance}`,
+          end: () => `+=${getScrollDistance()}`,
           pin: true,
-          scrub: 1,
+          scrub: 1.2,
           invalidateOnRefresh: true,
         },
       });
@@ -144,7 +148,7 @@ export default function Roadmap() {
     <section
       id="roadmap"
       ref={wrapRef}
-      className="relative overflow-hidden bg-[#05070B] pt-56 sm:pt-72 pb-24"
+      className="relative overflow-hidden bg-[#05070B] pt-32 sm:pt-44 pb-24"
       style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
     >
       {/* Background Ambient Spotlights */}
@@ -154,10 +158,9 @@ export default function Roadmap() {
         <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#FF5500_1.5px,transparent_1.5px)] [background-size:36px_36px]" />
       </div>
 
-      {/* Pinned 100vh Layout Container */}
-      <div className="relative z-10 w-full h-[100vh] overflow-hidden flex flex-col justify-between py-10 px-6 sm:px-16">
-        {/* TOP STATIONARY SECTION HEADER (220px+ Top Spacing — 100% Zero HUD Overlap) */}
-        <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/15 pt-6">
+      {/* 1. STATIONARY INTRO HEADER BLOCK — 100% Clean Isolation & Zero Overlap */}
+      <div className="container-wide relative z-10 text-left pb-16 sm:pb-24">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/15">
           <div className="flex flex-col gap-4">
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#FF5500]/60 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_25px_rgba(255,85,0,0.35)] w-fit">
               <Sparkle size={16} weight="fill" className="text-[#FF5500] animate-pulse" />
@@ -180,12 +183,14 @@ export default function Roadmap() {
             </span>
           </div>
         </div>
+      </div>
 
-        {/* MIDDLE HORIZONTAL SCROLLING TRACK — 560px Wide Cards + Single-Line Pill Badges */}
-        <div className="w-full flex-1 flex items-center overflow-hidden my-auto relative pt-8">
+      {/* 2. PINNED HORIZONTAL TIMELINE TRACK CONTAINER (Pins when track reaches top) */}
+      <div ref={trackWrapRef} className="relative z-10 w-full h-[100vh] overflow-hidden flex flex-col justify-center">
+        <div className="w-full overflow-hidden relative">
           <div
             ref={trackRef}
-            className="flex items-center gap-14 sm:gap-20 px-8 sm:px-16 relative"
+            className="flex items-center gap-14 sm:gap-20 px-8 sm:px-16 w-max relative"
           >
             {MILESTONES.map((m, i) => {
               const Icon = m.icon;
@@ -193,7 +198,7 @@ export default function Roadmap() {
 
               return (
                 <div key={m.phase} className="flex items-center gap-14 sm:gap-20 flex-shrink-0 relative group">
-                  {/* Connecting Neon Beam Line */}
+                  {/* Connecting Neon Energy Line */}
                   {i > 0 && (
                     <div className="w-24 sm:w-32 h-2 relative flex-shrink-0 overflow-hidden rounded-full bg-white/10 shadow-[0_0_12px_rgba(255,255,255,0.2)]">
                       <div
@@ -206,10 +211,10 @@ export default function Roadmap() {
                     </div>
                   )}
 
-                  {/* Milestone Card — 560px Width + Explicit 2.75rem Padding */}
+                  {/* Milestone Card — 540px Width + Explicit 2.75rem Padding */}
                   <SpotlightCard
                     style={{
-                      width: "560px",
+                      width: "540px",
                       padding: "2.75rem",
                       borderRadius: "2.5rem",
                       border: `2px solid ${isCurrent ? m.accent : "rgba(255, 255, 255, 0.2)"}`,
@@ -238,7 +243,7 @@ export default function Roadmap() {
                     {/* Top Eyebrow Row — Eyebrow Label (Left) + SINGLE-LINE Pill Badge & Icon (Right) */}
                     <div className="flex items-center justify-between gap-4 w-full relative z-10">
                       <span
-                        className="font-mono text-xs sm:text-sm font-black uppercase tracking-[0.2em]"
+                        className="font-mono text-xs sm:text-sm font-black uppercase tracking-[0.2em] whitespace-nowrap"
                         style={{ color: m.accent }}
                       >
                         STAGE {m.phase} • {m.subtitle}
@@ -299,12 +304,12 @@ export default function Roadmap() {
                     {/* Bottom Footer Bar — Spaced Row with 100% Zero Truncation */}
                     <div className="pt-5 border-t border-white/15 flex items-center justify-between gap-4 w-full relative z-10">
                       <span
-                        className="font-mono text-xs font-black uppercase tracking-wider flex items-center gap-2"
+                        className="font-mono text-xs font-black uppercase tracking-wider flex items-center gap-2 whitespace-nowrap"
                         style={{ color: m.accent }}
                       >
                         <ShieldCheck size={18} weight="fill" /> {m.subtitle} TRACK
                       </span>
-                      <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-white hover:text-[#FF5500] transition-colors flex-shrink-0">
+                      <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-white hover:text-[#FF5500] transition-colors flex-shrink-0 whitespace-nowrap">
                         {m.metric} →
                       </span>
                     </div>
@@ -313,17 +318,8 @@ export default function Roadmap() {
               );
             })}
 
-            {/* Generous 50vw Right Spacer Container — Guarantees Phase 05 Scrolls 100% to Screen Center */}
-            <div className="min-w-[50vw] flex-shrink-0" />
-          </div>
-        </div>
-
-        {/* BOTTOM HUD STATUS */}
-        <div className="w-full max-w-7xl mx-auto flex items-center justify-between pt-2">
-          <div className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-black/85 border border-white/20 backdrop-blur-xl shadow-xl">
-            <span className="font-mono text-xs sm:text-sm font-black text-slate-200">
-              ROADMAP PROGRESS // 2026–2027
-            </span>
+            {/* Generous 60vw Right Spacer Container — Guarantees Phase 05 Scrolls 100% to Screen Center */}
+            <div className="min-w-[60vw] flex-shrink-0" />
           </div>
         </div>
       </div>
