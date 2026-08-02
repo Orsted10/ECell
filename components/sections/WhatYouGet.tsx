@@ -186,19 +186,19 @@ export default function WhatYouGet() {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".offering-card");
 
-      // Pin the section wrapper with extended scroll distance & snap pauses
+      // Pin section with ultra-heavy 450vh scroll distance per card & instant magnetic snapping
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${cards.length * 200}vh`, // 2.5x scroll distance for smooth, un-rushed pacing
+          end: () => `+=${cards.length * 450}vh`, // Massive scroll range so mouse wheel moves in tiny, ultra-controlled steps
           pin: true,
-          scrub: 1.2, // Smooth momentum scrub
+          scrub: 0.8, // Tight, responsive scrub
           snap: {
             snapTo: 1 / (cards.length - 1),
-            duration: { min: 0.3, max: 0.7 },
-            delay: 0.1,
-            ease: "power2.inOut",
+            duration: { min: 0.2, max: 0.5 },
+            delay: 0.05, // Instant snap on scroll pause
+            ease: "power2.out",
           },
           anticipatePin: 1,
           invalidateOnRefresh: true,
@@ -211,18 +211,18 @@ export default function WhatYouGet() {
         // Card i starts off-screen below (100% y)
         gsap.set(card, { yPercent: 100, opacity: 1, scale: 1 });
 
-        // Step 1: Slide Card i UP like a drawer over previous card
+        // Step 1: Crisp, quick 0.8s transition sliding Card i UP over previous card
         tl.to(
           card,
           {
             yPercent: 0,
             ease: "power2.out",
-            duration: 1.5,
+            duration: 0.8,
           },
           `slide-${i}`
         );
 
-        // Step 2: Simultaneously scale down & dim previous card underneath
+        // Step 2: Simultaneously scale down & dim previous card
         tl.to(
           cards[i - 1],
           {
@@ -230,15 +230,15 @@ export default function WhatYouGet() {
             opacity: 0.35,
             filter: "blur(5px)",
             ease: "power2.out",
-            duration: 1.5,
+            duration: 0.8,
           },
           `slide-${i}`
         );
 
-        // Step 3: RESTING PAUSE — Holds Card i frozen on screen so user can comfortably read it
+        // Step 3: MASSIVE RESTING PAUSE (3.2s) — Card stays 100% FROZEN on screen for 80% of scroll timeline
         tl.to(card, {
           yPercent: 0,
-          duration: 1.2,
+          duration: 3.2,
         });
       });
     }, containerRef);
