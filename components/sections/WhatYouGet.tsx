@@ -209,31 +209,67 @@ export default function WhatYouGet() {
   return (
     <section
       id="offerings"
+      className="relative overflow-hidden"
       style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)", background: "#06070A" }}
     >
+      {/* Background Ambient Spotlights for Section Header */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none z-0">
+        <div
+          className="absolute inset-0 opacity-40 blur-[100px]"
+          style={{
+            background: "radial-gradient(circle at 35% 30%, rgba(255, 85, 0, 0.3) 0%, transparent 60%), radial-gradient(circle at 65% 30%, rgba(0, 102, 255, 0.25) 0%, transparent 60%)",
+          }}
+        />
+        {/* Subtle Tech Mesh Grid overlay */}
+        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:24px_24px]" />
+      </div>
+
       {/* Section Header */}
-      <div className="container-wide" style={{ paddingTop: "clamp(5rem,10vw,9rem)", paddingBottom: "3rem" }}>
+      <div className="container-wide relative z-10" style={{ paddingTop: "clamp(5rem, 10vw, 8rem)", paddingBottom: "4rem" }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
-          className="flex flex-col gap-4 text-center items-center"
+          className="flex flex-col gap-6 text-center items-center"
         >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FF5500]/40 bg-[#FF5500]/10 backdrop-blur-md">
-            <Sparkle size={14} weight="fill" className="text-[#FF5500] animate-pulse" />
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#FF5500]">
+          {/* Glowing Badge Pill */}
+          <motion.div
+            variants={fadeUp}
+            className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#FF5500]/50 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_30px_rgba(255,85,0,0.3)]"
+          >
+            <Sparkle size={16} weight="fill" className="text-[#FF5500] animate-pulse" />
+            <span className="font-mono text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] text-[#FF5500]">
               CORE ECOSYSTEM PILLARS
             </span>
           </motion.div>
           
+          {/* Display Headline */}
           <RevealText 
             text="Everything you need<br/>to launch a startup." 
-            className="display-2 text-white font-extrabold tracking-tight text-center" 
+            className="font-outfit text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.05] text-center drop-shadow-2xl" 
           />
-          <p className="text-neutral-300 text-base sm:text-lg max-w-2xl text-center font-medium leading-relaxed">
+
+          {/* Subheadline — Bright Slate-100 */}
+          <p className="text-slate-100 text-lg sm:text-xl max-w-3xl text-center font-semibold leading-relaxed drop-shadow-sm">
             Seven battle-tested launchpads designed to transform student builders into venture-backed founders.
           </p>
+
+          {/* Glowing Metric Badges */}
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 pt-3">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono font-bold text-slate-200 backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-ping" />
+              <span>7 LAUNCHPAD TRACKS</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono font-bold text-slate-200 backdrop-blur-md">
+              <Flame size={15} weight="fill" className="text-[#FF5500]" />
+              <span>100% BUILDER-FOCUSED</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono font-bold text-slate-200 backdrop-blur-md">
+              <ShieldCheck size={15} weight="fill" className="text-emerald-400" />
+              <span>ZERO-EQUITY SUPPORT</span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
