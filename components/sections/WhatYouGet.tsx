@@ -308,22 +308,33 @@ export default function WhatYouGet() {
             Seven battle-tested launchpads designed to transform student builders into venture-backed founders.
           </p>
 
-          {/* Metric Badges — Large Pill Capsules with Centered Content & Crisp Typography */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-5 sm:gap-7 pt-6">
-            <div className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#0E131F]/90 border border-white/20 text-xs sm:text-sm font-mono font-black text-white uppercase tracking-[0.15em] backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-[#FF5500]/60 hover:bg-white/10 hover:scale-105 transition-all duration-300">
-              <span className="relative flex h-2.5 w-2.5 items-center justify-center flex-shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF5500] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF5500]" />
+          {/* Metric Badges — Large, Highly Interactive Hero Glass Cards with Generous Spacing */}
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 pt-6">
+            <div className="group flex items-center gap-4 sm:gap-5 px-8 sm:px-12 py-5 sm:py-6 rounded-3xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-[#FF5500]/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,85,0,0.35)] transition-all duration-300 cursor-pointer">
+              <div className="w-10 h-10 rounded-2xl bg-[#FF5500]/20 border border-[#FF5500]/50 flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
+                <span className="h-3.5 w-3.5 rounded-full bg-[#FF5500] shadow-[0_0_12px_#FF5500] animate-ping" />
+              </div>
+              <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
+                7 LAUNCHPAD TRACKS
               </span>
-              <span className="whitespace-nowrap">7 LAUNCHPAD TRACKS</span>
             </div>
-            <div className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#0E131F]/90 border border-white/20 text-xs sm:text-sm font-mono font-black text-white uppercase tracking-[0.15em] backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-[#FF5500]/60 hover:bg-white/10 hover:scale-105 transition-all duration-300">
-              <Flame size={18} weight="fill" className="text-[#FF5500] drop-shadow-[0_0_10px_#FF5500] flex-shrink-0" />
-              <span className="whitespace-nowrap">100% BUILDER-FOCUSED</span>
+
+            <div className="group flex items-center gap-4 sm:gap-5 px-8 sm:px-12 py-5 sm:py-6 rounded-3xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-[#FF5500]/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,85,0,0.35)] transition-all duration-300 cursor-pointer">
+              <div className="w-10 h-10 rounded-2xl bg-[#FF5500]/20 border border-[#FF5500]/50 flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Flame size={22} weight="fill" className="text-[#FF5500] drop-shadow-[0_0_10px_#FF5500]" />
+              </div>
+              <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
+                100% BUILDER-FOCUSED
+              </span>
             </div>
-            <div className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#0E131F]/90 border border-white/20 text-xs sm:text-sm font-mono font-black text-white uppercase tracking-[0.15em] backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-emerald-400/60 hover:bg-white/10 hover:scale-105 transition-all duration-300">
-              <ShieldCheck size={18} weight="fill" className="text-emerald-400 drop-shadow-[0_0_10px_#34D399] flex-shrink-0" />
-              <span className="whitespace-nowrap">ZERO-EQUITY SUPPORT</span>
+
+            <div className="group flex items-center gap-4 sm:gap-5 px-8 sm:px-12 py-5 sm:py-6 rounded-3xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-emerald-400/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)] transition-all duration-300 cursor-pointer">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center shadow-[0_0_15px_rgba(52,211,153,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
+                <ShieldCheck size={22} weight="fill" className="text-emerald-400 drop-shadow-[0_0_10px_#34D399]" />
+              </div>
+              <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
+                ZERO-EQUITY SUPPORT
+              </span>
             </div>
           </motion.div>
         </motion.div>
@@ -365,8 +376,8 @@ export default function WhatYouGet() {
                   style={{
                     background: "linear-gradient(180deg, rgba(10, 13, 20, 0.98) 0%, rgba(14, 18, 28, 0.97) 100%)",
                     backdropFilter: "blur(35px)",
-                    border: `2px solid ${item.accent}70`,
-                    boxShadow: `0 30px 90px rgba(0,0,0,0.95), inset 0 1px 0 ${item.accent}60`,
+                    border: `1.5px solid ${item.accent}50`,
+                    boxShadow: `0 30px 90px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 40px ${item.accent}20`,
                   }}
                 >
                   {/* Top Laser Beam Border */}
@@ -584,64 +595,22 @@ export default function WhatYouGet() {
           })}
         </div>
 
-        {/* BOTTOM ACTION & NAVIGATION BAR — Clean, High-Presence, No Duplicate CTA */}
-        <div className="relative z-30 w-full max-w-6xl flex items-center justify-between gap-4 pt-2">
-          {/* Active Track Progress Indicator */}
-          <div className="flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-black/75 border border-white/15 backdrop-blur-xl shadow-xl">
+        {/* BOTTOM HUD ACTION BAR — Clean Centered Track Progress */}
+        <div className="relative z-30 w-full max-w-6xl flex items-center justify-center pt-2">
+          <div className="flex items-center gap-4 px-6 py-3 rounded-2xl bg-black/85 border border-white/20 backdrop-blur-xl shadow-2xl">
             <span className="font-mono text-sm font-black text-white">
               PILLAR <span className="font-mono text-base font-black" style={{ color: OFFERINGS[activeCard].accent }}>0{activeCard + 1}</span> / 07
             </span>
-            <div className="w-28 h-2 rounded-full bg-white/15 overflow-hidden">
+            <div className="w-36 h-2.5 rounded-full bg-white/15 overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-500"
                 style={{
                   width: `${((activeCard + 1) / OFFERINGS.length) * 100}%`,
                   background: OFFERINGS[activeCard].accent,
-                  boxShadow: `0 0 12px ${OFFERINGS[activeCard].accent}`,
+                  boxShadow: `0 0 14px ${OFFERINGS[activeCard].accent}`,
                 }}
               />
             </div>
-          </div>
-
-          {/* Quick Nav Controls (Clean PREV / NEXT Buttons only) */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => {
-                if (activeCard > 0 && containerRef.current) {
-                  const targetIdx = activeCard - 1;
-                  const totalScroll = containerRef.current.offsetHeight * 3.5 * OFFERINGS.length;
-                  const targetY = (targetIdx / (OFFERINGS.length - 1)) * totalScroll;
-                  window.scrollTo({ top: targetY, behavior: "smooth" });
-                }
-              }}
-              disabled={activeCard === 0}
-              className={`px-5 py-2.5 rounded-xl border font-mono text-xs font-black tracking-wider transition-all duration-200 ${
-                activeCard > 0
-                  ? "bg-white/15 text-white border-white/30 hover:bg-white/25 active:scale-95 shadow-md"
-                  : "bg-white/[0.03] text-slate-600 border-white/5 cursor-not-allowed"
-              }`}
-            >
-              ‹ PREV
-            </button>
-            
-            <button
-              onClick={() => {
-                if (activeCard < OFFERINGS.length - 1 && containerRef.current) {
-                  const targetIdx = activeCard + 1;
-                  const totalScroll = containerRef.current.offsetHeight * 3.5 * OFFERINGS.length;
-                  const targetY = (targetIdx / (OFFERINGS.length - 1)) * totalScroll;
-                  window.scrollTo({ top: targetY, behavior: "smooth" });
-                }
-              }}
-              disabled={activeCard === OFFERINGS.length - 1}
-              className={`px-5 py-2.5 rounded-xl border font-mono text-xs font-black tracking-wider transition-all duration-200 ${
-                activeCard < OFFERINGS.length - 1
-                  ? "bg-white/15 text-white border-white/30 hover:bg-white/25 active:scale-95 shadow-md"
-                  : "bg-white/[0.03] text-slate-600 border-white/5 cursor-not-allowed"
-              }`}
-            >
-              NEXT ›
-            </button>
           </div>
         </div>
       </div>
