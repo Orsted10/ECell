@@ -79,10 +79,10 @@ export default function Vision() {
         {/* Top Spacer to separate from ticker above */}
         <div style={{ height: "8rem" }} />
 
-        {/* ─── SECTION HEADER (100% Fully Centered & Screen-Spanning) ─────── */}
-        <div className="relative mx-auto max-w-6xl w-full flex flex-col items-center justify-center text-center px-4">
+        {/* ─── SECTION HEADER (Aligned 1:1 with Baseplate Container) ─────── */}
+        <div className="relative mx-auto max-w-7xl w-full flex flex-col items-center justify-center text-center px-4 md:px-8">
           {/* Radial Spotlight Glow Behind Text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-[#FF5500]/[0.15] blur-[130px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[380px] bg-[#FF5500]/[0.15] blur-[140px] rounded-full pointer-events-none" />
 
           {/* Eyebrow */}
           <div className="mb-8 inline-flex justify-center relative z-10 mx-auto">
@@ -94,7 +94,7 @@ export default function Vision() {
             </span>
           </div>
 
-          {/* Headline — Spans Wide & Centered across the Screen */}
+          {/* Headline — Perfectly Centered on Baseplate Width */}
           <h2 className="relative z-10 font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-8 text-center drop-shadow-lg w-full max-w-5xl mx-auto">
             We build the{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF3300]">
@@ -103,8 +103,8 @@ export default function Vision() {
             who build the world.
           </h2>
 
-          {/* Paragraph — Spans Wide & Centered */}
-          <p className="relative z-10 mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-neutral-200 font-medium leading-relaxed font-sans text-center drop-shadow-sm">
+          {/* Paragraph — Brighter & High Contrast */}
+          <p className="relative z-10 mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-neutral-100 font-medium leading-relaxed font-sans text-center drop-shadow-sm">
             E-Cell exists because the world needs more problem-solvers and risk-takers.
             We give student entrepreneurs the pathway, mentors, and maker labs to launch before graduation.
           </p>
@@ -113,36 +113,36 @@ export default function Vision() {
         {/* Explicit Spacer between Subheadline and Campus Image */}
         <div style={{ height: "6rem" }} />
 
-        {/* ─── CINEMATIC HERO IMAGE BANNER (Wide Aspect Ratio) ───────── */}
+        {/* ─── CINEMATIC HERO IMAGE BANNER (Updated to img1.jpeg) ───────── */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
           variants={scaleIn}
         >
-          <div className="relative rounded-[2rem] border border-white/[0.08] bg-white/[0.02] p-2 shadow-[0_30px_90px_rgba(0,0,0,0.6)]">
+          <div className="relative rounded-[2rem] border border-white/[0.12] bg-white/[0.03] p-2 shadow-[0_30px_90px_rgba(0,0,0,0.7)]">
             <div className="relative aspect-[16/9] md:aspect-[2.4/1] w-full overflow-hidden rounded-[calc(2rem-0.5rem)]">
               <motion.div
                 className="absolute -inset-[10%]"
                 style={{ y: shouldReduce ? 0 : imgY }}
               >
                 <Image
-                  src="/vision-img.png"
-                  alt="Chandigarh University campus aerial view"
+                  src="/img1.jpeg"
+                  alt="Chandigarh University campus view"
                   fill
                   quality={100}
                   style={{ objectFit: "cover" }}
                   priority
                 />
                 {/* Cinematic Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06070A] via-transparent to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#06070A] via-transparent to-black/20" />
               </motion.div>
 
               {/* Floating Badge */}
-              <div className="absolute bottom-6 right-6 flex items-center gap-2 rounded-full border border-white/15 bg-black/60 px-4 py-2 backdrop-blur-xl">
+              <div className="absolute bottom-6 right-6 flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-4 py-2 backdrop-blur-xl shadow-lg">
                 <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-pulse" />
                 <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-white">
-                  Est. 2026
+                  CU CAMPUS · EST. 2026
                 </span>
               </div>
             </div>
@@ -152,18 +152,18 @@ export default function Vision() {
         {/* Explicit Spacer above Stats */}
         <div style={{ height: "8rem" }} />
 
-        {/* ─── STATS STRIP (Open, Wide-Column Layout with Generous Line-Spacing) ─────── */}
+        {/* ─── STATS STRIP (Brighter Text & Larger Smaller Texts) ─────── */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 py-20 md:py-28 border-y border-white/[0.08]"
+          className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 py-20 md:py-28 border-y border-white/[0.12]"
         >
           {[
-            { value: "200+", label: "Active Student Builders", sub: "Collaborating across campus", icon: Sparkle, color: "#FF5500" },
-            { value: "40+", label: "Startups Launched", sub: "From ideation to MVP", icon: Rocket, color: "#0066FF" },
-            { value: "12+", label: "Industry Mentors", sub: "Guiding every cohort", icon: ArrowUpRight, color: "#00C896" },
+            { value: "200+", label: "ACTIVE STUDENT BUILDERS", sub: "Collaborating across campus", icon: Sparkle, color: "#FF5500" },
+            { value: "40+", label: "STARTUPS LAUNCHED", sub: "From ideation to MVP", icon: Rocket, color: "#0066FF" },
+            { value: "12+", label: "INDUSTRY MENTORS", sub: "Guiding every cohort", icon: ArrowUpRight, color: "#00C896" },
           ].map((stat) => {
             const Icon = stat.icon;
             return (
@@ -172,24 +172,24 @@ export default function Vision() {
                 variants={fadeUp}
                 className="flex flex-col items-center text-center gap-5 px-4"
               >
-                {/* Glowing Dot Icon Indicator */}
+                {/* Glowing Dot Icon Indicator — Brighter Text */}
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full shadow-[0_0_8px]" style={{ backgroundColor: stat.color, boxShadow: `0 0 10px ${stat.color}` }} />
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-400">METRIC</span>
+                  <span className="h-2.5 w-2.5 rounded-full shadow-[0_0_10px]" style={{ backgroundColor: stat.color, boxShadow: `0 0 12px ${stat.color}` }} />
+                  <span className="font-mono text-xs font-bold uppercase tracking-widest text-neutral-200">METRIC</span>
                 </div>
 
-                {/* Display Number */}
-                <div className="font-outfit text-6xl sm:text-7xl font-extrabold text-white tracking-tight leading-none">
+                {/* Display Number — Big & Vibrant */}
+                <div className="font-outfit text-6xl sm:text-7xl md:text-8xl font-extrabold text-white tracking-tight leading-none drop-shadow-md">
                   {stat.value}
                 </div>
 
-                {/* Label */}
-                <div className="font-mono text-xs font-bold uppercase tracking-[0.2em]" style={{ color: stat.color }}>
+                {/* Label — Brighter & Slightly Bigger */}
+                <div className="font-mono text-sm sm:text-base font-extrabold uppercase tracking-[0.18em]" style={{ color: stat.color }}>
                   {stat.label}
                 </div>
 
-                {/* Sub-label */}
-                <div className="text-xs text-neutral-400 font-sans leading-relaxed">
+                {/* Sub-label — Brighter & Bigger Text */}
+                <div className="text-sm sm:text-base text-neutral-100 font-sans font-medium leading-relaxed drop-shadow-sm">
                   {stat.sub}
                 </div>
               </motion.div>
@@ -200,28 +200,28 @@ export default function Vision() {
         {/* Explicit Spacer between Stats and Pipeline Header */}
         <div style={{ height: "8rem" }} />
 
-        {/* ─── THE FOUNDER PIPELINE (Enlarged Prominent Step Flow Bar) ─── */}
+        {/* ─── THE FOUNDER PIPELINE (Bigger Step Flow Bar) ─── */}
         <div>
-          {/* Visual Step Connector Line — Bigger & Prominent */}
-          <div className="flex items-center justify-center gap-4 md:gap-6 mb-10">
-            <div className="h-px w-24 md:w-40 bg-gradient-to-r from-transparent to-[#FF5500]/60" />
-            <div className="flex items-center gap-6 sm:gap-8 px-6 py-2.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl shadow-lg">
-              <div className="flex items-center gap-2.5 font-mono text-xs sm:text-sm font-bold text-[#FF5500]">
-                <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-ping" />
+          {/* Visual Step Connector Line — Bit Bigger */}
+          <div className="flex items-center justify-center gap-4 md:gap-8 mb-12">
+            <div className="h-px w-28 md:w-48 bg-gradient-to-r from-transparent via-[#FF5500]/60 to-[#FF5500]" />
+            <div className="flex items-center gap-6 sm:gap-10 px-8 py-3.5 rounded-full border border-white/20 bg-white/[0.05] backdrop-blur-2xl shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+              <div className="flex items-center gap-3 font-mono text-sm sm:text-base font-extrabold text-[#FF5500] tracking-wider">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#FF5500] animate-ping" />
                 <span>01 IDEATE</span>
               </div>
-              <span className="text-neutral-500 text-sm">→</span>
-              <div className="flex items-center gap-2.5 font-mono text-xs sm:text-sm font-bold text-[#0066FF]">
-                <span className="h-2 w-2 rounded-full bg-[#0066FF]" />
+              <span className="text-neutral-400 text-base font-bold">→</span>
+              <div className="flex items-center gap-3 font-mono text-sm sm:text-base font-extrabold text-[#0066FF] tracking-wider">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#0066FF]" />
                 <span>02 BUILD</span>
               </div>
-              <span className="text-neutral-500 text-sm">→</span>
-              <div className="flex items-center gap-2.5 font-mono text-xs sm:text-sm font-bold text-[#00C896]">
-                <span className="h-2 w-2 rounded-full bg-[#00C896]" />
+              <span className="text-neutral-400 text-base font-bold">→</span>
+              <div className="flex items-center gap-3 font-mono text-sm sm:text-base font-extrabold text-[#00C896] tracking-wider">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#00C896]" />
                 <span>03 LAUNCH</span>
               </div>
             </div>
-            <div className="h-px w-24 md:w-40 bg-gradient-to-l from-transparent to-[#00C896]/60" />
+            <div className="h-px w-28 md:w-48 bg-gradient-to-l from-transparent via-[#00C896]/60 to-[#00C896]" />
           </div>
 
           <div className="text-center">
