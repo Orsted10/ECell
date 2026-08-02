@@ -79,37 +79,88 @@ export default function Vision() {
         {/* Top Spacer to separate from ticker above */}
         <div style={{ height: "8rem" }} />
 
-        {/* ─── SECTION HEADER (Aligned 1:1 with Baseplate Container) ─────── */}
-        <div className="relative mx-auto max-w-7xl w-full flex flex-col items-center justify-center text-center px-4 md:px-8">
+        {/* ─── SECTION HEADER (Matching Hero.tsx Architecture 1:1) ─────── */}
+        <div style={{ maxWidth: "1150px", marginInline: "auto", width: "100%", position: "relative" }}>
           {/* Radial Spotlight Glow Behind Text */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[380px] bg-[#FF5500]/[0.15] blur-[140px] rounded-full pointer-events-none" />
 
-          {/* Eyebrow */}
-          <div className="mb-8 inline-flex justify-center relative z-10 mx-auto">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#FF5500]/40 bg-[#FF5500]/[0.12] px-5 py-2 backdrop-blur-md shadow-[0_0_25px_rgba(255,85,0,0.25)]">
-              <Sparkle size={14} weight="fill" className="text-[#FF5500] animate-pulse" />
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#FF5500]">
-                Our Vision
-              </span>
-            </span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "1.75rem",
+              width: "100%",
+              textAlign: "center",
+              position: "relative",
+              zIndex: 10,
+            }}
+          >
+            {/* Sleek Pre-headline Badge Capsule */}
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.5rem",
+                fontSize: "clamp(0.68rem, 2.5vw, 0.85rem)",
+                fontWeight: 700,
+                letterSpacing: "clamp(0.06em, 1vw, 0.15em)",
+                textTransform: "uppercase",
+                color: "#FF5500",
+                border: "1px solid rgba(255, 85, 0, 0.35)",
+                borderRadius: "999px",
+                padding: "0.45rem 1rem",
+                background: "rgba(255, 85, 0, 0.12)",
+                boxShadow: "0 0 24px rgba(255, 85, 0, 0.2)",
+                fontFamily: "var(--font-mono)",
+                maxWidth: "100%",
+                textAlign: "center",
+              }}
+            >
+              <Sparkle size={16} color="#FF5500" weight="fill" className="animate-pulse flex-shrink-0" />
+              <span>OUR VISION</span>
+            </div>
+
+            {/* Continuous Grand Display Headline — Matching Hero 1:1 */}
+            <h2
+              className="display-1"
+              style={{
+                fontSize: "clamp(2.2rem, 6.5vw, 6.5rem)",
+                fontWeight: 800,
+                letterSpacing: "-0.035em",
+                lineHeight: 1.08,
+                maxWidth: "100%",
+                marginInline: "auto",
+                textAlign: "center",
+                color: "#FFFFFF",
+                wordBreak: "break-word",
+              }}
+            >
+              <span>We build the</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF3300]">
+                founders
+              </span>{" "}
+              <span>who build</span>
+              <br />
+              <span>the world.</span>
+            </h2>
+
+            {/* Subheadline Paragraph — Matching Hero 1:1 */}
+            <p
+              style={{
+                fontSize: "clamp(0.95rem, 2vw, 1.25rem)",
+                color: "var(--text-2)",
+                maxWidth: "680px",
+                marginInline: "auto",
+                lineHeight: 1.65,
+                textAlign: "center",
+              }}
+            >
+              E-Cell exists because the world needs more problem-solvers and risk-takers.
+              We give student entrepreneurs the pathway, mentors, and maker labs to launch before graduation.
+            </p>
           </div>
-
-          {/* Headline — 100% Symmetrical Centered 2-Line Block */}
-          <h2 className="relative z-10 font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.15] mb-8 text-center drop-shadow-lg max-w-4xl mx-auto">
-            We build the{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF3300]">
-              founders
-            </span>
-            <br className="hidden sm:inline" />
-            who build the world.
-          </h2>
-
-          {/* Paragraph — Balanced & Centered */}
-          <p className="relative z-10 mx-auto max-w-2xl sm:max-w-3xl text-base sm:text-lg md:text-xl text-neutral-100 font-medium leading-relaxed font-sans text-center drop-shadow-sm">
-            E-Cell exists because the world needs more problem-solvers and risk-takers.
-            <br className="hidden md:inline" />
-            We give student entrepreneurs the pathway, mentors, and maker labs to launch before graduation.
-          </p>
         </div>
 
         {/* Explicit Spacer between Subheadline and Campus Image */}
