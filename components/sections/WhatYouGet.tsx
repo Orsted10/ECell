@@ -186,14 +186,20 @@ export default function WhatYouGet() {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".offering-card");
 
-      // Pin the section wrapper and create a timeline scrubbed across scroll
+      // Pin the section wrapper with extended scroll distance & snap pauses
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${cards.length * 90}vh`,
+          end: () => `+=${cards.length * 200}vh`, // 2.5x scroll distance for smooth, un-rushed pacing
           pin: true,
-          scrub: 1,
+          scrub: 1.2, // Smooth momentum scrub
+          snap: {
+            snapTo: 1 / (cards.length - 1),
+            duration: { min: 0.3, max: 0.7 },
+            delay: 0.1,
+            ease: "power2.inOut",
+          },
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
@@ -205,29 +211,35 @@ export default function WhatYouGet() {
         // Card i starts off-screen below (100% y)
         gsap.set(card, { yPercent: 100, opacity: 1, scale: 1 });
 
-        // Card i slides UP like a drawer over previous card
+        // Step 1: Slide Card i UP like a drawer over previous card
         tl.to(
           card,
           {
             yPercent: 0,
-            ease: "power1.inOut",
-            duration: 1,
+            ease: "power2.out",
+            duration: 1.5,
           },
           `slide-${i}`
         );
 
-        // Previous card scales down and dims underneath
+        // Step 2: Simultaneously scale down & dim previous card underneath
         tl.to(
           cards[i - 1],
           {
             scale: 0.93,
             opacity: 0.35,
             filter: "blur(5px)",
-            ease: "power1.inOut",
-            duration: 1,
+            ease: "power2.out",
+            duration: 1.5,
           },
           `slide-${i}`
         );
+
+        // Step 3: RESTING PAUSE — Holds Card i frozen on screen so user can comfortably read it
+        tl.to(card, {
+          yPercent: 0,
+          duration: 1.2,
+        });
       });
     }, containerRef);
 
