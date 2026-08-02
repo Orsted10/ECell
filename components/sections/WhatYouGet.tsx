@@ -308,19 +308,22 @@ export default function WhatYouGet() {
             Seven battle-tested launchpads designed to transform student builders into venture-backed founders.
           </p>
 
-          {/* Metric Badges — Enlarged High-Contrast Hero Glass Capsules */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 pt-6">
-            <div className="flex items-center gap-3.5 px-8 sm:px-10 py-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border-2 border-white/20 text-base sm:text-lg font-mono font-black text-white backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-[#FF5500]/80 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_35px_rgba(255,85,0,0.4)] transition-all duration-300">
-              <span className="h-4 w-4 rounded-full bg-[#FF5500] shadow-[0_0_15px_#FF5500] animate-ping" />
-              <span>7 LAUNCHPAD TRACKS</span>
+          {/* Metric Badges — Large Pill Capsules with Centered Content & Crisp Typography */}
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-5 sm:gap-7 pt-6">
+            <div className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#0E131F]/90 border border-white/20 text-xs sm:text-sm font-mono font-black text-white uppercase tracking-[0.15em] backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-[#FF5500]/60 hover:bg-white/10 hover:scale-105 transition-all duration-300">
+              <span className="relative flex h-2.5 w-2.5 items-center justify-center flex-shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF5500] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF5500]" />
+              </span>
+              <span className="whitespace-nowrap">7 LAUNCHPAD TRACKS</span>
             </div>
-            <div className="flex items-center gap-3.5 px-8 sm:px-10 py-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border-2 border-white/20 text-base sm:text-lg font-mono font-black text-white backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-[#FF5500]/80 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_35px_rgba(255,85,0,0.4)] transition-all duration-300">
-              <Flame size={22} weight="fill" className="text-[#FF5500] drop-shadow-[0_0_12px_#FF5500]" />
-              <span>100% BUILDER-FOCUSED</span>
+            <div className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#0E131F]/90 border border-white/20 text-xs sm:text-sm font-mono font-black text-white uppercase tracking-[0.15em] backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-[#FF5500]/60 hover:bg-white/10 hover:scale-105 transition-all duration-300">
+              <Flame size={18} weight="fill" className="text-[#FF5500] drop-shadow-[0_0_10px_#FF5500] flex-shrink-0" />
+              <span className="whitespace-nowrap">100% BUILDER-FOCUSED</span>
             </div>
-            <div className="flex items-center gap-3.5 px-8 sm:px-10 py-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border-2 border-white/20 text-base sm:text-lg font-mono font-black text-white backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-emerald-400/80 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_35px_rgba(52,211,153,0.4)] transition-all duration-300">
-              <ShieldCheck size={22} weight="fill" className="text-emerald-400 drop-shadow-[0_0_12px_#34D399]" />
-              <span>ZERO-EQUITY SUPPORT</span>
+            <div className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#0E131F]/90 border border-white/20 text-xs sm:text-sm font-mono font-black text-white uppercase tracking-[0.15em] backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-emerald-400/60 hover:bg-white/10 hover:scale-105 transition-all duration-300">
+              <ShieldCheck size={18} weight="fill" className="text-emerald-400 drop-shadow-[0_0_10px_#34D399] flex-shrink-0" />
+              <span className="whitespace-nowrap">ZERO-EQUITY SUPPORT</span>
             </div>
           </motion.div>
         </motion.div>
