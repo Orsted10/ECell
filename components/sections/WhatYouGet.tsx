@@ -37,7 +37,15 @@ const OFFERINGS = [
     accent: "#FF5500",
     glowColor: "rgba(255, 85, 0, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(255, 85, 0, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    widgetType: "incubation",
+    cardTitle: "The Acceleration Package",
+    cardSubtitle: "COHORT 2026 // INCUBATION TRACK",
+    cardBody: "Selected teams receive dedicated workspace, ₹10M capital pool access, zero-equity incorporation, and weekly milestone tracking.",
+    cardDeliverables: [
+      "Zero-Equity Company Registration & CA Counsel",
+      "24/7 Maker Desk with Fiber & Private Pods",
+      "Up to ₹10,000,000 Direct Micro-Grant Pool",
+      "Standardized Cap-Table & Vesting Blueprints",
+    ],
   },
   {
     icon: Microphone,
@@ -49,7 +57,15 @@ const OFFERINGS = [
     accent: "#818CF8",
     glowColor: "rgba(129, 140, 248, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(129, 140, 248, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    widgetType: "talks",
+    cardTitle: "Unscripted Founder Sessions",
+    cardSubtitle: "CLOSED-DOOR MASTERCLASS VAULT",
+    cardBody: "Off-the-record failure breakdowns, GTM playbooks, and 1-on-1 AMA slots with unicorn founders and YC alumni.",
+    cardDeliverables: [
+      "Uncensored Post-Mortem Case Studies",
+      "Intimate 10-Person Founder Dinners",
+      "Private Masterclass Video & Slide Vault",
+      "1-on-1 AMA Slots with Visiting Speakers",
+    ],
   },
   {
     icon: UsersThree,
@@ -61,7 +77,15 @@ const OFFERINGS = [
     accent: "#34D399",
     glowColor: "rgba(52, 211, 153, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(52, 211, 153, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    widgetType: "networking",
+    cardTitle: "Matchmaking Engine",
+    cardSubtitle: "TALENT MATRIX // CROSS-CAMPUS",
+    cardBody: "Pairing AI developers, UI/UX designers, and business operators through skill-gapped algorithms and 24-hour sprint trials.",
+    cardDeliverables: [
+      "Skill-Gapped Match Algorithm (98% Synergy)",
+      "24-Hour Sprint Team Trial Hack-Nights",
+      "Pre-Drafted 4-Year Vesting & Cliff Agreements",
+      "300+ Vetted Builder Talent Directory",
+    ],
   },
   {
     icon: Student,
@@ -73,7 +97,15 @@ const OFFERINGS = [
     accent: "#FCD34D",
     glowColor: "rgba(252, 211, 77, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(252, 211, 77, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    widgetType: "mentorship",
+    cardTitle: "Executive Advisory Desk",
+    cardSubtitle: "OPERATIONAL ROADMAP AUDITS",
+    cardBody: "Weekly 45-minute 1-on-1 sessions with Series-A product leaders and VC partners to refine your pitch, metrics, and GTM strategy.",
+    cardDeliverables: [
+      "Weekly 45-Min Dedicated Advisory Sprint",
+      "Slide-by-Slide Pitch Deck Teardowns",
+      "Warm Intros to Active Angel Syndicates",
+      "Legal, Compliance & Financial Tax Guidance",
+    ],
   },
   {
     icon: Lightning,
@@ -85,7 +117,15 @@ const OFFERINGS = [
     accent: "#FCA5A5",
     glowColor: "rgba(252, 165, 165, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(252, 165, 165, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    widgetType: "ideathons",
+    cardTitle: "Rapid Sprint Competition",
+    cardSubtitle: "48H BUILD & LAUNCH ENGINE",
+    cardBody: "Overnight hackathons with instant non-dilutive cash grants, cloud infrastructure perks, and immediate incubation bypass for winners.",
+    cardDeliverables: [
+      "₹2,50,000 Cash Pool (Instant Disbursal)",
+      "$5,000+ AWS, OpenAI & Supabase Credits",
+      "Direct Screening Bypass into Cohort 01",
+      "Red Bull, Catering & 24H Hardware Lab Access",
+    ],
   },
   {
     icon: Trophy,
@@ -97,7 +137,15 @@ const OFFERINGS = [
     accent: "#C4B5FD",
     glowColor: "rgba(196, 181, 253, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(196, 181, 253, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    widgetType: "pitch",
+    cardTitle: "National VC Demo Day",
+    cardSubtitle: "INVESTOR ARENA // PRE-SEED",
+    cardBody: "Mainstage 5-minute pitch in front of 20+ active VC partner juries writing on-the-spot term sheets and angel checks.",
+    cardDeliverables: [
+      "5-Min Mainstage Pitch to Active VC Partners",
+      "On-Spot Pre-Seed Term Sheet & Check Deals",
+      "Featured Coverage across Tech Media & News",
+      "Valuation & Financial Model Benchmarking",
+    ],
   },
   {
     icon: Briefcase,
@@ -109,7 +157,15 @@ const OFFERINGS = [
     accent: "#5EEAD4",
     glowColor: "rgba(94, 234, 212, 0.25)",
     bgGradient: "linear-gradient(135deg, rgba(94, 234, 212, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    widgetType: "internships",
+    cardTitle: "High-Growth Placements",
+    cardSubtitle: "VETTED FOUNDER ROLES",
+    cardBody: "Direct 1-click placement into Series-A to C startups with guaranteed monthly stipends and full product feature ownership.",
+    cardDeliverables: [
+      "Guaranteed Stipends (₹25,000 - ₹60,000/mo)",
+      "Direct Reporting to C-Suite & Founders",
+      "Pre-Placement Full-Time Job Offers (PPO)",
+      "Official University Internship Academic Credits",
+    ],
   },
 ];
 
@@ -265,11 +321,11 @@ export default function WhatYouGet() {
                     </div>
                   </div>
 
-                  {/* Right Column: Clean Visual Card matching Image 2 Roadmap purity (7 cols) */}
+                  {/* Right Column: Clean Visual Card showcasing OUTCOMES & DELIVERABLES (7 cols) */}
                   <div className="lg:col-span-7 flex flex-col justify-center">
                     <SpotlightCard
                       style={{
-                        padding: "3rem",
+                        padding: "2.75rem",
                         borderRadius: "2rem",
                         border: `1.5px solid ${item.accent}50`,
                         background: `${item.accent}0D`,
@@ -278,13 +334,13 @@ export default function WhatYouGet() {
                         boxShadow: `0 20px 50px rgba(0,0,0,0.6), 0 0 35px ${item.glowColor}`,
                         display: "flex",
                         flexDirection: "column",
-                        gap: "2rem",
-                        minHeight: "360px",
+                        gap: "1.75rem",
+                        minHeight: "380px",
                         justifyContent: "space-between",
                       }}
                     >
                       {/* Top Eyebrow & Status Pill */}
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }} className="justify-between">
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
                         <span
                           style={{
                             fontSize: "0.75rem",
@@ -295,7 +351,7 @@ export default function WhatYouGet() {
                             fontFamily: "var(--font-mono)",
                           }}
                         >
-                          STAGE {item.pillarNo}
+                          STAGE {item.pillarNo} · OUTCOMES
                         </span>
                         <span
                           style={{
@@ -311,49 +367,58 @@ export default function WhatYouGet() {
                             fontFamily: "var(--font-mono)",
                           }}
                         >
-                          MODULE :: ACTIVE
+                          {item.cardSubtitle}
                         </span>
                       </div>
 
-                      {/* Main Title & Tagline inside Card */}
-                      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                      {/* Deliverable Header */}
+                      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                         <h4
                           style={{
                             fontFamily: "var(--font-outfit)",
-                            fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
+                            fontSize: "clamp(1.75rem, 3vw, 2.35rem)",
                             fontWeight: 800,
                             color: "#FFFFFF",
                             letterSpacing: "-0.02em",
                             lineHeight: 1.1,
                           }}
                         >
-                          {item.title}
+                          {item.cardTitle}
                         </h4>
                         <p
                           style={{
                             fontSize: "0.95rem",
-                            fontWeight: 800,
-                            color: item.accent,
-                            letterSpacing: "0.12em",
-                            textTransform: "uppercase",
-                            fontFamily: "var(--font-mono)",
+                            color: "#CBD5E1",
+                            lineHeight: 1.6,
+                            fontWeight: 500,
                           }}
                         >
-                          {item.tagline}
+                          {item.cardBody}
                         </p>
                       </div>
 
-                      {/* Clean Body Text matching Roadmap purity */}
-                      <p
-                        style={{
-                          fontSize: "1.05rem",
-                          color: "#E2E8F0",
-                          lineHeight: 1.7,
-                          fontWeight: 500,
-                        }}
-                      >
-                        {item.body}
-                      </p>
+                      {/* 4 Concrete Deliverable Items on Right Card */}
+                      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                        {item.cardDeliverables.map((deliv) => (
+                          <div
+                            key={deliv}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "0.75rem",
+                              background: "rgba(255, 255, 255, 0.04)",
+                              border: "1px solid rgba(255, 255, 255, 0.08)",
+                              padding: "0.75rem 1rem",
+                              borderRadius: "0.85rem",
+                            }}
+                          >
+                            <Sparkle size={18} weight="fill" style={{ color: item.accent, flexShrink: 0 }} />
+                            <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "#F8FAFC" }}>
+                              {deliv}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
 
                       {/* Bottom Footer Accent Pill */}
                       <div
@@ -361,7 +426,7 @@ export default function WhatYouGet() {
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "space-between",
-                          paddingTop: "1.25rem",
+                          paddingTop: "1rem",
                           borderTop: "1px solid rgba(255, 255, 255, 0.1)",
                         }}
                       >
@@ -376,7 +441,7 @@ export default function WhatYouGet() {
                             fontFamily: "var(--font-mono)",
                           }}
                         >
-                          <ShieldCheck size={18} weight="fill" /> E-CELL INCUBATION TRACK
+                          <ShieldCheck size={18} weight="fill" /> E-CELL DELIVERABLE GUARANTEE
                         </span>
                         <div
                           style={{
@@ -388,13 +453,12 @@ export default function WhatYouGet() {
                             color: "#FFFFFF",
                           }}
                         >
-                          <span>LEARN MORE</span>
+                          <span>APPLY TO TRACK</span>
                           <ArrowRight size={16} weight="bold" style={{ color: item.accent }} />
                         </div>
                       </div>
                     </SpotlightCard>
                   </div>
-
                 </div>
               </div>
             </div>
