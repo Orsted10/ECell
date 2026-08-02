@@ -277,16 +277,16 @@ export default function WhatYouGet() {
         <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
       </div>
 
-      {/* Standalone Section Header — Restored with Generous Spacing & Bright Subheadline */}
-      <div className="container-wide relative z-10 text-center pb-16 sm:pb-20">
+      {/* Standalone Section Header — Generous Spacing */}
+      <div className="container-wide relative z-10 text-center pb-20 sm:pb-28 mb-6 sm:mb-12">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
-          className="flex flex-col gap-6 items-center"
+          className="flex flex-col gap-6 sm:gap-8 items-center"
         >
-          {/* Glowing Badge Pill */}
+          {/* Glowing Eyebrow Pill */}
           <motion.div
             variants={fadeUp}
             className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-[#FF5500]/60 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_30px_rgba(255,85,0,0.35)]"
@@ -308,18 +308,18 @@ export default function WhatYouGet() {
             Seven battle-tested launchpads designed to transform student builders into venture-backed founders.
           </p>
 
-          {/* Glowing Metric Badges */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.05] border border-white/15 text-xs sm:text-sm font-mono font-extrabold text-white backdrop-blur-md shadow-lg">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#FF5500] animate-ping" />
+          {/* Metric Badges — Enlarged High-Contrast Hero Glass Capsules */}
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 pt-6">
+            <div className="flex items-center gap-3.5 px-8 sm:px-10 py-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border-2 border-white/20 text-base sm:text-lg font-mono font-black text-white backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-[#FF5500]/80 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_35px_rgba(255,85,0,0.4)] transition-all duration-300">
+              <span className="h-4 w-4 rounded-full bg-[#FF5500] shadow-[0_0_15px_#FF5500] animate-ping" />
               <span>7 LAUNCHPAD TRACKS</span>
             </div>
-            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.05] border border-white/15 text-xs sm:text-sm font-mono font-extrabold text-white backdrop-blur-md shadow-lg">
-              <Flame size={16} weight="fill" className="text-[#FF5500]" />
+            <div className="flex items-center gap-3.5 px-8 sm:px-10 py-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border-2 border-white/20 text-base sm:text-lg font-mono font-black text-white backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-[#FF5500]/80 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_35px_rgba(255,85,0,0.4)] transition-all duration-300">
+              <Flame size={22} weight="fill" className="text-[#FF5500] drop-shadow-[0_0_12px_#FF5500]" />
               <span>100% BUILDER-FOCUSED</span>
             </div>
-            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.05] border border-white/15 text-xs sm:text-sm font-mono font-extrabold text-white backdrop-blur-md shadow-lg">
-              <ShieldCheck size={16} weight="fill" className="text-emerald-400" />
+            <div className="flex items-center gap-3.5 px-8 sm:px-10 py-4 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border-2 border-white/20 text-base sm:text-lg font-mono font-black text-white backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-emerald-400/80 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_35px_rgba(52,211,153,0.4)] transition-all duration-300">
+              <ShieldCheck size={22} weight="fill" className="text-emerald-400 drop-shadow-[0_0_12px_#34D399]" />
               <span>ZERO-EQUITY SUPPORT</span>
             </div>
           </motion.div>
@@ -341,52 +341,6 @@ export default function WhatYouGet() {
           />
           {/* Subtle Tech Mesh Grid overlay */}
           <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
-        </div>
-
-        {/* TOP HUD TAB NAVIGATION — Zero Cutoff, Bolder, High-Presence Glass Card Pills */}
-        <div className="relative z-30 w-full max-w-6xl pt-4">
-          <div className="flex items-center justify-center p-3 rounded-2xl bg-black/80 border border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-visible">
-            <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-1.5 px-3 w-full justify-between">
-              {OFFERINGS.map((pillar, idx) => {
-                const isActive = activeCard === idx;
-                return (
-                  <button
-                    key={pillar.pillarNo}
-                    onClick={() => {
-                      if (!containerRef.current) return;
-                      const totalScroll = containerRef.current.offsetHeight * 3.5 * OFFERINGS.length;
-                      const targetY = (idx / (OFFERINGS.length - 1)) * totalScroll;
-                      window.scrollTo({ top: targetY, behavior: "smooth" });
-                    }}
-                    className={`flex items-center gap-2.5 px-4 sm:px-5 py-2.5 rounded-xl font-mono text-sm sm:text-base font-black transition-all duration-300 whitespace-nowrap ${
-                      isActive
-                        ? "bg-white/20 text-white border-2 border-white/40 shadow-[0_0_25px_rgba(255,255,255,0.3)] scale-105"
-                        : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
-                    }`}
-                    style={{
-                      borderColor: isActive ? pillar.accent : "transparent",
-                      boxShadow: isActive ? `0 0 25px ${pillar.accent}99` : "none",
-                      background: isActive ? `${pillar.accent}33` : undefined,
-                    }}
-                  >
-                    <span
-                      className="w-2.5 h-2.5 rounded-full transition-all duration-300 flex-shrink-0"
-                      style={{
-                        background: isActive ? pillar.accent : "rgba(255,255,255,0.4)",
-                        boxShadow: isActive ? `0 0 12px ${pillar.accent}` : "none",
-                      }}
-                    />
-                    <span className="font-mono font-black text-sm sm:text-base tracking-wider" style={{ color: isActive ? "#FFFFFF" : "#CBD5E1" }}>
-                      {pillar.pillarNo}
-                    </span>
-                    <span className="hidden md:inline font-sans text-xs font-bold tracking-wide opacity-90">
-                      {pillar.title.split(" ")[0]}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
         </div>
 
         {/* MIDDLE DRAWER CARDS AREA — Fills the hero center viewport */}
