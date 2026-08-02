@@ -1,6 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { motion } from "motion/react";
+import React, { useRef } from "react";
 
 export function SpotlightCard({
   children,
@@ -12,47 +11,36 @@ export function SpotlightCard({
   style?: React.CSSProperties;
 }) {
   const divRef = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0);
+  const spotlightRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current || isFocused) return;
+    if (!divRef.current || !spotlightRef.current) return;
     const rect = divRef.current.getBoundingClientRect();
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    spotlightRef.current.style.background = `radial-gradient(450px circle at ${x}px ${y}px, rgba(255,85,0,0.18), rgba(0,102,255,0.06) 60%, transparent 80%)`;
   };
 
-  const handleFocus = () => {
-    setIsFocused(true);
-    setOpacity(1);
+  const handleMouseEnter = () => {
+    if (spotlightRef.current) spotlightRef.current.style.opacity = "1";
   };
 
-  const handleBlur = () => {
-    setIsFocused(false);
-    setOpacity(0);
+  const handleMouseLeave = () => {
+    if (spotlightRef.current) spotlightRef.current.style.opacity = "0";
   };
-
-  const handleMouseEnter = () => setOpacity(1);
-  const handleMouseLeave = () => setOpacity(0);
 
   return (
     <div
       ref={divRef}
       onMouseMove={handleMouseMove}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={`relative overflow-hidden ${className}`}
       style={style}
     >
-      <motion.div
-        animate={{ opacity }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-10"
-        style={{
-          background: `radial-gradient(450px circle at ${position.x}px ${position.y}px, rgba(255,85,0,0.18), rgba(0,102,255,0.06) 60%, transparent 80%)`,
-        }}
+      <div
+        ref={spotlightRef}
+        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 z-10 will-change-[opacity,background]"
       />
       {children}
     </div>

@@ -189,15 +189,14 @@ export default function WhatYouGet() {
       cards.forEach((card, i) => {
         if (i === cards.length - 1) return;
         gsap.to(card, {
-          scale: 0.9,
+          scale: 0.92,
           opacity: 0.35,
-          filter: "blur(4px)",
-          ease: "none",
+          ease: "power1.out",
           scrollTrigger: {
             trigger: cards[i + 1],
             start: "top bottom",
             end: "top top",
-            scrub: true,
+            scrub: 0.5,
           },
         });
       });
