@@ -1,456 +1,152 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, Fire, Lightbulb, Cpu, Rocket, ShieldCheck, Sparkle, CalendarBlank } from "@phosphor-icons/react";
+import { ArrowRight, Fire, Lightbulb, Cpu, Rocket, ShieldCheck, Sparkle, CalendarBlank, CheckCircle, Users } from "@phosphor-icons/react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-const PHASES = [
-  { step: "01", label: "Ideate", desc: "Workshops & Mentorship", icon: Lightbulb },
-  { step: "02", label: "Build", desc: "48h Ideathon & Prototyping", icon: Cpu },
-  { step: "03", label: "Launch", desc: "Incubation & Investor Demo Day", icon: Rocket },
-];
-
 const ROTATING_WORDS = [
-  { word: "believe you.", color: "#FF5500" },
-  { word: "catch up.", color: "#00C6FF" },
-  { word: "copy you.", color: "#FFB300" },
-  { word: "fund you.", color: "#00E676" },
+  { word: "venture founders.", color: "#98FF03" },
+  { word: "market leaders.", color: "#FF5500" },
+  { word: "breakout startups.", color: "#00F0FF" },
+  { word: "industry icons.", color: "#A855F7" },
 ];
 
 export default function Hero() {
-  const [activePhase, setActivePhase] = useState(0);
   const [wordIdx, setWordIdx] = useState(0);
 
-  // Continuous rotating phrase timer
   useEffect(() => {
     const timer = setInterval(() => {
       setWordIdx((prev) => (prev + 1) % ROTATING_WORDS.length);
-    }, 2400);
+    }, 2500);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <section
       id="hero"
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        overflow: "hidden",
-        background: "transparent",
-      }}
+      className="relative min-h-[92vh] sm:min-h-[100vh] flex flex-col justify-center items-center overflow-hidden pt-32 sm:pt-40 pb-16 bg-[#030712]"
     >
-      {/* Dynamic Continuous Ambient Fire Orbs */}
+      {/* AgencyIO Ambient Glow Orbs */}
       <motion.div
         animate={{
-          scale: [1, 1.12, 1],
-          opacity: [0.16, 0.26, 0.16],
+          scale: [1, 1.15, 1],
+          opacity: [0.2, 0.35, 0.2],
         }}
         transition={{
-          duration: 6,
+          duration: 7,
           repeat: Infinity,
           ease: "easeInOut",
         }}
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[70vw] max-w-[850px] h-[55vw] max-h-[650px] pointer-events-none z-0"
         style={{
-          position: "absolute",
-          top: "20%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "55vw",
-          height: "55vw",
-          background: "radial-gradient(circle, rgba(255, 77, 0, 0.22) 0%, rgba(0, 102, 255, 0.1) 55%, transparent 75%)",
-          filter: "blur(110px)",
-          pointerEvents: "none",
-          zIndex: 1,
+          background: "radial-gradient(circle, rgba(152, 255, 3, 0.25) 0%, rgba(255, 85, 0, 0.15) 50%, transparent 75%)",
+          filter: "blur(130px)",
         }}
       />
 
-      {/* Authentic Desktop Margin Floating HUD Cards */}
-      {/* Left: Active Builders Pill */}
-      <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute top-48 left-12 hidden xl:flex items-center gap-3"
-        style={{
-          background: "rgba(11, 14, 20, 0.82)",
-          border: "1px solid rgba(255, 77, 0, 0.25)",
-          borderRadius: "1rem",
-          padding: "0.75rem 1.1rem",
-          backdropFilter: "blur(20px)",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255,77,0,0.12)",
-          zIndex: 10,
-        }}
-      >
-        <div className="flex -space-x-2">
-          <div className="w-8 h-8 rounded-full bg-[#FF5500] text-white flex items-center justify-center font-bold text-xs border border-black">A</div>
-          <div className="w-8 h-8 rounded-full bg-[#0066FF] text-white flex items-center justify-center font-bold text-xs border border-black">P</div>
-          <div className="w-8 h-8 rounded-full bg-[#FFB300] text-white flex items-center justify-center font-bold text-xs border border-black">R</div>
-        </div>
-        <div>
-          <div className="flex items-center gap-1.5 text-xs font-bold text-white">
-            <span className="w-2 h-2 rounded-full bg-[#00E676] animate-pulse" />
-            300+ Founders
-          </div>
-          <span className="text-[0.68rem] text-white/50 font-mono">CUUP COHORT 2026</span>
-        </div>
-      </motion.div>
+      <div className="container-wide relative z-10 flex flex-col items-center text-center">
+        {/* AgencyIO Floating Eyebrow Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="badge-agencyio badge-agencyio-lime mb-8 shadow-[0_0_25px_rgba(152,255,3,0.3)]"
+        >
+          <Sparkle size={16} weight="fill" className="animate-spin text-[#98FF03]" />
+          <span>CUUP VENTURE LAUNCHPAD // 2026</span>
+        </motion.div>
 
-      {/* Right: Upcoming Major Event Pill */}
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute top-48 right-12 hidden xl:flex items-center gap-3"
-        style={{
-          background: "rgba(11, 14, 20, 0.82)",
-          border: "1px solid rgba(0, 102, 255, 0.3)",
-          borderRadius: "1rem",
-          padding: "0.75rem 1.1rem",
-          backdropFilter: "blur(20px)",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(0,102,255,0.15)",
-          zIndex: 10,
-        }}
-      >
-        <div className="w-9 h-9 rounded-lg bg-[rgba(0,102,255,0.15)] border border-[#0066FF] text-[#00C6FF] flex items-center justify-center">
-          <CalendarBlank size={20} weight="bold" />
-        </div>
-        <div>
-          <span className="text-xs font-bold text-white block">Ideathon 2026</span>
-          <span className="text-[0.68rem] text-[#00C6FF] font-mono">NOV 15–17 · CUUP CAMPUS</span>
-        </div>
-      </motion.div>
-
-      {/* Main Content Container (Centered Layout) */}
-      <div
-        className="container-wide"
-        style={{
-          position: "relative",
-          zIndex: 2,
-          paddingTop: "clamp(7rem, 12vh, 10.5rem)",
-          paddingBottom: "clamp(2.5rem, 4vh, 4rem)",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: "1150px", marginInline: "auto", width: "100%" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "1.75rem",
-              width: "100%",
-            }}
-          >
-            {/* Sleek Pre-headline Badge Capsule */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              style={{ maxWidth: "100%" }}
-            >
-              <div
+        {/* Display Title with Rotating Word Animation */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="font-outfit text-5xl sm:text-7xl md:text-8xl lg:text-[6.2rem] font-black text-white tracking-tight leading-[1.02] max-w-6xl drop-shadow-2xl"
+        >
+          Transforming student builders into{" "}
+          <span className="block mt-2 h-[1.25em] relative inline-flex justify-center items-center overflow-hidden min-w-[320px]">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={ROTATING_WORDS[wordIdx].word}
+                initial={{ y: 50, opacity: 0, rotateX: -45 }}
+                animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                exit={{ y: -50, opacity: 0, rotateX: 45 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute text-transparent bg-clip-text"
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "0.5rem",
-                  fontSize: "clamp(0.68rem, 2.5vw, 0.85rem)",
-                  fontWeight: 700,
-                  letterSpacing: "clamp(0.06em, 1vw, 0.15em)",
-                  textTransform: "uppercase",
-                  color: "#FF5500",
-                  border: "1px solid rgba(255, 85, 0, 0.35)",
-                  borderRadius: "999px",
-                  padding: "0.45rem 1rem",
-                  background: "rgba(255, 85, 0, 0.12)",
-                  boxShadow: "0 0 24px rgba(255, 85, 0, 0.2)",
-                  fontFamily: "var(--font-mono)",
-                  maxWidth: "100%",
-                  textAlign: "center",
+                  backgroundImage: `linear-gradient(135deg, ${ROTATING_WORDS[wordIdx].color} 0%, #FFFFFF 100%)`,
+                  filter: `drop-shadow(0 0 35px ${ROTATING_WORDS[wordIdx].color}60)`,
                 }}
               >
-                <Fire size={16} color="#FF5500" weight="fill" className="animate-pulse flex-shrink-0" />
-                <span>CHANDIGARH UNIVERSITY E-CELL // BUILD 2026</span>
-              </div>
-            </motion.div>
+                {ROTATING_WORDS[wordIdx].word}
+              </motion.span>
+            </AnimatePresence>
+          </span>
+        </motion.h1>
 
-            {/* Continuous Live Animated Headline */}
-            <h1
-              className="display-1"
-              style={{
-                fontSize: "clamp(1.95rem, 6.5vw, 6.8rem)",
-                fontWeight: 800,
-                letterSpacing: "-0.035em",
-                lineHeight: 1.1,
-                maxWidth: "100%",
-                marginInline: "auto",
-                wordBreak: "break-word",
-              }}
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mt-8 font-outfit text-lg sm:text-2xl font-bold text-slate-300 max-w-3xl leading-relaxed"
+        >
+          E-Cell Chandigarh University UP is the premiere 0-to-1 launchpad empowering ambitious engineers, creators, and hackers to build scalable companies.
+        </motion.p>
+
+        {/* Action Button Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-10 flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto"
+        >
+          <MagneticButton>
+            <a
+              href="#join"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-full font-outfit text-lg font-black text-black bg-[#98FF03] hover:bg-[#B2FF43] transition-all duration-300 shadow-[0_0_35px_rgba(152,255,3,0.5)] hover:scale-105 active:scale-95"
             >
-              <span style={{ color: "var(--text-1)" }}>Build before you&rsquo;re ready.</span>
-              <br />
-              <span style={{ display: "inline-flex", alignItems: "center", flexWrap: "wrap", justifyContent: "center", gap: "0.25ch" }}>
-                <span>Ship before they</span>
-                {/* Dynamic Morphing Word Animation with Smooth Vertical Flip */}
-                <span
-                  style={{
-                    position: "relative",
-                    display: "inline-block",
-                    textAlign: "center",
-                    verticalAlign: "bottom",
-                  }}
-                >
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={wordIdx}
-                      initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      style={{
-                        display: "inline-block",
-                        background: `linear-gradient(135deg, #FFF0E6 0%, ${ROTATING_WORDS[wordIdx].color} 60%, #FF2E00 100%)`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                        filter: `drop-shadow(0 0 20px ${ROTATING_WORDS[wordIdx].color}60)`,
-                      }}
-                    >
-                      {ROTATING_WORDS[wordIdx].word}
-                    </motion.span>
-                  </AnimatePresence>
-                </span>
+              APPLY TO LAUNCHPAD <ArrowRight size={20} weight="bold" />
+            </a>
+          </MagneticButton>
+
+          <a
+            href="#offerings"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-outfit text-lg font-bold text-white bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur-xl transition-all duration-300 hover:scale-105"
+          >
+            EXPLORE TRACKS
+          </a>
+        </motion.div>
+
+        {/* AgencyIO Floating Stat Capsule Dock */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-16 sm:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 w-full max-w-5xl"
+        >
+          {[
+            { label: "LAUNCHPAD TRACKS", val: "7 ACTIVE", sub: "End-to-End Execution" },
+            { label: "FOUNDER COMMUNITY", val: "300+", sub: "Campus Engineers" },
+            { label: "EQUITY GRANTED", val: "100% FREE", sub: "Zero Founder Take" },
+            { label: "VC & MENTOR NETWORK", val: "20+ ANGELS", sub: "Top VC Partners" },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              className="p-6 rounded-3xl bg-[#06080D]/90 border border-white/15 backdrop-blur-2xl shadow-2xl flex flex-col items-center justify-center gap-2 hover:border-[#98FF03]/50 transition-colors group"
+            >
+              <span className="font-mono text-xs font-black uppercase tracking-widest text-[#98FF03]">
+                {stat.label}
               </span>
-            </h1>
-
-            {/* Subtext */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-              style={{
-                fontSize: "clamp(1rem, 3.2vw, 1.45rem)",
-                lineHeight: 1.6,
-                color: "#CBD5E0",
-                maxWidth: "52ch",
-                marginInline: "auto",
-                fontWeight: 400,
-              }}
-            >
-              Chandigarh University&rsquo;s entrepreneurship cell &mdash; where ideas get heat, pressure, mentors, and a runway. Not inspiration theater. Real ventures.
-            </motion.p>
-
-            {/* CTAs Centered */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-              style={{
-                display: "flex",
-                gap: "1rem",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                width: "100%",
-                paddingTop: "0.25rem",
-              }}
-            >
-              <MagneticButton>
-                <a
-                  href="#join"
-                  id="hero-cta-primary"
-                  className="group"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.85rem",
-                    padding: "0.85rem 0.85rem 0.85rem 2rem",
-                    borderRadius: "999px",
-                    background: "linear-gradient(135deg, #FF5500 0%, #D93600 100%)",
-                    color: "#fff",
-                    fontWeight: 700,
-                    fontSize: "clamp(0.9rem, 2.8vw, 1.15rem)",
-                    letterSpacing: "0.05em",
-                    textTransform: "uppercase",
-                    textDecoration: "none",
-                    boxShadow: "0 8px 32px rgba(255, 77, 0, 0.5)",
-                    transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s",
-                    whiteSpace: "nowrap",
-                  }}
-                  onMouseDown={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "scale(0.97)";
-                  }}
-                  onMouseUp={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "scale(1)";
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(255, 77, 0, 0.7)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(255, 77, 0, 0.5)";
-                  }}
-                >
-                  JOIN THE FOUNDRY
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "36px",
-                      height: "36px",
-                      borderRadius: "50%",
-                      background: "rgba(255,255,255,0.25)",
-                      transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                    }}
-                    className="group-hover:translate-x-1 group-hover:scale-105"
-                  >
-                    <ArrowRight size={18} weight="bold" />
-                  </div>
-                </a>
-              </MagneticButton>
-
-              <MagneticButton>
-                <a
-                  href="#offerings"
-                  id="hero-cta-secondary"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.5rem",
-                    padding: "1rem 2.25rem",
-                    borderRadius: "999px",
-                    border: "1px solid rgba(0, 102, 255, 0.5)",
-                    background: "rgba(0, 102, 255, 0.08)",
-                    color: "#FFFFFF",
-                    fontWeight: 700,
-                    fontSize: "clamp(0.9rem, 2.8vw, 1.15rem)",
-                    letterSpacing: "0.05em",
-                    textTransform: "uppercase",
-                    textDecoration: "none",
-                    boxShadow: "0 0 24px rgba(0, 102, 255, 0.2)",
-                    transition: "border-color 0.2s, background 0.2s, box-shadow 0.2s",
-                    whiteSpace: "nowrap",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(0, 102, 255, 0.22)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "#0066FF";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 0 32px rgba(0, 102, 255, 0.4)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(0, 102, 255, 0.08)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(0, 102, 255, 0.5)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 0 24px rgba(0, 102, 255, 0.2)";
-                  }}
-                >
-                  EXPLORE ROADMAP
-                </a>
-              </MagneticButton>
-            </motion.div>
-
-            {/* Interactive Founder Lifecycle Pipeline Bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full max-w-[800px] mt-4 p-3.5 rounded-[1.75rem] bg-[rgba(14,18,26,0.92)] border border-[#FF5500]/40 backdrop-blur-xl shadow-[0_0_35px_rgba(255,85,0,0.22)]"
-            >
-              {PHASES.map((phase, idx) => {
-                const Icon = phase.icon;
-                const isActive = activePhase === idx;
-                return (
-                  <button
-                    key={phase.step}
-                    onClick={() => setActivePhase(idx)}
-                    onMouseEnter={() => setActivePhase(idx)}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.85rem",
-                      padding: "0.9rem 1.1rem",
-                      borderRadius: "1.25rem",
-                      border: isActive
-                        ? "1.5px solid #FF5500"
-                        : "1px solid rgba(255,255,255,0.12)",
-                      background: isActive
-                        ? "linear-gradient(135deg, rgba(255, 85, 0, 0.28) 0%, rgba(255, 85, 0, 0.12) 100%)"
-                        : "rgba(255,255,255,0.04)",
-                      boxShadow: isActive ? "0 0 24px rgba(255, 85, 0, 0.4)" : "none",
-                      cursor: "pointer",
-                      textAlign: "left",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      width: "100%",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "36px",
-                        height: "36px",
-                        borderRadius: "10px",
-                        background: isActive ? "#FF5500" : "rgba(255,255,255,0.1)",
-                        color: "#FFFFFF",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                        transition: "all 0.3s ease",
-                        boxShadow: isActive ? "0 0 16px rgba(255, 85, 0, 0.6)" : "none",
-                      }}
-                    >
-                      <Icon size={20} weight="bold" />
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: "0.45rem" }}>
-                        <span style={{ fontSize: "0.7rem", fontFamily: "var(--font-mono)", color: "#FF5500", fontWeight: 800 }}>
-                          {phase.step}
-                        </span>
-                        <span style={{ fontSize: "0.98rem", fontWeight: 800, color: "#FFFFFF", fontFamily: "var(--font-outfit)" }}>
-                          {phase.label}
-                        </span>
-                      </div>
-                      <span style={{ fontSize: "0.78rem", color: isActive ? "#E2E8F0" : "#CBD5E0", display: "block", marginTop: "0.15rem" }}>
-                        {phase.desc}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-            </motion.div>
-
-            {/* Bottom Highlight Pills */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "1.25rem",
-                paddingTop: "0.5rem",
-                flexWrap: "wrap",
-                width: "100%",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "#CBD5E0", fontFamily: "var(--font-mono)" }}>
-                <ShieldCheck size={16} color="#FF5500" weight="bold" />
-                <span>OPEN TO ALL CUUP STUDENTS</span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "#CBD5E0", fontFamily: "var(--font-mono)" }}>
-                <Sparkle size={16} color="#00C6FF" weight="bold" />
-                <span>LAUNCH: AUGUST 2026</span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+              <span className="font-outfit text-2xl sm:text-3xl font-black text-white group-hover:text-[#98FF03] transition-colors">
+                {stat.val}
+              </span>
+              <span className="font-outfit text-xs font-bold text-slate-400">
+                {stat.sub}
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

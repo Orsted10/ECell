@@ -1,38 +1,49 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens ─────────────────────────────── */
+/* ─── AgencyIO Framer Design System Tokens ─────────────────────────────── */
 :root {
-  --bg:           #06070A;
-  --surface:      #0B0E14;
-  --surface-2:    #111622;
-  --border:       #1D2433;
-  --border-soft:  #151B28;
+  --bg:           #030712;
+  --surface:      #06080D;
+  --surface-2:    #0D111A;
+  --border:       rgba(255, 255, 255, 0.12);
+  --border-soft:  rgba(255, 255, 255, 0.07);
   
-  /* Fiery Orange Accent (Primary) */
-  --accent:       #FF4D00;
-  --accent-hover: #FF661A;
-  --accent-dim:   rgba(255, 77, 0, 0.12);
-  --accent-glow:  rgba(255, 77, 0, 0.25);
+  /* Electric Neon Lime Accent (AgencyIO Signature) */
+  --accent-lime:       #98FF03;
+  --accent-lime-hover: #B2FF43;
+  --accent-lime-dim:   rgba(152, 255, 3, 0.12);
+  --accent-lime-glow:  rgba(152, 255, 3, 0.35);
+
+  /* Cyber Fiery Orange Accent */
+  --accent:       #FF5500;
+  --accent-hover: #FF7722;
+  --accent-dim:   rgba(255, 85, 0, 0.14);
+  --accent-glow:  rgba(255, 85, 0, 0.35);
+
+  /* Cyber Electric Cyan Accent */
+  --accent-cyan:  #00F0FF;
+  --accent-cyan-dim: rgba(0, 240, 255, 0.14);
   
-  /* Cyber Electric Blue Accent (Secondary) */
-  --accent-blue:       #0066FF;
-  --accent-blue-hover: #1A75FF;
-  --accent-blue-dim:  rgba(0, 102, 255, 0.12);
-  --accent-blue-glow: rgba(0, 102, 255, 0.25);
-  
-  /* Gradients */
-  --mesh-gradient: linear-gradient(135deg, #FFF0E6 0%, #FF661A 50%, #FF2E00 100%);
-  --orange-gradient: linear-gradient(135deg, #FF5500 0%, #FF2200 100%);
-  --blue-gradient: linear-gradient(135deg, #00C6FF 0%, #0066FF 100%);
+  /* AgencyIO Gradient Presets */
+  --mesh-gradient: linear-gradient(135deg, #FFFFFF 0%, #98FF03 60%, #FF5500 100%);
+  --lime-gradient: linear-gradient(135deg, #B2FF43 0%, #98FF03 100%);
+  --orange-gradient: linear-gradient(135deg, #FF7722 0%, #FF5500 100%);
   
   --text-1:       #FFFFFF;
-  --text-2:       #9AA4B2;
-  --text-3:       #4E586E;
+  --text-2:       #9CA3AF;
+  --text-3:       #6B7280;
   --white:        #ffffff;
 }
 
 .text-gradient {
   background: var(--mesh-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-lime {
+  background: var(--lime-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -45,24 +56,38 @@
   background-clip: text;
 }
 
-.text-gradient-blue {
-  background: var(--blue-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Icon Badge Squircle */
-.icon-badge-orange {
+/* AgencyIO Floating Pill Badges */
+.badge-agencyio {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #FF5500 0%, #D93600 100%);
+  gap: 0.625rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  font-family: var(--font-inter-tight), monospace;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(255, 77, 0, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.badge-agencyio-lime {
+  background: rgba(152, 255, 3, 0.12);
+  border: 1px solid rgba(152, 255, 3, 0.4);
+  color: #98FF03;
+  box-shadow: 0 0 20px rgba(152, 255, 3, 0.25);
+}
+
+.badge-agencyio-orange {
+  background: rgba(255, 85, 0, 0.14);
+  border: 1px solid rgba(255, 85, 0, 0.45);
+  color: #FF5500;
+  box-shadow: 0 0 20px rgba(255, 85, 0, 0.25);
 }
 
 @theme inline {
@@ -84,7 +109,7 @@
 }
 
 html {
-  scroll-behavior: auto; /* Lenis handles smoothness */
+  scroll-behavior: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -97,126 +122,19 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── Typography Scale (Dynamically Scaled & Bigger for All Devices) ─── */
-.display-1 {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(4.25rem, 9.5vw, 8.5rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 0.98;
-}
-
-.display-2 {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(3.25rem, 6.5vw, 5.75rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.02;
-}
-
-.display-3 {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
-}
-
-.body-lg {
-  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
-  line-height: 1.7;
-  color: var(--text-2);
-  max-width: 65ch;
-}
-
-.body-sm {
-  font-size: clamp(1rem, 1.2vw, 1.25rem);
-  line-height: 1.6;
-  color: var(--text-2);
-}
-
-.label {
-  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-
-/* ─── Corner Radius System ─────────────────────── */
-/* Documented: cards=14px, inputs=8px, pills=999px */
-
-/* ─── Accent Utility ───────────────────────────── */
-.text-accent { color: var(--accent); }
-.bg-accent   { background: var(--accent); }
-
-/* ─── Focus Ring ────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* ─── Scrollbar ─────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-/* ─── Selection ─────────────────────────────────── */
-::selection { background: var(--accent-dim); color: var(--text-1); }
-
-/* ─── Lenis ─────────────────────────────────────── */
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-/* ─── Noise Texture Overlay ─────────────────────── */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 50; /* Needs to be above backgrounds but pointer-events-none */
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
-}
-
-/* ─── Section Spacing ───────────────────────────── */
-.section-pad {
-  padding-top: clamp(6rem, 10vw, 10rem);
-  padding-bottom: clamp(6rem, 10vw, 10rem);
-}
-
+/* Container Utility */
 .container-wide {
   width: 100%;
-  max-width: 1600px;
-  margin-inline: auto;
-  padding-inline: clamp(1.5rem, 5vw, 6rem);
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-/* ─── Reduced Motion ────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@media (min-width: 640px) {
+  .container-wide {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-33.333%);
-  }
-}
-

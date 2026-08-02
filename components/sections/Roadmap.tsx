@@ -31,8 +31,8 @@ const MILESTONES = [
       "Builder Ecosystem & Network Ignited"
     ],
     status: "current",
-    accent: "#FF5500",
-    glowColor: "rgba(255, 85, 0, 0.45)",
+    accent: "#98FF03",
+    glowColor: "rgba(152, 255, 3, 0.45)",
     icon: RocketLaunch,
     tag: "LIVE NOW",
     metric: "100+ FOUNDING BUILDERS",
@@ -121,7 +121,6 @@ export default function Roadmap() {
     if (shouldReduce || !trackWrapRef.current || !trackRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Accurately calculate horizontal scroll distance for 100% full reach to Phase 05
       const getScrollDistance = () => {
         if (!trackRef.current) return 0;
         return trackRef.current.scrollWidth - window.innerWidth + 500;
@@ -148,30 +147,28 @@ export default function Roadmap() {
     <section
       id="roadmap"
       ref={wrapRef}
-      className="relative overflow-hidden bg-[#05070B] pt-32 sm:pt-44 pb-24"
+      className="relative overflow-hidden bg-[#030712] pt-28 pb-24"
       style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
     >
       {/* Background Ambient Spotlights */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/4 w-[750px] h-[750px] opacity-25 blur-[180px] bg-gradient-to-r from-[#FF5500] via-[#FF8800] to-[#00F0FF]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[750px] h-[750px] opacity-20 blur-[180px] bg-gradient-to-r from-[#10B981] via-[#A855F7] to-[#FF5500]" />
-        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#FF5500_1.5px,transparent_1.5px)] [background-size:36px_36px]" />
+        <div className="absolute top-1/4 left-1/4 w-[750px] h-[750px] opacity-25 blur-[180px] bg-gradient-to-r from-[#98FF03] via-[#00F0FF] to-[#FF5500]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[750px] h-[750px] opacity-20 blur-[180px] bg-gradient-to-r from-[#10B981] via-[#A855F7] to-[#98FF03]" />
+        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#98FF03_1.5px,transparent_1.5px)] [background-size:36px_36px]" />
       </div>
 
-      {/* 1. STATIONARY INTRO HEADER BLOCK — 100% Clean Isolation & Zero Overlap */}
+      {/* STATIONARY INTRO HEADER BLOCK */}
       <div className="container-wide relative z-10 text-left pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/15">
           <div className="flex flex-col gap-4">
-            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#FF5500]/60 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_25px_rgba(255,85,0,0.35)] w-fit">
-              <Sparkle size={16} weight="fill" className="text-[#FF5500] animate-pulse" />
-              <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-[0.25em] text-[#FF5500]">
-                OUR JOURNEY // 2026–2027
-              </span>
+            <div className="badge-agencyio badge-agencyio-lime w-fit">
+              <Sparkle size={16} weight="fill" className="text-[#98FF03] animate-pulse" />
+              <span>OUR MILESTONES // 2026–2027</span>
             </div>
 
             <h2 className="font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none drop-shadow-2xl">
               Building the future,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF8800] to-[#00F0FF]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#98FF03] via-[#B2FF43] to-[#FF5500]">
                 milestone by milestone.
               </span>
             </h2>
@@ -179,13 +176,13 @@ export default function Roadmap() {
 
           <div className="flex items-center gap-3 pb-2">
             <span className="font-mono text-xs sm:text-sm font-black text-slate-200 uppercase tracking-widest flex items-center gap-2">
-              SCROLL HORIZONTALLY <ArrowRight size={18} className="text-[#FF5500] animate-bounce-x" />
+              SCROLL HORIZONTALLY <ArrowRight size={18} className="text-[#98FF03] animate-bounce-x" />
             </span>
           </div>
         </div>
       </div>
 
-      {/* 2. PINNED HORIZONTAL TIMELINE TRACK CONTAINER (Pins when track reaches top) */}
+      {/* PINNED HORIZONTAL TIMELINE TRACK CONTAINER */}
       <div ref={trackWrapRef} className="relative z-10 w-full h-[100vh] overflow-hidden flex flex-col justify-center">
         <div className="w-full overflow-hidden relative">
           <div
@@ -198,7 +195,7 @@ export default function Roadmap() {
 
               return (
                 <div key={m.phase} className="flex items-center gap-14 sm:gap-20 flex-shrink-0 relative group">
-                  {/* Connecting Neon Energy Line */}
+                  {/* Connecting Energy Line */}
                   {i > 0 && (
                     <div className="w-24 sm:w-32 h-2 relative flex-shrink-0 overflow-hidden rounded-full bg-white/10 shadow-[0_0_12px_rgba(255,255,255,0.2)]">
                       <div
@@ -219,11 +216,11 @@ export default function Roadmap() {
                       borderRadius: "2.5rem",
                       border: `2px solid ${isCurrent ? m.accent : "rgba(255, 255, 255, 0.2)"}`,
                       background: isCurrent
-                        ? `linear-gradient(180deg, rgba(255, 85, 0, 0.22) 0%, rgba(12, 16, 28, 0.98) 100%)`
-                        : `linear-gradient(180deg, rgba(16, 22, 36, 0.98) 0%, rgba(8, 11, 18, 0.99) 100%)`,
+                        ? `linear-gradient(180deg, rgba(152, 255, 3, 0.18) 0%, rgba(6, 8, 13, 0.98) 100%)`
+                        : `linear-gradient(180deg, rgba(13, 17, 26, 0.98) 0%, rgba(6, 8, 13, 0.99) 100%)`,
                       backdropFilter: "blur(40px)",
                       boxShadow: isCurrent
-                        ? `0 35px 90px rgba(255, 85, 0, 0.45), 0 0 40px ${m.glowColor}, inset 0 1px 0 rgba(255, 255, 255, 0.4)`
+                        ? `0 35px 90px rgba(152, 255, 3, 0.35), 0 0 40px ${m.glowColor}, inset 0 1px 0 rgba(255, 255, 255, 0.4)`
                         : `0 30px 80px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15)`,
                       display: "flex",
                       flexDirection: "column",
@@ -240,7 +237,7 @@ export default function Roadmap() {
                       style={{ background: m.accent }}
                     />
 
-                    {/* Top Eyebrow Row — Eyebrow Label (Left) + SINGLE-LINE Pill Badge & Icon (Right) */}
+                    {/* Top Eyebrow Row */}
                     <div className="flex items-center justify-between gap-4 w-full relative z-10">
                       <span
                         className="font-mono text-xs sm:text-sm font-black uppercase tracking-[0.2em] whitespace-nowrap"
@@ -250,19 +247,20 @@ export default function Roadmap() {
                       </span>
 
                       <div className="flex items-center gap-3 flex-shrink-0">
-                        {/* Single-Line Pill Badge — 100% Unsquished (whitespace-nowrap) */}
+                        {/* Single-Line Pill Badge */}
                         <span
                           className="px-5 py-2 rounded-full font-mono text-xs font-black uppercase tracking-widest text-white shadow-xl flex items-center gap-2 whitespace-nowrap flex-shrink-0"
                           style={{
                             background: isCurrent ? m.accent : "rgba(255, 255, 255, 0.12)",
+                            color: isCurrent && m.accent === "#98FF03" ? "#000" : "#FFF",
                             border: `1.5px solid ${m.accent}80`,
                           }}
                         >
-                          {isCurrent && <span className="h-2 w-2 rounded-full bg-white animate-ping flex-shrink-0" />}
+                          {isCurrent && <span className="h-2 w-2 rounded-full bg-black animate-ping flex-shrink-0" />}
                           {m.tag}
                         </span>
 
-                        {/* Icon Badge Container */}
+                        {/* Icon Badge */}
                         <div
                           className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0"
                           style={{
@@ -286,7 +284,7 @@ export default function Roadmap() {
                       {m.description}
                     </p>
 
-                    {/* Highlights List — Matching Stage 04 Feature Rows */}
+                    {/* Highlights List */}
                     <div className="flex flex-col gap-3 w-full relative z-10">
                       {m.highlights.map((highlight, idx) => (
                         <div
@@ -301,7 +299,7 @@ export default function Roadmap() {
                       ))}
                     </div>
 
-                    {/* Bottom Footer Bar — Spaced Row with 100% Zero Truncation */}
+                    {/* Bottom Footer Bar */}
                     <div className="pt-5 border-t border-white/15 flex items-center justify-between gap-4 w-full relative z-10">
                       <span
                         className="font-mono text-xs font-black uppercase tracking-wider flex items-center gap-2 whitespace-nowrap"
@@ -309,7 +307,7 @@ export default function Roadmap() {
                       >
                         <ShieldCheck size={18} weight="fill" /> {m.subtitle} TRACK
                       </span>
-                      <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-white hover:text-[#FF5500] transition-colors flex-shrink-0 whitespace-nowrap">
+                      <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-white hover:text-[#98FF03] transition-colors flex-shrink-0 whitespace-nowrap">
                         {m.metric} →
                       </span>
                     </div>
@@ -318,7 +316,7 @@ export default function Roadmap() {
               );
             })}
 
-            {/* Generous 60vw Right Spacer Container — Guarantees Phase 05 Scrolls 100% to Screen Center */}
+            {/* Generous 60vw Right Spacer Container */}
             <div className="min-w-[60vw] flex-shrink-0" />
           </div>
         </div>

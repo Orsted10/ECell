@@ -2,11 +2,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
-import { List, X, ArrowRight } from "@phosphor-icons/react";
+import { List, X, ArrowRight, Sparkle } from "@phosphor-icons/react";
 
 const NAV_LINKS = [
   { label: "Vision", href: "#vision" },
-  { label: "What You Get", href: "#offerings" },
+  { label: "Launchpads", href: "#offerings" },
+  { label: "Roadmap", href: "#roadmap" },
   { label: "Events", href: "#events" },
   { label: "Team", href: "#team" },
 ];
@@ -25,217 +26,76 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        height: scrolled ? "76px" : "88px",
-        transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
-        background: scrolled
-          ? "rgba(6, 7, 10, 0.88)"
-          : "transparent",
-        backdropFilter: scrolled ? "blur(24px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
-        borderBottom: scrolled
-          ? "1px solid rgba(255, 77, 0, 0.2)"
-          : "1px solid transparent",
-        boxShadow: scrolled ? "0 10px 30px rgba(0, 0, 0, 0.5)" : "none",
-      }}
+      className="fixed top-0 left-0 right-0 z-[100] pt-4 sm:pt-6 px-4 sm:px-8 transition-all duration-300 pointer-events-none"
     >
-      <div className="container-wide h-full flex items-center justify-between">
-        {/* Wordmark Logo */}
+      {/* AgencyIO Floating Glass Capsule Dock */}
+      <div className="max-w-6xl mx-auto rounded-full bg-[#06080D]/85 border border-white/15 backdrop-blur-2xl px-5 sm:px-8 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.8)] pointer-events-auto flex items-center justify-between">
+        {/* Brand Logo */}
         <Link
           href="/"
-          style={{
-            fontFamily: "var(--font-outfit)",
-            fontWeight: 800,
-            fontSize: "1.45rem",
-            letterSpacing: "-0.03em",
-            color: "var(--text-1)",
-            textDecoration: "none",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.6rem",
-          }}
+          className="flex items-center gap-3 text-white text-decoration-none group"
         >
-          <div
-            style={{
-              width: "36px",
-              height: "36px",
-              borderRadius: "10px",
-              background: "linear-gradient(135deg, #FF5500 0%, #D93600 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#FFF",
-              fontWeight: 900,
-              fontSize: "1.2rem",
-              boxShadow: "0 0 16px rgba(255, 77, 0, 0.4)",
-            }}
-          >
-            E
+          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#98FF03] to-[#FF5500] p-[1.5px] shadow-[0_0_20px_rgba(152,255,3,0.4)] group-hover:scale-105 transition-transform">
+            <div className="w-full h-full rounded-full bg-[#030712] flex items-center justify-center font-outfit font-black text-sm text-[#98FF03]">
+              E
+            </div>
           </div>
-          <span style={{ color: "var(--text-3)", fontWeight: 300, fontSize: "1.2rem" }}>·</span>
-          <span style={{ letterSpacing: "-0.01em", fontWeight: 800 }}>CELL</span>
-          <span
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              letterSpacing: "0.15em",
-              color: "#FF5500",
-              textTransform: "uppercase",
-              background: "rgba(255, 85, 0, 0.12)",
-              border: "1px solid rgba(255, 85, 0, 0.3)",
-              padding: "0.2rem 0.55rem",
-              borderRadius: "6px",
-              marginLeft: "0.25rem",
-            }}
-          >
-            CUUP
-          </span>
+          <div className="flex items-center gap-2 font-outfit font-black text-lg tracking-tight">
+            <span>E-CELL</span>
+            <span className="px-2 py-0.5 rounded-full font-mono text-[10px] font-black tracking-widest text-[#98FF03] bg-[#98FF03]/15 border border-[#98FF03]/40">
+              CUUP
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav
-          className="hidden md:flex items-center"
-          style={{ gap: "2.25rem" }}
-          aria-label="Primary navigation"
-        >
+        {/* Desktop AgencyIO Nav Capsule */}
+        <nav className="hidden md:flex items-center gap-8" aria-label="Primary navigation">
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              style={{
-                fontSize: "1.05rem",
-                fontWeight: 600,
-                color: "var(--text-2)",
-                textDecoration: "none",
-                transition: "color 0.25s, transform 0.25s",
-                padding: "0.4rem 0.6rem",
-                borderRadius: "8px",
-              }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "#FFFFFF";
-                (e.target as HTMLElement).style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "var(--text-2)";
-                (e.target as HTMLElement).style.transform = "translateY(0)";
-              }}
+              className="font-outfit text-sm font-bold text-slate-300 hover:text-[#98FF03] transition-colors relative py-1 group"
             >
               {link.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#98FF03] transition-all duration-300 group-hover:w-full rounded-full shadow-[0_0_10px_#98FF03]" />
             </a>
           ))}
-
-          {/* Primary CTA */}
-          <a
-            href="#join"
-            id="nav-cta"
-            className="group"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.65rem",
-              padding: "0.55rem 0.55rem 0.55rem 1.6rem",
-              borderRadius: "999px",
-              background: "linear-gradient(135deg, #FF5500 0%, #D93600 100%)",
-              color: "#fff",
-              fontSize: "1.05rem",
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              boxShadow: "0 6px 24px rgba(255, 77, 0, 0.45)",
-              transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s",
-              whiteSpace: "nowrap",
-            }}
-            onMouseDown={(e) => {
-              (e.currentTarget as HTMLElement).style.transform = "scale(0.97)";
-            }}
-            onMouseUp={(e) => {
-              (e.currentTarget as HTMLElement).style.transform = "scale(1)";
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(255, 77, 0, 0.7)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 24px rgba(255, 77, 0, 0.45)";
-            }}
-          >
-            JOIN E-CELL
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "32px",
-                height: "32px",
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.25)",
-                transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
-              }}
-              className="group-hover:translate-x-1 group-hover:scale-105"
-            >
-              <ArrowRight size={16} weight="bold" />
-            </div>
-          </a>
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* Action Call to Action Button */}
+        <div className="hidden sm:flex items-center gap-4">
+          <a
+            href="#join"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-outfit text-sm font-black text-black bg-[#98FF03] hover:bg-[#B2FF43] transition-all duration-300 shadow-[0_0_25px_rgba(152,255,3,0.5)] hover:scale-105 active:scale-95"
+          >
+            JOIN LAUNCHPAD <ArrowRight size={16} weight="bold" />
+          </a>
+        </div>
+
+        {/* Mobile Hamburger Trigger */}
         <button
-          className="md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          style={{
-            background: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: "10px",
-            color: "var(--text-1)",
-            cursor: "pointer",
-            padding: "0.6rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className="md:hidden w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:text-[#98FF03] transition-colors"
+          aria-label="Toggle menu"
         >
-          {menuOpen ? <X size={24} /> : <List size={24} />}
+          {menuOpen ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer Menu */}
       {menuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          style={{
-            position: "absolute",
-            top: scrolled ? "76px" : "88px",
-            left: 0,
-            right: 0,
-            background: "rgba(6, 7, 10, 0.98)",
-            backdropFilter: "blur(24px)",
-            borderBottom: "1px solid rgba(255, 77, 0, 0.25)",
-            padding: "2rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.5rem",
-            boxShadow: "0 20px 40px rgba(0,0,0,0.8)",
-          }}
+          className="md:hidden mt-3 max-w-6xl mx-auto rounded-3xl bg-[#06080D]/95 border border-white/20 backdrop-blur-2xl p-6 shadow-2xl pointer-events-auto flex flex-col gap-4"
         >
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              style={{
-                fontSize: "1.25rem",
-                fontWeight: 600,
-                color: "var(--text-1)",
-                textDecoration: "none",
-              }}
+              className="font-outfit text-lg font-bold text-slate-200 hover:text-[#98FF03] transition-colors py-2 border-b border-white/10"
             >
               {link.label}
             </a>
@@ -243,25 +103,9 @@ export default function Navbar() {
           <a
             href="#join"
             onClick={() => setMenuOpen(false)}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.5rem",
-              padding: "1rem 2rem",
-              borderRadius: "999px",
-              background: "linear-gradient(135deg, #FF5500 0%, #D93600 100%)",
-              color: "#fff",
-              fontWeight: 700,
-              fontSize: "1.1rem",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              boxShadow: "0 6px 24px rgba(255, 77, 0, 0.45)",
-              marginTop: "0.5rem",
-            }}
+            className="mt-2 w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full font-outfit text-base font-black text-black bg-[#98FF03] hover:bg-[#B2FF43] shadow-[0_0_25px_rgba(152,255,3,0.5)]"
           >
-            JOIN E-CELL
-            <ArrowRight size={18} weight="bold" />
+            JOIN LAUNCHPAD <ArrowRight size={18} weight="bold" />
           </a>
         </motion.div>
       )}

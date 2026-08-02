@@ -254,34 +254,21 @@ export default function Contact() {
           </motion.div>
         </motion.div>
 
-        {/* Footer */}
-        <div
-          style={{
-            marginTop: "6rem",
-            paddingTop: "2.5rem",
-            borderTop: "1px solid var(--border)",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "1rem",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "var(--font-outfit)",
-              fontSize: "0.9rem",
-              fontWeight: 600,
-              color: "var(--text-1)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Students <span style={{ color: "var(--text-3)" }}>&#8594;</span> Builders{" "}
-            <span style={{ color: "var(--text-3)" }}>&#8594;</span> Founders{" "}
-            <span style={{ color: "var(--text-3)" }}>&#8594;</span> Impact
-          </p>
-          <p style={{ fontSize: "0.8rem", color: "var(--text-3)" }}>
-            E-Cell CUUP &copy; {new Date().getFullYear()}
+        {/* AgencyIO Footer */}
+        <div className="mt-24 pt-10 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#98FF03] to-[#FF5500] p-[1px]">
+              <div className="w-full h-full rounded-full bg-[#030712] flex items-center justify-center font-outfit font-black text-xs text-[#98FF03]">
+                E
+              </div>
+            </div>
+            <p className="font-outfit text-sm font-bold text-white tracking-wide">
+              Students <span className="text-[#98FF03]">→</span> Builders <span className="text-[#98FF03]">→</span> Founders <span className="text-[#98FF03]">→</span> Impact
+            </p>
+          </div>
+
+          <p className="font-mono text-xs font-bold text-slate-400">
+            E-Cell Chandigarh University UP &copy; {new Date().getFullYear()} // ALL RIGHTS RESERVED
           </p>
         </div>
       </div>

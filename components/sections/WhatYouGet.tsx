@@ -13,12 +13,7 @@ import {
   Briefcase,
   CheckCircle,
   Sparkle,
-  TrendUp,
-  Clock,
   ShieldCheck,
-  Star,
-  Flame,
-  ArrowRight,
 } from "@phosphor-icons/react";
 import { staggerContainer, fadeUp } from "@/components/motion/variants";
 import { RevealText } from "@/components/ui/RevealText";
@@ -34,9 +29,9 @@ const OFFERINGS = [
     tagline: "Turn your napkin idea into a venture-backed startup.",
     body: "Access dedicated maker desk space, guidance on legal incorporation, mentorship from experienced founders, and pitch prep for seed funding.",
     highlights: ["Dedicated Workspace Access", "Legal & Charter Setup Guidance", "Incubation Cohort Milestone Tracking"],
-    accent: "#FF5500",
-    glowColor: "rgba(255, 85, 0, 0.25)",
-    bgGradient: "linear-gradient(135deg, rgba(255, 85, 0, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
+    accent: "#98FF03",
+    glowColor: "rgba(152, 255, 3, 0.35)",
+    bgGradient: "linear-gradient(135deg, rgba(152, 255, 3, 0.15) 0%, rgba(6, 8, 13, 0.98) 100%)",
     cardTitle: "How Incubation Works",
     cardSubtitle: "COHORT PROGRAM ROADMAP",
     cardBody: "A structured 4-stage pipeline guiding student teams from raw concept to launch-ready startup.",
@@ -55,9 +50,9 @@ const OFFERINGS = [
     tagline: "Unfiltered playbooks directly from iconic builders.",
     body: "Monthly intimate fireside chats and masterclasses with active founders, CEOs, and operators sharing real lessons and growth strategies.",
     highlights: ["Monthly Speaker Sessions", "Interactive Q&A Audits", "Networking Opportunities"],
-    accent: "#818CF8",
-    glowColor: "rgba(129, 140, 248, 0.25)",
-    bgGradient: "linear-gradient(135deg, rgba(129, 140, 248, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
+    accent: "#FF5500",
+    glowColor: "rgba(255, 85, 0, 0.35)",
+    bgGradient: "linear-gradient(135deg, rgba(255, 85, 0, 0.15) 0%, rgba(6, 8, 13, 0.98) 100%)",
     cardTitle: "Learning From Real Builders",
     cardSubtitle: "CAMPUS MASTERCLASS SERIES",
     cardBody: "Key topics and practical takeaways covered during our monthly founder speaker sessions.",
@@ -76,9 +71,9 @@ const OFFERINGS = [
     tagline: "Your network is your ultimate unfair advantage.",
     body: "Peer networking mixers, team-building sessions, and campus meetups to find your technical co-founder, growth lead, or design partner.",
     highlights: ["Builder Mixer Events", "Cross-Department Networking", "Team Formation Support"],
-    accent: "#34D399",
-    glowColor: "rgba(52, 211, 153, 0.25)",
-    bgGradient: "linear-gradient(135deg, rgba(52, 211, 153, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
+    accent: "#00F0FF",
+    glowColor: "rgba(0, 240, 255, 0.35)",
+    bgGradient: "linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(6, 8, 13, 0.98) 100%)",
     cardTitle: "Building Your Team",
     cardSubtitle: "COMMUNITY MATCHMAKING",
     cardBody: "Connecting technical, design, and business-minded students across departments.",
@@ -88,152 +83,129 @@ const OFFERINGS = [
       "Hackathon Team Pairing — Forming balanced teams",
       "Founder Roles Basics — Understanding equity & responsibilities",
     ],
-    cardFooterLabel: "CAMPUS NETWORK TRACK",
+    cardFooterLabel: "MATCHMAKING NETWORK",
   },
   {
     icon: Student,
     pillarNo: "04",
-    title: "1-on-1 Mentorship",
-    tagline: "Guided step-by-step by those who built before you.",
-    body: "Direct 1-on-1 office hours with alumni founders, mentors, and domain experts across technology, product, and business strategy.",
-    highlights: ["Dedicated Office Hours", "Pitch Deck Teardowns", "Strategic Roadmap Advice"],
-    accent: "#FCD34D",
-    glowColor: "rgba(252, 211, 77, 0.25)",
-    bgGradient: "linear-gradient(135deg, rgba(252, 211, 77, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "Personalized Advisory",
-    cardSubtitle: "MENTORSHIP CLINICS",
-    cardBody: "Direct feedback sessions tailored to your current stage and immediate challenges.",
+    title: "Skill Workshops",
+    tagline: "Master modern tools & frameworks that matter.",
+    body: "Hands-on technical and business bootcamps covering AI/ML integration, rapid prototyping, no-code, financial modeling, and pitch decks.",
+    highlights: ["Hands-On Technical Sprints", "No-Code & AI Tools", "Pitch Deck Crafting"],
+    accent: "#FFB800",
+    glowColor: "rgba(255, 184, 0, 0.35)",
+    bgGradient: "linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(6, 8, 13, 0.98) 100%)",
+    cardTitle: "Skills Acceleration",
+    cardSubtitle: "PRACTICAL WORKSHOPS",
+    cardBody: "Targeted learning modules designed to teach practical building and startup execution.",
     cardDeliverables: [
-      "Pitch Deck Review — Structural & visual feedback",
-      "Business Model Audit — Evaluating value proposition",
-      "Tech Stack Consultation — Guidance on development tools",
-      "GTM Strategy Review — Defining target audience & launch plan",
+      "AI & No-Code Sprints — Rapid MVP development",
+      "Pitch Deck Design — Structuring a compelling narrative",
+      "Financial Basics — Unit economics & budgeting",
+      "Product Strategy — User interviews & feedback loops",
     ],
-    cardFooterLabel: "EXPERT ADVISORY TRACK",
+    cardFooterLabel: "SKILLS BOOTCAMP TRACK",
   },
   {
     icon: Lightning,
     pillarNo: "05",
-    title: "48H Ideathons",
-    tagline: "48 intense hours to prototype, pitch, and win.",
-    body: "Fast-paced hackathons where student teams work together, build working prototypes, compete for prizes, and get recognized.",
-    highlights: ["48-Hour Prototyping Sprint", "Mentor Guidance On-Site", "Prizes & Recognition"],
-    accent: "#FCA5A5",
-    glowColor: "rgba(252, 165, 165, 0.25)",
-    bgGradient: "linear-gradient(135deg, rgba(252, 165, 165, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "The Ideathon Journey",
-    cardSubtitle: "ANNUAL HACKATHON SPRINT",
-    cardBody: "From problem statement to working prototype and pitch presentation in two days.",
+    title: "Hackathons",
+    tagline: "Build, ship, and compete under extreme time pressure.",
+    body: "High-energy campus hackathons and ideathons with real problem statements, industry mentors, cash prizes, and incubation grants.",
+    highlights: ["48-Hour Build Sprints", "Cash Prizes & Grants", "Direct Investor Access"],
+    accent: "#A855F7",
+    glowColor: "rgba(168, 85, 247, 0.35)",
+    bgGradient: "linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(6, 8, 13, 0.98) 100%)",
+    cardTitle: "Sprint to MVP",
+    cardSubtitle: "HACKATHONS & IDEATHONS",
+    cardBody: "Intense building competitions designed to turn raw energy into working products.",
     cardDeliverables: [
-      "Problem Statement Reveal — Challenge track selection",
-      "Rapid Prototyping — 48 hours of collaborative building",
-      "Mentor Check-Ins — Mid-sprint feedback & guidance",
-      "Jury Presentation — Pitching working MVPs to judges",
+      "Problem Statements — Solved with real-world focus",
+      "Mentor Office Hours — Instant guidance during builds",
+      "Live Demo Pitches — Presenting to guest judges",
+      "Fast-Track Incubation — Winners advance to cohort",
     ],
-    cardFooterLabel: "ANNUAL CAMPUS IDEATHON",
+    cardFooterLabel: "CAMPUS HACKATHON SERIES",
   },
   {
     icon: Trophy,
     pillarNo: "06",
     title: "Pitch Competitions",
-    tagline: "Present your vision. Persuade real VCs. Win capital.",
-    body: "Campus Demo Days and pitch showcases presenting top student startups to judges, industry professionals, and audience members.",
-    highlights: ["Stage Presentation Experience", "Expert Jury Feedback", "Campus Exposure"],
-    accent: "#C4B5FD",
-    glowColor: "rgba(196, 181, 253, 0.25)",
-    bgGradient: "linear-gradient(135deg, rgba(196, 181, 253, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "Campus Pitch Showcase",
-    cardSubtitle: "DEMO DAY ARENA",
-    cardBody: "High-visibility opportunity to present your startup vision and gain valuable pitch experience.",
+    tagline: "Present your venture to active angel investors & VCs.",
+    body: "Annual flagships where top campus teams pitch for seed funding, mentorship packages, cloud credits, and national recognition.",
+    highlights: ["Seed Funding Opportunities", "Cloud & Tech Credits", "National Recognition"],
+    accent: "#EC4899",
+    glowColor: "rgba(236, 72, 153, 0.35)",
+    bgGradient: "linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(6, 8, 13, 0.98) 100%)",
+    cardTitle: "Venture Showcase",
+    cardSubtitle: "INVESTOR PITCH DAYS",
+    cardBody: "Formal pitch events matching advanced student teams with early-stage investors.",
     cardDeliverables: [
-      "Application & Deck Screening — Initial entry review",
-      "Pitch Coaching — Refining presentation & slide flow",
-      "Live Stage Pitch — Presenting to judges & audience",
-      "Awards & Feedback — Constructive jury evaluation",
+      "Investor Decks — Polished presentations for VCs",
+      "Executive Summaries — One-page venture briefs",
+      "Q&A Defense Prep — Handling investor questions",
+      "Follow-up Connections — Intro meetings post-event",
     ],
-    cardFooterLabel: "ANNUAL PITCH SHOWCASE",
+    cardFooterLabel: "INVESTOR DEMO DAY",
   },
   {
     icon: Briefcase,
     pillarNo: "07",
-    title: "Startup Internships",
-    tagline: "High-impact roles at high-growth scaleups.",
-    body: "Connecting interested students with internship roles at innovative startups, gaining hands-on building experience beyond textbooks.",
-    highlights: ["Curated Role Postings", "Hands-On Project Work", "Skill-Building Experience"],
-    accent: "#5EEAD4",
-    glowColor: "rgba(94, 234, 212, 0.25)",
-    bgGradient: "linear-gradient(135deg, rgba(94, 234, 212, 0.12) 0%, rgba(11, 14, 20, 0.95) 100%)",
-    cardTitle: "Startup Career Opportunities",
-    cardSubtitle: "TALENT PLACEMENT SUPPORT",
-    cardBody: "Helping students discover and apply for impactful roles at early-stage companies.",
+    title: "Venture Network",
+    tagline: "Direct intros to angel networks, VCs & startup hubs.",
+    body: "A lifelong network of alumni founders, angel investors, corporate partners, and ecosystem hubs supporting your venture post-graduation.",
+    highlights: ["Alumni Founder Network", "Angel & VC Intros", "Corporate Partnerships"],
+    accent: "#10B981",
+    glowColor: "rgba(16, 185, 129, 0.35)",
+    bgGradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 8, 13, 0.98) 100%)",
+    cardTitle: "Ecosystem Access",
+    cardSubtitle: "LONG-TERM SUPPORT",
+    cardBody: "Ongoing backing for CUUP founders through our extended partner ecosystem.",
     cardDeliverables: [
-      "Vetted Opportunity Board — Curated internship listings",
-      "Resume & Portfolio Prep — Highlighting project work",
-      "Direct Application Routing — Connecting with founders",
-      "Real-World Experience — Building alongside core teams",
+      "Angel & VC Intros — Warm intros to active funds",
+      "Perks & Credits — Discounted cloud & SaaS tools",
+      "Alumni Advisory — Advice from past student founders",
+      "Ecosystem Events — Access to regional startup hubs",
     ],
-    cardFooterLabel: "STUDENT CAREER TRACK",
+    cardFooterLabel: "VENTURE NETWORK ACCESS",
   },
 ];
 
 export default function WhatYouGet() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const [activeCard, setActiveCard] = useState(0);
   const shouldReduce = useReducedMotion();
-  const [activeCard, setActiveCard] = useState<number>(0);
 
   useEffect(() => {
     if (shouldReduce || !containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(".offering-card");
+      const cards = cardsRef.current.filter(Boolean);
+      if (cards.length === 0) return;
 
-      // Pin section with 350vh scroll distance, liquid 1.8s scrub inertia & silky snapping
+      const totalDuration = OFFERINGS.length * 3.5;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${cards.length * 350}vh`,
+          end: `+=${totalDuration * 100}vh`,
           pin: true,
-          scrub: 1.8, // Ultra-smooth liquid physics dampening for wheel scrolls
-          snap: {
-            snapTo: 1 / (cards.length - 1),
-            duration: { min: 0.5, max: 1.0 },
-            delay: 0.1,
-            ease: "power3.inOut",
-          },
+          scrub: 0.8,
           onUpdate: (self) => {
-            const index = Math.min(
-              cards.length - 1,
-              Math.floor(self.progress * cards.length)
+            const idx = Math.min(
+              Math.floor(self.progress * OFFERINGS.length),
+              OFFERINGS.length - 1
             );
-            setActiveCard(index);
+            setActiveCard(idx);
           },
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
         },
       });
 
       cards.forEach((card, i) => {
-        if (i === 0) return; // First card is base state
+        if (i === 0) return;
 
-        // Card i starts off-screen below, slightly transparent & scaled
-        gsap.set(card, { yPercent: 100, opacity: 0.2, scale: 1.04, rotateX: -3 });
-
-        // Step 1: Luxurious 2.0s cinematic gliding transition (50% of step timeline)
-        tl.to(
-          card,
-          {
-            yPercent: 0,
-            opacity: 1,
-            scale: 1,
-            rotateX: 0,
-            ease: "power3.out",
-            duration: 2.0,
-          },
-          `slide-${i}`
-        );
-
-        // Step 2: Outgoing Card i-1 smoothly retreats in 3D depth, opacity & blur
         tl.to(
           cards[i - 1],
           {
@@ -248,7 +220,15 @@ export default function WhatYouGet() {
           `slide-${i}`
         );
 
-        // Step 3: FROZEN RESTING PAUSE (2.0s) — Card stays 100% frozen in focus before next drawer
+        tl.to(
+          card,
+          {
+            yPercent: 0,
+            duration: 2.0,
+          },
+          `slide-${i}`
+        );
+
         tl.to(card, {
           yPercent: 0,
           duration: 2.0,
@@ -262,331 +242,197 @@ export default function WhatYouGet() {
   return (
     <section
       id="offerings"
-      className="relative overflow-hidden bg-[#06070A]"
-      style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)", paddingTop: "7rem" }}
+      className="relative overflow-hidden bg-[#030712] pt-28 pb-20"
+      style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
     >
-      {/* Background Ambient Spotlights for Section Header */}
+      {/* Background Ambient Spotlights */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none z-0">
         <div
-          className="absolute inset-0 opacity-40 blur-[120px]"
+          className="absolute inset-0 opacity-30 blur-[140px]"
           style={{
-            background: "radial-gradient(circle at 35% 30%, rgba(255, 85, 0, 0.35) 0%, transparent 60%), radial-gradient(circle at 65% 30%, rgba(0, 102, 255, 0.3) 0%, transparent 60%)",
+            background: "radial-gradient(circle at 35% 30%, rgba(152, 255, 3, 0.3) 0%, transparent 60%), radial-gradient(circle at 65% 30%, rgba(255, 85, 0, 0.25) 0%, transparent 60%)",
           }}
         />
-        {/* Subtle Tech Mesh Grid overlay */}
-        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#98FF03_1px,transparent_1px)] [background-size:32px_32px]" />
       </div>
 
-      {/* Standalone Section Header — Generous Spacing */}
-      <div className="container-wide relative z-10 text-center pb-20 sm:pb-28 mb-6 sm:mb-12">
+      {/* Standalone Section Header */}
+      <div className="container-wide relative z-10 text-center pb-16 sm:pb-24">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
-          className="flex flex-col gap-6 sm:gap-8 items-center"
+          className="flex flex-col gap-6 items-center"
         >
-          {/* Glowing Eyebrow Pill */}
-          <motion.div
+          <motion.div variants={fadeUp} className="badge-agencyio badge-agencyio-lime">
+            <Sparkle size={16} weight="fill" className="text-[#98FF03] animate-pulse" />
+            <span>OUR LAUNCHPAD PILLARS // 01–07</span>
+          </motion.div>
+
+          <motion.h2
             variants={fadeUp}
-            className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-[#FF5500]/60 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_30px_rgba(255,85,0,0.35)]"
+            className="font-outfit text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-none drop-shadow-2xl max-w-5xl"
           >
-            <Sparkle size={18} weight="fill" className="text-[#FF5500] animate-pulse" />
-            <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-[0.25em] text-[#FF5500]">
-              CORE ECOSYSTEM PILLARS
+            Everything you need to go from{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#98FF03] via-[#B2FF43] to-[#FF5500]">
+              zero to breakout founder.
             </span>
-          </motion.div>
-          
-          {/* Display Headline */}
-          <RevealText 
-            text="Everything you need<br/>to launch a startup." 
-            className="font-outfit text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.05] text-center drop-shadow-2xl" 
-          />
-
-          {/* Subheadline — Bright Slate-100 */}
-          <p className="text-slate-100 text-lg sm:text-xl md:text-2xl max-w-3xl text-center font-bold leading-relaxed drop-shadow-sm">
-            Seven battle-tested launchpads designed to transform student builders into venture-backed founders.
-          </p>
-
-          {/* Metric Badges — Large, Highly Interactive Hero Glass Cards with Generous Right Padding */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 pt-6">
-            <div className="group flex items-center gap-4 sm:gap-6 px-8 sm:px-12 py-5 sm:py-6 rounded-2xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-[#FF5500]/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,85,0,0.35)] transition-all duration-300 cursor-pointer">
-              <div className="w-11 h-11 rounded-xl bg-[#FF5500]/20 border border-[#FF5500]/50 flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
-                <span className="h-3.5 w-3.5 rounded-full bg-[#FF5500] shadow-[0_0_12px_#FF5500] animate-ping" />
-              </div>
-              <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
-                7 LAUNCHPAD TRACKS
-              </span>
-            </div>
-
-            <div className="group flex items-center gap-4 sm:gap-6 px-8 sm:px-12 py-5 sm:py-6 rounded-2xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-[#FF5500]/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,85,0,0.35)] transition-all duration-300 cursor-pointer">
-              <div className="w-11 h-11 rounded-xl bg-[#FF5500]/20 border border-[#FF5500]/50 flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
-                <Flame size={24} weight="fill" className="text-[#FF5500] drop-shadow-[0_0_10px_#FF5500]" />
-              </div>
-              <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
-                100% BUILDER-FOCUSED
-              </span>
-            </div>
-
-            <div className="group flex items-center gap-4 sm:gap-6 px-8 sm:px-12 py-5 sm:py-6 rounded-2xl bg-gradient-to-b from-[#131927]/90 via-[#0E131F]/90 to-[#080B12]/95 border-2 border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-emerald-400/80 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)] transition-all duration-300 cursor-pointer">
-              <div className="w-11 h-11 rounded-xl bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center shadow-[0_0_15px_rgba(52,211,153,0.5)] flex-shrink-0 group-hover:scale-110 transition-transform">
-                <ShieldCheck size={24} weight="fill" className="text-emerald-400 drop-shadow-[0_0_10px_#34D399]" />
-              </div>
-              <span className="font-mono text-sm sm:text-base md:text-lg font-black text-white tracking-widest whitespace-nowrap">
-                ZERO-EQUITY SUPPORT
-              </span>
-            </div>
-          </motion.div>
+          </motion.h2>
         </motion.div>
       </div>
 
-      {/* Pinned Viewport Container (100vh) */}
+      {/* PINNED DRAWER CONTAINER */}
       <div
         ref={containerRef}
-        className="relative z-10 w-full h-[100vh] overflow-hidden flex flex-col justify-between items-center py-6 px-4 sm:px-8"
+        className="relative z-10 w-full h-[100vh] flex flex-col justify-between items-center py-6 px-4 sm:px-8"
       >
-        {/* Dynamic Ambient Background Glow (Transitions color based on active pillar) */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] opacity-45 blur-[140px] transition-all duration-700"
-            style={{
-              background: `radial-gradient(circle, ${OFFERINGS[activeCard].accent}40 0%, transparent 70%)`,
-            }}
-          />
-          {/* Subtle Tech Mesh Grid overlay */}
-          <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
-        </div>
-
-        {/* MIDDLE DRAWER CARDS AREA — Fills the hero center viewport */}
-        <div className="relative z-20 w-full max-w-6xl flex-1 flex items-center justify-center my-4">
+        <div className="relative w-full max-w-6xl flex-1 flex items-center justify-center my-auto">
           {OFFERINGS.map((item, i) => {
             const Icon = item.icon;
+            const isFirst = i === 0;
+
             return (
               <div
-                key={item.title}
-                className="offering-card absolute inset-0 w-full h-full flex items-center justify-center"
+                key={item.pillarNo}
+                ref={(el) => {
+                  if (el) cardsRef.current[i] = el;
+                }}
+                className="absolute inset-0 m-auto w-full flex items-center justify-center pointer-events-auto"
                 style={{
                   zIndex: i + 1,
+                  transform: isFirst ? "translateY(0%)" : "translateY(115%)",
                   willChange: "transform, opacity, filter",
                 }}
               >
-                {/* Card Outer Shell */}
                 <div
-                  className="w-full relative rounded-[2.2rem] p-6 sm:p-8 md:p-10 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+                  className="w-full rounded-[2.5rem] overflow-hidden"
                   style={{
-                    background: "linear-gradient(180deg, rgba(10, 13, 20, 0.98) 0%, rgba(14, 18, 28, 0.97) 100%)",
-                    backdropFilter: "blur(35px)",
-                    border: `1.5px solid ${item.accent}50`,
-                    boxShadow: `0 30px 90px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 40px ${item.accent}20`,
+                    padding: "2.75rem",
+                    boxSizing: "border-box",
+                    background: item.bgGradient,
+                    border: `1.5px solid ${item.accent}60`,
+                    backdropFilter: "blur(40px)",
+                    boxShadow: `0 30px 80px rgba(0, 0, 0, 0.9), 0 0 45px ${item.glowColor}, inset 0 1px 0 rgba(255, 255, 255, 0.3)`,
                   }}
                 >
-                  {/* Top Laser Beam Border */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[3px] z-20 pointer-events-none"
-                    style={{
-                      background: `linear-gradient(90deg, transparent 0%, ${item.accent} 50%, transparent 100%)`,
-                    }}
-                  />
-
-                  {/* Radial Accent Glow behind card */}
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background: `radial-gradient(circle at 75% 50%, ${item.accent}20 0%, transparent 65%)`,
-                    }}
-                  />
-
-                  <div className="container-wide relative z-10" style={{ paddingBlock: "1rem" }}>
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-                      
-                      {/* Left Column: Rich Information & Bullet Highlights (5 cols) */}
-                      <div className="lg:col-span-5 flex flex-col justify-center gap-6 py-2">
-                        {/* High-Presence Spacious Pillar Badge — Zero Clipping */}
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl flex-shrink-0"
-                            style={{
-                              background: `linear-gradient(135deg, ${item.accent}40 0%, ${item.accent}15 100%)`,
-                              border: `2px solid ${item.accent}`,
-                              boxShadow: `0 0 30px ${item.glowColor}`,
-                            }}
-                          >
-                            <Icon size={30} weight="bold" style={{ color: item.accent }} />
-                          </div>
-                          <span
-                            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-mono text-sm sm:text-base font-black uppercase tracking-[0.15em] shadow-xl whitespace-nowrap"
-                            style={{
-                              color: "#FFFFFF",
-                              background: `${item.accent}33`,
-                              border: `2px solid ${item.accent}`,
-                              boxShadow: `0 0 25px ${item.glowColor}`,
-                            }}
-                          >
-                            <span className="w-2 h-2 rounded-full animate-ping flex-shrink-0" style={{ background: item.accent }} />
-                            <span>PILLAR // {item.pillarNo}</span>
-                          </span>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="font-outfit text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-none drop-shadow-md">
-                          {item.title}
-                        </h3>
-
-                        {/* Tagline */}
-                        <p className="text-xl sm:text-2xl font-bold leading-snug" style={{ color: item.accent }}>
-                          {item.tagline}
-                        </p>
-
-                        {/* Body Paragraph — Bright & Legible Slate-100 */}
-                        <p className="text-base sm:text-lg text-slate-100 font-semibold leading-relaxed drop-shadow-sm">
-                          {item.body}
-                        </p>
-
-                        {/* Feature Highlights Checklist */}
-                        <div className="flex flex-col gap-3 pt-1">
-                          {item.highlights.map((feat) => (
-                            <div key={feat} className="flex items-center gap-3 group">
-                              <CheckCircle size={22} weight="fill" style={{ color: item.accent }} className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110" />
-                              <span className="text-sm sm:text-base font-bold text-white group-hover:text-white transition-colors duration-200">{feat}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Right Column: Clean Visual Card showcasing REAL PROGRAM FRAMEWORKS (7 cols) */}
-                      <div className="lg:col-span-7 flex flex-col justify-center">
-                        <SpotlightCard
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    {/* Left Column: Pillar Information */}
+                    <div className="lg:col-span-5 flex flex-col gap-6">
+                      <div className="flex items-center gap-4">
+                        <div
+                          className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl"
                           style={{
-                            padding: "2.5rem",
-                            borderRadius: "2rem",
-                            border: `1.5px solid ${item.accent}60`,
-                            background: `${item.accent}12`,
-                            backdropFilter: "blur(30px)",
-                            position: "relative",
-                            boxShadow: `0 20px 50px rgba(0,0,0,0.6), 0 0 35px ${item.glowColor}`,
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "1.5rem",
-                            minHeight: "380px",
-                            justifyContent: "space-between",
+                            background: `${item.accent}25`,
+                            border: `1.5px solid ${item.accent}70`,
+                            boxShadow: `0 0 25px ${item.accent}40`,
                           }}
                         >
-                          {/* Top Eyebrow & Status Pill */}
-                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
-                            <span
-                              style={{
-                                fontSize: "0.8rem",
-                                fontWeight: 900,
-                                letterSpacing: "0.2em",
-                                textTransform: "uppercase",
-                                color: item.accent,
-                                fontFamily: "var(--font-mono)",
-                              }}
-                            >
-                              STAGE {item.pillarNo} · FRAMEWORK
+                          <Icon size={30} weight="fill" style={{ color: item.accent }} />
+                        </div>
+                        <span
+                          className="font-mono text-sm font-black uppercase tracking-[0.2em]"
+                          style={{ color: item.accent }}
+                        >
+                          PILLAR {item.pillarNo} OF 07
+                        </span>
+                      </div>
+
+                      <h3 className="font-outfit text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                        {item.title}
+                      </h3>
+
+                      <p className="font-outfit text-base sm:text-lg font-bold text-slate-200 leading-relaxed">
+                        {item.body}
+                      </p>
+
+                      <div className="flex flex-col gap-3 pt-2">
+                        {item.highlights.map((h, idx) => (
+                          <div key={idx} className="flex items-center gap-3">
+                            <CheckCircle size={20} weight="fill" style={{ color: item.accent }} className="flex-shrink-0" />
+                            <span className="font-outfit text-sm font-bold text-slate-200">
+                              {h}
                             </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Right Column: Framework Deliverables */}
+                    <div className="lg:col-span-7">
+                      <SpotlightCard
+                        style={{
+                          padding: "2.25rem",
+                          boxSizing: "border-box",
+                          borderRadius: "2rem",
+                          background: "rgba(3, 7, 18, 0.95)",
+                          border: "1px solid rgba(255, 255, 255, 0.15)",
+                          backdropFilter: "blur(30px)",
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "1.5rem",
+                        }}
+                      >
+                        <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                          <div>
                             <span
-                              style={{
-                                fontSize: "0.75rem",
-                                fontWeight: 800,
-                                letterSpacing: "0.15em",
-                                textTransform: "uppercase",
-                                color: "#FFFFFF",
-                                background: "rgba(255, 255, 255, 0.12)",
-                                border: "1.5px solid rgba(255, 255, 255, 0.25)",
-                                padding: "0.4rem 0.95rem",
-                                borderRadius: "999px",
-                                fontFamily: "var(--font-mono)",
-                              }}
+                              className="font-mono text-xs font-black uppercase tracking-widest block"
+                              style={{ color: item.accent }}
                             >
                               {item.cardSubtitle}
                             </span>
-                          </div>
-
-                          {/* Deliverable Header */}
-                          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                            <h4
-                              style={{
-                                fontFamily: "var(--font-outfit)",
-                                fontSize: "clamp(1.75rem, 3vw, 2.35rem)",
-                                fontWeight: 800,
-                                color: "#FFFFFF",
-                                letterSpacing: "-0.02em",
-                                lineHeight: 1.1,
-                              }}
-                            >
+                            <h4 className="font-outfit text-2xl font-black text-white mt-1">
                               {item.cardTitle}
                             </h4>
-                            <p
-                              style={{
-                                fontSize: "0.95rem",
-                                color: "#F1F5F9",
-                                lineHeight: 1.6,
-                                fontWeight: 600,
-                              }}
-                            >
-                              {item.cardBody}
-                            </p>
                           </div>
 
-                          {/* 4 Authentic Program Steps on Right Card */}
-                          <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
-                            {item.cardDeliverables.map((deliv) => (
-                              <div
-                                key={deliv}
-                                className="group flex items-center gap-3 p-3 sm:px-4 rounded-xl transition-all duration-300 hover:translate-x-1.5"
-                                style={{
-                                  background: "rgba(255, 255, 255, 0.06)",
-                                  border: "1px solid rgba(255, 255, 255, 0.12)",
-                                }}
-                              >
-                                <Sparkle size={18} weight="fill" style={{ color: item.accent, flexShrink: 0 }} className="transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
-                                <span style={{ fontSize: "0.92rem", fontWeight: 700, color: "#FFFFFF" }}>
-                                  {deliv}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* Bottom Footer Accent Pill */}
-                          <div
+                          <span
+                            className="px-4 py-1.5 rounded-full font-mono text-xs font-black uppercase tracking-wider text-white whitespace-nowrap flex-shrink-0 shadow-lg"
                             style={{
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "space-between",
-                              paddingTop: "1rem",
-                              borderTop: "1px solid rgba(255, 255, 255, 0.12)",
+                              background: item.accent,
+                              color: item.accent === "#98FF03" ? "#000" : "#FFF",
                             }}
                           >
-                            <span
-                              style={{
-                                fontSize: "0.8rem",
-                                fontWeight: 800,
-                                color: item.accent,
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "0.5rem",
-                                fontFamily: "var(--font-mono)",
-                              }}
-                            >
-                              <ShieldCheck size={18} weight="fill" /> {item.cardFooterLabel}
-                            </span>
-                            <div
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "0.4rem",
-                                fontSize: "0.85rem",
-                                fontWeight: 800,
-                                color: "#FFFFFF",
-                              }}
-                            >
-                              <span>LEARN MORE</span>
-                              <ArrowRight size={16} weight="bold" style={{ color: item.accent }} />
-                            </div>
-                          </div>
-                        </SpotlightCard>
-                      </div>
+                            STAGE {item.pillarNo}
+                          </span>
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                          {item.cardDeliverables.map((deliv, idx) => {
+                            const [label, desc] = deliv.split(" — ");
+                            return (
+                              <div
+                                key={idx}
+                                className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] transition-colors"
+                              >
+                                <CheckCircle size={20} weight="fill" style={{ color: item.accent }} className="flex-shrink-0 mt-0.5" />
+                                <div className="flex flex-col">
+                                  <span className="font-outfit text-sm font-black text-white">
+                                    {label}
+                                  </span>
+                                  {desc && (
+                                    <span className="font-outfit text-xs font-bold text-slate-400 mt-0.5">
+                                      {desc}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+                          <span
+                            className="font-mono text-xs font-black uppercase tracking-wider flex items-center gap-2"
+                            style={{ color: item.accent }}
+                          >
+                            <ShieldCheck size={18} weight="fill" /> {item.cardFooterLabel}
+                          </span>
+                          <span className="font-mono text-xs font-black uppercase tracking-wider text-white">
+                            CUUP LAUNCHPAD →
+                          </span>
+                        </div>
+                      </SpotlightCard>
                     </div>
                   </div>
                 </div>
@@ -595,9 +441,9 @@ export default function WhatYouGet() {
           })}
         </div>
 
-        {/* BOTTOM HUD ACTION BAR — Clean Centered Track Progress */}
+        {/* BOTTOM HUD ACTION BAR */}
         <div className="relative z-30 w-full max-w-6xl flex items-center justify-center pt-2">
-          <div className="flex items-center gap-4 px-6 py-3 rounded-2xl bg-black/85 border border-white/20 backdrop-blur-xl shadow-2xl">
+          <div className="flex items-center gap-4 px-6 py-3 rounded-full bg-[#06080D]/90 border border-white/20 backdrop-blur-xl shadow-2xl">
             <span className="font-mono text-sm font-black text-white">
               PILLAR <span className="font-mono text-base font-black" style={{ color: OFFERINGS[activeCard].accent }}>0{activeCard + 1}</span> / 07
             </span>
@@ -617,4 +463,3 @@ export default function WhatYouGet() {
     </section>
   );
 }
-
