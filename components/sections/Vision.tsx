@@ -94,18 +94,20 @@ export default function Vision() {
             </span>
           </div>
 
-          {/* Headline — Perfectly Centered on Baseplate Width */}
-          <h2 className="relative z-10 font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-8 text-center drop-shadow-lg w-full max-w-5xl mx-auto">
+          {/* Headline — 100% Symmetrical Centered 2-Line Block */}
+          <h2 className="relative z-10 font-outfit text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.15] mb-8 text-center drop-shadow-lg max-w-4xl mx-auto">
             We build the{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF7733] to-[#FF3300]">
               founders
-            </span>{" "}
+            </span>
+            <br className="hidden sm:inline" />
             who build the world.
           </h2>
 
-          {/* Paragraph — Brighter & High Contrast */}
-          <p className="relative z-10 mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-neutral-100 font-medium leading-relaxed font-sans text-center drop-shadow-sm">
+          {/* Paragraph — Balanced & Centered */}
+          <p className="relative z-10 mx-auto max-w-2xl sm:max-w-3xl text-base sm:text-lg md:text-xl text-neutral-100 font-medium leading-relaxed font-sans text-center drop-shadow-sm">
             E-Cell exists because the world needs more problem-solvers and risk-takers.
+            <br className="hidden md:inline" />
             We give student entrepreneurs the pathway, mentors, and maker labs to launch before graduation.
           </p>
         </div>
