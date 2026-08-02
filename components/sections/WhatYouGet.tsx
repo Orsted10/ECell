@@ -187,19 +187,19 @@ export default function WhatYouGet() {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".offering-card");
 
-      // Pin section with ultra-heavy 450vh scroll distance per card & instant magnetic snapping
+      // Pin section with 350vh scroll distance, liquid 1.8s scrub inertia & silky snapping
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${cards.length * 450}vh`,
+          end: () => `+=${cards.length * 350}vh`,
           pin: true,
-          scrub: 0.8,
+          scrub: 1.8, // Ultra-smooth liquid physics dampening for wheel scrolls
           snap: {
             snapTo: 1 / (cards.length - 1),
-            duration: { min: 0.2, max: 0.5 },
-            delay: 0.05,
-            ease: "power2.out",
+            duration: { min: 0.5, max: 1.0 },
+            delay: 0.1,
+            ease: "power3.inOut",
           },
           onUpdate: (self) => {
             const index = Math.min(
@@ -216,38 +216,42 @@ export default function WhatYouGet() {
       cards.forEach((card, i) => {
         if (i === 0) return; // First card is base state
 
-        // Card i starts off-screen below (100% y)
-        gsap.set(card, { yPercent: 100, opacity: 1, scale: 1, rotateX: 0 });
+        // Card i starts off-screen below, slightly transparent & scaled
+        gsap.set(card, { yPercent: 100, opacity: 0.2, scale: 1.04, rotateX: -3 });
 
-        // Step 1: Crisp, quick 0.8s transition sliding Card i UP over previous card
+        // Step 1: Luxurious 2.0s cinematic gliding transition (50% of step timeline)
         tl.to(
           card,
           {
             yPercent: 0,
-            ease: "power2.out",
-            duration: 0.8,
+            opacity: 1,
+            scale: 1,
+            rotateX: 0,
+            ease: "power3.out",
+            duration: 2.0,
           },
           `slide-${i}`
         );
 
-        // Step 2: 3D perspective depth — scale down, tilt, & dim previous card underneath
+        // Step 2: Outgoing Card i-1 smoothly retreats in 3D depth, opacity & blur
         tl.to(
           cards[i - 1],
           {
-            scale: 0.92,
-            opacity: 0.25,
-            rotateX: 4,
-            filter: "blur(6px)",
-            ease: "power2.out",
-            duration: 0.8,
+            yPercent: -4,
+            scale: 0.88,
+            opacity: 0.15,
+            rotateX: 6,
+            filter: "blur(10px)",
+            ease: "power3.out",
+            duration: 2.0,
           },
           `slide-${i}`
         );
 
-        // Step 3: MASSIVE RESTING PAUSE (3.2s) — Card stays 100% FROZEN on screen for 80% of scroll timeline
+        // Step 3: FROZEN RESTING PAUSE (2.0s) — Card stays 100% frozen in focus before next drawer
         tl.to(card, {
           yPercent: 0,
-          duration: 3.2,
+          duration: 2.0,
         });
       });
     }, containerRef);
