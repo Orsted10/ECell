@@ -278,7 +278,7 @@ export default function WhatYouGet() {
       </div>
 
       {/* Standalone Section Header — Restored with Generous Spacing & Bright Subheadline */}
-      <div className="container-wide relative z-10 text-center pb-12">
+      <div className="container-wide relative z-10 text-center pb-16 sm:pb-20">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -343,10 +343,10 @@ export default function WhatYouGet() {
           <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
         </div>
 
-        {/* TOP HUD TAB NAVIGATION — Bolder, Brighter, High-Presence Slide Numbers */}
-        <div className="relative z-30 w-full max-w-6xl pt-2">
-          <div className="flex items-center justify-center p-2 rounded-2xl bg-black/75 border border-white/15 backdrop-blur-2xl shadow-[0_15px_40px_rgba(0,0,0,0.9)]">
-            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 px-2 w-full justify-between">
+        {/* TOP HUD TAB NAVIGATION — Zero Cutoff, Bolder, High-Presence Glass Card Pills */}
+        <div className="relative z-30 w-full max-w-6xl pt-4">
+          <div className="flex items-center justify-center p-3 rounded-2xl bg-black/80 border border-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-visible">
+            <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-1.5 px-3 w-full justify-between">
               {OFFERINGS.map((pillar, idx) => {
                 const isActive = activeCard === idx;
                 return (
@@ -358,18 +358,19 @@ export default function WhatYouGet() {
                       const targetY = (idx / (OFFERINGS.length - 1)) * totalScroll;
                       window.scrollTo({ top: targetY, behavior: "smooth" });
                     }}
-                    className={`flex items-center gap-2.5 px-4 py-2 rounded-xl font-mono text-sm sm:text-base font-black transition-all duration-300 whitespace-nowrap ${
+                    className={`flex items-center gap-2.5 px-4 sm:px-5 py-2.5 rounded-xl font-mono text-sm sm:text-base font-black transition-all duration-300 whitespace-nowrap ${
                       isActive
-                        ? "bg-white/15 text-white border-2 border-white/30 shadow-[0_0_25px_rgba(255,255,255,0.25)] scale-105"
-                        : "text-slate-300 hover:text-white hover:bg-white/[0.05]"
+                        ? "bg-white/20 text-white border-2 border-white/40 shadow-[0_0_25px_rgba(255,255,255,0.3)] scale-105"
+                        : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
                     }`}
                     style={{
                       borderColor: isActive ? pillar.accent : "transparent",
-                      boxShadow: isActive ? `0 0 20px ${pillar.accent}80` : "none",
+                      boxShadow: isActive ? `0 0 25px ${pillar.accent}99` : "none",
+                      background: isActive ? `${pillar.accent}33` : undefined,
                     }}
                   >
                     <span
-                      className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+                      className="w-2.5 h-2.5 rounded-full transition-all duration-300 flex-shrink-0"
                       style={{
                         background: isActive ? pillar.accent : "rgba(255,255,255,0.4)",
                         boxShadow: isActive ? `0 0 12px ${pillar.accent}` : "none",
@@ -432,7 +433,7 @@ export default function WhatYouGet() {
                       
                       {/* Left Column: Rich Information & Bullet Highlights (5 cols) */}
                       <div className="lg:col-span-5 flex flex-col justify-center gap-6 py-2">
-                        {/* High-Presence Pillar Badge */}
+                        {/* High-Presence Spacious Pillar Badge — Zero Clipping */}
                         <div className="flex items-center gap-3">
                           <div
                             className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl flex-shrink-0"
@@ -445,15 +446,16 @@ export default function WhatYouGet() {
                             <Icon size={30} weight="bold" style={{ color: item.accent }} />
                           </div>
                           <span
-                            className="font-mono text-sm sm:text-base font-black uppercase tracking-[0.25em] px-4 py-2 rounded-full shadow-lg"
+                            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-mono text-sm sm:text-base font-black uppercase tracking-[0.15em] shadow-xl whitespace-nowrap"
                             style={{
                               color: "#FFFFFF",
-                              background: `${item.accent}30`,
-                              border: `1.5px solid ${item.accent}`,
-                              boxShadow: `0 0 20px ${item.glowColor}`,
+                              background: `${item.accent}33`,
+                              border: `2px solid ${item.accent}`,
+                              boxShadow: `0 0 25px ${item.glowColor}`,
                             }}
                           >
-                            PILLAR // {item.pillarNo}
+                            <span className="w-2 h-2 rounded-full animate-ping flex-shrink-0" style={{ background: item.accent }} />
+                            <span>PILLAR // {item.pillarNo}</span>
                           </span>
                         </div>
 
