@@ -185,47 +185,48 @@ export default function WhatYouGet() {
                 position: "sticky",
                 top: 0,
                 zIndex: i + 1,
-                minHeight: "100dvh",
+                minHeight: "90vh",
                 display: "flex",
                 alignItems: "center",
-                background: "linear-gradient(180deg, rgba(8, 10, 15, 0.96) 0%, rgba(12, 16, 24, 0.94) 100%)",
+                background: "linear-gradient(180deg, rgba(8, 10, 15, 0.98) 0%, rgba(12, 16, 24, 0.96) 100%)",
                 backdropFilter: "blur(30px)",
-                borderTop: `1.5px solid ${item.accent}50`,
-                boxShadow: `0 -25px 60px rgba(0,0,0,0.85), inset 0 1px 0 ${item.accent}30`,
+                borderTop: `2px solid ${item.accent}60`,
+                boxShadow: `0 -30px 70px rgba(0,0,0,0.9), inset 0 1px 0 ${item.accent}40`,
                 willChange: "transform, opacity",
+                paddingBlock: "3rem",
               }}
             >
               {/* Radial Accent Glow behind card */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: `radial-gradient(circle at 75% 50%, ${item.accent}15 0%, transparent 65%)`,
+                  background: `radial-gradient(circle at 75% 50%, ${item.accent}18 0%, transparent 65%)`,
                 }}
               />
 
-              <div className="container-wide relative z-10" style={{ paddingBlock: "4rem" }}>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="container-wide relative z-10" style={{ paddingBlock: "2rem" }}>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
                   
                   {/* Left Column: Rich Information & Bullet Highlights (5 cols) */}
-                  <div className="lg:col-span-5 flex flex-col gap-6">
+                  <div className="lg:col-span-5 flex flex-col justify-center gap-7 py-4">
                     {/* Badge Pill */}
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg"
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
                         style={{
-                          background: `linear-gradient(135deg, ${item.accent}30 0%, ${item.accent}10 100%)`,
-                          border: `1.5px solid ${item.accent}60`,
-                          boxShadow: `0 0 20px ${item.glowColor}`,
+                          background: `linear-gradient(135deg, ${item.accent}35 0%, ${item.accent}12 100%)`,
+                          border: `1.5px solid ${item.accent}70`,
+                          boxShadow: `0 0 25px ${item.glowColor}`,
                         }}
                       >
-                        <Icon size={24} weight="bold" style={{ color: item.accent }} />
+                        <Icon size={28} weight="bold" style={{ color: item.accent }} />
                       </div>
                       <span
-                        className="font-mono text-xs font-extrabold uppercase tracking-[0.25em] px-3.5 py-1.5 rounded-full"
+                        className="font-mono text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] px-4 py-2 rounded-full"
                         style={{
                           color: item.accent,
-                          background: `${item.accent}15`,
-                          border: `1px solid ${item.accent}40`,
+                          background: `${item.accent}18`,
+                          border: `1px solid ${item.accent}50`,
                         }}
                       >
                         PILLAR // {item.pillarNo}
@@ -234,52 +235,52 @@ export default function WhatYouGet() {
 
                     {/* Title */}
                     <h3
-                      className="font-outfit text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-none drop-shadow-md"
+                      className="font-outfit text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-none drop-shadow-md"
                     >
                       {item.title}
                     </h3>
 
                     {/* Tagline */}
                     <p
-                      className="text-lg sm:text-xl font-bold leading-snug"
+                      className="text-xl sm:text-2xl font-bold leading-snug"
                       style={{ color: item.accent }}
                     >
                       {item.tagline}
                     </p>
 
                     {/* Body Paragraph — Bright & Legible Slate-100 */}
-                    <p className="text-base text-slate-100 font-medium leading-relaxed drop-shadow-sm">
+                    <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed drop-shadow-sm">
                       {item.body}
                     </p>
 
                     {/* Feature Highlights Checklist */}
-                    <div className="flex flex-col gap-3 pt-2">
+                    <div className="flex flex-col gap-3.5 pt-2">
                       {item.highlights.map((feat) => (
                         <div key={feat} className="flex items-center gap-3">
-                          <CheckCircle size={18} weight="fill" style={{ color: item.accent }} className="flex-shrink-0" />
-                          <span className="text-sm font-semibold text-neutral-100">{feat}</span>
+                          <CheckCircle size={20} weight="fill" style={{ color: item.accent }} className="flex-shrink-0" />
+                          <span className="text-sm sm:text-base font-semibold text-neutral-100">{feat}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Right Column: Custom Interactive Visual Component (7 cols) */}
-                  <div className="lg:col-span-7">
+                  {/* Right Column: Custom Open Visual Component (7 cols) */}
+                  <div className="lg:col-span-7 flex flex-col justify-center">
                     <div
-                      className="relative rounded-3xl p-6 sm:p-8 overflow-hidden transition-all duration-500 group"
+                      className="relative rounded-[2rem] p-8 sm:p-10 md:p-12 overflow-hidden transition-all duration-500 group flex flex-col justify-between min-h-[420px]"
                       style={{
-                        background: "rgba(10, 14, 22, 0.85)",
-                        border: `1.5px solid ${item.accent}40`,
-                        boxShadow: `0 20px 50px rgba(0,0,0,0.6), inset 0 0 30px ${item.accent}10`,
+                        background: "rgba(10, 14, 22, 0.90)",
+                        border: `1.5px solid ${item.accent}50`,
+                        boxShadow: `0 25px 60px rgba(0,0,0,0.7), inset 0 0 40px ${item.accent}12`,
                       }}
                     >
                       {/* Top Bar HUD */}
-                      <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6 font-mono text-xs">
-                        <div className="flex items-center gap-2">
-                          <span className="h-2 w-2 rounded-full animate-ping" style={{ backgroundColor: item.accent }} />
+                      <div className="flex items-center justify-between border-b border-white/15 pb-5 mb-8 font-mono text-xs sm:text-sm">
+                        <div className="flex items-center gap-2.5">
+                          <span className="h-2.5 w-2.5 rounded-full animate-ping" style={{ backgroundColor: item.accent }} />
                           <span className="font-bold text-white tracking-wider">ECOSYSTEM MODULE :: PLR.{item.pillarNo}</span>
                         </div>
-                        <span className="text-neutral-400 font-semibold uppercase">{item.title}</span>
+                        <span className="text-neutral-300 font-bold uppercase tracking-wider">{item.title}</span>
                       </div>
 
                       {/* DYNAMIC VISUAL WIDGETS BASED ON PILLAR TYPE */}
