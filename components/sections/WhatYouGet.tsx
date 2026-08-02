@@ -265,122 +265,84 @@ export default function WhatYouGet() {
       className="relative overflow-hidden bg-[#06070A]"
       style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
     >
-      {/* Background Ambient Spotlights for Section Header */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none z-0">
-        <div
-          className="absolute inset-0 opacity-40 blur-[100px]"
-          style={{
-            background: "radial-gradient(circle at 35% 30%, rgba(255, 85, 0, 0.3) 0%, transparent 60%), radial-gradient(circle at 65% 30%, rgba(0, 102, 255, 0.25) 0%, transparent 60%)",
-          }}
-        />
-        {/* Subtle Tech Mesh Grid overlay */}
-        <div className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:24px_24px]" />
-      </div>
+      {/* Pinned Viewport Container (100vh) */}
+      <div
+        ref={containerRef}
+        className="relative z-10 w-full h-[100vh] overflow-hidden flex flex-col justify-between items-center py-6 px-4 sm:px-8"
+      >
+        {/* Dynamic Ambient Background Glow (Transitions color based on active pillar) */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] opacity-40 blur-[130px] transition-all duration-700"
+            style={{
+              background: `radial-gradient(circle, ${OFFERINGS[activeCard].accent}35 0%, transparent 70%)`,
+            }}
+          />
+          {/* Subtle Tech Mesh Grid overlay */}
+          <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
+        </div>
 
-      {/* Section Header */}
-      <div className="container-wide relative z-10" style={{ paddingTop: "clamp(4rem, 8vw, 6rem)", paddingBottom: "2rem" }}>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="flex flex-col gap-6 text-center items-center"
-        >
-          {/* Glowing Badge Pill */}
-          <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#FF5500]/50 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_30px_rgba(255,85,0,0.3)]"
-          >
-            <Sparkle size={16} weight="fill" className="text-[#FF5500] animate-pulse" />
-            <span className="font-mono text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] text-[#FF5500]">
+        {/* TOP HEADER & HUD BAR — Populates the top 25% of the pinned screen */}
+        <div className="relative z-30 w-full max-w-6xl flex flex-col items-center gap-3 text-center pt-2">
+          {/* Header Eyebrow Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FF5500]/50 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_20px_rgba(255,85,0,0.2)]">
+            <Sparkle size={14} weight="fill" className="text-[#FF5500] animate-pulse" />
+            <span className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[#FF5500]">
               CORE ECOSYSTEM PILLARS
             </span>
-          </motion.div>
-          
-          {/* Display Headline */}
-          <RevealText 
-            text="Everything you need<br/>to launch a startup." 
-            className="font-outfit text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.05] text-center drop-shadow-2xl" 
-          />
+          </div>
 
-          {/* Subheadline — Bright Slate-100 */}
-          <p className="text-slate-100 text-lg sm:text-xl max-w-3xl text-center font-semibold leading-relaxed drop-shadow-sm">
-            Seven battle-tested launchpads designed to transform student builders into venture-backed founders.
-          </p>
+          {/* Section Headline */}
+          <h2 className="font-outfit text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-none drop-shadow-xl">
+            Everything you need to launch a startup.
+          </h2>
 
-          {/* Glowing Metric Badges */}
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono font-bold text-slate-200 backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-ping" />
-              <span>7 LAUNCHPAD TRACKS</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono font-bold text-slate-200 backdrop-blur-md">
-              <Flame size={15} weight="fill" className="text-[#FF5500]" />
-              <span>100% BUILDER-FOCUSED</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono font-bold text-slate-200 backdrop-blur-md">
-              <ShieldCheck size={15} weight="fill" className="text-emerald-400" />
-              <span>ZERO-EQUITY SUPPORT</span>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Pinned Drawer Stacked Container with Floating HUD Bar */}
-      <div ref={containerRef} className="relative z-10 w-full h-[95vh] min-h-[750px] overflow-hidden flex flex-col items-center justify-between pb-8">
-        
-        {/* Floating Active Pillar Progress HUD */}
-        <div className="relative z-30 pt-4 px-4 w-full max-w-5xl">
-          <div className="flex items-center justify-between gap-2 p-2 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 px-2">
-              {OFFERINGS.map((pillar, idx) => {
-                const isActive = activeCard === idx;
-                return (
-                  <button
-                    key={pillar.pillarNo}
-                    onClick={() => {
-                      if (!containerRef.current) return;
-                      const totalScroll = containerRef.current.offsetHeight * 4.5 * OFFERINGS.length;
-                      const targetY = (idx / (OFFERINGS.length - 1)) * totalScroll;
-                      window.scrollTo({ top: targetY, behavior: "smooth" });
-                    }}
-                    className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold transition-all duration-300 whitespace-nowrap ${
-                      isActive
-                        ? "bg-white/10 text-white border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.15)] scale-105"
-                        : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]"
-                    }`}
-                  >
-                    <span
-                      className="w-2 h-2 rounded-full transition-all duration-300"
-                      style={{
-                        background: isActive ? pillar.accent : "rgba(255,255,255,0.2)",
-                        boxShadow: isActive ? `0 0 10px ${pillar.accent}` : "none",
+          {/* Interactive Floating Glass HUD Tabs Bar */}
+          <div className="w-full max-w-4xl mt-1">
+            <div className="flex items-center justify-between gap-2 p-1.5 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+              <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 px-1 w-full justify-between">
+                {OFFERINGS.map((pillar, idx) => {
+                  const isActive = activeCard === idx;
+                  return (
+                    <button
+                      key={pillar.pillarNo}
+                      onClick={() => {
+                        if (!containerRef.current) return;
+                        const totalScroll = containerRef.current.offsetHeight * 3.5 * OFFERINGS.length;
+                        const targetY = (idx / (OFFERINGS.length - 1)) * totalScroll;
+                        window.scrollTo({ top: targetY, behavior: "smooth" });
                       }}
-                    />
-                    <span>{pillar.pillarNo}</span>
-                    <span className="hidden md:inline font-sans text-[11px] font-semibold opacity-90">{pillar.title.split(" ")[0]}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Active Track Counter */}
-            <div className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs font-mono font-extrabold text-slate-200">
-              <span className="text-[#FF5500]">0{activeCard + 1}</span>
-              <span className="text-slate-500">/</span>
-              <span>07 TRACKS</span>
+                      className={`flex items-center gap-2 px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all duration-300 whitespace-nowrap ${
+                        isActive
+                          ? "bg-white/10 text-white border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.15)] scale-105"
+                          : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]"
+                      }`}
+                    >
+                      <span
+                        className="w-2 h-2 rounded-full transition-all duration-300"
+                        style={{
+                          background: isActive ? pillar.accent : "rgba(255,255,255,0.2)",
+                          boxShadow: isActive ? `0 0 10px ${pillar.accent}` : "none",
+                        }}
+                      />
+                      <span>{pillar.pillarNo}</span>
+                      <span className="hidden lg:inline font-sans text-[11px] font-semibold opacity-90">{pillar.title.split(" ")[0]}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Stacked Drawer Cards */}
-        <div className="relative w-full flex-1 flex items-center justify-center px-4 sm:px-8">
+        {/* MIDDLE DRAWER CARDS AREA — Fills the hero 65% center viewport */}
+        <div className="relative z-20 w-full max-w-6xl flex-1 flex items-center justify-center my-3">
           {OFFERINGS.map((item, i) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
-                className="offering-card absolute inset-0 w-full h-full flex items-center justify-center px-4 sm:px-8"
+                className="offering-card absolute inset-0 w-full h-full flex items-center justify-center"
                 style={{
                   zIndex: i + 1,
                   willChange: "transform, opacity, filter",
@@ -388,7 +350,7 @@ export default function WhatYouGet() {
               >
                 {/* Card Outer Shell */}
                 <div
-                  className="container-wide relative rounded-[2.5rem] p-8 sm:p-10 md:p-12 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+                  className="w-full relative rounded-[2rem] p-6 sm:p-8 md:p-10 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
                   style={{
                     background: "linear-gradient(180deg, rgba(10, 13, 20, 0.98) 0%, rgba(14, 18, 28, 0.97) 100%)",
                     backdropFilter: "blur(35px)",
@@ -607,6 +569,75 @@ export default function WhatYouGet() {
               </div>
             );
           })}
+        </div>
+
+        {/* BOTTOM ACTION & NAVIGATION BAR — Populates the lower 10% of the pinned screen */}
+        <div className="relative z-30 w-full max-w-6xl flex items-center justify-between gap-4 pt-2">
+          {/* Active Track Progress Bar */}
+          <div className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-xl shadow-lg">
+            <span className="font-mono text-xs font-bold text-slate-300">
+              PILLAR <span style={{ color: OFFERINGS[activeCard].accent }}>0{activeCard + 1}</span> OF 07
+            </span>
+            <div className="w-24 h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <div
+                className="h-full rounded-full transition-all duration-500"
+                style={{
+                  width: `${((activeCard + 1) / OFFERINGS.length) * 100}%`,
+                  background: OFFERINGS[activeCard].accent,
+                  boxShadow: `0 0 10px ${OFFERINGS[activeCard].accent}`,
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Quick Nav Controls & Call-to-Action */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => {
+                if (activeCard > 0 && containerRef.current) {
+                  const targetIdx = activeCard - 1;
+                  const totalScroll = containerRef.current.offsetHeight * 3.5 * OFFERINGS.length;
+                  const targetY = (targetIdx / (OFFERINGS.length - 1)) * totalScroll;
+                  window.scrollTo({ top: targetY, behavior: "smooth" });
+                }
+              }}
+              disabled={activeCard === 0}
+              className={`p-2.5 rounded-xl border font-mono text-xs font-bold transition-all duration-200 ${
+                activeCard > 0
+                  ? "bg-white/10 text-white border-white/20 hover:bg-white/20 active:scale-95"
+                  : "bg-white/[0.02] text-slate-600 border-white/5 cursor-not-allowed"
+              }`}
+            >
+              ‹ PREV
+            </button>
+            
+            <button
+              onClick={() => {
+                if (activeCard < OFFERINGS.length - 1 && containerRef.current) {
+                  const targetIdx = activeCard + 1;
+                  const totalScroll = containerRef.current.offsetHeight * 3.5 * OFFERINGS.length;
+                  const targetY = (targetIdx / (OFFERINGS.length - 1)) * totalScroll;
+                  window.scrollTo({ top: targetY, behavior: "smooth" });
+                }
+              }}
+              disabled={activeCard === OFFERINGS.length - 1}
+              className={`p-2.5 rounded-xl border font-mono text-xs font-bold transition-all duration-200 ${
+                activeCard < OFFERINGS.length - 1
+                  ? "bg-white/10 text-white border-white/20 hover:bg-white/20 active:scale-95"
+                  : "bg-white/[0.02] text-slate-600 border-white/5 cursor-not-allowed"
+              }`}
+            >
+              NEXT ›
+            </button>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FF5500] hover:bg-[#FF6611] text-white font-outfit text-xs font-extrabold tracking-wider uppercase shadow-[0_0_20px_rgba(255,85,0,0.4)] transition-all duration-200 hover:scale-105 active:scale-95"
+            >
+              <Lightning size={15} weight="fill" />
+              <span>FIND YOUR TRACK</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
