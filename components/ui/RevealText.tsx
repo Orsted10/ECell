@@ -25,6 +25,8 @@ export function RevealText({ text, className = "" }: { text: string; className?:
                   overflow: "hidden",
                   verticalAlign: "bottom",
                   paddingRight: "0.25em",
+                  paddingBottom: "0.25em",
+                  marginBottom: "-0.25em",
                 }}
               >
                 <motion.span
