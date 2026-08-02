@@ -4,44 +4,79 @@ import { motion, useReducedMotion } from "motion/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { 
+  RocketLaunch, 
+  Lightbulb, 
+  Trophy, 
+  Cpu, 
+  TrendUp, 
+  Sparkle,
+  ArrowRight,
+  CheckCircle
+} from "@phosphor-icons/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const MILESTONES = [
   {
     phase: "01",
-    title: "Launch",
-    date: "Aug 2026",
-    description: "E-Cell officially launches at Chandigarh University UP. Founding members recruited, charter established.",
+    title: "Official Launch",
+    subtitle: "CHARTER & INCEPTION",
+    date: "AUG 2026",
+    description: "E-Cell officially launches at Chandigarh University UP. Founding members recruited, charter established, and builder community ignited.",
     status: "current",
+    accent: "#FF5500",
+    icon: RocketLaunch,
+    tag: "LIVE NOW",
+    metric: "100+ Founding Builders",
   },
   {
     phase: "02",
-    title: "Workshops",
-    date: "Sep–Oct 2026",
-    description: "Weekly hands-on workshops covering ideation frameworks, business model canvas, and design thinking.",
+    title: "Founder Workshops",
+    subtitle: "SKILL ACCELERATION",
+    date: "SEP–OCT 2026",
+    description: "Weekly hands-on masterclasses covering ideation frameworks, business model canvas, rapid prototyping, and design thinking.",
     status: "upcoming",
+    accent: "#00F0FF",
+    icon: Lightbulb,
+    tag: "UPCOMING",
+    metric: "8 Masterclass Sprints",
   },
   {
     phase: "03",
-    title: "Ideathon",
-    date: "Nov 2026",
-    description: "48-hour campus-wide ideathon. 200+ participants. 40 teams. 5 winners receive incubation spots.",
+    title: "48H Ideathon",
+    subtitle: "BUILD & PITCH",
+    date: "NOV 2026",
+    description: "48-hour campus-wide hackathon and ideathon. 200+ participants, 40 builder teams. Top 5 winners receive incubation spots.",
     status: "upcoming",
+    accent: "#FFB800",
+    icon: Trophy,
+    tag: "UPCOMING",
+    metric: "200+ Participants",
   },
   {
     phase: "04",
-    title: "Incubation",
-    date: "Jan–Apr 2027",
-    description: "Top teams enter a 4-month incubation program with mentors, resources, and office space on campus.",
+    title: "Incubation Track",
+    subtitle: "0 TO 1 PRODUCT BUILD",
+    date: "JAN–APR 2027",
+    description: "Top teams enter a 4-month intensive incubation program with 1-on-1 industry mentors, legal/tech resources, and dedicated office space.",
     status: "upcoming",
+    accent: "#10B981",
+    icon: Cpu,
+    tag: "UPCOMING",
+    metric: "4 Months Mentorship",
   },
   {
     phase: "05",
-    title: "Demo Day",
-    date: "May 2027",
-    description: "Cohort-1 founders pitch to 20+ investors. The beginning of something much larger.",
+    title: "Venture Demo Day",
+    subtitle: "INVESTOR PITCH",
+    date: "MAY 2027",
+    description: "Cohort-1 founders pitch directly to 20+ top-tier angel investors and VCs. The launchpad for venture-backed breakout startups.",
     status: "upcoming",
+    accent: "#A855F7",
+    icon: TrendUp,
+    tag: "UPCOMING",
+    metric: "20+ Investor VCs",
   },
 ];
 
@@ -54,8 +89,8 @@ export default function Roadmap() {
     if (shouldReduce || !wrapRef.current || !trackRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Extra 350px offset guarantees Phase 05 scrolls comfortably past the right screen boundary
-      const distance = trackRef.current!.scrollWidth - window.innerWidth + 350;
+      // Extra offset guarantees Phase 05 scrolls comfortably past the right boundary
+      const distance = trackRef.current!.scrollWidth - window.innerWidth + 400;
 
       gsap.to(trackRef.current, {
         x: -distance,
@@ -78,172 +113,166 @@ export default function Roadmap() {
     <section
       id="roadmap"
       ref={wrapRef}
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        background: "transparent",
-      }}
+      className="relative overflow-hidden bg-[#05070B]"
+      style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
     >
-      {/* Fixed header label */}
-      <div
-        style={{
-          position: "absolute",
-          top: "2.5rem",
-          left: "clamp(1.25rem, 4vw, 4rem)",
-          zIndex: 10,
-        }}
-      >
-        <h2
-          style={{
-            fontFamily: "var(--font-outfit)",
-            fontSize: "clamp(1rem, 1.5vw, 1.1rem)",
-            fontWeight: 700,
-            color: "#FF5500",
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-          }}
-        >
-          OUR JOURNEY // 2026–2027
-        </h2>
+      {/* Background Ambient Spotlights & Tech Mesh */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] opacity-25 blur-[150px] bg-gradient-to-r from-[#FF5500] to-[#00F0FF]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] opacity-20 blur-[150px] bg-gradient-to-r from-[#10B981] to-[#A855F7]" />
+        <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(#FF5500_1px,transparent_1px)] [background-size:32px_32px]" />
       </div>
 
+      {/* Pinned Timeline Track (100vh Viewport) */}
       <div
         ref={trackRef}
-        style={{
-          display: "flex",
-          height: "100dvh",
-          alignItems: "center",
-          paddingInline: "clamp(1.25rem, 4vw, 4rem)",
-          gap: "0",
-        }}
+        className="flex h-[100vh] items-center relative z-10 px-6 sm:px-12"
       >
-        {/* Left spacer */}
-        <div style={{ minWidth: "10vw", flexShrink: 0 }} />
+        {/* Left Header Spacer Container */}
+        <div className="min-w-[400px] sm:min-w-[480px] pr-12 sm:pr-16 flex-shrink-0 flex flex-col gap-6">
+          <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#FF5500]/60 bg-[#FF5500]/15 backdrop-blur-xl shadow-[0_0_25px_rgba(255,85,0,0.35)] w-fit">
+            <Sparkle size={16} weight="fill" className="text-[#FF5500] animate-pulse" />
+            <span className="font-mono text-xs font-black uppercase tracking-[0.25em] text-[#FF5500]">
+              OUR JOURNEY // 2026–2027
+            </span>
+          </div>
 
-        {MILESTONES.map((m, i) => (
-          <div
-            key={m.phase}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0",
-            }}
-          >
-            {/* Connector line before (except first) */}
-            {i > 0 && (
-              <div
-                style={{
-                  width: "8vw",
-                  height: "2px",
-                  background:
-                    m.status === "done" || m.status === "current"
-                      ? "linear-gradient(90deg, #FF5500, rgba(255,85,0,0.3))"
-                      : "rgba(255,255,255,0.1)",
-                  transition: "background 0.3s",
-                  flexShrink: 0,
-                }}
-              />
-            )}
+          <h2 className="font-outfit text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.08] drop-shadow-2xl">
+            Building the future <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] via-[#FF8800] to-[#00F0FF]">
+              milestone by milestone.
+            </span>
+          </h2>
 
-            {/* Card */}
-            <SpotlightCard
-              style={{
-                minWidth: "340px",
-                maxWidth: "380px",
-                padding: "2.5rem",
-                borderRadius: "1.75rem",
-                border: `1px solid ${m.status === "current" ? "#FF5500" : "rgba(255,255,255,0.08)"}`,
-                background:
-                  m.status === "current"
-                    ? "rgba(255, 77, 0, 0.14)"
-                    : "rgba(11, 14, 20, 0.8)",
-                backdropFilter: "blur(24px)",
-                position: "relative",
-                flexShrink: 0,
-                boxShadow:
-                  m.status === "current"
-                    ? "0 0 40px rgba(255, 77, 0, 0.35)"
-                    : "0 10px 30px rgba(0,0,0,0.5)",
+          <p className="text-slate-100 text-base sm:text-lg font-bold leading-relaxed max-w-sm drop-shadow-sm">
+            From official campus launch to venture demo day — follow our structured roadmap for student founders.
+          </p>
 
-              }}
-            >
-              {/* Phase number */}
-              <p
-                style={{
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: m.status === "done" ? "#FF5500" : m.status === "current" ? "#FF661A" : "var(--text-3)",
-                  marginBottom: "1.25rem",
-                  fontFamily: "var(--font-mono)",
-                }}
-              >
-                Phase {m.phase} {m.status === "current" && "· NOW"}
-              </p>
+          {/* Swipe indicator pill */}
+          <div className="flex items-center gap-3 pt-2">
+            <span className="font-mono text-xs font-black text-slate-100 uppercase tracking-widest flex items-center gap-2">
+              SCROLL HORIZONTALLY <ArrowRight size={16} className="text-[#FF5500] animate-bounce-x" />
+            </span>
+          </div>
+        </div>
 
-              <h3
-                style={{
-                  fontFamily: "var(--font-outfit)",
-                  fontSize: "1.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "-0.025em",
-                  color: "var(--text-1)",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {m.title}
-              </h3>
+        {/* Milestone Timeline Cards Track */}
+        <div className="flex items-center gap-8 sm:gap-12 relative">
+          {MILESTONES.map((m, i) => {
+            const Icon = m.icon;
+            const isCurrent = m.status === "current";
 
-              <p
-                style={{
-                  fontSize: "0.85rem",
-                  color: m.status === "current" ? "#FF5500" : "var(--text-3)",
-                  marginBottom: "1.25rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.04em",
-                  fontFamily: "var(--font-mono)",
-                }}
-              >
-                {m.date}
-              </p>
+            return (
+              <div key={m.phase} className="flex items-center gap-8 sm:gap-12 flex-shrink-0 relative group">
+                {/* Connecting Laser Beam Line between cards */}
+                {i > 0 && (
+                  <div className="w-16 sm:w-24 h-1 relative flex-shrink-0 overflow-hidden rounded-full bg-white/10">
+                    <div
+                      className="absolute inset-0 transition-all duration-500"
+                      style={{
+                        background: `linear-gradient(90deg, ${MILESTONES[i - 1].accent}, ${m.accent})`,
+                        boxShadow: `0 0 12px ${m.accent}`,
+                      }}
+                    />
+                  </div>
+                )}
 
-              <p
-                style={{
-                  fontSize: "0.9rem",
-                  color: "var(--text-2)",
-                  lineHeight: 1.7,
-                }}
-              >
-                {m.description}
-              </p>
-
-              {m.status === "upcoming" && (
-                <div
+                {/* Milestone Holographic Card */}
+                <SpotlightCard
+                  className="w-[360px] sm:w-[420px] rounded-[2.2rem] p-8 sm:p-10 border-2 transition-all duration-500 relative flex flex-col justify-between overflow-hidden cursor-pointer"
                   style={{
-                    position: "absolute",
-                    top: "1.25rem",
-                    right: "1.25rem",
-                    fontSize: "0.6rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "var(--text-3)",
-                    background: "rgba(17, 22, 34, 0.8)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    borderRadius: "999px",
-                    padding: "0.3rem 0.7rem",
+                    background: isCurrent
+                      ? `linear-gradient(180deg, rgba(255, 85, 0, 0.18) 0%, rgba(10, 13, 20, 0.95) 100%)`
+                      : `linear-gradient(180deg, rgba(15, 20, 34, 0.95) 0%, rgba(8, 11, 18, 0.98) 100%)`,
+                    borderColor: isCurrent ? m.accent : "rgba(255, 255, 255, 0.15)",
+                    backdropFilter: "blur(30px)",
+                    boxShadow: isCurrent
+                      ? `0 25px 70px rgba(255, 85, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)`
+                      : `0 20px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)`,
                   }}
                 >
-                  Upcoming
-                </div>
-              )}
-            </SpotlightCard>
-          </div>
-        ))}
+                  {/* Glowing Top Ambient Spotlight */}
+                  <div
+                    className="absolute -top-24 left-1/2 -translate-x-1/2 w-3/4 h-36 blur-[60px] pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-500"
+                    style={{ background: m.accent }}
+                  />
+
+                  {/* Corner Watermark Phase Number */}
+                  <div className="absolute top-4 right-6 font-mono text-8xl font-black opacity-[0.05] text-white select-none pointer-events-none">
+                    {m.phase}
+                  </div>
+
+                  <div>
+                    {/* Header Row: Phase Tag & Icon */}
+                    <div className="flex items-center justify-between mb-6 relative z-10">
+                      <span
+                        className="px-4 py-1.5 rounded-full font-mono text-xs font-black uppercase tracking-wider text-white shadow-lg flex items-center gap-2"
+                        style={{
+                          background: isCurrent ? m.accent : "rgba(255, 255, 255, 0.1)",
+                          border: `1px solid ${m.accent}66`,
+                        }}
+                      >
+                        {isCurrent && <span className="h-2 w-2 rounded-full bg-white animate-ping" />}
+                        PHASE {m.phase} // {m.tag}
+                      </span>
+
+                      <div
+                        className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300"
+                        style={{
+                          background: `${m.accent}25`,
+                          border: `1.5px solid ${m.accent}60`,
+                          boxShadow: `0 0 20px ${m.accent}40`,
+                        }}
+                      >
+                        <Icon size={26} weight="fill" style={{ color: m.accent }} />
+                      </div>
+                    </div>
+
+                    {/* Milestone Title */}
+                    <h3 className="font-outfit text-3xl font-black text-white tracking-tight leading-tight mb-2 drop-shadow-md">
+                      {m.title}
+                    </h3>
+
+                    {/* Subtitle & Date */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="font-mono text-xs font-bold text-slate-300 uppercase tracking-widest">
+                        {m.subtitle}
+                      </span>
+                      <span className="text-slate-400">•</span>
+                      <span
+                        className="font-mono text-xs font-black px-2.5 py-0.5 rounded-md bg-white/[0.08] border border-white/15"
+                        style={{ color: m.accent }}
+                      >
+                        {m.date}
+                      </span>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-bold mb-6">
+                      {m.description}
+                    </p>
+                  </div>
+
+                  {/* Footer Metric Bar */}
+                  <div
+                    className="pt-4 border-t border-white/10 flex items-center justify-between relative z-10"
+                  >
+                    <span className="font-mono text-xs font-bold text-slate-300 uppercase">Target Outcome:</span>
+                    <span
+                      className="font-mono text-xs font-black px-3 py-1 rounded-lg bg-white/[0.08] border border-white/15 text-white"
+                      style={{ color: m.accent }}
+                    >
+                      {m.metric}
+                    </span>
+                  </div>
+                </SpotlightCard>
+              </div>
+            );
+          })}
+        </div>
 
         {/* Generous 35vw Right spacer container guarantees Phase 05 never clips */}
-        <div style={{ minWidth: "35vw", flexShrink: 0 }} />
+        <div className="min-w-[35vw] flex-shrink-0" />
       </div>
     </section>
   );
