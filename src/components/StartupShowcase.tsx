@@ -8,7 +8,7 @@ export const StartupShowcase: React.FC = () => {
       title: 'EdVenture AI',
       subtitle: 'Featured / Launcher',
       category: 'EdTech & AI',
-      image: 'https://framerusercontent.com/images/TGcveslLFOoJEhB079jeYPrB8A.png',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop',
       tag: 'INCUBATED VENTURE',
       description: 'Personalized AI tutor platform delivering adaptive learning paths for higher education STEM students.',
     },
