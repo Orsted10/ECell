@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, MeshDistortMaterial, Float, Sphere, ContactShadows } from '@react-three/drei';
+import { Environment, MeshDistortMaterial, Float, Sphere, ContactShadows, Lightformer } from '@react-three/drei';
 import * as THREE from 'three';
 
 // ── FULL-BACKGROUND Ocean Wave with atmospheric depth ──
@@ -104,20 +104,20 @@ const OceanWave = () => {
 const MetallicBlob = () => {
   return (
     <Float
-      speed={1.5}
+      speed={2}
       rotationIntensity={1}
       floatIntensity={0.5}
-      position={[0, -5.5, -4]}
+      position={[0, -9.5, -2]}
     >
-      <Sphere args={[4, 128, 128]}>
+      <Sphere args={[6.5, 256, 256]}>
         <MeshDistortMaterial
           color="#000000"
-          envMapIntensity={3}
+          envMapIntensity={4}
           clearcoat={1}
           clearcoatRoughness={0}
           metalness={1}
           roughness={0.05}
-          distort={0.25}
+          distort={0.18}
           speed={2}
         />
       </Sphere>
@@ -127,12 +127,12 @@ const MetallicBlob = () => {
 
 export const BackgroundScene: React.FC = () => {
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none bg-[#050505]">
+    <div className="absolute inset-0 z-0 pointer-events-none bg-black">
       <Canvas camera={{ position: [0, 2, 12], fov: 60 }} dpr={[1, 2]}>
-        <color attach="background" args={['#050505']} />
+        <color attach="background" args={['#000000']} />
 
         {/* ── ATMOSPHERIC FOG ── This is what makes distant waves fade/blur exactly like your reference */}
-        <fog attach="fog" args={['#050505', 18, 55]} />
+        <fog attach="fog" args={['#000000', 18, 55]} />
 
         <ambientLight intensity={0.1} />
         <directionalLight position={[10, 10, 10]} intensity={2} color="#ffffff" />
@@ -143,8 +143,18 @@ export const BackgroundScene: React.FC = () => {
         <OceanWave />
         <MetallicBlob />
 
-        <ContactShadows position={[0, -9, -4]} opacity={0.5} scale={20} blur={2} far={10} />
-        <Environment preset="studio" />
+        <ContactShadows position={[0, -13, -3]} opacity={0.6} scale={30} blur={3} far={15} />
+        
+        {/* Custom Lightformer Environment for massive, buttery sweeping liquid reflections */}
+        <Environment resolution={512}>
+          {/* Main sweeping top highlight */}
+          <Lightformer form="rect" intensity={5} position={[0, 6, -10]} scale={[60, 2, 1]} target={[0, 0, 0]} />
+          {/* Secondary sweeping highlight slightly offset */}
+          <Lightformer form="rect" intensity={3} position={[0, -2, -10]} scale={[40, 0.5, 1]} target={[0, 0, 0]} />
+          {/* Edge/rim wrap rings for that liquid glass border effect */}
+          <Lightformer form="ring" intensity={4} scale={25} position={[-20, 0, -15]} target={[0, 0, 0]} />
+          <Lightformer form="ring" intensity={4} scale={25} position={[20, 0, -15]} target={[0, 0, 0]} />
+        </Environment>
       </Canvas>
     </div>
   );

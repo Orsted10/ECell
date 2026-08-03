@@ -4,14 +4,14 @@
 
 @layer base {
   :root {
-    --bg-dark: #0a0a0c;
+    --bg-dark: #000000;
     --card-dark: #121216;
     --card-inner: #18181f;
     --border-glow: rgba(255, 255, 255, 0.1);
   }
 
   body {
-    background-color: #0a0a0c;
+    background-color: #000000;
     color: #ffffff;
     font-family: 'Urbanist', 'Inter', sans-serif;
   }
@@ -59,7 +59,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0c;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-white/10 bg-[#070709] pt-20 pb-12 px-4 md:px-8">
+    <footer className="border-t border-white/10 bg-black pt-20 pb-12 px-4 md:px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         {/* Brand Col */}
         <div className="md:col-span-2 space-y-4">

@@ -23,18 +23,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenJoinModal }) => {
         {/* Left: Brand Logo */}
         <a
           href="#"
-          className="font-bold text-base tracking-wider uppercase font-display text-white pointer-events-auto hover:opacity-80 transition-opacity"
+          className="font-extrabold text-lg tracking-[0.15em] uppercase font-display text-white pointer-events-auto hover:opacity-80 transition-opacity"
         >
           E-CELL CU
         </a>
 
         {/* Center: Floating Dark Glass Pill Navigation */}
-        <div className="hidden lg:flex items-center gap-8 px-8 py-3 rounded-full bg-[#121216]/80 border border-white/10 backdrop-blur-2xl pointer-events-auto shadow-2xl">
+        <div className="hidden lg:flex items-center gap-8 px-8 py-3.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-3xl pointer-events-auto shadow-2xl">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-xs text-white/70 hover:text-white transition-colors duration-200 font-medium tracking-wide"
+              className="text-[13px] text-white/90 hover:text-white transition-all duration-200 font-medium tracking-wider hover:-translate-y-0.5"
             >
               {link.name}
             </a>
@@ -45,10 +45,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenJoinModal }) => {
         <div className="flex items-center gap-4 pointer-events-auto">
           <button
             onClick={onOpenJoinModal}
-            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black font-semibold text-xs tracking-wide hover:bg-white/90 transition-all duration-300 active:scale-95 shadow-xl"
+            className="group inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white text-black font-bold text-[13px] tracking-wider hover:bg-white/90 transition-all duration-300 active:scale-95 shadow-xl hover:shadow-white/20"
           >
             <span>Join E-Cell</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
 
           <button

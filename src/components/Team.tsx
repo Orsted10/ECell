@@ -5,18 +5,33 @@ import { Linkedin, Twitter } from 'lucide-react';
 export const Team: React.FC = () => {
   const teamMembers = [
     {
-      name: 'Aditya Verma',
-      role: 'President & Student Lead',
+      name: 'Shivam Kumar Tiwari',
+      role: 'President',
       image: 'https://framerusercontent.com/images/L20k7SPWAbx9kHfan5W4WR514g.png',
     },
     {
-      name: 'Ananya Gupta',
-      role: 'Head of Incubation',
+      name: 'Alka Singh',
+      role: 'Vice-President',
       image: 'https://framerusercontent.com/images/3cgQeJYcAexgICvg7JYOYiUt30E.png',
     },
     {
-      name: 'Vikramaditya Roy',
-      role: 'Lead Strategist & Tech',
+      name: 'Mohd Humza',
+      role: 'General Secretary',
+      image: 'https://framerusercontent.com/images/8MseiF3JqiiEF1hCSU56AnC1Ow.png',
+    },
+    {
+      name: 'Radhika Yadav',
+      role: 'Marketing & PR Head',
+      image: 'https://framerusercontent.com/images/3cgQeJYcAexgICvg7JYOYiUt30E.png',
+    },
+    {
+      name: 'Aditya Raj',
+      role: 'Events and Operations Lead',
+      image: 'https://framerusercontent.com/images/L20k7SPWAbx9kHfan5W4WR514g.png',
+    },
+    {
+      name: 'Priyanchal Soni',
+      role: 'Technical Lead',
       image: 'https://framerusercontent.com/images/8MseiF3JqiiEF1hCSU56AnC1Ow.png',
     },
   ];

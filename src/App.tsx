@@ -39,7 +39,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="bg-[#0a0a0c] text-white min-h-screen relative font-sans selection:bg-white selection:text-black">
+    <div className="bg-black text-white min-h-screen relative font-sans selection:bg-white selection:text-black">
       {/* Framer Custom Magic Cursor & Blur Overlay */}
       <CustomCursor />
       <BlurGradient />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, TrendingUp, Users, FileText, Sparkles } from 'lucide-react';
+import { AnimatedCounter } from './AnimatedCounter';
 
 export const Impact: React.FC = () => {
   const milestones = [
@@ -75,7 +76,7 @@ export const Impact: React.FC = () => {
                 {/* Main Stat & Label */}
                 <div className="my-6">
                   <div className="text-4xl sm:text-5xl font-display font-bold text-white tracking-tight mb-2 group-hover:text-emerald-400 transition-colors">
-                    {item.stat}
+                    <AnimatedCounter value={item.stat} />
                   </div>
                   <h3 className="text-sm font-semibold text-white/90 uppercase tracking-wider font-mono">
                     {item.label}

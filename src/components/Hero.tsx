@@ -9,15 +9,18 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal }) => {
   return (
-    <section className="relative min-h-screen flex flex-col bg-[#0a0a0c] overflow-hidden">
+    <section className="relative min-h-screen flex flex-col bg-black overflow-hidden">
 
       {/* ── BACKGROUND LAYER: 3D Aesthetic Scene ── */}
-      <Suspense fallback={<div className="absolute inset-0 bg-[#050505]" />}>
+      <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
         <BackgroundScene />
       </Suspense>
       
       {/* Subtle overlay to ensure text readability but keep 3D visible */}
       <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
+      {/* Seamless blend gradient at the bottom to merge with next section without a harsh line */}
+      <div className="absolute bottom-0 left-0 w-full h-[35vh] bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-[5]" />
 
       {/* ── FOREGROUND: All content sits above background ── */}
       <div className="relative z-10 flex flex-col min-h-screen px-6 sm:px-12 pt-32 pb-12 pointer-events-none">
@@ -66,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal }) => {
               We help student founders turn early ideas into ventures with{' '}
               momentum, mentorship and a{' '}
               <span
-                className="text-white/35"
+                className="text-white/70"
                 style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic' }}
               >
                 community that shows up.
@@ -92,8 +95,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal }) => {
                     key={label}
                     href="#"
                     aria-label={label}
-                    whileHover={{ scale: 1.15, backgroundColor: 'rgba(255,255,255,0.18)', borderColor: 'rgba(255,255,255,0.3)' }}
-                    className="w-10 h-10 rounded-full bg-white/8 border border-white/15 flex items-center justify-center text-white/70 hover:text-white transition-all duration-200"
+                    whileHover={{ scale: 1.15, backgroundColor: 'rgba(255,255,255,0.2)', borderColor: 'rgba(255,255,255,0.4)' }}
+                    className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/80 hover:text-white transition-all duration-200"
                   >
                     <Icon className="w-4 h-4" />
                   </motion.a>
@@ -113,17 +116,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 50, damping: 20, delay: 0.2 }}
           >
-            <p className="text-[13px] font-bold text-white mb-5 tracking-wide uppercase">We do</p>
-            <div className="text-[16px] text-white/95 font-medium space-y-3">
-              <div className="flex items-center gap-2">
-                <span>Startup Incubation</span>
-                <span className="text-white/30 px-1">/</span>
-                <span>Startup Incubation</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] animate-pulse" />
+              <p className="text-sm font-bold text-white tracking-[0.2em] uppercase">What We Do</p>
+            </div>
+            <div className="text-lg sm:text-2xl font-display text-white/80 font-medium space-y-4">
+              <div className="flex items-center gap-3 group cursor-pointer">
+                <span className="group-hover:text-white transition-colors duration-300">Venture Building</span>
+                <span className="text-white/30 px-1 font-light italic">/</span>
+                <span className="group-hover:text-white transition-colors duration-300">Incubation</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span>Development</span>
-                <span className="text-white/30 px-1">/</span>
-                <span>Marketing</span>
+              <div className="flex items-center gap-3 group cursor-pointer">
+                <span className="group-hover:text-white transition-colors duration-300">Product Dev</span>
+                <span className="text-white/30 px-1 font-light italic">/</span>
+                <span className="group-hover:text-white transition-colors duration-300">Marketing</span>
               </div>
             </div>
             {/* Muted brand logos row */}
