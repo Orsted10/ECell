@@ -55,7 +55,7 @@ export const JoinCommunityModal: React.FC<ModalProps> = ({ isOpen, onClose }) =>
     setStep(6); // Processing step
 
     // 1. Generate Score
-    const score = generateFounderScore(formData.track, {
+    const score = await generateFounderScore(formData.track, {
       problem: formData.problemStatement,
       build: formData.buildIn30Days,
       past: formData.pastExperience
@@ -186,6 +186,15 @@ export const JoinCommunityModal: React.FC<ModalProps> = ({ isOpen, onClose }) =>
                       <div>
                         <label className="block text-xs font-mono text-white/40 uppercase mb-2">Student ID (UID)</label>
                         <input type="text" value={formData.studentId} onChange={e => setFormData({...formData, studentId: e.target.value})} className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-emerald-500 focus:outline-none transition-colors" placeholder="21BCSXXXX" />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono text-white/40 uppercase mb-2">Year</label>
+                        <select value={formData.year} onChange={e => setFormData({...formData, year: e.target.value})} className="w-full px-5 py-4 rounded-xl bg-[#111115] border border-white/10 text-white focus:border-emerald-500 focus:outline-none transition-colors">
+                          <option value="1st Year">1st Year</option>
+                          <option value="2nd Year">2nd Year</option>
+                          <option value="3rd Year">3rd Year</option>
+                          <option value="4th Year">4th Year</option>
+                        </select>
                       </div>
                       <div>
                         <label className="block text-xs font-mono text-white/40 uppercase mb-2">Phone</label>
