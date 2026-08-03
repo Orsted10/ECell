@@ -20,42 +20,44 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenJoinModal }) => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex items-center justify-between pointer-events-none">
-        {/* Left: Brand Logo */}
+        {/* Left: Brand Logo (Metallic Gradient) */}
         <a
           href="#"
-          className="font-extrabold text-lg tracking-[0.15em] uppercase font-display text-white pointer-events-auto hover:opacity-80 transition-opacity"
+          className="font-extrabold text-xl tracking-[0.2em] uppercase font-display bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] pointer-events-auto hover:opacity-80 transition-opacity"
         >
           E-CELL CU
         </a>
 
-        {/* Center: Floating Dark Glass Pill Navigation */}
-        <div className="hidden lg:flex items-center gap-8 px-8 py-3.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-3xl pointer-events-auto shadow-2xl">
+        {/* Center: 3D Floating Dark Glass Pill Navigation */}
+        <div className="hidden lg:flex items-center gap-2 px-3 py-2 rounded-full bg-[#0a0a0c]/80 border border-white/10 backdrop-blur-3xl pointer-events-auto shadow-[0_20px_40px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1),inset_0_-1px_1px_rgba(0,0,0,0.5)]">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-[13px] text-white/90 hover:text-white transition-all duration-200 font-medium tracking-wider hover:-translate-y-0.5"
+              className="relative px-5 py-2 text-[13px] text-white/70 hover:text-white font-semibold tracking-widest uppercase transition-all duration-300 rounded-full hover:bg-white/10 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] active:scale-95"
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        {/* Right: Action Button & Mobile Hamburger */}
+        {/* Right: Glossy 3D Action Button & Mobile Hamburger */}
         <div className="flex items-center gap-4 pointer-events-auto">
           <button
             onClick={onOpenJoinModal}
-            className="group inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white text-black font-bold text-[13px] tracking-wider hover:bg-white/90 transition-all duration-300 active:scale-95 shadow-xl hover:shadow-white/20"
+            className="group relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-b from-white via-neutral-100 to-neutral-300 text-black font-bold text-sm tracking-widest uppercase transition-all duration-500 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3),inset_0_2px_4px_rgba(255,255,255,1),inset_0_-2px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_0_35px_rgba(255,255,255,0.6),inset_0_2px_4px_rgba(255,255,255,1)] hover:-translate-y-1 overflow-hidden"
           >
-            <span>Join E-Cell</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            {/* Button Shine Effect on Hover */}
+            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-12 opacity-50 pointer-events-none" />
+            <span className="relative z-10">Join E-Cell</span>
+            <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden w-9 h-9 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-white"
+            className="lg:hidden w-12 h-12 rounded-full bg-[#111] border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-center justify-center text-white active:scale-95 transition-transform"
           >
-            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </header>
