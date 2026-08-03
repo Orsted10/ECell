@@ -1,7 +1,9 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Globe, Instagram, Facebook, Share2 } from 'lucide-react';
-import { BackgroundScene } from './BackgroundScene';
+
+// Asynchronously load the heavy 3D scene so the main site renders instantly
+const BackgroundScene = lazy(() => import('./BackgroundScene').then(m => ({ default: m.BackgroundScene })));
 
 interface HeroProps {
   onOpenJoinModal: () => void;

@@ -120,8 +120,8 @@ const CinematicCard: React.FC<CinematicCardProps> = ({ item, onOpenJoinModal, in
         {/* We use a 1px padding wrapper to create a perfect gradient border effect */}
         <div className="relative p-10 sm:p-16 flex flex-col justify-between min-h-[550px] overflow-hidden bg-[#050505]/90 backdrop-blur-3xl rounded-[3rem] shadow-[inset_0_0_100px_rgba(255,255,255,0.03)]">
           
-          {/* Premium Noise Overlay */}
-          <div className="absolute inset-0 opacity-[0.2] mix-blend-overlay pointer-events-none z-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
+          {/* Optimized Premium Noise Overlay - forced hardware acceleration */}
+          <div className="absolute inset-0 opacity-[0.2] mix-blend-overlay pointer-events-none z-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%221%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")', transform: 'translateZ(0)', willChange: 'transform' }} />
 
           {/* Intense Colorful Inner Glow */}
           <div className={`absolute -top-40 -left-40 w-[40rem] h-[40rem] bg-gradient-to-br ${accentColor} to-transparent rounded-full blur-[100px] opacity-70 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none z-0`} />

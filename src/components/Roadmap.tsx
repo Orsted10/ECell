@@ -76,8 +76,8 @@ export const Roadmap: React.FC = () => {
                 0{idx + 1}
               </div>
 
-              {/* Premium Noise Overlay */}
-              <div className="absolute inset-0 opacity-[0.3] mix-blend-overlay pointer-events-none z-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
+              {/* Optimized Premium Noise Overlay - forced hardware acceleration */}
+              <div className="absolute inset-0 opacity-[0.3] mix-blend-overlay pointer-events-none z-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%221%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")', transform: 'translateZ(0)', willChange: 'transform' }} />
 
               {/* Intense Silver Spotlight */}
               <div className={`absolute -top-20 -left-20 w-80 h-80 bg-gradient-to-br from-white/20 to-transparent rounded-full blur-[80px] opacity-40 group-hover:opacity-100 group-hover:scale-150 transition-all duration-1000 pointer-events-none z-0`} />
