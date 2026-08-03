@@ -17,7 +17,7 @@ Evaluate their answers and give them a score out of 99 for:
 3. Leadership
 
 Also, calculate an "overall" score (out of 99).
-If they wrote very short, single-letter, or nonsensical answers, their scores should be extremely low (e.g., 10-20). 
+If they wrote very short, single-letter, or nonsensical answers (like "I dont know", "nothing", "E"), their scores should be extremely low (e.g., 5-15). 
 If they wrote detailed, ambitious, and realistic answers, score them highly.
 
 Return ONLY a valid JSON object matching this structure exactly, with no markdown or extra text:
@@ -39,9 +39,9 @@ Return ONLY a valid JSON object matching this structure exactly, with no markdow
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama3-8b-8192',
+        model: 'llama-3.1-8b-instant', // Fixed: Updated from decommissioned llama3-8b-8192
         messages: [{ role: 'user', content: prompt }],
-        temperature: 0.2,
+        temperature: 0.1,
         response_format: { type: "json_object" }
       })
     });
@@ -63,66 +63,67 @@ Return ONLY a valid JSON object matching this structure exactly, with no markdow
     };
   } catch (error) {
     console.error('Error generating score via AI:', error);
-    // Fallback to deterministic if API fails
+    // Fallback to strict deterministic evaluator if API fails
     return fallbackGenerateScore(track, answers);
   }
 };
 
 const fallbackGenerateScore = (track: string, answers: { problem: string, build: string, past: string }) => {
-  let baseScore = 60;
-  let penalty = false;
+  const fullText = (answers.problem + " " + answers.build + " " + answers.past).toLowerCase();
   
-  const totalLength = answers.problem.length + answers.build.length + answers.past.length;
-  if (totalLength < 10) {
-    baseScore = 15;
-    penalty = true;
-  } else if (totalLength > 100) baseScore += 5;
-  else if (totalLength > 300) baseScore += 10;
-  else if (totalLength > 600) baseScore += 15;
-  
-  let execution = 70;
-  let problemSolving = 70;
-  let leadership = 70;
-  
+  // Instant rejection for low effort
+  const lowEffortPhrases = ['i dont know', 'i do not know', 'nothing', 'idk', 'na', 'none'];
+  const isLowEffort = lowEffortPhrases.some(phrase => fullText.includes(phrase)) || fullText.trim().length < 20;
+
+  if (isLowEffort) {
+    return {
+      overall: 12,
+      breakdown: { execution: 15, problemSolving: 10, leadership: 11 }
+    };
+  }
+
+  // Advanced pseudo-NLP keyword matching
+  let execution = 40;
+  let problemSolving = 40;
+  let leadership = 40;
+
+  const executionWords = ['build', 'built', 'created', 'developed', 'launched', 'code', 'design', 'make', 'users', 'revenue'];
+  const problemWords = ['solve', 'issue', 'problem', 'fix', 'notice', 'inefficient', 'solution', 'optimize', 'improve'];
+  const leadershipWords = ['lead', 'team', 'managed', 'organized', 'event', 'club', 'hackathon', 'founder', 'vision'];
+
+  executionWords.forEach(w => { if (fullText.includes(w)) execution += 8; });
+  problemWords.forEach(w => { if (fullText.includes(w)) problemSolving += 8; });
+  leadershipWords.forEach(w => { if (fullText.includes(w)) leadership += 8; });
+
+  // Track bonuses
   switch(track) {
-    case 'Founder':
-      leadership += 20; problemSolving += 10;
-      break;
-    case 'Builder':
-      execution += 25; problemSolving += 10;
-      break;
-    case 'Designer':
-      problemSolving += 20; execution += 10;
-      break;
-    case 'Growth':
-      execution += 15; leadership += 15;
-      break;
-    case 'Operations':
-      execution += 20; leadership += 10;
-      break;
-    case 'AI Engineer':
-      problemSolving += 25; execution += 10;
-      break;
-    default:
-      execution += 10; problemSolving += 10; leadership += 10;
+    case 'Founder': leadership += 15; problemSolving += 10; break;
+    case 'Builder': execution += 20; problemSolving += 10; break;
+    case 'Designer': problemSolving += 15; execution += 10; break;
+    case 'Growth': execution += 10; leadership += 15; break;
+    case 'Operations': execution += 15; leadership += 10; break;
+    case 'AI Engineer': problemSolving += 20; execution += 10; break;
   }
-  
-  if (penalty) {
-    execution = 18;
-    problemSolving = 15;
-    leadership = 16;
-  }
-  
+
+  // Length bonus
+  if (fullText.length > 200) { execution += 5; problemSolving += 5; leadership += 5; }
+  if (fullText.length > 500) { execution += 10; problemSolving += 10; leadership += 10; }
+
+  // Variance
   const hash = track.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0);
   const variance = (hash % 10);
-  const overall = Math.min(99, baseScore + (variance > 0 ? variance : 5));
-  
+
+  const finalExecution = Math.min(99, execution + variance);
+  const finalProblem = Math.min(99, problemSolving + (variance % 3));
+  const finalLeadership = Math.min(99, leadership + (variance % 5));
+  const overall = Math.floor((finalExecution + finalProblem + finalLeadership) / 3);
+
   return {
     overall,
     breakdown: {
-      execution: Math.min(99, execution + variance),
-      problemSolving: Math.min(99, problemSolving + (variance % 3)),
-      leadership: Math.min(99, leadership + (variance % 5))
+      execution: finalExecution,
+      problemSolving: finalProblem,
+      leadership: finalLeadership
     }
   };
 };
