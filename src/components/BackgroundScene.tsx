@@ -7,10 +7,10 @@ import * as THREE from 'three';
 const OceanWave = () => {
   const pointsRef = useRef<THREE.Points>(null);
 
-  // Extremely dense grid for maximum wave aesthetic (100k+ particles)
-  const SEG = 320;
-  const SIZE_X = 240;   // Even wider
-  const SIZE_Z = 140;   // Even deeper
+  // Optimized grid for maximum performance while maintaining visual density (~25k particles instead of 100k+)
+  const SEG = 160;
+  const SIZE_X = 240;
+  const SIZE_Z = 140;
 
   const { positions, sizes, count } = useMemo(() => {
     const pos = new Float32Array(SEG * SEG * 3);
@@ -21,7 +21,7 @@ const OceanWave = () => {
         pos[idx++] = (i / SEG - 0.5) * SIZE_X;
         pos[idx++] = 0;
         pos[idx++] = (j / SEG - 0.5) * SIZE_Z;
-        sz[i * SEG + j] = 0.12;
+        sz[i * SEG + j] = 0.25; // Larger particles to fill the space
       }
     }
     return { positions: pos, sizes: sz, count: SEG * SEG };
@@ -87,11 +87,12 @@ const OceanWave = () => {
           itemSize={1}
         />
       </bufferGeometry>
+      {/* We must increase the actual material size because standard PointsMaterial ignores the sizes buffer */}
       <pointsMaterial
-        size={0.10}
-        color="#c8c8d8"
+        size={0.4}
+        color="#ffffff"
         transparent
-        opacity={0.55}
+        opacity={1}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
         depthWrite={false}
@@ -128,7 +129,8 @@ const MetallicBlob = () => {
 export const BackgroundScene: React.FC = () => {
   return (
     <div className="absolute inset-0 z-0 pointer-events-none bg-black">
-      <Canvas camera={{ position: [0, 2, 12], fov: 60 }} dpr={[1, 2]}>
+      {/* Lock DPR to 1 to prevent severe GPU throttling on high-res retina displays while maintaining visual aesthetic */}
+      <Canvas camera={{ position: [0, 2, 12], fov: 60 }} dpr={1}>
         <color attach="background" args={['#000000']} />
 
         {/* ── ATMOSPHERIC FOG ── This is what makes distant waves fade/blur exactly like your reference */}

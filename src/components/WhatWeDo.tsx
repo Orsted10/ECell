@@ -78,10 +78,12 @@ export const WhatWeDo: React.FC<WhatWeDoProps> = ({ onOpenJoinModal }) => {
       </div>
 
       {/* Offerings Stack - Cinematic Sticky Architecture */}
-      <div className="relative w-full max-w-6xl mx-auto flex flex-col pb-[20vh]">
+      <div className="relative w-full max-w-6xl mx-auto flex flex-col">
         {offerings.map((item, idx) => (
           <CinematicCard key={item.num} item={item} onOpenJoinModal={onOpenJoinModal} index={idx} />
         ))}
+        {/* Massive invisible spacer to guarantee the final card has enough scrolling runway to fully stack */}
+        <div className="h-[100vh] w-full pointer-events-none shrink-0" />
       </div>
     </section>
   );
