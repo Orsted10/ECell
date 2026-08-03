@@ -1,162 +1,112 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Sparkles, Cpu, Leaf, HeartPulse } from 'lucide-react';
 
 export const StartupShowcase: React.FC = () => {
   const projects = [
     {
       title: 'EdVenture AI',
-      subtitle: 'Featured / Launcher',
       category: 'EdTech & AI',
-      image: 'https://framerusercontent.com/images/TGcveslLFOoJEhB079jeYPrB8A.png',
       tag: 'INCUBATED VENTURE',
       description: 'Personalized AI tutor platform delivering adaptive learning paths for higher education STEM students.',
+      icon: Cpu,
+      color: 'from-emerald-500/20 to-teal-900/40',
+      borderGlow: 'group-hover:border-emerald-500/50'
     },
     {
       title: 'GreenGrid Mobility',
-      subtitle: 'Featured / Brand',
       category: 'EV & Sustainability',
-      image: 'https://framerusercontent.com/images/vt1yWVm705HU96sMIHFT2Gf0SZ0.png',
       tag: 'SEED FUNDED',
       description: 'Smart battery swapping network designed specifically for last-mile delivery fleets on university campuses.',
+      icon: Leaf,
+      color: 'from-green-500/20 to-emerald-900/40',
+      borderGlow: 'group-hover:border-green-500/50'
     },
     {
       title: 'Virtual Reality Lab',
-      subtitle: 'Virtual / Reality Lab',
       category: 'HealthTech & Hardware',
-      image: 'https://framerusercontent.com/images/R5C9E9dqFAvJrv0g9dLqaUvnNT0.png',
       tag: 'PATENT FILED',
       description: 'Non-invasive continuous biometric monitoring patch for preventive cardiac care in rural clinics.',
+      icon: HeartPulse,
+      color: 'from-rose-500/20 to-pink-900/40',
+      borderGlow: 'group-hover:border-rose-500/50'
     },
   ];
 
   return (
-    <section id="showcase" className="py-32 px-4 md:px-8 max-w-[100rem] mx-auto border-t border-white/10 relative z-10">
+    <section id="showcase" className="py-32 px-4 md:px-8 max-w-7xl mx-auto border-t border-white/10 relative z-10">
       
       {/* Section Header */}
-      <div className="mb-20">
-        <span className="text-sm uppercase tracking-[0.3em] text-white/80 font-mono font-bold block mb-4">
-          [ Featured Ventures ]
-        </span>
+      <div className="mb-20 flex flex-col items-center text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/50 font-mono text-xs tracking-widest uppercase mb-6">
+          <Sparkles className="w-3 h-3" /> E-Cell Portfolio
+        </div>
         <h2 className="text-5xl sm:text-7xl font-display font-extrabold text-white tracking-tight">
-          Incubated <span className="font-serif italic font-normal text-white/70">Startups</span>
+          Featured <span className="font-serif italic font-normal text-white/70">Startups</span>
         </h2>
+        <p className="mt-6 text-white/60 max-w-2xl text-lg">
+          Explore the groundbreaking ventures born out of The Foundry. From artificial intelligence to sustainable mobility, our founders are building the future.
+        </p>
       </div>
 
-      {/* Cards Stack matching cinematic mockup */}
-      <div className="space-y-24">
-        {projects.map((p, idx) => (
-          <motion.div
-            key={p.title}
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, delay: 0.1, type: "spring", stiffness: 60, damping: 20 }}
-            className="relative h-[700px] md:h-[800px] w-full rounded-[3rem] bg-[#09090b] border border-white/5 overflow-hidden shadow-[inset_0_2px_15px_rgba(255,255,255,0.05),0_40px_80px_rgba(0,0,0,0.8)] group"
-          >
-            {/* Background Ambient Glow */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-              <div className="w-[400px] h-[400px] bg-white/5 blur-[120px] rounded-full group-hover:bg-white/10 transition-colors duration-1000 ease-out" />
-            </div>
-
-            {/* Top Left Pills */}
-            <div className="absolute top-10 left-10 flex flex-col gap-3 z-30">
-              <span className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium tracking-wide backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
-                {p.tag}
-              </span>
-              <span className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium tracking-wide backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] w-fit">
-                {p.category}
-              </span>
-            </div>
-
-            {/* Top Right Stats (Desktop Only) */}
-            <div className="absolute top-10 right-10 hidden md:flex flex-col gap-8 z-30 text-right w-64">
-              <div className="flex items-center justify-end gap-5 border-b border-white/5 pb-5">
-                <div className="text-3xl font-serif font-bold text-white drop-shadow-md">W.</div>
-                <div className="text-left">
-                  <div className="text-[13px] font-bold text-white mb-1">E-Cell highlight</div>
-                  <div className="text-[10px] text-white/40 tracking-[0.2em] uppercase">June 2024</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-end gap-5 border-b border-white/5 pb-5">
-                <div className="text-3xl font-serif font-bold text-white drop-shadow-md">Bē</div>
-                <div className="text-left">
-                  <div className="text-[13px] font-bold text-white mb-1">Campus milestone</div>
-                  <div className="text-[10px] text-white/40 tracking-[0.2em] uppercase">August 2024</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Center Phone Mockup (The Hero) */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[580px] md:w-[320px] md:h-[660px] z-20 group-hover:-translate-y-[52%] transition-transform duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]">
-              {/* Phone Hardware Frame */}
-              <div className="relative w-full h-full rounded-[3rem] border-[8px] border-[#1a1a1c] bg-black shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2),0_30px_60px_rgba(0,0,0,0.9)] overflow-hidden">
-                {/* Dynamic Island Notch */}
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-30 shadow-[inset_0_-1px_2px_rgba(255,255,255,0.1)]" />
-                
-                {/* App UI / Image Content */}
-                <div className="absolute inset-0 bg-[#f4f4f5]">
-                  {/* Faux App Header inside phone */}
-                  <div className="absolute top-16 w-full text-center z-20 px-4">
-                    <h4 className="text-4xl font-display font-extrabold text-black leading-tight tracking-tight">
-                      {p.title.split(' ')[0]}<br/>
-                      <span className="text-emerald-600">{p.title.split(' ').slice(1).join(' ')}</span>
-                    </h4>
-                  </div>
-                  <img 
-                    src={p.image} 
-                    alt={p.title} 
-                    className="absolute bottom-0 w-full h-[70%] object-cover object-top opacity-95 group-hover:scale-105 transition-transform duration-1000 ease-out" 
-                  />
-                  {/* Faux bottom gradient inside phone */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                </div>
-              </div>
-            </div>
-
-            {/* Center Phone Reflection */}
-            <div 
-              className="absolute left-1/2 top-[calc(50%+280px)] md:top-[calc(50%+320px)] -translate-x-1/2 w-[280px] md:w-[320px] h-[580px] md:h-[660px] scale-y-[-1] z-10 opacity-30 blur-[4px] pointer-events-none group-hover:opacity-10 group-hover:translate-y-6 group-hover:blur-[8px] transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" 
-              style={{ maskImage: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 35%)', WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 35%)' }}
+      {/* Cinematic Grid Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {projects.map((p, idx) => {
+          const Icon = p.icon;
+          return (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: idx * 0.15 }}
+              className={`group relative h-[500px] rounded-[2.5rem] bg-white/5 border border-white/10 overflow-hidden transition-all duration-500 ${p.borderGlow} hover:shadow-2xl hover:-translate-y-2`}
             >
-              <div className="w-full h-full rounded-[3rem] border-[8px] border-[#1a1a1c] bg-[#f4f4f5] overflow-hidden">
-                <img src={p.image} alt={p.title} className="absolute bottom-0 w-full h-[70%] object-cover object-top" />
+              {/* Abstract Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-40 group-hover:opacity-100 transition-opacity duration-700`} />
+              
+              {/* Blur Orb */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
+
+              {/* Content Container */}
+              <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
+                {/* Top Section */}
+                <div className="flex justify-between items-start">
+                  <div className="w-16 h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center backdrop-blur-md group-hover:scale-110 transition-transform duration-500">
+                    <Icon className="w-8 h-8 text-white/80" />
+                  </div>
+                  <span className="px-4 py-2 rounded-full bg-black/40 border border-white/10 text-white/70 text-xs font-mono tracking-widest backdrop-blur-md">
+                    {p.tag}
+                  </span>
+                </div>
+
+                {/* Bottom Section */}
+                <div>
+                  <h3 className="text-4xl font-display font-bold text-white mb-2 leading-tight drop-shadow-md">
+                    {p.title}
+                  </h3>
+                  <p className="text-emerald-400 font-mono text-sm tracking-widest uppercase mb-4">
+                    {p.category}
+                  </p>
+                  <p className="text-white/70 leading-relaxed mb-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                    {p.description}
+                  </p>
+                  
+                  <button className="flex items-center gap-2 text-white font-bold text-sm uppercase tracking-widest group-hover:gap-4 transition-all">
+                    View Project <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
-            </div>
-
-            {/* Bottom Left Title */}
-            <div className="absolute bottom-10 left-10 md:bottom-16 md:left-16 z-30">
-              <p className="text-[13px] text-white/50 font-medium tracking-wide mb-4">E-Cell Chandigarh University, Uttar Pradesh</p>
-              <h3 className="text-5xl md:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight drop-shadow-2xl group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-b group-hover:from-white group-hover:to-white/50 transition-all duration-500">
-                {p.title.split(' ').map((word, i) => (
-                  <React.Fragment key={i}>
-                    {word}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </h3>
-            </div>
-
-            {/* Bottom Right Button */}
-            <div className="absolute bottom-10 right-10 md:bottom-16 md:right-16 z-30 text-right flex flex-col items-end gap-6">
-              <p className="text-sm text-white/60 font-light leading-relaxed hidden lg:block max-w-[280px]">
-                {p.description}
-              </p>
-              <button className="flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white text-black font-bold text-[13px] tracking-wide hover:bg-white/90 hover:scale-105 transition-all shadow-[0_10px_20px_rgba(255,255,255,0.1)] active:scale-95">
-                <span>Made in E-Cell</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
-            </div>
-            
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Center Button */}
       <div className="mt-24 text-center relative z-20">
         <a
           href="#offerings"
-          className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#1a1a1c] border border-white/10 text-white font-bold text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-500 shadow-2xl"
+          className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white/5 border border-white/20 text-white font-bold text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-500 shadow-xl"
         >
           <span>Explore All Startups</span>
           <ArrowUpRight className="w-4 h-4" />
@@ -165,3 +115,4 @@ export const StartupShowcase: React.FC = () => {
     </section>
   );
 };
+

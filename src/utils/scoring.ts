@@ -3,24 +3,28 @@ const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || ('gsk_TFsDKu7jPVNO5Igk
 
 export const generateFounderScore = async (track: string, answers: { problem: string, build: string, past: string }) => {
   const prompt = `
-You are an expert startup accelerator evaluator for "The Foundry". You are analyzing an applicant's "Startup DNA".
-The applicant applied for the "${track}" track.
+You are an elite startup accelerator evaluator for "The Foundry". You are analyzing an applicant's "Startup DNA".
+Track: "${track}"
 
-Here are their answers:
-1. Problem they notice every day: "${answers.problem}"
-2. What they would build with $10,000 in 30 days: "${answers.build}"
-3. Past experience/built projects: "${answers.past}"
+Answers:
+1. Problem noticed: "${answers.problem}"
+2. $10k/30 days build: "${answers.build}"
+3. Past experience: "${answers.past}"
 
-Evaluate their answers and give them a score out of 99 for:
-1. Execution
-2. Problem Solving
-3. Leadership
+EVALUATION RUBRIC:
+Analyze the text deeply for CONTEXT, AMBITION, REALISM, and QUALITY.
+- "Execution": Do they have a clear, realistic plan? Is the $10,000 used logically (or at all)? Do they have relevant past experience?
+- "Problem Solving": Did they identify a real, painful problem or a fake/trivial one? Are their insights unique?
+- "Leadership": Do they show initiative, drive, and vision? Have they built or led things before?
 
-Also, calculate an "overall" score (out of 99).
-If they wrote very short, single-letter, or nonsensical answers (like "I dont know", "nothing", "E"), their scores should be extremely low (e.g., 5-15). 
-If they wrote detailed, ambitious, and realistic answers, score them highly.
+PENALTIES:
+- If the answers are extremely short, vague, hallucinatory, or nonsensical (e.g. "E", "I don't know", "nothing", "good"), give them scores between 5 and 20. Do NOT give them average scores. They must be severely punished for low effort.
+- If the proposed build is wildly unrealistic for $10k/30 days (e.g. "I will build a spaceship"), penalize execution heavily.
 
-Return ONLY a valid JSON object matching this structure exactly, with no markdown or extra text:
+REWARDS:
+- If they describe specific technologies, nuanced problems, or impressive past projects, score them 85-99.
+
+Return ONLY a valid JSON object matching exactly:
 {
   "overall": number,
   "breakdown": {
