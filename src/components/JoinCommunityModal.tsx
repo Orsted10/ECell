@@ -165,7 +165,7 @@ export const JoinCommunityModal: React.FC<ModalProps> = ({ isOpen, onClose }) =>
           </button>
 
           {/* Main Wizard Container */}
-          <div className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto px-6 py-12 hide-scrollbar flex flex-col items-center">
+          <div className="relative z-10 w-full max-w-5xl max-h-[90vh] overflow-y-auto px-4 py-8 md:px-6 md:py-12 flex flex-col items-center scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             
             <AnimatePresence mode="wait">
               {/* STEP 0: INTRO */}
