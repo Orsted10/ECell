@@ -21,7 +21,7 @@ export const FounderCard = forwardRef<HTMLDivElement, FounderCardProps>(
     return (
       <div 
         ref={ref}
-        className="w-[450px] h-[700px] rounded-[2rem] bg-gradient-to-b from-[#111115] to-[#0a0a0c] border border-white/10 relative overflow-hidden shadow-2xl flex flex-col"
+        className="w-[450px] min-h-[700px] h-auto rounded-[2rem] bg-gradient-to-b from-[#111115] to-[#0a0a0c] border border-white/10 relative overflow-hidden shadow-2xl flex flex-col"
         style={{
           boxShadow: 'inset 0 2px 20px rgba(255,255,255,0.05), 0 30px 60px rgba(0,0,0,0.8)'
         }}

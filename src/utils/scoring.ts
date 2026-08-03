@@ -2,6 +2,20 @@
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || ('gsk_TFsDKu7jPVNO5IgkC' + 'VsmWGdyb3FYBR0JXKOybwJt5U589pK95s9s');
 
 export const generateFounderScore = async (track: string, answers: { problem: string, build: string, past: string }) => {
+  const fullText = (answers.problem + " " + answers.build + " " + answers.past).trim().toLowerCase();
+  
+  // Instant rejection for low effort / gibberish before even calling the AI
+  const lowEffortPhrases = ['i dont know', 'i do not know', 'nothing', 'idk', 'na', 'none'];
+  const isLowEffort = lowEffortPhrases.some(phrase => fullText.includes(phrase)) || fullText.length < 20;
+  const isGibberish = /^(.)\1+$/.test(fullText.replace(/\s/g, '')) || /^[asdfghjklqwertyuiopzxcvbnm]+$/.test(fullText.replace(/\s/g, '')) && fullText.length < 20;
+
+  if (isLowEffort || isGibberish) {
+    return {
+      overall: 12,
+      breakdown: { execution: 15, problemSolving: 10, leadership: 11 }
+    };
+  }
+
   const prompt = `
 You are an elite startup accelerator evaluator for "The Foundry". You are analyzing an applicant's "Startup DNA".
 Track: "${track}"
