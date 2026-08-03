@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Globe, Instagram, Facebook, Share2, Sparkles } from 'lucide-react';
+import { ChevronDown, Globe, Instagram, Facebook, Share2, Fingerprint } from 'lucide-react';
 
 // Asynchronously load the heavy 3D scene so the main site renders instantly
 const BackgroundScene = lazy(() => import('./BackgroundScene').then(m => ({ default: m.BackgroundScene })));
@@ -177,14 +177,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal }) => {
                 className="rounded-2xl bg-gradient-to-br from-[#111113] to-[#0a0a0c] border border-white/10 overflow-hidden cursor-pointer group shadow-[0_20px_40px_rgba(0,0,0,0.5)] relative"
               >
                 <div className="relative h-[200px] overflow-hidden flex flex-col items-center justify-center p-6 text-center">
-                  <div className="absolute inset-0 bg-emerald-500/5 blur-[50px] group-hover:bg-emerald-500/10 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-white/5 blur-[50px] group-hover:bg-white/10 transition-colors duration-500" />
                   
-                  <div className="relative z-10 w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-emerald-500/50 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-500">
-                    <Sparkles className="w-8 h-8 text-white/50 group-hover:text-emerald-400 transition-colors duration-500" />
+                  <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-white/10 to-white/0 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-center justify-center mb-4 backdrop-blur-md group-hover:scale-110 group-hover:border-white/30 group-hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]">
+                    <Fingerprint className="w-8 h-8 text-white/60 group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
                   </div>
                   
-                  <h4 className="relative z-10 text-white font-display font-bold text-xl mb-1 tracking-wide group-hover:text-emerald-300 transition-colors duration-500">The Foundry</h4>
-                  <p className="relative z-10 text-emerald-500/80 text-[10px] font-mono uppercase tracking-[0.2em] group-hover:text-emerald-400 transition-colors duration-500">Accepting Applications</p>
+                  <h4 className="relative z-10 text-white font-display font-bold text-xl mb-1 tracking-wide group-hover:text-white transition-colors duration-500">The Foundry</h4>
+                  <p className="relative z-10 text-white/40 text-[10px] font-mono uppercase tracking-[0.2em] group-hover:text-white/70 transition-colors duration-500">Accepting Applications</p>
                   
                   {/* Subtle inner shadow overlay */}
                   <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.9)] pointer-events-none" />
