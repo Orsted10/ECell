@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Globe, Instagram, Facebook, Share2 } from 'lucide-react';
+import { ChevronDown, Globe, Instagram, Facebook, Share2, Sparkles } from 'lucide-react';
 
 // Asynchronously load the heavy 3D scene so the main site renders instantly
 const BackgroundScene = lazy(() => import('./BackgroundScene').then(m => ({ default: m.BackgroundScene })));
@@ -174,16 +174,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenJoinModal }) => {
               <motion.div
                 onClick={onOpenJoinModal}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="rounded-2xl bg-[#111113] border border-white/10 overflow-hidden cursor-pointer group shadow-2xl relative"
+                className="rounded-2xl bg-gradient-to-br from-[#111113] to-[#0a0a0c] border border-white/10 overflow-hidden cursor-pointer group shadow-[0_20px_40px_rgba(0,0,0,0.5)] relative"
               >
-                <div className="relative h-[200px] overflow-hidden bg-[#1a1a1f] flex items-center justify-center">
-                  <img
-                    src="https://framerusercontent.com/images/kJJrWRLfOnlr1d8RHlDLgRsGag.png"
-                    alt="Featured venture"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 group-hover:brightness-100"
-                  />
+                <div className="relative h-[200px] overflow-hidden flex flex-col items-center justify-center p-6 text-center">
+                  <div className="absolute inset-0 bg-emerald-500/5 blur-[50px] group-hover:bg-emerald-500/10 transition-colors duration-500" />
+                  
+                  <div className="relative z-10 w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-emerald-500/50 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-500">
+                    <Sparkles className="w-8 h-8 text-white/50 group-hover:text-emerald-400 transition-colors duration-500" />
+                  </div>
+                  
+                  <h4 className="relative z-10 text-white font-display font-bold text-xl mb-1 tracking-wide group-hover:text-emerald-300 transition-colors duration-500">The Foundry</h4>
+                  <p className="relative z-10 text-emerald-500/80 text-[10px] font-mono uppercase tracking-[0.2em] group-hover:text-emerald-400 transition-colors duration-500">Accepting Applications</p>
+                  
                   {/* Subtle inner shadow overlay */}
-                  <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.8)] pointer-events-none" />
+                  <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.9)] pointer-events-none" />
                 </div>
               </motion.div>
             </div>

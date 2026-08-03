@@ -208,13 +208,22 @@ export const JoinCommunityModal: React.FC<ModalProps> = ({ isOpen, onClose }) =>
                         <input type="text" value={formData.studentId} onChange={e => setFormData({...formData, studentId: e.target.value})} className={inputClassName} placeholder="21BCSXXXX" />
                       </div>
                       <div>
-                        <label className="block text-xs font-mono text-white/60 uppercase mb-2">Year</label>
-                        <select value={formData.year} onChange={e => setFormData({...formData, year: e.target.value})} className={`${inputClassName} appearance-none bg-[#1a1a24]`}>
-                          <option value="1st Year">1st Year</option>
-                          <option value="2nd Year">2nd Year</option>
-                          <option value="3rd Year">3rd Year</option>
-                          <option value="4th Year">4th Year</option>
-                        </select>
+                        <label className="block text-xs font-mono text-white/60 uppercase mb-3">Year</label>
+                        <div className="grid grid-cols-2 gap-3">
+                          {['1st Year', '2nd Year', '3rd Year', '4th Year'].map(year => (
+                            <button
+                              key={year}
+                              onClick={() => setFormData({...formData, year})}
+                              className={`py-4 rounded-xl font-medium text-sm transition-all duration-300 border ${
+                                formData.year === year 
+                                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/50 shadow-[0_0_15px_rgba(16,185,129,0.2)]' 
+                                  : 'bg-white/5 text-white/60 border-white/10 hover:bg-white/10 hover:text-white'
+                              }`}
+                            >
+                              {year}
+                            </button>
+                          ))}
+                        </div>
                       </div>
                       <div>
                         <label className="block text-xs font-mono text-white/60 uppercase mb-2">Phone</label>
