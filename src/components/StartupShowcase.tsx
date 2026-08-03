@@ -30,6 +30,7 @@ export const StartupShowcase: React.FC = () => {
     },
   ];
 
+  return (
     <section id="showcase" className="py-32 px-4 md:px-8 max-w-[100rem] mx-auto border-t border-white/10 relative z-10">
       
       {/* Section Header */}
