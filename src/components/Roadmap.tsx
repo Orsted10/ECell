@@ -60,16 +60,15 @@ export const Roadmap: React.FC = () => {
         {steps.map((step, idx) => (
           <motion.div
             key={step.number}
-            initial={{ opacity: 0, y: 120, scale: 0.8, rotateX: 10 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
-            whileHover={{ y: -20, scale: 1.05 }}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -10 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1, delay: idx * 0.15, type: "spring", stiffness: 60, damping: 20 }}
+            transition={{ duration: 0.7, delay: idx * 0.1, type: "spring", stiffness: 80, damping: 20 }}
             className="group relative rounded-[2.5rem] p-[1px] overflow-hidden bg-gradient-to-b from-white/40 via-white/5 to-transparent shadow-[0_30px_60px_rgba(0,0,0,0.9)] cursor-pointer"
-            style={{ perspective: '1000px' }}
           >
             {/* Inner Card Container */}
-            <div className="relative p-8 sm:p-10 flex flex-col justify-between h-full min-h-[500px] overflow-hidden bg-[#070707]/90 backdrop-blur-3xl rounded-[2.5rem] shadow-[inset_0_0_80px_rgba(255,255,255,0.05)] z-10">
+            <div className="relative p-8 sm:p-10 flex flex-col justify-between h-full min-h-[500px] overflow-hidden bg-[#070707]/90 backdrop-blur-xl rounded-[2.5rem] shadow-[inset_0_0_80px_rgba(255,255,255,0.05)] z-10">
               
               {/* Giant Background Number for Depth */}
               <div className="absolute -top-10 -right-10 text-[16rem] font-display font-extrabold text-white/[0.03] group-hover:text-white/[0.08] transition-colors duration-700 pointer-events-none select-none leading-none z-0">
@@ -106,9 +105,9 @@ export const Roadmap: React.FC = () => {
                 {step.highlights.map((h, i) => (
                   <motion.div 
                     key={h} 
-                    initial={{ opacity: 0, x: -20, rotateX: 45 }}
-                    whileInView={{ opacity: 1, x: 0, rotateX: 0 }}
-                    transition={{ delay: idx * 0.15 + i * 0.15 + 0.3, type: "spring", stiffness: 100 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 + i * 0.1 + 0.2, type: "spring", stiffness: 100 }}
                     viewport={{ once: true }}
                     className="flex items-center gap-4 text-sm font-medium text-white/70 group-hover:text-white transition-colors duration-500"
                   >
